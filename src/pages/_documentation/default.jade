@@ -5,22 +5,72 @@ html(lang="en")
         title ShortDocumentation for [insert project name]
         script(src="//code.jquery.com/jquery-2.1.4.min.js")
         script(src="./js/page-documentation.js")
-
-body
-        p default
+        style.
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            html,
+            body {
+                height: 100%;
+                overflow: hidden;
+            }
+            div.container {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-items: stretch;
+                height: 100%;
+            }
+            div.col-iframe {
+                order: 1;
+                flex-grow: 2;
+                border: 1px solid red;
+                padding: 16px;
+            }
+            div.col-readme {
+                order: 2;
+                flex-grow: 1;
+                padding: 16px;
+            }
+            div.col-nav {
+                order: 3;
+                flex-grow: 1;
+                border: 1px solid red;
+                padding: 16px;
+            }
+            iframe {
+                border: 1px solid green;
+                width: 100%;
+            }
+            ul {
+                margin: 1em 0 0;
+                padding-left: 2em;
+            }
         
-        p=content.length
-        ul
-            - (content.length) && content.map(function (item) {
-                li
-                    a(href="./html/" + item.page,
-                      target="showme",
-                      data-json=item.json,
-                      data-jade=item.jade,
-                      data-js=item.js,
-                      data-scss=item.scss,
-                      data-md=item.md,
-                      data-folder="../" + item.folder)=item.title
-            - })
-        
-        iframe(name="showme", height="768", width="1024")
+        link()
+    
+    body
+        div.container
+            div.col-iframe
+                iframe(name="showme")
+            
+            div.col-readme
+                p Page/Component files
+                ul.files
+            
+            div.col-nav
+                p Pages and Components
+                ul
+                    - (content.length) && content.map(function (item) {
+                    li
+                        a(href="./html/" + item.page,
+                        target="showme",
+                        data-json=item.json,
+                        data-jade=item.jade,
+                        data-js=item.js,
+                        data-scss=item.scss,
+                        data-md=item.md,
+                        data-folder="../" + item.folder)=item.title
+                    - })
