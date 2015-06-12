@@ -102,7 +102,7 @@ gulp.task("js-browserify-docs", ["js-browserify-build"], function () {
         // opts.entries or opts.e should be the array of entry files to create a page-specific bundle for each file.
         // If you don't pass in an opts.entries, this information is gathered from browserify itself.
         .plugin(factor, {
-            "outputs": config.output.build
+            "outputs": config.output.docs
         })
         // turn stream of files into a vinyl object (so gulp can play with it); 
         .bundle()
