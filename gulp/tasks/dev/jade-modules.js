@@ -6,7 +6,7 @@ var gulp         = require("gulp"),
     rename       = require("gulp-rename"),         // so we can create multiple HTML files off one jade file;
     handleErrors = require("../../handle-errors"); // function to fire on error;
 
-gulp.task("jade-modules", ["jade-pages"], function () {
+gulp.task("jade-modules", function () {
     // we'll use this config for two jade functions;
     var jadeConfig = {
         "pretty": "    ", // use 4 spaces for an indent;

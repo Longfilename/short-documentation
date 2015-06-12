@@ -4,14 +4,36 @@ var gulp         = require("gulp"),
     fs           = require("fs"),
     tap          = require("gulp-tap"),            // allows us access to the generated HTML;
     plumber      = require("gulp-plumber"),        // error trapping so an error doesn't kill Gulp;
-    handleErrors = require("../../handle-errors"); // function to fire on error;
-
-var objects = [],
+    handleErrors = require("../../handle-errors"), // function to fire on error;
+    content = [],
     getExtension = function (filename) {
         return filename.split(".").pop();
     };
 
-gulp.task("jade-docs-nav-1", function () {
+// jade-docs:         build documentation/default.html
+// jade-docs-html:    but, before we build default.html;
+// jade-docs-content: we need to build the object to pass into that Jade function;
+gulp.task("jade-docs", ["jade-docs-html"]);
+
+// build default.html;
+gulp.task("jade-docs-html", ["jade-docs-content"], function () {
+    gulp.src(config.template)
+        .pipe(plumber({
+            errorHandler: handleErrors
+        }))
+        .pipe(jade({
+            "pretty": "    ", // use 4 spaces for an indent;
+            "compileDebug": true,
+            "locals": {
+                "content": content // contains module and page information;
+            }
+        }))
+        .pipe(gulp.dest(config.dest));
+});
+
+// build the content for default.html;
+// this is done by populating the "content" object;
+gulp.task("jade-docs-content", function () {
     return gulp.src(config.paths)
         // add plumber for error catching;
         .pipe(plumber({
@@ -26,7 +48,7 @@ gulp.task("jade-docs-nav-1", function () {
                 // read the contents of that directory;
                 directory = fs.readdirSync(path),
                 // create an object for each module/page;
-                object = {
+                item = {
                     "json": [],
                     "jade": [],
                     "js":   [],
@@ -52,11 +74,11 @@ gulp.task("jade-docs-nav-1", function () {
                 
                 // if this extension is of a file to store;
                 // we dont care about EVERY file, only every file we care about;
-                if (object.hasOwnProperty(extension)) {
+                if (item.hasOwnProperty(extension)) {
                     // and we dont care about documentation jade files;
                     // no need to document the documentation;
                     if (file !== "demo.jade") {
-                        object[extension].push(file);
+                        item[extension].push(file);
                     }
                 }
                 
@@ -65,28 +87,11 @@ gulp.task("jade-docs-nav-1", function () {
                     // grab the first line (the title);
                     readme = fs.readFileSync(fileVinylObject.path).toString().split("\n");
                     // so we can save it for our modules / pages object;
-                    object.title = readme[0];
+                    item.title = readme[0];
                 }
             });
             
             // after recording all pertinent information about this module/page, save it;
-            objects.push(object);
+            content.push(item);
         }));
 });
-
-gulp.task("jade-docs-nav-2", ["jade-docs-nav-1"], function () {
-    gulp.src(config.template)
-        .pipe(plumber({
-            errorHandler: handleErrors
-        }))
-        .pipe(jade({
-            "pretty": "    ", // use 4 spaces for an indent;
-            "compileDebug": true,
-            "locals": {
-                "content": objects
-            }
-        }))
-        .pipe(gulp.dest(config.dest));
-});
-
-gulp.task("jade-docs-nav", ["jade-docs-nav-2"]);
