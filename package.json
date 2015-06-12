@@ -51,6 +51,7 @@
     "gulp.spritesmith": "^3.5.3",
     "mkdirp": "^0.5.0",
     "require-dir": "^0.1.0",
+    "run-sequence": "^1.1.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
