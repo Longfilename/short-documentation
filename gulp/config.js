@@ -1,25 +1,20 @@
 "use strict";
 
-var src   = "src",
-    build = "build",
-    docs  = "docs";
+var src   = "src",   // files to dev on;
+    build = "build", // where production ready files are written to;
+    docs  = "docs";  // where documentation files are written to;
 
 module.exports = {
-    // synchronised browser testing;
+    // web server and synchronised browser testing;
     "browsersync": {
+        // configure what gets served;
         "server": {
             "baseDir": "./",  // set the root to be the base, this way we can go to docs, and build;
             "directory": true // enable directory browsing;
         },
-        // 
+        // configure the URL to access the server;
         "host": "localhost",
-        "port": 3000,
-        "files": [
-            build + "/css/*.css",
-            build + "/js/*.js",
-            build + "/img/*",
-            build + "/fonts/*"
-        ]
+        "port": 3000
     },
     // delete documentation and the build;
     "clean": {
@@ -79,24 +74,22 @@ module.exports = {
             "cascade": true
         }
     },
+    // concatenate JS files for the documentation and the build;
     "js": {
-        // Enable source maps
+        // enable source maps;
         "debug": true,
-        // Enable file names and size
+        // enable file names and size reporting in the console;
         "showFiles": {
             "showFiles": true
         },
-        // Additional file extensions to make optional
-        "extensions": [".hbs"],
-        // A separate bundle will be generated for each
-        // entry in the list below.
+        // a separate bundle will be generated for each item;
         "input": [
             "./" + src + "/pages/home/page.js",
             "./" + src + "/pages/landing/page.js"
         ],
-        // of outFiles must match the order
-        // in the entries list above.
+        // the bundle is written to the following two locations;
         "output": {
+            // order of files must be the same;
             "build": [
                 "./" + build + "/js/page-home.js",
                 "./" + build + "/js/page-landing.js"
@@ -106,8 +99,12 @@ module.exports = {
                 "./" + docs + "/js/page-landing.js"
             ]
         },
+        // name the bundle that will contain common JS (shared across multiple bundles);
         "common": "common.js",
+        // where this common file lives (for the build process);
         "src": "./" + src + "/js",
+        // where this common file is written to;
+        // it's written to two places, but it's only read from one;
         "dest": {
             "build": build + "/js",
             "docs": docs + "/js"
