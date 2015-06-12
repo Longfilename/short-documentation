@@ -90,6 +90,7 @@ module.exports = {
         },
         // a separate bundle will be generated for each item;
         "input": [
+            "./" + src + "/pages/_documentation/page.js",
             "./" + src + "/pages/home/page.js",
             "./" + src + "/pages/landing/page.js"
         ],
@@ -97,10 +98,12 @@ module.exports = {
         "output": {
             // order of files must be the same;
             "build": [
+                "./" + build + "/js/page-home.js", // make sure the documentation JS is overwritten in build;
                 "./" + build + "/js/page-home.js",
                 "./" + build + "/js/page-landing.js"
             ],
             "docs": [
+                "./" + docs + "/js/page-documentation.js",
                 "./" + docs + "/js/page-home.js",
                 "./" + docs + "/js/page-landing.js"
             ]

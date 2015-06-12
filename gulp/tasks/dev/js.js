@@ -52,7 +52,8 @@ gulp.task("js-create-files", ["js-create-folders"], function () {
 });
 
 // step 3 (concat all the JS files - common.js needs to be created first);
-gulp.task("js-browserify", ["js-create-files"], function () {
+// for the bulid;
+gulp.task("js-browserify-build", ["js-create-files"], function () {
     // tell the user what's were doing;
     browserSync.notify("Compiling JavaScript");
     
@@ -83,7 +84,41 @@ gulp.task("js-browserify", ["js-create-files"], function () {
         .pipe(size(config.showFiles))
         // finally put the compiled js;
         // in the build folder;
-        .pipe(gulp.dest(config.dest.build))
+        .pipe(gulp.dest(config.dest.build));
+});
+
+// step 4 (concat all the JS files - common.js needs to be created first);
+// for the docs;
+gulp.task("js-browserify-docs", ["js-browserify-build"], function () {
+    // tell the user what's were doing;
+    browserSync.notify("Compiling JavaScript");
+    
+    return browserify({
+            "entries": config.input
+        })
+        // opts.o or opts.outputs should be an array that pairs up with the files array;
+        // to specify where each bundle output for each entry file should be written.
+        // The elements in opts.o can be string filenames or writable streams.
+        // opts.entries or opts.e should be the array of entry files to create a page-specific bundle for each file.
+        // If you don't pass in an opts.entries, this information is gathered from browserify itself.
+        .plugin(factor, {
+            "outputs": config.output.build
+        })
+        // turn stream of files into a vinyl object (so gulp can play with it); 
+        .bundle()
+        // add the common file we'll be outputing JS to;
+        // this file needs to exist before we move forward;
+        .pipe(source(config.common))
+        // some gulp plugins do not support streaming file contents;
+        // this is the work around;
+        .pipe(buffer())
+        // add plumber for error catching;
+        .pipe(plumber({
+            "errorHandler": handleErrors
+        }))
+        // report the size;
+        .pipe(size(config.showFiles))
+        // finally put the compiled js;
         // and the docs folder;
         .pipe(gulp.dest(config.dest.docs))
         // tell browserSync to reload the page;
@@ -94,4 +129,4 @@ gulp.task("js-browserify", ["js-create-files"], function () {
 
 // start the chain to execute all the JS tasks (step 1 through 3);
 // managed the order by dependencies;
-gulp.task("js", ["js-browserify"]);
+gulp.task("js", ["js-browserify-docs"]);
