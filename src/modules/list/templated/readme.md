@@ -1,1 +1,1 @@
-Templated List
+List (Templated)
