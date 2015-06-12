@@ -21,7 +21,7 @@ gulp.task("jade-modules", ["jade-pages"], function () {
         // compile the jade;
         // cf. http://jade-lang.com/api/
         .pipe(jade(jadeConfig))
-        .pipe(tap(function(file, t) {
+        .pipe(tap(function (file, t) {
                 // start building the filename for the page we'll create for this module;
             var newFileName = "module-",
                 // create a new object to work with so module values don't get stored in a global (to this function) obj;

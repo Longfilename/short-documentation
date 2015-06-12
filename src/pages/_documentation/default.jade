@@ -1,1 +1,11 @@
-p default
+- var content = content || {};
+doctype html
+html(lang="en")
+    head
+        
+    body
+        p default
+        ul
+            - (content.links) && content.links.map(function (link) {
+                li=link.text
+            - })
