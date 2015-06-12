@@ -1,11 +1,12 @@
-- var content = content || {};
+- var content = locals.content || [];
 doctype html
 html(lang="en")
     head
-        
+    
     body
         p default
         ul
-            - (content.links) && content.links.map(function (link) {
-                li=link.text
+            - (content.length) && content.map(function (item) {
+                li
+                    a(data-json=JSON.stringify(item.json)) {{ item.title }}
             - })

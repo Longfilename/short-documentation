@@ -24,7 +24,9 @@ module.exports = {
     "jade": {
         "documentation": {
             // include one entry per module, and pages;
-            "paths": [src + "/modules/**/readme.md", src + "/pages/**/readme.md"]
+            "paths": [src + "/modules/**/readme.md", src + "/pages/**/readme.md"],
+            "template": src + "/pages/_documentation/default.jade",
+            "dest": docs
         },
         // pages for the documentation and the build;
         "pages": {
