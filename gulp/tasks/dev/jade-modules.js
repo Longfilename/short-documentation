@@ -37,7 +37,7 @@ gulp.task("jade-modules", ["jade-pages"], function () {
             newFileName = newFileName.replace("/demo.html", ".html");
             
             // convert slashes to dashes;
-            newFileName = newFileName.replace("/", "-");
+            newFileName = newFileName.replace(/\//g, "-");
             
             // convert:
             // Users/jdoe/myProject/src/modules/moduleName/demo.jade

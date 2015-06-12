@@ -5,8 +5,16 @@ html(lang="en")
     
     body
         p default
+        
+        p=content.length
         ul
             - (content.length) && content.map(function (item) {
                 li
-                    a(data-json=JSON.stringify(item.json)) {{ item.title }}
+                    a(href="./" + item.page,
+                      data-json=item.json,
+                      data-jade=item.jade,
+                      data-js=item.js,
+                      data-scss=item.scss,
+                      data-md=item.md,
+                      data-folder="../" + item.folder)=item.title
             - })

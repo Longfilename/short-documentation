@@ -20,6 +20,9 @@ gulp.task("jade-docs-nav-1", function () {
         .pipe(tap(function (fileVinylObject, t) {
                 // path of the module or page;
             var path = fileVinylObject.path.replace(fileVinylObject.path.split("/").pop(), ""),
+                // path passed into Jade;
+                folder = fileVinylObject.relative.replace(fileVinylObject.relative.split("/").pop(), ""),
+                filename = folder.slice(0, - 1) + ".html";
                 // read the contents of that directory;
                 directory = fs.readdirSync(path),
                 // create an object for each module/page;
@@ -29,7 +32,11 @@ gulp.task("jade-docs-nav-1", function () {
                     "js":   [],
                     "scss": [],
                     "md":   [],
-                    "path": path,
+                    "folder": folder,
+                    // rename some folders (so they modules makes sense as a folder, not as a single page);
+                    // same with pages;
+                    // then convert all slashes to dashes;
+                    "page": filename.replace("modules", "module").replace("pages", "page").replace(/\//g, "-"),
                     "title": "[empty]"
                 };
             
@@ -68,8 +75,6 @@ gulp.task("jade-docs-nav-1", function () {
 });
 
 gulp.task("jade-docs-nav-2", ["jade-docs-nav-1"], function () {
-    console.log(objects);
-    
     gulp.src(config.template)
         .pipe(plumber({
             errorHandler: handleErrors

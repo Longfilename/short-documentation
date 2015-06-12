@@ -24,7 +24,7 @@ module.exports = {
     "jade": {
         "documentation": {
             // include one entry per module, and pages;
-            "paths": [src + "/modules/**/readme.md", src + "/pages/**/readme.md"],
+            "paths": [src + "/{modules,pages}/**/readme.md"],
             "template": src + "/pages/_documentation/default.jade",
             "dest": docs
         },
@@ -35,7 +35,7 @@ module.exports = {
             // these files will be compiled;
             // don't include partials (those are being included somewhere else);
             // and don't include the documentation pages;
-            "compile": [src + "/pages/**/*.jade", "!" + src + "/pages/**/_*.jade"],
+            "compile": [src + "/pages/**/*.jade", "!" + src + "/pages/_documentation/*", "!" + src + "/pages/**/_*.jade"],
             // to this location (with the same path/filename);
             "dest": {
                 "build": build + "/html",
