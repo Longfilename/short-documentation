@@ -10,7 +10,8 @@ html(lang="en")
         ul
             - (content.length) && content.map(function (item) {
                 li
-                    a(href="./" + item.page,
+                    a(href="./html/" + item.page,
+                      target="showme",
                       data-json=item.json,
                       data-jade=item.jade,
                       data-js=item.js,
@@ -18,3 +19,5 @@ html(lang="en")
                       data-md=item.md,
                       data-folder="../" + item.folder)=item.title
             - })
+        
+        iframe(name="showme", height="768", width="1024")

@@ -5,7 +5,7 @@ var gulp         = require("gulp"),
     tap          = require("gulp-tap"),            // allows us access to the generated HTML;
     plumber      = require("gulp-plumber"),        // error trapping so an error doesn't kill Gulp;
     handleErrors = require("../../handle-errors"), // function to fire on error;
-    content = [],
+    content,
     getExtension = function (filename) {
         return filename.split(".").pop();
     };
@@ -21,7 +21,8 @@ gulp.task("jade-docs-html", ["jade-docs-content"], function () {
         .pipe(plumber({
             errorHandler: handleErrors
         }))
-        .pipe(jade({
+        .pipe(
+            jade({
             "pretty": "    ", // use 4 spaces for an indent;
             "compileDebug": true,
             "locals": {
@@ -34,6 +35,9 @@ gulp.task("jade-docs-html", ["jade-docs-content"], function () {
 // build the content for default.html;
 // this is done by populating the "content" object;
 gulp.task("jade-docs-content", function () {
+    // clear it each time we run this task so it doesn't keep growing (with duplicate content);
+    content = [];
+    
     return gulp.src(config.paths)
         // add plumber for error catching;
         .pipe(plumber({
