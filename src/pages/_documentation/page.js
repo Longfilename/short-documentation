@@ -30,10 +30,13 @@ jQuery(function ($) {
     });
     
     // on click of navigation links;
-    $("div.col-nav a").on("click", function (e) {
-        var $a = $(this),
-            data = $a.data(),
+    $("select.objects").on("change", function () {
+        var $option = $(this).find("option:selected"),
+            data = $option.data(),
             $tab;
+        
+        // load this page or module;
+        $("iframe").prop("src", data.path);
         
         // clear any previous files and tabs;
         $files.empty();
@@ -83,5 +86,5 @@ jQuery(function ($) {
     });
     
     // now click the first item just to get things going;
-    $("div.col-nav a:first-child").trigger("click");
+    $("select.objects").trigger("change");
 });
