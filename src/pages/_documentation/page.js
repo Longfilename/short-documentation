@@ -1,9 +1,8 @@
 jQuery(function ($) {
     var $files = $("select.files"),
         $objects = $("select.objects"),
-        $fileTypes = $("select.file-type"),
-        $bodyPre = $("pre.tab-body-content"),
-        $bodyDiv = $("div.tab-body-content");
+        $bodyPre = $("pre.content"),
+        $bodyDiv = $("div.content");
     
     // on change, grab the contents of the URL and display them;
     $files.on("change", function () {
@@ -48,19 +47,20 @@ jQuery(function ($) {
         // load this page or module;
         $("iframe").prop("src", data.path);
         
-        // clear any previous files and tabs;
+        // clear any previous files;
         $files.empty();
-        $fileTypes.empty();
         
-        // and add new tabs (and options in the select);
+        // and add new OPTIONs in the files SELECT;
         Object.keys(data).map(function (key) {
             // don't do anything with the folder name;
             if (typeof data[key] !== "string") {
-                    // content to pass on when this new A is clicked;
                 var myData = data[key],
+                    // each type of content gets a OPTGROUP;
                     $optgroup = $("<optgroup label='" + key + "' />"),
+                    // each file gets an OPTION;
                     $option;
                 
+                // loop through the files;
                 myData.length && myData.map(function (file) {
                     // create an OPTION;
                     $option = $("<option />");
@@ -71,7 +71,10 @@ jQuery(function ($) {
                 
                 // once all the files are added for this group;
                 // add the OPTGROUP to the SELECT;
-                $files.append($optgroup);
+                // if it has content;
+                if ($optgroup.children().size()) {
+                    $files.append($optgroup);
+                }
             }
         });
         

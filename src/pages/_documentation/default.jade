@@ -58,20 +58,10 @@ html(lang="en")
             ul a {
                 cursor: pointer;
             }
-            div.tabs,
-            div.tab-body {
+            main {
                 padding: 16px;
                 border: 1px solid green;
                 margin: 16px 0;
-            }
-            div.tabs a {
-                display: inline-block;
-                border: 1px solid red;
-                padding: 8px;
-                cursor: pointer;
-            }
-            div.tabs a + a {
-                margin-left: 16px;
             }
         link()
     
@@ -82,34 +72,37 @@ html(lang="en")
                     iframe
             
             div.col-readme
-                select.objects
-                    - if (content.pages.length) {
-                        optgroup(label="Pages")
-                            - content.pages.map(function (item) {
-                                option(
-                                    data-path="./html/" + item.page,
-                                    data-json=item.json,
-                                    data-jade=item.jade,
-                                    data-js=item.js,
-                                    data-scss=item.scss,
-                                    data-md=item.md,
-                                    data-folder="./" + item.folder)=item.title
-                            - })
-                    - }
-                    - if (content.modules.length) {
-                        optgroup(label="Modules")
-                            - content.modules.map(function (item) {
-                                option(
-                                    data-path="./html/" + item.page,
-                                    data-json=item.json,
-                                    data-jade=item.jade,
-                                    data-js=item.js,
-                                    data-scss=item.scss,
-                                    data-md=item.md,
-                                    data-folder="./" + item.folder)=item.title
-                            - })
-                    - }
-                select.files
-                div.tab-body
-                    pre.tab-body-content.highlight
-                    div.tab-body-content
+                header
+                    h1
+                        select.objects
+                            - if (content.pages.length) {
+                                optgroup(label="Pages")
+                                    - content.pages.map(function (item) {
+                                        option(
+                                            data-path="./html/" + item.page,
+                                            data-json=item.json,
+                                            data-jade=item.jade,
+                                            data-js=item.js,
+                                            data-scss=item.scss,
+                                            data-md=item.md,
+                                            data-folder="./" + item.folder)=item.title
+                                    - })
+                            - }
+                            - if (content.modules.length) {
+                                optgroup(label="Modules")
+                                    - content.modules.map(function (item) {
+                                        option(
+                                            data-path="./html/" + item.page,
+                                            data-json=item.json,
+                                            data-jade=item.jade,
+                                            data-js=item.js,
+                                            data-scss=item.scss,
+                                            data-md=item.md,
+                                            data-folder="./" + item.folder)=item.title
+                                    - })
+                            - }
+                    h2
+                        select.files
+                main
+                    pre.content
+                    div.content
