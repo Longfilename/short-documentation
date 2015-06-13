@@ -7,7 +7,7 @@ jQuery(function ($) {
         var data = $(this).data();
         
         // only proceed if we're getting what we're expecting from the DATA attribute;
-        if (data.length === 2) {
+        if (data.widths.length === 2) {
             // adjust the width of the columns;
             $columnIframe.css("flex", data.widths[0]);
             $columnReadme.css("flex", data.widths[1]);

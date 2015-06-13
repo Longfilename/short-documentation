@@ -1,0 +1,179 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+body {
+    color: #333;
+    font: normal 16px/1.4 "Helvetic Neue", sans-serif;
+    font-weight: lighter;
+}
+div.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    height: 100%;
+}
+div.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    height: 100%;
+}
+div.row + div.row {
+    height: 72px;
+}
+div.col-banner {
+    order: 1;
+    padding: 16px;
+    width: 100%;
+    background: #eee;
+}
+div.col-iframe {
+    box-sizing: content-box;
+    flex: 2;
+    order: 1;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+}
+div.col-readme {
+    flex: 1;
+    order: 2;
+    background: #fdf6e3;
+    overflow: hidden;
+}
+div.iframe-container {
+    position: absolute;
+    top: 16px;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+ul {
+    margin: 1em 0 0;
+    padding-left: 2em;
+}
+ul a {
+    cursor: pointer;
+}
+main {
+    padding: 16px;
+    max-width: 768px;
+}
+pre {
+    display: block;
+}
+code.content {
+    display: block;
+}
+
+div.content {}
+div.content * + * {
+    margin-top: 1em;
+}
+
+header {
+    background: #eee;
+}
+
+header h1 {
+    font-size: 24px;
+    padding: 16px;
+}
+header h2 {
+    font-size: 18px;
+    padding: 16px;
+    border-top: 1px solid #333;
+}
+
+header h1,
+header h2 {
+    position: relative;
+    line-height: 1.2;
+    font-weight: lighter;
+}
+header span {
+    display: block;
+    padding: 0 40px 0 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+header span:before,
+header span:after {
+    top: 50%;
+    right: 16px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    margin-top: -10px;
+}
+header span:before {
+    border-color: #eee;
+    border-top-color: #333;
+    border-width: 16px;
+    margin-left: -16px;
+}
+header span:after {
+    border-top-color: #eee;
+    border-width: 13px;
+    margin-left: -13px;
+    right: 19px;
+}
+header h2 span:before {
+    border-width: 14px;
+    margin-left: -14px;
+    right: 18px;
+    margin-top: -8px;
+}
+header h2 span:after {
+    border-width: 11px;
+    margin-left: -11px;
+    right: 21px;
+    margin-top: -8px;
+}
+
+header select {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 50%;
+    margin-top: -7px;
+    opacity: 0;
+}
+
+div.col-banner p {
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+}
+
+div.col-banner a {
+    cursor: pointer;
+    display: inline-block;
+    border: 1px solid #333;
+    padding: 5px 10px;
+}
+div.col-banner a + a {
+    margin-left: 1em;
+}
