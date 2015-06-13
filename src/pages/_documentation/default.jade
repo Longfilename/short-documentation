@@ -43,7 +43,7 @@ html(lang="en")
                 height: 100%;
             }
             div.row + div.row {
-                height: 100px;
+                height: 72px;
             }
             div.col-banner {
                 order: 1;
@@ -90,12 +90,6 @@ html(lang="en")
             main {
                 padding: 16px;
                 max-width: 768px;
-            }
-            div.col-banner a {
-                cursor: pointer;
-            }
-            div.col-banner a + a {
-                margin-left: 1em;
             }
             pre {
                 display: block;
@@ -180,6 +174,22 @@ html(lang="en")
                 top: 50%;
                 margin-top: -7px;
                 opacity: 0;
+            }
+            
+            div.col-banner p {
+                font-size: 14px;
+                font-weight: normal;
+                text-align: center;
+            }
+            
+            div.col-banner a {
+                cursor: pointer;
+                display: inline-block;
+                border: 1px solid #333;
+                padding: 5px 10px;
+            }
+            div.col-banner a + a {
+                margin-left: 1em;
             }
             next {}
     
