@@ -64,7 +64,8 @@ gulp.task("jade-docs-content", function () {
                     // rename some folders (so they modules makes sense as a folder, not as a single page);
                     // same with pages;
                     // then convert all slashes to dashes;
-                    "page": filename.replace("modules", "module").replace(/\//g, "-"),
+                    "pageArray": [],
+                    "page": "[empty]",
                     "title": "[empty]"
                 };
             
@@ -89,19 +90,35 @@ gulp.task("jade-docs-content", function () {
                         item[extension].push(file);
                     }
                     // if this is a jade PAGE, then we want to record the filename;
-                    if (file.indexOf(".jade") > -1 && file.indexOf("page") === 0) {
-                        if (file === "page.jade") {
-                            // myFolder/myPage/page.jade --> page-myFolder-myPage.html
-                            item.page = filename.replace("pages", "page").replace(/\//g, "-");
+                    if (file.indexOf(".jade") > -1) {
+                        // are we working with a page;
+                        if (file.indexOf("page") === 0) {
+                            if (file === "page.jade") {
+                                // myFolder/myPage/page.jade --> page-myFolder-myPage.html
+                                newFilename = filename.replace("pages", "page").replace(/\//g, "-");
+                            } else {
+                                folderArray = folder.slice(0, -1).split("/").splice(1);
+                                newFilename = "page";
+                                folderArray.map(function (folder) {
+                                    newFilename = newFilename + "-" + folder;
+                                });
+                                newFilename = newFilename + file.replace("page-", "-").replace(".jade", ".html");
+                            }
+                        // or a module;
                         } else {
-                            folderArray = folder.slice(0, -1).split("/").splice(1);
-                            newFilename = "page";
-                            folderArray.map(function (folder) {
-                                newFilename = newFilename + "-" + folder;
-                            });
-                            newFilename = newFilename + file.replace("page-", "-").replace(".jade", ".html");
-                            item.page = newFilename;
+                            if (file === "module.jade") {
+                                // myFolder/myModule/module.jade --> module-myFolder-myModule.html
+                                newFilename = filename.replace("modules", "module").replace(/\//g, "-");
+                            } else {
+                                folderArray = folder.slice(0, -1).split("/").splice(1);
+                                newFilename = "module";
+                                folderArray.map(function (folder) {
+                                    newFilename = newFilename + "-" + folder;
+                                });
+                                newFilename = newFilename + file.replace("module-", "-").replace(".jade", ".html");
+                            }
                         }
+                        item.pageArray.push(newFilename);
                     }
                 }
                 
@@ -116,8 +133,11 @@ gulp.task("jade-docs-content", function () {
             
             // after recording all pertinent information about this module/page, save it;
             if (folder.indexOf("pages/") > -1) {
-                item.jade.map(function (newItem) {
-                    content.pages.push(item);
+                item.jade.map(function (newItem, index) {
+                    var itemClone = newObject = JSON.parse(JSON.stringify(item));
+    
+                    itemClone.page = itemClone.pageArray[index];
+                    content.pages.push(itemClone);
                 });
             } else {
                 content.modules.push(item);
