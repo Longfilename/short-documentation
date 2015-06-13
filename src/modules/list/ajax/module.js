@@ -1,5 +1,5 @@
 var jQuery = window.jQuery = require("jquery");
 
-jQuery(function () {
+jQuery(function ($) {
     console.log("list-ajax");
 });

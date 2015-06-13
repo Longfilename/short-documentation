@@ -92,7 +92,8 @@ module.exports = {
         "input": [
             "./" + src + "/pages/_documentation/page.js",
             "./" + src + "/pages/home/page.js",
-            "./" + src + "/pages/landing/page.js"
+            "./" + src + "/pages/landing/page.js",
+            "./" + src + "/pages/article/page.js"
         ],
         // the bundle is written to the following two locations;
         "output": {
@@ -100,12 +101,14 @@ module.exports = {
             "build": [
                 "./" + build + "/js/page-home.js", // make sure the documentation JS is overwritten in build;
                 "./" + build + "/js/page-home.js",
-                "./" + build + "/js/page-landing.js"
+                "./" + build + "/js/page-landing.js",
+                "./" + build + "/js/page-article.js"
             ],
             "docs": [
                 "./" + docs + "/js/page-documentation.js",
                 "./" + docs + "/js/page-home.js",
-                "./" + docs + "/js/page-landing.js"
+                "./" + docs + "/js/page-landing.js",
+                "./" + docs + "/js/page-article.js"
             ]
         },
         // name the bundle that will contain common JS (shared across multiple bundles);

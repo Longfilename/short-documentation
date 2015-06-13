@@ -50,7 +50,7 @@ gulp.task("jade-docs-content", function () {
             var path = fileVinylObject.path.replace(fileVinylObject.path.split("/").pop(), ""),
                 // path passed into Jade;
                 folder = fileVinylObject.relative.replace(fileVinylObject.relative.split("/").pop(), ""),
-                filename = folder.slice(0, - 1) + ".html";
+                filename = folder.slice(0, - 1) + ".html",
                 // read the contents of that directory;
                 directory = fs.readdirSync(path),
                 // create an object for each module/page;
@@ -76,7 +76,9 @@ gulp.task("jade-docs-content", function () {
             // we'll use this information in the documentation during display;
             directory.map(function (file) {
                 var extension = getExtension(file),
-                    readme;
+                    readme,
+                    folderArray,
+                    newFilename;
                 
                 // if this extension is of a file to store;
                 // we dont care about EVERY file, only every file we care about;
@@ -85,6 +87,18 @@ gulp.task("jade-docs-content", function () {
                     // no need to document the documentation;
                     if (file !== "demo.jade") {
                         item[extension].push(file);
+                    }
+                    // if this is a jade PAGE, then we want to record the filename;
+                    if (file.indexOf(".jade") > -1) {
+                        if (file !== "page.jade") {
+                            folderArray = folder.slice(0, -1).split("/").splice(1);
+                            newFilename = "page";
+                            folderArray.map(function (folder) {
+                                newFilename = newFilename + "-" + folder;
+                            });
+                            newFilename = newFilename + file.replace("page-", "-").replace(".jade", ".html");
+                            item.page = newFilename;
+                        }
                     }
                 }
                 
@@ -96,8 +110,9 @@ gulp.task("jade-docs-content", function () {
                     item.title = readme[0];
                 }
             });
+            
             // after recording all pertinent information about this module/page, save it;
-            if (item.jade.indexOf("page.jade") > -1) {
+            if (folder.indexOf("pages/") > -1) {
                 content.pages.push(item);
             } else {
                 content.modules.push(item);

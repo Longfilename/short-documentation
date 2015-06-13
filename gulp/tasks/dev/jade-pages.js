@@ -20,8 +20,15 @@ gulp.task("jade-pages", function () {
         }))
         // rename the file;
         .pipe(rename(function (path) {
+        
             // create a new filename based off the folder structure;
-            path.basename = "page-" + path.dirname;
+            // folderName/page.jade --> page-folderName.html;
+            // folderName/page-red.jade --> page-folderName-red.html;
+            if (path.basename === "page") {
+                path.basename = path.basename + "-" + path.dirname;
+            } else {
+                path.basename = "page-" + path.dirname + "-" + path.basename.replace("page-", "");
+            }
             path.dirname = "";
             path.extname = ".html";
         }))
