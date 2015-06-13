@@ -25,20 +25,21 @@ html(lang="en")
             }
             div.col-iframe {
                 order: 1;
-                flex-grow: 2;
                 border: 1px solid red;
                 padding: 16px;
+                width: 50%;
             }
             div.col-readme {
                 order: 2;
-                flex-grow: 1;
                 padding: 16px;
+                width: 30%;
             }
             div.col-nav {
                 order: 3;
                 flex-grow: 1;
                 border: 1px solid red;
                 padding: 16px;
+                width: 10%;
             }
             iframe {
                 border: 1px solid green;
@@ -48,7 +49,24 @@ html(lang="en")
                 margin: 1em 0 0;
                 padding-left: 2em;
             }
-        
+            ul a {
+                cursor: pointer;
+            }
+            div.tabs,
+            div.tab-body {
+                padding: 16px;
+                border: 1px solid green;
+                margin: 16px 0;
+            }
+            div.tabs a {
+                display: inline-block;
+                border: 1px solid red;
+                padding: 8px;
+                cursor: pointer;
+            }
+            div.tabs a + a {
+                margin-left: 16px;
+            }
         link()
     
     body
@@ -58,8 +76,9 @@ html(lang="en")
             
             div.col-readme
                 p Page/Component files
-                ul.files
-            
+                div.tabs
+                select.files
+                div.tab-body
             div.col-nav
                 p Pages and Components
                 ul
@@ -72,5 +91,5 @@ html(lang="en")
                         data-js=item.js,
                         data-scss=item.scss,
                         data-md=item.md,
-                        data-folder="../" + item.folder)=item.title
+                        data-folder="./" + item.folder)=item.title
                     - })
