@@ -89,8 +89,9 @@ gulp.task("jade-docs-content", function () {
                     if (file !== "demo.jade") {
                         item[extension].push(file);
                     }
-                    // if this is a jade PAGE, then we want to record the filename;
-                    if (file.indexOf(".jade") > -1) {
+                    // if this is a jade file we care about, we want to track it because of the filename;
+                    // we use the jade filename to generate an HTML filename (to show in the IFRAME);
+                    if (file.indexOf(".jade") > -1 && file !== "demo.jade") {
                         // are we working with a page;
                         if (file.indexOf("page") === 0) {
                             if (file === "page.jade") {
@@ -115,7 +116,7 @@ gulp.task("jade-docs-content", function () {
                                 folderArray.map(function (folder) {
                                     newFilename = newFilename + "-" + folder;
                                 });
-                                newFilename = newFilename + file.replace("module-", "-").replace(".jade", ".html");
+                                newFilename = newFilename + file.replace("module-", "-").replace("demo", "").replace(".jade", ".html");
                             }
                         }
                         item.pageArray.push(newFilename);
@@ -132,21 +133,28 @@ gulp.task("jade-docs-content", function () {
             });
             
             // after recording all pertinent information about this module/page, save it;
-            if (folder.indexOf("pages/") > -1) {
-                item.jade.map(function (newItem, index) {
-                    var itemClone = newObject = JSON.parse(JSON.stringify(item));
-                    
-                    itemClone.page = itemClone.pageArray[index];
-                    
-                    // dont create a "page" entry for an include;
-                    // it's already present in the object, so we can view it's contents via the file SELECT;
-                    // but there's no page to view for it;
-                    if (itemClone.page.indexOf("_") === -1) {
+            item.jade.map(function (newItem, index) {
+                // make a copy of the object so we can manipulate it and still loop through the original content;
+                var itemClone = newObject = JSON.parse(JSON.stringify(item));
+                
+                // since we're creating an entry per HTML page;
+                // set the page title of this one to that index (this one is 1, next one is 2, etc.);
+                itemClone.page = itemClone.pageArray[index];
+                // don't pass this down to the browser;
+                delete itemClone.pageArray;
+                
+                // dont create a "page" entry for an include (defined by an _);
+                // it's already present in the object, so we can view it's contents via the file SELECT;
+                // but there's no page to view for it;
+                if (itemClone.page.indexOf("_") === -1) {
+                    // if this is a page object;
+                    if (folder.indexOf("pages/") > -1) {
                         content.pages.push(itemClone);
+                    // otherwise it's a modules object;
+                    } else {
+                        content.modules.push(itemClone);
                     }
-                });
-            } else {
-                content.modules.push(item);
-            }
+                }
+            });
         }));
 });
