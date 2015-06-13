@@ -18,22 +18,41 @@ html(lang="en")
             }
             div.container {
                 display: flex;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                align-items: stretch;
+                height: 100%;
+            }
+            div.row {
+                display: flex;
                 flex-direction: row;
                 flex-wrap: nowrap;
                 align-items: stretch;
                 height: 100%;
             }
-            div.col-iframe {
+            div.row + div.row {
+                height: 100px;
+            }
+            div.col-banner {
                 order: 1;
-                border: 1px solid red;
                 padding: 16px;
-                width: 60%;
+                width: 100%;
+                background: #ddd;
+            }
+            div.col-iframe {
+                box-sizing: content-box;
+                flex: 2;
+                order: 1;
+                padding: 16px;
                 position: relative;
+                overflow: hidden;
             }
             div.col-readme {
+                flex: 1;
                 order: 2;
                 padding: 16px;
-                width: 40%;
+                background: #eee;
+                overflow: hidden;
             }
             div.iframe-container {
                 position: absolute;
@@ -41,10 +60,9 @@ html(lang="en")
                 bottom: 16px;
                 left: 16px;
                 right: 16px;
-                border: 1px solid green;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
             }
             iframe {
-                border: 1px solid red;
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -63,46 +81,59 @@ html(lang="en")
                 border: 1px solid green;
                 margin: 16px 0;
             }
-        link()
+            div.col-banner a {
+                cursor: pointer;
+            }
+            div.col-banner a + a {
+                margin-left: 1em;
+            }
+            next {}
     
     body
         div.container
-            div.col-iframe
-                div.iframe-container
-                    iframe
-            
-            div.col-readme
-                header
-                    h1
-                        select.objects
-                            - if (content.pages.length) {
-                                optgroup(label="Pages")
-                                    - content.pages.map(function (item) {
-                                        option(
-                                            data-path="./html/" + item.page,
-                                            data-json=item.json,
-                                            data-jade=item.jade,
-                                            data-js=item.js,
-                                            data-scss=item.scss,
-                                            data-md=item.md,
-                                            data-folder="./" + item.folder)=item.title
-                                    - })
-                            - }
-                            - if (content.modules.length) {
-                                optgroup(label="Modules")
-                                    - content.modules.map(function (item) {
-                                        option(
-                                            data-path="./html/" + item.page,
-                                            data-json=item.json,
-                                            data-jade=item.jade,
-                                            data-js=item.js,
-                                            data-scss=item.scss,
-                                            data-md=item.md,
-                                            data-folder="./" + item.folder)=item.title
-                                    - })
-                            - }
-                    h2
-                        select.files
-                main
-                    pre.content
-                    div.content
+            div.row
+                div.col-iframe
+                    div.iframe-container
+                        iframe(frameborder="0")
+                
+                div.col-readme
+                    header
+                        h1
+                            select.objects
+                                - if (content.pages.length) {
+                                    optgroup(label="Pages")
+                                        - content.pages.map(function (item) {
+                                            option(
+                                                data-path="./html/" + item.page,
+                                                data-json=item.json,
+                                                data-jade=item.jade,
+                                                data-js=item.js,
+                                                data-scss=item.scss,
+                                                data-md=item.md,
+                                                data-folder="./" + item.folder)=item.title
+                                        - })
+                                - }
+                                - if (content.modules.length) {
+                                    optgroup(label="Modules")
+                                        - content.modules.map(function (item) {
+                                            option(
+                                                data-path="./html/" + item.page,
+                                                data-json=item.json,
+                                                data-jade=item.jade,
+                                                data-js=item.js,
+                                                data-scss=item.scss,
+                                                data-md=item.md,
+                                                data-folder="./" + item.folder)=item.title
+                                        - })
+                                - }
+                        h2
+                            select.files
+                    main
+                        pre.content
+                        div.content
+            div.row
+                div.col-banner
+                    p
+                        a.set-flex-width(data-widths=["0 0 1200px", "1"]) iframe
+                        a.set-flex-width(data-widths=["1", "0 0 768px"]) docs
+                        a.set-flex-width(data-widths=["2", "1"]) default

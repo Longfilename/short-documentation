@@ -4,6 +4,16 @@ jQuery(function ($) {
         $bodyPre = $("pre.content"),
         $bodyDiv = $("div.content");
     
+    $("a.set-flex-width").on("click", function () {
+        var $a = $(this),
+            data = $a.data();
+        
+        console.log(data);
+        
+        $("div.col-iframe").css("flex", data.widths[0]);
+        $("div.col-readme").css("flex", data.widths[1]);
+    });
+    
     // on change, grab the contents of the URL and display them;
     $files.on("change", function () {
         var url = $files.val(),
