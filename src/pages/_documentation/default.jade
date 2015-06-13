@@ -11,9 +11,9 @@ html(lang="en")
         script(src="https://pagedown.googlecode.com/hg/Markdown.Sanitizer.js")
         
         script(src="//code.jquery.com/jquery-2.1.4.min.js")
+        script var ShortDocs = {}; ShortDocs.data = !{JSON.stringify(content)};
+        script(src="./js/common.js")
         script(src="./js/page-documentation.js")
-        
-        script var y = !{JSON.stringify(content)};
         
         style.
             * {
@@ -208,32 +208,33 @@ html(lang="en")
                         h1
                             span
                             select.objects
-                                - if (content.pages.length) {
-                                    optgroup(label="Pages")
-                                        - content.pages.map(function (item) {
-                                            option(
-                                                data-path="./html/" + item.page,
-                                                data-json=item.json,
-                                                data-jade=item.jade,
-                                                data-js=item.js,
-                                                data-scss=item.scss,
-                                                data-md=item.md,
-                                                data-folder="./" + item.folder)=item.title
-                                        - })
-                                - }
-                                - if (content.modules.length) {
-                                    optgroup(label="Modules")
-                                        - content.modules.map(function (item) {
-                                            option(
-                                                data-path="./html/" + item.page,
-                                                data-json=item.json,
-                                                data-jade=item.jade,
-                                                data-js=item.js,
-                                                data-scss=item.scss,
-                                                data-md=item.md,
-                                                data-folder="./" + item.folder)=item.title
-                                        - })
-                                - }
+                                //-
+                                    - if (content.pages.length) {
+                                        optgroup(label="Pages")
+                                            - content.pages.map(function (item) {
+                                                option(
+                                                    data-path="./html/" + item.page,
+                                                    data-json=item.json,
+                                                    data-jade=item.jade,
+                                                    data-js=item.js,
+                                                    data-scss=item.scss,
+                                                    data-md=item.md,
+                                                    data-folder="./" + item.folder)=item.title
+                                            - })
+                                    - }
+                                    - if (content.modules.length) {
+                                        optgroup(label="Modules")
+                                            - content.modules.map(function (item) {
+                                                option(
+                                                    data-path="./html/" + item.page,
+                                                    data-json=item.json,
+                                                    data-jade=item.jade,
+                                                    data-js=item.js,
+                                                    data-scss=item.scss,
+                                                    data-md=item.md,
+                                                    data-folder="./" + item.folder)=item.title
+                                            - })
+                                    - }
                         h2
                             span
                             select.files
