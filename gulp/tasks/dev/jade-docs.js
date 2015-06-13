@@ -110,7 +110,7 @@ gulp.task("jade-docs-content", function () {
                     // grab the first line (the title);
                     readme = fs.readFileSync(fileVinylObject.path).toString().split("\n");
                     // so we can save it for our modules / pages object;
-                    item.title = readme[0];
+                    item.title = readme[0].replace("# ", "");
                 }
             });
             

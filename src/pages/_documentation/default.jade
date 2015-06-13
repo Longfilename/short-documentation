@@ -4,7 +4,12 @@ html(lang="en")
     head
         title ShortDocumentation for [insert project name]
         link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css")
+        link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/solarized_light.min.css")
         script(src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js")
+            
+        script(src="https://pagedown.googlecode.com/hg/Markdown.Converter.js")
+        script(src="https://pagedown.googlecode.com/hg/Markdown.Sanitizer.js")
+        
         script(src="//code.jquery.com/jquery-2.1.4.min.js")
         script(src="./js/page-documentation.js")
         style.
@@ -79,8 +84,6 @@ html(lang="en")
                 cursor: pointer;
             }
             main {
-                padding: 16px;
-                border: 1px solid green;
                 margin: 16px 0;
                 max-width: 768px;
             }
@@ -89,6 +92,21 @@ html(lang="en")
             }
             div.col-banner a + a {
                 margin-left: 1em;
+            }
+            pre {
+                display: block;
+                padding: 16px;
+                background: #fdf6e3;
+            }
+            code.content {
+                display: block;
+            }
+
+            div.content {
+                padding: 16px;
+            }
+            div.content * + * {
+                margin-top: 1em;
             }
             next {}
     

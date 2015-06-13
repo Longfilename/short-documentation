@@ -34,18 +34,26 @@ jQuery(function ($) {
                         }
                         
                         return content;
-                    };
+                    },
+                    convert = new Markdown.getSanitizingConverter().makeHtml;
                 
                 // insert the content;
                 if (urlType === "md") {
-                    $bodyDiv.text(whichContent());
-                    $bodyCode.empty();
+                    $bodyDiv.show();
+                    $bodyDiv.html(convert(data));
+                    $bodyCode.empty().parent().hide();
                 } else {
-                    $bodyDiv.empty();
-                    $bodyCode.removeClass().addClass(urlType).text(whichContent());
-                    $bodyCode.each(function (i, block) {
-                        hljs.highlightBlock(block);
-                    });
+                    $bodyDiv.hide().empty();
+                    $bodyCode
+                        .parent()
+                        .show()
+                        .end()
+                        .removeClass()
+                        .addClass(urlType)
+                        .text(whichContent())
+                        .each(function (i, block) {
+                            hljs.highlightBlock(block);
+                        });
                 }
             });
     });
