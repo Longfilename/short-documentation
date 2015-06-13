@@ -1,9 +1,9 @@
 jQuery(function ($) {
     var $files = $("select.files"),
+        $objects = $("select.objects"),
         $fileTypes = $("select.file-type"),
-        $body = $("div.tab-body"),
-        // the data attribute where myData is stored;
-        keyName = "files";
+        $bodyPre = $("pre.tab-body-content"),
+        $bodyDiv = $("div.tab-body-content");
     
     // on change, grab the contents of the URL and display them;
     $files.on("change", function () {
@@ -11,49 +11,39 @@ jQuery(function ($) {
             // what type of file is it? (we only care about json right now);
             urlType = url.split(".").pop();
         
+        // gogo Ajax;
         $.get(url)
+            // no error trapping... yet;
             .always(function (data) {
                 var whichContent = function () {
-                    var content = data;
-                    
-                    // if this is a JSON file, we need to stringify the response;
-                    if (urlType === "json") {
-                        content = JSON.stringify(data);
-                    // JS files come back as an object;
-                    } else if (urlType === "js") {
-                        content = data.responseText;
-                    }
-                    
-                    return content;
-                };
+                        var content = data;
+                        
+                        // if this is a JSON file, we need to stringify the response;
+                        if (urlType === "json") {
+                            content = JSON.stringify(data);
+                        // JS files come back as an object;
+                        } else if (urlType === "js") {
+                            content = data.responseText;
+                        }
+                        
+                        return content;
+                    };
+                
                 // insert the content;
-                $body.text(whichContent());
+                if (urlType === "md") {
+                    $bodyDiv.text(whichContent());
+                    $bodyPre.empty();
+                } else {
+                    $bodyDiv.empty();
+                    $bodyPre.text(whichContent());
+                }
             });
     });
     
-    $fileTypes.on("change", function () {
-        var $this = $(this).find("option:selected"),
-            tabData = $this.data();
-        
-        // kill any existing content;
-        $files.empty();
-        
-        // and for each file in this tab...;
-        // iterate through the array of files;
-        tabData[keyName].map(function (file) {
-            // and create an OPTION for the SELECT;
-            $files.append("<option>" + tabData.folder + file + "</option>");
-        });
-    
-        // now that we're done adding all the values, trigger a change;
-        $files.trigger("change");
-    });
-    
     // on click of navigation links;
-    $("select.objects").on("change", function () {
+    $objects.on("change", function () {
         var $this = $(this).find("option:selected"),
-            data = $this.data(),
-            $option;
+            data = $this.data();
         
         // load this page or module;
         $("iframe").prop("src", data.path);
@@ -67,26 +57,28 @@ jQuery(function ($) {
             // don't do anything with the folder name;
             if (typeof data[key] !== "string") {
                     // content to pass on when this new A is clicked;
-                var myData = data[key];
+                var myData = data[key],
+                    $optgroup = $("<optgroup label='" + key + "' />"),
+                    $option;
                 
-                // if we have actual content for this file type;
-                if (myData.length) {
-                    // create the tab link;
-                    $option = $("<option/>")
-                        .html(key)
-                        .data(keyName, myData)
-                        .data("folder", data.folder);
-                    
-                    // then add this tab to the page;
-                    $fileTypes.append($option);
-                }
+                myData.length && myData.map(function (file) {
+                    // create an OPTION;
+                    $option = $("<option />");
+                    $option.html(data.folder + file);
+                    // and add it to this OPTGROUP;
+                    $optgroup.append($option);
+                });
+                
+                // once all the files are added for this group;
+                // add the OPTGROUP to the SELECT;
+                $files.append($optgroup);
             }
         });
         
         // we're done adding all the tab links, click the first one (so we have content to start with);
-        $fileTypes.trigger("change");
+        $files.trigger("change");
     });
     
     // now click the first item just to get things going;
-    $("select.objects").trigger("change");
+    $objects.trigger("change");
 });
