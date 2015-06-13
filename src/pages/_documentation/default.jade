@@ -80,6 +80,7 @@ html(lang="en")
                 padding: 16px;
                 border: 1px solid green;
                 margin: 16px 0;
+                max-width: 768px;
             }
             div.col-banner a {
                 cursor: pointer;
@@ -134,6 +135,9 @@ html(lang="en")
             div.row
                 div.col-banner
                     p
-                        a.set-flex-width(data-widths=["0 0 1200px", "1"]) iframe
+                        a.set-flex-width(data-widths=["0 0 1200px", "1"]) iframe (1200)
+                        a.set-flex-width(data-widths=["0 0 1024px", "1"]) iframe (1024)
+                        a.set-flex-width(data-widths=["0 0 768px", "1"]) iframe (768)
+                        a.set-flex-width(data-widths=["0 0 480px", "1"]) iframe (480)
                         a.set-flex-width(data-widths=["1", "0 0 768px"]) docs
                         a.set-flex-width(data-widths=["2", "1"]) default
