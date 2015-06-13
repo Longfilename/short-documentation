@@ -83,16 +83,32 @@ html(lang="en")
             
             div.col-readme
                 select.objects
-                    - (content.length) && content.map(function (item) {
-                    option(
-                        data-path="./html/" + item.page,
-                        data-json=item.json,
-                        data-jade=item.jade,
-                        data-js=item.js,
-                        data-scss=item.scss,
-                        data-md=item.md,
-                        data-folder="./" + item.folder)=item.title
-                    - })
+                    - if (content.pages.length) {
+                        optgroup(label="Pages")
+                            - content.pages.map(function (item) {
+                                option(
+                                    data-path="./html/" + item.page,
+                                    data-json=item.json,
+                                    data-jade=item.jade,
+                                    data-js=item.js,
+                                    data-scss=item.scss,
+                                    data-md=item.md,
+                                    data-folder="./" + item.folder)=item.title
+                            - })
+                    - }
+                    - if (content.modules.length) {
+                        optgroup(label="Modules")
+                            - content.modules.map(function (item) {
+                                option(
+                                    data-path="./html/" + item.page,
+                                    data-json=item.json,
+                                    data-jade=item.jade,
+                                    data-js=item.js,
+                                    data-scss=item.scss,
+                                    data-md=item.md,
+                                    data-folder="./" + item.folder)=item.title
+                            - })
+                    - }
                 select.files
                 div.tab-body
                     pre.tab-body-content.highlight

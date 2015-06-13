@@ -21,8 +21,7 @@ gulp.task("jade-docs-html", ["jade-docs-content"], function () {
         .pipe(plumber({
             errorHandler: handleErrors
         }))
-        .pipe(
-            jade({
+        .pipe(jade({
             "pretty": "    ", // use 4 spaces for an indent;
             "compileDebug": true,
             "locals": {
@@ -36,7 +35,10 @@ gulp.task("jade-docs-html", ["jade-docs-content"], function () {
 // this is done by populating the "content" object;
 gulp.task("jade-docs-content", function () {
     // clear it each time we run this task so it doesn't keep growing (with duplicate content);
-    content = [];
+    content = {
+        "pages": [],
+        "modules": []
+    };
     
     return gulp.src(config.paths)
         // add plumber for error catching;
@@ -94,8 +96,11 @@ gulp.task("jade-docs-content", function () {
                     item.title = readme[0];
                 }
             });
-            
             // after recording all pertinent information about this module/page, save it;
-            content.push(item);
+            if (item.jade.indexOf("page.jade") > -1) {
+                content.pages.push(item);
+            } else {
+                content.modules.push(item);
+            }
         }));
 });
