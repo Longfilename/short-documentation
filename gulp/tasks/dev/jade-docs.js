@@ -135,9 +135,15 @@ gulp.task("jade-docs-content", function () {
             if (folder.indexOf("pages/") > -1) {
                 item.jade.map(function (newItem, index) {
                     var itemClone = newObject = JSON.parse(JSON.stringify(item));
-    
+                    
                     itemClone.page = itemClone.pageArray[index];
-                    content.pages.push(itemClone);
+                    
+                    // dont create a "page" entry for an include;
+                    // it's already present in the object, so we can view it's contents via the file SELECT;
+                    // but there's no page to view for it;
+                    if (itemClone.page.indexOf("_") === -1) {
+                        content.pages.push(itemClone);
+                    }
                 });
             } else {
                 content.modules.push(item);
