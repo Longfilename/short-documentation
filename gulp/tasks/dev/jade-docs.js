@@ -64,7 +64,7 @@ gulp.task("jade-docs-content", function () {
                     // rename some folders (so they modules makes sense as a folder, not as a single page);
                     // same with pages;
                     // then convert all slashes to dashes;
-                    "page": filename.replace("modules", "module").replace("pages", "page").replace(/\//g, "-"),
+                    "page": filename.replace("modules", "module").replace(/\//g, "-"),
                     "title": "[empty]"
                 };
             
@@ -90,7 +90,10 @@ gulp.task("jade-docs-content", function () {
                     }
                     // if this is a jade PAGE, then we want to record the filename;
                     if (file.indexOf(".jade") > -1) {
-                        if (file !== "page.jade") {
+                        if (file === "page.jade") {
+                            // myFolder/myPage/page.jade --> page-myFolder-myPage.html
+                            item.page = filename.replace("pages", "page").replace(/\//g, "-");
+                        } else {
                             folderArray = folder.slice(0, -1).split("/").splice(1);
                             newFilename = "page";
                             folderArray.map(function (folder) {
@@ -113,7 +116,9 @@ gulp.task("jade-docs-content", function () {
             
             // after recording all pertinent information about this module/page, save it;
             if (folder.indexOf("pages/") > -1) {
-                content.pages.push(item);
+                item.jade.map(function (newItem) {
+                    content.pages.push(item);
+                });
             } else {
                 content.modules.push(item);
             }
