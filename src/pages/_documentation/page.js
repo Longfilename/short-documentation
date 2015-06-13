@@ -1,6 +1,8 @@
 jQuery(function ($) {
-    var $files = $("select.files"),
-        $objects = $("select.objects"),
+    var $h1 = $("h1"),
+        $h2 = $("h2"),
+        $objects = $h1.find("select.objects"),
+        $files = $h2.find("select.files"),
         $bodyCode = $("code.content"),
         $bodyDiv = $("div.content");
     
@@ -17,6 +19,9 @@ jQuery(function ($) {
         var url = $files.val(),
             // what type of file is it? (we only care about json right now);
             urlType = url.split(".").pop();
+        
+        // update the label;
+        $h2.find("span").text(url);
         
         // gogo Ajax;
         $.get(url)
@@ -62,6 +67,9 @@ jQuery(function ($) {
     $objects.on("change", function () {
         var $this = $(this).find("option:selected"),
             data = $this.data();
+    
+        // update the label;
+        $h1.find("span").text($objects.val());
         
         // load this page or module;
         $("iframe").prop("src", data.path);

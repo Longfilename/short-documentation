@@ -23,6 +23,11 @@ html(lang="en")
                 height: 100%;
                 overflow: hidden;
             }
+            body {
+                color: #333;
+                font: normal 16px/1.4 "Helvetic Neue", sans-serif;
+                font-weight: lighter;
+            }
             div.container {
                 display: flex;
                 flex-direction: column;
@@ -44,7 +49,7 @@ html(lang="en")
                 order: 1;
                 padding: 16px;
                 width: 100%;
-                background: #ddd;
+                background: #eee;
             }
             div.col-iframe {
                 box-sizing: content-box;
@@ -57,8 +62,7 @@ html(lang="en")
             div.col-readme {
                 flex: 1;
                 order: 2;
-                padding: 16px;
-                background: #eee;
+                background: #fdf6e3;
                 overflow: hidden;
             }
             div.iframe-container {
@@ -84,7 +88,7 @@ html(lang="en")
                 cursor: pointer;
             }
             main {
-                margin: 16px 0;
+                padding: 16px;
                 max-width: 768px;
             }
             div.col-banner a {
@@ -95,18 +99,87 @@ html(lang="en")
             }
             pre {
                 display: block;
-                padding: 16px;
-                background: #fdf6e3;
             }
             code.content {
                 display: block;
             }
 
-            div.content {
-                padding: 16px;
-            }
+            div.content {}
             div.content * + * {
                 margin-top: 1em;
+            }
+            
+            header {
+                background: #eee;
+            }
+            
+            header h1 {
+                font-size: 24px;
+                padding: 16px;
+            }
+            header h2 {
+                font-size: 18px;
+                padding: 16px;
+                border-top: 1px solid #333;
+            }
+
+            header h1,
+            header h2 {
+                position: relative;
+                line-height: 1.2;
+                font-weight: lighter;
+            }
+            header span {
+                display: block;
+                padding: 0 40px 0 0;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+            header span:before,
+            header span:after {
+                top: 50%;
+                right: 16px;
+                border: solid transparent;
+                content: " ";
+                height: 0;
+                width: 0;
+                position: absolute;
+                pointer-events: none;
+                margin-top: -10px;
+            }
+            header span:before {
+                border-color: #eee;
+                border-top-color: #333;
+                border-width: 16px;
+                margin-left: -16px;
+            }
+            header span:after {
+                border-top-color: #eee;
+                border-width: 13px;
+                margin-left: -13px;
+                right: 19px;
+            }
+            header h2 span:before {
+                border-width: 14px;
+                margin-left: -14px;
+                right: 18px;
+                margin-top: -8px;
+            }
+            header h2 span:after {
+                border-width: 11px;
+                margin-left: -11px;
+                right: 21px;
+                margin-top: -8px;
+            }
+            
+            header select {
+                position: absolute;
+                width: 100%;
+                left: 0;
+                top: 50%;
+                margin-top: -7px;
+                opacity: 0;
             }
             next {}
     
@@ -120,6 +193,7 @@ html(lang="en")
                 div.col-readme
                     header
                         h1
+                            span
                             select.objects
                                 - if (content.pages.length) {
                                     optgroup(label="Pages")
@@ -148,6 +222,7 @@ html(lang="en")
                                         - })
                                 - }
                         h2
+                            span
                             select.files
                     main
                         pre
