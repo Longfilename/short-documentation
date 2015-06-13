@@ -89,7 +89,7 @@ gulp.task("jade-docs-content", function () {
                         item[extension].push(file);
                     }
                     // if this is a jade PAGE, then we want to record the filename;
-                    if (file.indexOf(".jade") > -1) {
+                    if (file.indexOf(".jade") > -1 && file.indexOf("page") === 0) {
                         if (file === "page.jade") {
                             // myFolder/myPage/page.jade --> page-myFolder-myPage.html
                             item.page = filename.replace("pages", "page").replace(/\//g, "-");

@@ -1,14 +1,12 @@
 jQuery(function ($) {
     var $files = $("select.files"),
         $objects = $("select.objects"),
-        $bodyPre = $("pre.content"),
+        $bodyCode = $("code.content"),
         $bodyDiv = $("div.content");
     
     $("a.set-flex-width").on("click", function () {
         var $a = $(this),
             data = $a.data();
-        
-        console.log(data);
         
         $("div.col-iframe").css("flex", data.widths[0]);
         $("div.col-readme").css("flex", data.widths[1]);
@@ -41,10 +39,13 @@ jQuery(function ($) {
                 // insert the content;
                 if (urlType === "md") {
                     $bodyDiv.text(whichContent());
-                    $bodyPre.empty();
+                    $bodyCode.empty();
                 } else {
                     $bodyDiv.empty();
-                    $bodyPre.text(whichContent());
+                    $bodyCode.removeClass().addClass(urlType).text(whichContent());
+                    $bodyCode.each(function (i, block) {
+                        hljs.highlightBlock(block);
+                    });
                 }
             });
     });

@@ -3,6 +3,8 @@ doctype html
 html(lang="en")
     head
         title ShortDocumentation for [insert project name]
+        link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css")
+        script(src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js")
         script(src="//code.jquery.com/jquery-2.1.4.min.js")
         script(src="./js/page-documentation.js")
         style.
@@ -130,7 +132,8 @@ html(lang="en")
                         h2
                             select.files
                     main
-                        pre.content
+                        pre
+                            code.content
                         div.content
             div.row
                 div.col-banner
