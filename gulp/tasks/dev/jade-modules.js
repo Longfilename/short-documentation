@@ -6,11 +6,15 @@ var gulp         = require("gulp"),
     rename       = require("gulp-rename"),         // so we can create multiple HTML files off one jade file;
     handleErrors = require("../../handle-errors"); // function to fire on error;
 
-gulp.task("jade-modules", function () {
+// run jade-json first to make sure the global variable has been created;
+gulp.task("jade-modules", ["jade-json"], function () {
     // we'll use this config for two jade functions;
     var jadeConfig = {
         "pretty": "    ", // use 4 spaces for an indent;
-        "compileDebug": true
+        "compileDebug": true,
+        "locals": {
+            "content": global.json
+        }
     };
     
     return gulp.src(config.module)

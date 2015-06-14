@@ -1,2 +1,11 @@
+- var content = locals.content["footer/_data.json"]
+
 footer.footer
     p footer
+    - if (content.links) {
+    ul
+        - content.links.map(function (link) {
+        li
+            a(href=link.url)=link.text
+        - })
+    - }

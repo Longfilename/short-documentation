@@ -6,6 +6,9 @@ html(lang="en")
         p home page
         include ../../modules/header/module
         include ../../modules/list/ajax/module
+        - var content = locals.content["list/templated/_1984.json"]
+        include ../../modules/list/templated/module
+        - var content = locals.content["list/templated/_1999.json"]
         include ../../modules/list/templated/module
         include ../../modules/footer/module
         

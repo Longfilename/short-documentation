@@ -5,7 +5,8 @@ var gulp         = require("gulp"),
     plumber      = require("gulp-plumber"),        // error trapping so an error doesn't kill Gulp;
     handleErrors = require("../../handle-errors"); // function to fire on error;
 
-gulp.task("jade-pages", function () {
+// run jade-json first to make sure the global variable has been created;
+gulp.task("jade-pages", ["jade-json"], function () {
     // pass in the sass files that we want to compile;
     return gulp.src(config.compile)
         // add plumber for error catching;
@@ -16,11 +17,13 @@ gulp.task("jade-pages", function () {
         // cf. http://jade-lang.com/api/
         .pipe(jade({
             "pretty": "    ", // use 4 spaces for an indent;
-            "compileDebug": true
+            "compileDebug": true,
+            "locals": {
+                "content": global.json
+            }
         }))
         // rename the file;
         .pipe(rename(function (path) {
-        
             // create a new filename based off the folder structure;
             // folderName/page.jade --> page-folderName.html;
             // folderName/page-red.jade --> page-folderName-red.html;
