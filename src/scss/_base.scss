@@ -67,7 +67,19 @@ legend {}
 li {}
 link {}
 map {}
-main {}
+main {
+    background: #FDFD96;
+    
+    @include breakpoint($breakpoint-sm) {
+        background: #B19CD9;
+    }
+    @include breakpoint($breakpoint-md) {
+        background: #FFD1DC;
+    }
+    @include breakpoint($breakpoint-lg) {
+        background: #CB99C9;
+    }
+}
 mark {}
 menu {}
 meta {}

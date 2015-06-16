@@ -2,11 +2,13 @@
 
 include ../_common
 include ./_tools
-p list-templated
-- if (content.links) {
-    ul
-        - content.links.map(function (link) {
-            li
-                a(href=link.url)=link.text
-        - })
-- }
+
+section.list.list-templated
+    h1=content.h1
+    - if (content.links) {
+        ul
+            - content.links.map(function (link) {
+                li
+                    a(href=link.url)=link.text
+            - })
+    - }

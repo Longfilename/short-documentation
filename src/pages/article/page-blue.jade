@@ -6,10 +6,13 @@ html(lang="en")
     body
         div.container-fluid
             include ../../modules/header/module
-            include ./_content
-            main
-                h1 Blue article title
-                p lorem ipsum
+            div.row
+                div.col-xs-12.col-md-8
+                    main
+                        h1 Blue article title
+                        include ./_content
+                div.col-xs-12.col-md-4
+                    p related content
             include ../../modules/footer/module
         
         include ../../includes/scripts
