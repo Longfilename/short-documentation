@@ -1,3 +1,29 @@
 {
-    "somecontent": "is now here"
+    "logo": {
+        "image-src": "http://placehold.it/350x150",
+        "image-alt-text": "fpo image...",
+        "url": "#"
+    },
+    "nav": [
+        {
+            "url": "#",
+            "text": "Store"
+        },
+        {
+            "url": "#",
+            "text": "Explore"
+        },
+        {
+            "url": "#",
+            "text": "Devices"
+        },
+        {
+            "url": "#",
+            "text": "Software & apps"
+        },
+        {
+            "url": "#",
+            "text": "Support"
+        }
+    ]
 }

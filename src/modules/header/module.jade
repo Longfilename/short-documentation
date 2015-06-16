@@ -1,2 +1,14 @@
-header.header
-    p header
+- var content = locals.content["header/_data.json"]
+header.page-header
+    div.row
+        div.col-xs-4
+            - if (content.logo) {
+                a(href=content.logo.url)
+                    img(src=content.logo["image-src"], alt-text=content.logo["image-alt-text"])
+            - }
+        div.col-xs-8
+            ul
+                - (content.nav) && content.nav.map(function (link) {
+                    li
+                        a(href=link.url)=link.text
+                - })
