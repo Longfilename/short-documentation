@@ -1,5 +1,5 @@
-var jQuery = jQuery,
-    ShortDocs = ShortDocs || {};
+var jQuery = window["jQuery"],
+    ShortDocs = window["ShortDocs"];
 
 jQuery(function ($) {
     var $h1 = $("h1"),

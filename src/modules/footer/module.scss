@@ -1,3 +1,20 @@
-header {
+footer.site-footer {
     background: #ddd;
+    font-size: 14px;
+    
+    h1 {
+        font-size: 14px;
+    }
+    
+    p.links {
+        text-align: center;
+        
+        a + a {
+            margin-left: 1em;
+        }
+    }
+    
+    p.copyright {
+        text-align: center;
+    }
 }

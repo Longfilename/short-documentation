@@ -1,11 +1,42 @@
 - var content = locals.content["footer/_data.json"]
 
-footer.footer
-    p footer
-    - if (content.links) {
-    ul
-        - content.links.map(function (link) {
-        li
-            a(href=link.url)=link.text
+footer.site-footer
+    div.row
+        div.col-xs-4
+            - if (content.columns.one) {
+                - content.columns.one.map(function (group) {
+                h1=group.h1
+                ul
+                    - group.links.map(function (link) {
+                    li
+                        a(href=link.url)=link.text
+                    - })
+                - })
+            - }
+        div.col-xs-4
+            - if (content.columns.two) {
+                - content.columns.two.map(function (group) {
+                h1=group.h1
+                ul
+                    - group.links.map(function (link) {
+                    li
+                        a(href=link.url)=link.text
+                    - })
+                - })
+            - }
+        div.col-xs-4
+            - if (content.columns.three) {
+                - content.columns.three.map(function (group) {
+                h1=group.h1
+                ul
+                    - group.links.map(function (link) {
+                    li
+                        a(href=link.url)=link.text
+                    - })
+                - })
+            - }
+    p.links
+        - content.nav.map(function (link) {
+        a(href=link.url)=link.text
         - })
-    - }
+    p.copyright=content.copyright

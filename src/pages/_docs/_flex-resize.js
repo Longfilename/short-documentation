@@ -1,4 +1,4 @@
-var jQuery = jQuery;
+var jQuery = window["jQuery"];
 
 jQuery(function ($) {
     var $columnIframe = $("div.col-iframe"),
