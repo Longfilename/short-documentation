@@ -4,14 +4,14 @@ html(lang="en")
         - var title = "Search Results Page"
         include ../../includes/head
     body
-        p home page
-        include ../../modules/header/module
-        include ../../modules/list/ajax/module
-        - var content = locals.content["list/templated/_1984.json"]
-        include ../../modules/list/templated/module
-        - var content = locals.content["list/templated/_1999.json"]
-        include ../../modules/list/templated/module
-        include ../../modules/footer/module
+        div.container-fluid
+            include ../../modules/header/module
+            include ../../modules/list/ajax/module
+            - var content = locals.content["list/templated/_1984.json"]
+            include ../../modules/list/templated/module
+            - var content = locals.content["list/templated/_1999.json"]
+            include ../../modules/list/templated/module
+            include ../../modules/footer/module
         
         include ../../includes/scripts
         script(src="../js/page-home.js")

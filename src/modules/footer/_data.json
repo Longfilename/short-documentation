@@ -136,10 +136,6 @@
                 "h1": "Popular resources",
                 "links": [
                     {
-                        "text": "",
-                        "url": "#"
-                    },
-                    {
                         "text": "Microsoft Cloud",
                         "url": "#"
                     },

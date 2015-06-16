@@ -29,7 +29,13 @@ dd {}
 del {}
 details {}
 dfn {}
-div {}
+div {
+    &.container-fluid {
+        background: #e5e5e5;
+        overflow: hidden;
+        max-width: 1200px;
+    }
+}
 dl {}
 dt {}
 em {}

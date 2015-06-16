@@ -4,9 +4,9 @@ html(lang="en")
         - var title = "Landing Page"
         include ../../includes/head
     body
-        p landing page
+        div.container-fluid
+            include ../../modules/header/module
+            include ../../modules/footer/module
         
-        include ../../modules/header/module
-        include ../../modules/footer/module
         include ../../includes/scripts
         script(src="../js/page-landing.js")

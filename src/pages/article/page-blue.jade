@@ -1,14 +1,16 @@
 doctype html
 html(lang="en")
     head
-        - var title = "Article Page"
+        - var title = "Article Page (Blue)"
         include ../../includes/head
     body
-        p article page (blue)
-        
-        include ../../modules/header/module
-        include ../../modules/footer/module
-        include ./_content
+        div.container-fluid
+            include ../../modules/header/module
+            include ./_content
+            main
+                h1 Blue article title
+                p lorem ipsum
+            include ../../modules/footer/module
         
         include ../../includes/scripts
         script(src="../js/page-article.js")

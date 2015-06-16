@@ -50,6 +50,7 @@ div.col-readme {
     order: 2;
     background: #fdf6e3;
     overflow: hidden;
+    overflow: scroll;
 }
 div.iframe-container {
     position: absolute;
@@ -75,7 +76,6 @@ ul a {
 }
 main {
     padding: 16px;
-    max-width: 768px;
 }
 pre {
     display: block;
