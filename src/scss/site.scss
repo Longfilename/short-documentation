@@ -1,10 +1,14 @@
-@import "variables";
-@import "mixins";
-@import "reset";
-@import "base";
-@import "fonts";
-@import "layout";
+@import "../../node_modules/breakpoint-sass/stylesheets/breakpoint";
 
+@import "./bootstrap";     // customized bootstrap;
+@import "./variables";     // sitewide variables and mixins, based on settings in bootstrap;
+@import "./mixins";
+@import "./reset";
+@import "./base";
+@import "./fonts";
+@import "./layout";
+
+@import "../modules/carousel/home/module";
 @import "../modules/footer/module";
 @import "../modules/header/module";
 @import "../modules/list/ajax/module";

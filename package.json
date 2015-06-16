@@ -1,7 +1,7 @@
 {
   "name": "short-documentation",
   "version": "1.0.0",
-  "description": "ShortDocumentation is yet another framework.",
+  "description": "ShortDocumentation is yet another front-end framework.",
   "private": true,
   "scripts": {
     "start": "node ./server/server",
@@ -56,6 +56,8 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "devDependencies": {
+    "bootstrap-sass": "^3.3.4",
+    "breakpoint-sass": "^2.6.1",
     "jquery": "^2.1.4"
   },
   "engines": {

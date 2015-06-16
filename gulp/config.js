@@ -4,6 +4,26 @@ var src   = "src",   // files to dev on;
     build = "build", // where production ready files are written to;
     docs  = "docs";  // where documentation files are written to;
 
+/*
+
+module jade:
+build: n/a
+docs-in:      /modules/folder1/folder2/module.jade
+docs-in:      /modules/folder1/folder2/module-filename.jade
+docs-exclude: !_*.jade, !demo.jade, !demo-*.jade
+docs-out:     /html/module-folder1-folder2.html
+docs-out:     /html/module-folder1-folder2-filename.html
+
+page jade:
+in:      /pages/folder1/folder2/page.jade
+in:      /pages/folder1/folder2/page-filename.jade
+exclude: !_*.jade, _docs/*
+out:     /html/page-folder1-folder2.html
+out:     /html/page-folder1-folder2-filename.html
+
+*/
+
+
 module.exports = {
     // web server and synchronised browser testing;
     "browsersync": {
@@ -25,7 +45,7 @@ module.exports = {
         "documentation": {
             // include one entry per module, and pages;
             "paths": [src + "/{modules,pages}/**/readme.md"],
-            "template": src + "/pages/_documentation/default.jade",
+            "template": src + "/pages/_docs/default.jade",
             "dest": docs
         },
         // pages for the documentation and the build;
@@ -35,14 +55,14 @@ module.exports = {
             // these files will be compiled;
             // don't include partials (those are being included somewhere else);
             // and don't include the documentation pages;
-            "compile": [src + "/pages/**/*.jade", "!" + src + "/pages/_documentation/*", "!" + src + "/pages/**/_*.jade"],
+            "compile": [src + "/pages/**/*.jade", "!" + src + "/pages/_docs/*", "!" + src + "/pages/**/_*.jade"],
             // to this location (with the same path/filename);
             "dest": {
                 "build": build + "/html",
                 "docs":  docs + "/html"
             },
             // the filename is treated differently if we're dealing with the page in the documentation folder;
-            "documentation": "_documentation"
+            "documentation": "_docs"
         },
         // modules for the documentation (the build doesn't need individual modules);
         "modules": {
@@ -53,7 +73,7 @@ module.exports = {
             // this is the wrapper jade for the actual module;
             "module": [src + "/modules/**/demo.jade"],
             // this is the iframe page we're putting the module into;
-            "iframe": [src + "/pages/_documentation/_iframe.jade"],
+            "iframe": [src + "/pages/_docs/_iframe.jade"],
             // and this is where the iframe HTML is deposited;
             "dest": docs + "/html"
         }
@@ -90,7 +110,7 @@ module.exports = {
         },
         // a separate bundle will be generated for each item;
         "input": [
-            "./" + src + "/pages/_documentation/page.js",
+            "./" + src + "/pages/_docs/page.js",
             "./" + src + "/pages/home/page.js",
             "./" + src + "/pages/landing/page.js",
             "./" + src + "/pages/article/page.js"

@@ -3,7 +3,8 @@
 
 // font sizes;
 
-// breakpoints;
-$screen-sm: min-width  768px; // tablet       | small screen;
-$screen-md: min-width  992px; // desktop      | medium screen;
-$screen-lg: min-width 1200px; // wide desktop | large screen;
+// breakpoint variables;
+// the smallest breakpoint size does not have a min-width;
+$breakpoint-sm: (min-width: $screen-sm); // tablet       | small screen;
+$breakpoint-md: (min-width: $screen-md); // desktop      | medium screen;
+$breakpoint-lg: (min-width: $screen-lg); // wide desktop | large screen;

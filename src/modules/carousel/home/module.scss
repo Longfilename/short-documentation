@@ -1,0 +1,5 @@
+section.carousel-home {
+    @include breakpoint($breakpoint-sm) {
+        color: red;
+    }
+}
