@@ -1,5 +1,6 @@
-var hljs = window.hljs,
-    Markdown = window.Markdown;
+var jQuery = jQuery,
+    hljs = hljs,
+    Markdown = Markdown;
 
 jQuery(function ($) {
     var $h2 = $("h2"),

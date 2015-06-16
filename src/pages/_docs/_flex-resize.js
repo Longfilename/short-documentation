@@ -1,3 +1,5 @@
+var jQuery = jQuery;
+
 jQuery(function ($) {
     var $columnIframe = $("div.col-iframe"),
         $columnReadme = $("div.col-readme");
