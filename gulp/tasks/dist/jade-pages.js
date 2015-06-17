@@ -6,7 +6,7 @@ var gulp         = require("gulp"),
     handleErrors = require("../../handle-errors"); // function to fire on error;
 
 // run jade-json first to make sure the global variable has been created;
-gulp.task("jade-pages", ["jade-json"], function () {
+gulp.task("jade-pages", function () {
     // pass in the Jade files that we want to compile;
     return gulp.src(config.dist.compile)
         // add plumber for error catching;
@@ -16,9 +16,9 @@ gulp.task("jade-pages", ["jade-json"], function () {
         // create some HTML from Jade;
         // cf. http://jade-lang.com/api/
         .pipe(jade({
-            "pretty": "\t", // use 4 spaces for an indent;
+            "pretty": "    ",
             "compileDebug": true,
-            "globals": json
+            "locals": config.data()
         }))
         // rename the HTML file;
         .pipe(rename(function (path) {
