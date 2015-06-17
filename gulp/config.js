@@ -31,6 +31,7 @@ module.exports = {
     },
     // generate HTML;
     "jade": {
+        // data object (rendered in real-time) to pass into the Jade compiler;
         "data": function () {
             var file = require("file"),
                 // create an object to return;
@@ -78,32 +79,44 @@ module.exports = {
             
             return json;
         },
-        // file renaming logic;
-        "rename": function (pathObject) {
-            // create a new filename based off the folder structure;
-            // folderName/page.jade --> page-folderName.html;
-            var newBasename = "page-" + pathObject.dirname;
-            
-            // if this filename starts with page-, that means we need to save that filename text;
-            // folderName/page-red.jade --> page-folderName-red.html;
-            if (pathObject.basename.indexOf("page-") === 0) {
-                newBasename = newBasename + "-" + pathObject.basename.replace("page-", "");
+        "pages": {
+            // page renaming logic;
+            "rename": function (pathObject) {
+                // create a new filename based off the folder structure;
+                // folderName/page.jade --> page-folderName.html;
+                var newBasename = "page-" + pathObject.dirname;
+                
+                // if this filename starts with page-, that means we need to save that filename text;
+                // folderName/page-red.jade --> page-folderName-red.html;
+                if (pathObject.basename.indexOf("page-") === 0) {
+                    newBasename = newBasename + "-" + pathObject.basename.replace("page-", "");
+                }
+                
+                // return the new object values to use in gulp-rename;
+                return {
+                    "basename": newBasename,
+                    "dirname": "",
+                    "extname": ".html"
+                };
+            },
+            // options for a distribution build;
+            "dist": {
+                // these files will be compiled;
+                // don't include partials (those are being included somewhere else);
+                // and don't include the documentation pages;
+                "compile": [src + "/pages/**/*.jade", "!" + src + "/pages/_docs/*", "!" + src + "/pages/**/_*.jade"],
+                // to this location (files will have a new filename);
+                "dest": dist + "/html"
+            },
+            // options for a documentation build;
+            "docs": {
+                // these files will be compiled;
+                // don't include partials (those are being included somewhere else);
+                // and don't include the documentation pages;
+                "compile": [src + "/pages/**/*.jade", "!" + src + "/pages/_docs/*", "!" + src + "/pages/**/_*.jade"],
+                // to this location (files will have a new filename);
+                "dest": docs + "/html"
             }
-            
-            // return the new object values to use in gulp-rename;
-            return {
-                "basename": newBasename,
-                "dirname": "",
-                "extname": ".html"
-            };
-        },
-        "dist": {
-            // these files will be compiled;
-            // don't include partials (those are being included somewhere else);
-            // and don't include the documentation pages;
-            "compile": [src + "/pages/**/*.jade", "!" + src + "/pages/_docs/*", "!" + src + "/pages/**/_*.jade"],
-            // to this location (files will have a new filename);
-            "dest": dist + "/html"
         },
         
         
@@ -119,22 +132,6 @@ module.exports = {
             "paths": [src + "/{modules,pages}/**/readme.md"],
             "template": src + "/pages/_docs/default.jade",
             "dest": docs
-        },
-        // pages for the documentation and the build;
-        "pages": {
-            // whenever any of these files change;
-            "watch":   [src + "/**/*.jade"],
-            // these files will be compiled;
-            // don't include partials (those are being included somewhere else);
-            // and don't include the documentation pages;
-            "compile": [src + "/pages/**/*.jade", "!" + src + "/pages/_docs/*", "!" + src + "/pages/**/_*.jade"],
-            // to this location (with the same path/filename);
-            "dest": {
-                "build": dist + "/html",
-                "docs":  docs + "/html"
-            },
-            // the filename is treated differently if we're dealing with the page in the documentation folder;
-            "documentation": "_docs"
         },
         // modules for the documentation (the build doesn't need individual modules);
         "modules": {
