@@ -7,22 +7,20 @@ var gulp         = require("gulp"),
 
 // run jade-json first to make sure the global variable has been created;
 gulp.task("jade-pages", ["jade-json"], function () {
-    // pass in the sass files that we want to compile;
+    // pass in the Jade files that we want to compile;
     return gulp.src(config.dist.compile)
         // add plumber for error catching;
         .pipe(plumber({
             "errorHandler": handleErrors
         }))
-        // compile the jade;
+        // create some HTML from Jade;
         // cf. http://jade-lang.com/api/
         .pipe(jade({
-            "pretty": "    ", // use 4 spaces for an indent;
+            "pretty": "\t", // use 4 spaces for an indent;
             "compileDebug": true,
-            "locals": {
-                "content": global.json
-            }
+            "globals": json
         }))
-        // rename the file;
+        // rename the HTML file;
         .pipe(rename(function (path) {
             var newPath = config.rename(path);
             
@@ -30,7 +28,6 @@ gulp.task("jade-pages", ["jade-json"], function () {
             path.dirname =  newPath.dirname;
             path.extname =  newPath.extname;
         }))
-        // finally put the compiled jade into an HTML file;
-        // in the build folder;
+        // finally put the compiled HTML file in the dist folder;
         .pipe(gulp.dest(config.dist.dest));
 });
