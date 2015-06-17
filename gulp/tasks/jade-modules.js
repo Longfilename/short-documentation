@@ -1,11 +1,12 @@
 var gulp         = require("gulp"),
     config       = require("../config.js").jade,
-    content      = require("../json.js"),       // parse the JSON files into an object to pass to Jade;
-    jade         = require("gulp-jade"),        // translate jade into HTML;
-    tap          = require("gulp-tap"),         // allows us access to the generated HTML;
-    plumber      = require("gulp-plumber"),     // error trapping so an error doesn't kill Gulp;
-    rename       = require("gulp-rename"),      // so we can create multiple HTML files off one jade file;
-    handleErrors = require("../handle-errors"); // function to fire on error;
+    content      = require("../json.js"),          // parse the JSON files into an object to pass to Jade;
+    renameFile   = require("../rename-module.js"), // transform a filename object from gulp-tap;
+    jade         = require("gulp-jade"),           // translate jade into HTML;
+    tap          = require("gulp-tap"),            // allows us access to the generated HTML;
+    plumber      = require("gulp-plumber"),        // error trapping so an error doesn't kill Gulp;
+    rename       = require("gulp-rename"),         // so we can create multiple HTML files off one jade file;
+    handleErrors = require("../handle-errors");    // function to fire on error;
 
 // run jade-json first to make sure the global variable has been created;
 gulp.task("jade:modules", function () {
@@ -28,7 +29,7 @@ gulp.task("jade:modules", function () {
         .pipe(jade(jadeConfig))
         .pipe(tap(function (file, t) {
             // filename for the page we'll create for this module;
-            var newFilename = config.modules.rename(file);
+            var newFilename = renameFile(file);
             
             // create a new object to work with so module values don't get stored in a global (to this function) obj;
             // make sure to clear whatever was already there (otherwise variables bleed across modules);
