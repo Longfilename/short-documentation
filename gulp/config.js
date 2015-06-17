@@ -1,8 +1,8 @@
 "use strict";
 
-var src   = "src",   // files to dev on;
-    build = "build", // where production ready files are written to;
-    docs  = "docs";  // where documentation files are written to;
+var src  = "src",  // files to dev on;
+    dist = "dist", // where production ready files are written to;
+    docs = "docs"; // where documentation files are written to;
 
 /*
 
@@ -25,23 +25,48 @@ out:     /html/page-folder1-folder2-filename.html
 
 
 module.exports = {
-    // web server and synchronised browser testing;
-    "browsersync": {
-        // configure what gets served;
-        "server": {
-            "baseDir": "./",  // set the root to be the base, this way we can go to docs, and build;
-            "directory": true // enable directory browsing;
-        },
-        // configure the URL to access the server;
-        "host": "localhost",
-        "port": 3000
-    },
     // delete documentation and the build;
     "clean": {
-        "src": [build, docs]
+        "src": [dist, docs]
     },
     // generate HTML;
     "jade": {
+        // file renaming logic;
+        "rename": function (pathObject) {
+            // create a new filename based off the folder structure;
+            // folderName/page.jade --> page-folderName.html;
+            var newBasename = "page-" + pathObject.dirname;
+            
+            // if this filename starts with page-, that means we need to save that filename text;
+            // folderName/page-red.jade --> page-folderName-red.html;
+            if (pathObject.basename.indexOf("page-") === 0) {
+                newBasename = newBasename + "-" + pathObject.basename.replace("page-", "");
+            }
+            
+            // return the new object values to use in gulp-rename;
+            return {
+                "basename": newBasename,
+                "dirname": "",
+                "extname": ".html"
+            };
+        },
+        "dist": {
+            // these files will be compiled;
+            // don't include partials (those are being included somewhere else);
+            // and don't include the documentation pages;
+            "compile": [src + "/pages/**/*.jade", "!" + src + "/pages/_docs/*", "!" + src + "/pages/**/_*.jade"],
+            // to this location (files will have a new filename);
+            "dest": dist + "/html"
+        },
+        
+        
+        
+        
+        
+        
+        
+        
+        
         "documentation": {
             // include one entry per module, and pages;
             "paths": [src + "/{modules,pages}/**/readme.md"],
@@ -58,7 +83,7 @@ module.exports = {
             "compile": [src + "/pages/**/*.jade", "!" + src + "/pages/_docs/*", "!" + src + "/pages/**/_*.jade"],
             // to this location (with the same path/filename);
             "dest": {
-                "build": build + "/html",
+                "build": dist + "/html",
                 "docs":  docs + "/html"
             },
             // the filename is treated differently if we're dealing with the page in the documentation folder;
@@ -82,7 +107,7 @@ module.exports = {
     "scss": {
         "compile": [src + "/scss/*.scss", "!" + src + "/scss/_*.scss"],
         "dest": {
-            "build": build + "/css",
+            "build": dist + "/css",
             "docs":  docs + "/css"
         },
         "maps": "./",
@@ -119,10 +144,10 @@ module.exports = {
         "output": {
             // order of files must be the same;
             "build": [
-                "./" + build + "/js/page-home.js", // make sure the documentation JS is overwritten in build;
-                "./" + build + "/js/page-home.js",
-                "./" + build + "/js/page-landing.js",
-                "./" + build + "/js/page-article.js"
+                "./" + dist + "/js/page-home.js", // make sure the documentation JS is overwritten in build;
+                "./" + dist + "/js/page-home.js",
+                "./" + dist + "/js/page-landing.js",
+                "./" + dist + "/js/page-article.js"
             ],
             "docs": [
                 "./" + docs + "/js/page-documentation.js",
@@ -138,132 +163,8 @@ module.exports = {
         // where this common file is written to;
         // it's written to two places, but it's only read from one;
         "dest": {
-            "build": build + "/js",
+            "build": dist + "/js",
             "docs": docs + "/js"
-        }
-    },
-    // copy none generated files to the documentation and the build;
-    // i think we need a build and a doc version;
-    "copy": {
-        // copy over any remaining file types that aren't handled by the other tasks;
-        // these aren't altered in anyway, it's a straight copy;
-        "compile": {
-            "build": [
-                // include any text, or icon file (in the root);
-                src + "*.{txt,ico}",
-                // include the fonts;
-                src + "/**/*.ttf",
-                // and include only the JSON files used for Ajax;
-                src + "/**/-*.json",
-                // get all images;
-                src + "/**/*.{gif,png,jpg,jpeg,svg,ico}",
-                // except generated images;
-                "!" + src + "/img/sprite/**/!(icon-sprite.png)",
-                // and their source material;
-                "!" + src + "/img/sprite/",
-                "!" + src + "/img/sprite/*"
-            ],
-            "docs": [
-                // include any text, or icon file (in the root);
-                src + "*.{txt,ico}",
-                // include the fonts;
-                src + "/**/*.ttf",
-                // include the module and page files for display;
-                // and include only the JSON files used for Ajax;
-                src + "/**/-*.json",
-                src + "/**/_*.json",
-                src + "/**/*.md",
-                src + "/**/*.jade",
-                src + "/**/*.scss",
-                src + "/**/*.js",
-                // get all images;
-                src + "/**/*.{gif,png,jpg,jpeg,svg,ico}",
-                // except generated images;
-                "!" + src + "/img/sprite/**/!(icon-sprite.png)",
-                // and their source material;
-                "!" + src + "/img/sprite/",
-                "!" + src + "/img/sprite/*",
-                // and documentation pages;
-                "!" + src + "/**/demo.jade"
-            ]
-        },
-        "dest": {
-            "build": build,
-            "docs":  docs
-        }
-    },
-    // what files to watch once gulp is running;
-    "watch": {
-        "jade": [src + "/**/*.jade", src + "/**/_*.json"],
-        "scss": src + "/**/*.scss",
-        "js": src + "/**/*.js",
-        "copy": [
-            src + "/**/*{txt,ico}",
-            src + "/fonts/*",
-            src + "/**/-*.json",
-            src + "/img/*",
-            "!" + src + "/img/sprite/**/!(icon-sprite.png)"
-        ]
-        //"sprites": src + "/images/sprites/*"
-    },
-    
-    
-    
-    sprites: {
-        src: src + "/images/sprites/*.png",
-        dest: {
-            css: src + "/sass/",
-            image: src + "/images/"
-        },
-        options: {
-            cssName: "_sprites.scss",
-            cssFormat: "css",
-            cssOpts: {
-                cssClass: function (item) {
-                    // If this is a hover sprite, name it as a hover one (e.g. "home-hover" -> "home:hover")
-                    if (item.name.indexOf("-hover") !== -1) {
-                        return ".icon-" + item.name.replace("-hover", ":hover");
-                        // Otherwise, use the name as the selector (e.g. "home" -> "home")
-                    } else {
-                        return ".icon-" + item.name;
-                    }
-                }
-            },
-            imgName: "icon-sprite.png",
-            imgPath: "../images/icon-sprite.png"
-        }
-    },
-    optimize: {
-        css: {
-            src: build + "/css/*.css",
-            dest: build + "/css/",
-            options: {
-                keepSpecialComments: 0
-            }
-        },
-        js: {
-            src: build + "/js/*.js",
-            dest: build + "/js/",
-            options: {}
-        },
-        images: {
-            src: [
-                src + "/images/**",
-                "!" + src + "/images/sprites/**/!(icon-sprite.png)"
-            ],
-            dest: build + "/images",
-            options: {
-                optimizationLevel: 3,
-                progessive: true,
-                interlaced: true
-            }
-        },
-        html: {
-            src: build + "/**/*.html",
-            dest: build,
-            options: {
-                collapseWhitespace: true
-            }
         }
     }
 };
