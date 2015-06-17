@@ -7,9 +7,9 @@ html(lang="en")
         div.container-fluid
             include ../../modules/header/module
             include ../../modules/list/ajax/module
-            - var content = locals["list/templated/_1984.json"]
+            - var content = json["list/templated/_1984.json"]
             include ../../modules/list/templated/module
-            - var content = locals["list/templated/_1999.json"]
+            - var content = json["list/templated/_1999.json"]
             include ../../modules/list/templated/module
             include ../../modules/footer/module
         

@@ -21,7 +21,9 @@ var gulp         = require("gulp"),
             return jade({
                 "pretty": "    ",
                 "compileDebug": true,
-                "locals": config.data() // bring in JSON files as a "locals" variable in Jade;
+                "locals": {
+                    "json": config.data() // bring in JSON files as a "locals" variable in Jade;
+                }
             });
         })
         // rename the HTML file;
@@ -42,17 +44,17 @@ var gulp         = require("gulp"),
 // build the HTML pages for the distribution build;
 gulp.task("jade-pages-dist", function () {
     // define where we want the Jade files to be built;
-    selectedDestination = config.pages.dist.dest;
+    selectedDestination = config.pages.dest.dist;
     // pass in the Jade files that we want to compile;
-    return gulp.src(config.pages.dist.compile).pipe(whichDestination());
+    return gulp.src(config.pages.compile).pipe(whichDestination());
 });
 
 // build the HTML pages (based off of pages, modules are built elsewhere) for the docs build;
 gulp.task("jade-pages-docs", function () {
     // define where we want the Jade files to be built;
-    selectedDestination = config.pages.docs.dest;
+    selectedDestination = config.pages.dest.docs;
     // pass in the Jade files that we want to compile;
-    return gulp.src(config.pages.docs.compile).pipe(whichDestination());
+    return gulp.src(config.pages.compile).pipe(whichDestination());
 });
 
 // run both documentation and distribution builds;

@@ -99,24 +99,27 @@ module.exports = {
                     "extname": ".html"
                 };
             },
-            // options for a distribution build;
-            "dist": {
-                // these files will be compiled;
-                // don't include partials (those are being included somewhere else);
-                // and don't include the documentation pages;
-                "compile": [src + "/pages/**/*.jade", "!" + src + "/pages/_docs/*", "!" + src + "/pages/**/_*.jade"],
-                // to this location (files will have a new filename);
-                "dest": dist + "/html"
-            },
-            // options for a documentation build;
-            "docs": {
-                // these files will be compiled;
-                // don't include partials (those are being included somewhere else);
-                // and don't include the documentation pages;
-                "compile": [src + "/pages/**/*.jade", "!" + src + "/pages/_docs/*", "!" + src + "/pages/**/_*.jade"],
-                // to this location (files will have a new filename);
-                "dest": docs + "/html"
+            // these files will be compiled;
+            // don't include partials (those are being included somewhere else);
+            // and don't include the documentation pages;
+            "compile": [src + "/pages/**/*.jade", "!" + src + "/pages/_docs/*", "!" + src + "/pages/**/_*.jade"],
+            // to this location (files will have a new filename);
+            "dest": {
+                "dist": dist + "/html",
+                "docs": docs + "/html"
             }
+        },
+        // modules for the documentation (the build doesn't need individual modules);
+        "modules": {
+            // need to know the folder to add to the folder path (for the file function);
+            "src": src,
+            // for each demo.jade, we'll create a page for the module;
+            // this is the wrapper Jade for the module;
+            "module": [src + "/modules/**/demo.jade"],
+            // this is the iframe page we're putting the module into;
+            "iframe": [src + "/pages/_docs/_iframe.jade"],
+            // and this is where the iframe HTML is compiled;
+            "dest": docs + "/html"
         },
         
         
@@ -132,19 +135,6 @@ module.exports = {
             "paths": [src + "/{modules,pages}/**/readme.md"],
             "template": src + "/pages/_docs/default.jade",
             "dest": docs
-        },
-        // modules for the documentation (the build doesn't need individual modules);
-        "modules": {
-            // need to know the folder to parse out;
-            // yeah, it's not likely to change, but if it does, we don't have to do it in two places;
-            "src": src,
-            // for each demo.jade, we'll create a page for the module;
-            // this is the wrapper jade for the actual module;
-            "module": [src + "/modules/**/demo.jade"],
-            // this is the iframe page we're putting the module into;
-            "iframe": [src + "/pages/_docs/_iframe.jade"],
-            // and this is where the iframe HTML is deposited;
-            "dest": docs + "/html"
         }
     },
     // generate CSS for the documentation and the build;
