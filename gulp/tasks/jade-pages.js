@@ -1,5 +1,6 @@
 var gulp         = require("gulp"),
     config       = require("../config.js").jade,
+    content      = require("../json.js"),          // parse the JSON files into an object to pass to Jade;
     lazypipe     = require("lazypipe"),            // allows for reusable parts of a pipeline;
     jade         = require("gulp-jade"),           // translate jade into HTML;
     rename       = require("gulp-rename"),         // allows us to rename files;
@@ -22,7 +23,7 @@ var gulp         = require("gulp"),
                 "pretty": "    ",
                 "compileDebug": true,
                 "locals": {
-                    "json": config.data() // bring in JSON files as a "locals" variable in Jade;
+                    "json": content() // bring in JSON files as a "locals" variable in Jade;
                 }
             });
         })
@@ -42,7 +43,7 @@ var gulp         = require("gulp"),
         });
 
 // build the HTML pages for the distribution build;
-gulp.task("jade-pages-dist", function () {
+gulp.task("jade:pages:dist", function () {
     // define where we want the Jade files to be built;
     selectedDestination = config.pages.dest.dist;
     // pass in the Jade files that we want to compile;
@@ -50,7 +51,7 @@ gulp.task("jade-pages-dist", function () {
 });
 
 // build the HTML pages (based off of pages, modules are built elsewhere) for the docs build;
-gulp.task("jade-pages-docs", function () {
+gulp.task("jade:pages:docs", function () {
     // define where we want the Jade files to be built;
     selectedDestination = config.pages.dest.docs;
     // pass in the Jade files that we want to compile;
@@ -58,4 +59,4 @@ gulp.task("jade-pages-docs", function () {
 });
 
 // run both documentation and distribution builds;
-gulp.task("jade-pages", ["jade-pages-dist", "jade-pages-docs"]);
+gulp.task("jade:pages", ["jade:pages:dist", "jade:pages:docs"]);
