@@ -27,26 +27,12 @@ gulp.task("jade-modules", function () {
         .pipe(jade(jadeConfig))
         .pipe(tap(function (file, t) {
             // filename for the page we'll create for this module;
-            var newFileName;
+            var newFilename = config.modules.rename(file);
             
             // create a new object to work with so module values don't get stored in a global (to this function) obj;
+            // make sure to clear whatever was already there (otherwise variables bleed across modules);
+            jadeConfig.locals = {};
             jadeConfig.locals.html = file.contents.toString();
-        
-            // convert:
-            // Users/jdoe/myProject/src/modules/moduleName/demo.jade
-            // to:
-            // Users/jdoe/myProject/docs/pages/module-moduleName.html
-            // so when we do a build of the documentation iframe page (with this module's content being passed in);
-            // we'll be able to generate a unique HTML page for this module;
-            
-            // get the folder path of the module;
-            newFileName = "module-" + file.path.toString().replace(file.cwd + "/" + config.modules.src + "/modules/", "");
-            
-            // remove the HTML portion (we're going to create our own);
-            newFileName = newFileName.replace("/demo.html", ".html");
-            
-            // convert slashes to dashes;
-            newFileName = newFileName.replace(/\//g, "-");
             
             // now parse the documentation iframe page with this module content;
             gulp.src(config.modules.iframe)
@@ -55,7 +41,7 @@ gulp.task("jade-modules", function () {
                 }))
                 .pipe(jade(jadeConfig))
                 // one template (config.modules.iframe) becomes many HTML pages (one per module);
-                .pipe(rename(newFileName))
+                .pipe(rename(newFilename))
                 .pipe(gulp.dest(config.modules.dest));
         }));
 });
