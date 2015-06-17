@@ -52,15 +52,6 @@ module.exports = {
             // and this is where the iframe HTML is compiled;
             "dest": docs + "/html"
         },
-        
-        
-        
-        
-        
-        
-        
-        
-        
         "documentation": {
             // include one entry per module, and pages;
             "paths": [src + "/{modules,pages}/**/readme.md"],
