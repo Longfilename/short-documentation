@@ -1,10 +1,10 @@
 var gulp         = require("gulp"),
-    config       = require("../../config.js").jade,
+    config       = require("../config.js").jade,
     lazypipe     = require("lazypipe"),            // allows for reusable parts of a pipeline;
     jade         = require("gulp-jade"),           // translate jade into HTML;
     rename       = require("gulp-rename"),         // allows us to rename files;
     plumber      = require("gulp-plumber"),        // error trapping so an error doesn't kill Gulp;
-    handleErrors = require("../../handle-errors"), // function to fire on error;
+    handleErrors = require("../handle-errors"), // function to fire on error;
     // defines which destination to use (set in a gulp task);
     selectedDestination,
     // initialize a lazypipe so we can run both prod and docs with the same pipe;
