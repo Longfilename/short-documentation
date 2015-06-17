@@ -1,6 +1,7 @@
 var gulp         = require("gulp"),
     config       = require("../config.js").jade,
     content      = require("../json.js"),          // parse the JSON files into an object to pass to Jade;
+    runSequence  = require("run-sequence"),        // run gulp tasks in sequence;
     lazypipe     = require("lazypipe"),            // allows for reusable parts of a pipeline;
     jade         = require("gulp-jade"),           // translate jade into HTML;
     rename       = require("gulp-rename"),         // allows us to rename files;
@@ -59,4 +60,11 @@ gulp.task("jade:pages:docs", function () {
 });
 
 // run both documentation and distribution builds;
-gulp.task("jade:pages", ["jade:pages:dist", "jade:pages:docs"]);
+gulp.task("jade:pages", function (callback) {
+    // these don't NEED to run in sequence, but I find it easier to debug when they're in order;
+    runSequence(
+        "jade:pages:dist",
+        "jade:pages:docs",
+        callback
+    );
+});
