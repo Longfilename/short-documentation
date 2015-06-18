@@ -20,6 +20,37 @@ module.exports = function () {
         getExtension = function (filename) {
             return filename.split(".").pop();
         },
+        // rename file;
+        renameFile = function (file, folder, prefix) {
+            var newFilename = "",
+                folderArray  = folder.split("/").splice(1);
+            
+            // myFolder/myPage/page.jade                 --> page-myFolder-myPage.html
+            // myFolder/myPage/_helper.jade              --> _helper.jade
+            // myFolder/myModule/module.jade             --> module-myFolder-myModule.html
+            // myFolder/myModule/your_module/module.jade --> module-myFolder-myModule-your-module.html
+            
+            // if a file has an underscore, don't manipulate it, just output the filename;
+            if (file.indexOf("_") === 0) {
+                newFilename = file;
+            } else {
+                // bulid a filename based on the parent folder structure;
+                folderArray.map(function (folder) {
+                    newFilename = (newFilename === "") ? folder : newFilename + "-" + folder;
+                });
+                
+                // remove instances of demo, module, and page;
+                newFilename = newFilename + file.replace("demo", "").replace(prefix, "");
+                // change it from a jade to html page;
+                newFilename = newFilename.replace(".jade", ".html");
+                // change pages- and modules- (built from folder structure) to page- and module-
+                newFilename = newFilename.replace(prefix + "s", prefix);
+                // replace all underscores with dashes;
+                newFilename = newFilename.replace("_", "-", /g/);
+            }
+            
+            return newFilename;
+        },
         // for each folder we encounter...
         parseFolder = function (folder, dirs, files) {
             // for each folder, this is the data we store about it;
@@ -30,19 +61,19 @@ module.exports = function () {
                     "js":   [],
                     "scss": [],
                     "md":   [],
-                    
                     "jadeArray": [],   // temp storage of all Jade files, but there's only one "page" per entry;
                     "html": "[empty]", // html page to load in the iframe;
                     "folder": folder,  // folder + filename (in the arrays above) generate a path to all files;
                     "title": "[empty]" // used in the SELECT for pages/modules;
                 };
             
-            // if we have files, loop through them;
-            (files.length) && files.forEach(function (file, index) {
+            // if we're not in the documentation folder;
+            // and if we have files, loop through them;
+            (folder.indexOf("_docs") === -1) && (files.length) && files.forEach(function (file, index) {
                 var extension = getExtension(file),
                     readme,
-                    folderArray,
-                    newFilename;
+                    newFilename,
+                    pageOrModule;
                 
                 // if this extension is of a file to store;
                 // we don't care about EVERY file, only every file we care about;
@@ -55,40 +86,18 @@ module.exports = function () {
                         item.title = readme[0].replace("# ", "");
                     }
                     // no need to document the documentation;
-                    if (file !== "demo.jade") {
+                    if (file.indexOf("demo") !== 0) {
                         // save this file;
                         item[extension].push(file);
                         
                         // if this is a jade file, we want to track it because of the filename;
                         // we use the jade filename to generate an HTML filename (to show in the IFRAME);
                         if (extension === "jade") {
-                            // are we working with a page;
-                            if (file.indexOf("page") === 0) {
-                                if (file === "page.jade") {
-                                    // myFolder/myPage/page.jade --> page-myFolder-myPage.html
-                                    newFilename = file.replace("pages", "page").replace(/\//g, "-");
-                                } else {
-                                    folderArray = folder.slice(0, -1).split("/").splice(1);
-                                    newFilename = "page";
-                                    folderArray.map(function (folder) {
-                                        newFilename = newFilename + "-" + folder;
-                                    });
-                                    newFilename = newFilename + file.replace("page-", "-").replace(".jade", ".html");
-                                }
-                            // or a module;
-                            } else {
-                                if (file === "module.jade") {
-                                    // myFolder/myModule/module.jade --> module-myFolder-myModule.html
-                                    newFilename = file.replace("modules", "module").replace(/\//g, "-");
-                                } else {
-                                    folderArray = folder.slice(0, -1).split("/").splice(1);
-                                    newFilename = "module";
-                                    folderArray.map(function (folder) {
-                                        newFilename = newFilename + "-" + folder;
-                                    });
-                                    newFilename = newFilename + file.replace("module-", "-").replace("demo", "").replace(".jade", ".html");
-                                }
-                            }
+                            // are we working with a page or a module;
+                            pageOrModule = (file.indexOf("page") === 0) ? "page" : "module";
+                            
+                            // rename the file;
+                            newFilename = renameFile(file, folder, pageOrModule);
                             
                             // store each jade page here, we'll filter them later;
                             item.jadeArray.push(newFilename);

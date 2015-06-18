@@ -13,7 +13,7 @@ jQuery(function ($) {
     $files.on("change", function () {
         var url = $files.val(),
             // what type of file is it? (we only care about json right now);
-            urlType = url.split(".").pop();
+            extension = url.split(".").pop();
         
         // update the label;
         $h2.find("span").text(url);
@@ -26,9 +26,9 @@ jQuery(function ($) {
                     var content = data;
                     
                     // if this is a JSON file, we need to stringify the response;
-                    if (urlType === "json") {
+                    if (extension === "json") {
                         content = JSON.stringify(data, null, "\t");
-                        // JS files come back as an object;
+                    // JS files come back as an object;
                     } else if (urlType === "js") {
                         content = data.responseText;
                     }
@@ -38,9 +38,8 @@ jQuery(function ($) {
                 
                 // insert the content;
                 // it could be markdown content (that we need to transform to HTML);
-                if (urlType === "md") {
-                    $bodyDiv.show();
-                    $bodyDiv.html(convert(data));
+                if (extension === "md") {
+                    $bodyDiv.show().html(convert(data));
                     $bodyCode.empty().parent().hide();
                 // or it's content that we want to display as code;
                 } else {
@@ -50,9 +49,10 @@ jQuery(function ($) {
                         .show()
                         .end()
                         .removeClass()
-                        .addClass(urlType)
+                        .addClass(extension)
                         .text(whichContent())
                         .each(function (i, block) {
+                            // init highlight js (code color coding);
                             hljs.highlightBlock(block);
                         });
                 }
