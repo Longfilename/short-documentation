@@ -21,6 +21,8 @@ exclude: !_*.jade, _docs/*
 out:     /html/page-folder1-folder2.html
 out:     /html/page-folder1-folder2-filename.html
 
+index page
+
 */
 
 

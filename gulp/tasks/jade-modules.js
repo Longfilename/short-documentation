@@ -1,6 +1,6 @@
 var gulp         = require("gulp"),
     config       = require("../config.js").jade,
-    content      = require("../json.js"),          // parse the JSON files into an object to pass to Jade;
+    content      = require("../data-content.js"),  // parse the JSON files into an object to pass to Jade;
     renameFile   = require("../rename-module.js"), // transform a filename object from gulp-tap;
     jade         = require("gulp-jade"),           // translate jade into HTML;
     tap          = require("gulp-tap"),            // allows us access to the generated HTML;
