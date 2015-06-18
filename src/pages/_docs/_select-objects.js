@@ -26,7 +26,7 @@ jQuery(function ($) {
                             
                             // need to make some adjustments to the data;
                             // don't want these parts of the path during Jade processing;
-                            item.path =  "./html/" + item.page;
+                            item.path =  "./html/" + item.html;
                             item.folder = "./" + item.folder;
                             
                             // build the OPTION;
