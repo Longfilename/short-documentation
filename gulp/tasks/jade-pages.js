@@ -1,6 +1,6 @@
 var gulp         = require("gulp"),
     config       = require("../config.js").jade,
-    content      = require("../json.js"),          // parse the JSON files into an object to pass to Jade;
+    content      = require("../data-content.js"),  // parse the JSON files into an object to pass to Jade;
     renameFile   = require("../rename-page.js"),   // transform a path object from gulp-rename;
     runSequence  = require("run-sequence"),        // run gulp tasks in sequence;
     lazypipe     = require("lazypipe"),            // allows for reusable parts of a pipeline;

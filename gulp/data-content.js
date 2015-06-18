@@ -1,5 +1,6 @@
 // return module content to pass into the Jade compiler;
 module.exports = function () {
+        // traverse the file system;
     var file = require("file"),
         // create an object to return;
         json = {},
@@ -9,34 +10,36 @@ module.exports = function () {
             delete require.cache[require.resolve(module)];
             return require(module);
         },
+        // folders where we're looking for .json files;
         jsonFolders = [
             "src/modules/",
             "src/pages/"
         ],
-        removeFolders = function (text) {
+        // remove the above folders from the path;
+        removeFolders = function (path) {
             jsonFolders.map(function (folder) {
-                text = text.replace(folder, "");
+                path = path.replace(folder, "");
             });
             
-            return text;
+            return path;
         },
-        parseFolder = function (dirPath, dirs, files) {
-            if (files.length) {
-                files.forEach(function (currentValue, index) {
-                    // create a unique key per JSON file made up of the directory it is in;
-                    var path, newPath;
-                    
-                    // if we're actually dealing with a json file;
-                    if (currentValue.indexOf(".json") > 0) {
-                        // set the key;
-                        path = removeFolders(dirPath) + "/" + currentValue;
-                        // set the path to the file to include the contents of the JSON file as a variable;
-                        newPath = "../" + dirPath + "/" + currentValue;
-                        // save the value in the json object so we reference it later with Jade;
-                        json[path] = requireUncached(newPath);
-                    }
-                });
-            }
+        // what to do with each folder we're looking through;
+        parseFolder = function (folder, dirs, files) {
+            // if we have files, loop through them;
+            (files.length) && files.forEach(function (file, index) {
+                // create a unique key per JSON file made up of the directory it is in;
+                var path, newPath;
+                
+                // if we're actually dealing with a json file;
+                if (file.indexOf(".json") > 0) {
+                    // set the key;
+                    path = removeFolders(folder) + "/" + file;
+                    // set the path to the file to include the contents of the JSON file as a variable;
+                    newPath = "../" + folder + "/" + file;
+                    // save the value in the json object so we reference it later with Jade;
+                    json[path] = requireUncached(newPath);
+                }
+            });
         };
     
     // go through the file system, grab all data JSON files and put the values into this object;
@@ -44,5 +47,6 @@ module.exports = function () {
         file.walkSync(folder, parseFolder);
     });
     
+    // return all the data we collected;
     return json;
 };
