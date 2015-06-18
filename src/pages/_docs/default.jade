@@ -10,7 +10,7 @@ html(lang="en")
         script(src="https://pagedown.googlecode.com/hg/Markdown.Sanitizer.js")
         
         script(src="//code.jquery.com/jquery-2.1.4.min.js")
-        script var ShortDocs = {}; ShortDocs.data = !{JSON.stringify(content)};
+        script var ShortDocs = {}; ShortDocs.data = !{JSON.stringify(content, null, 4)};
         script(src="./js/common.js")
         script(src="./js/page-documentation.js")
         
