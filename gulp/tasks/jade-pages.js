@@ -3,46 +3,14 @@ var gulp         = require("gulp"),
     content      = require("../data-content.js"),  // parse the JSON files into an object to pass to Jade;
     renameFile   = require("../rename-page.js"),   // transform a path object from gulp-rename;
     run          = require("run-sequence"),        // run gulp tasks in sequence;
-    lazypipe     = require("lazypipe"),            // allows for reusable parts of a pipeline;
     jade         = require("gulp-jade"),           // translate jade into HTML;
     rename       = require("gulp-rename"),         // allows us to rename files;
     plumber      = require("gulp-plumber"),        // error trapping so an error doesn't kill Gulp;
     handleErrors = require("../handle-errors"), // function to fire on error;
-    // defines which destination to use (set in a gulp task);
-    selectedDestination,
-    // initialize a lazypipe so we can run both prod and docs with the same pipe;
-    whichDestination = lazypipe()
-        // add plumber for error catching;
-        .pipe(function () {
-            return plumber({
-                "errorHandler": handleErrors
-            })
-        })
-        // create some HTML from Jade;
-        // cf. http://jade-lang.com/api/
-        .pipe(function () {
-            return jade({
-                "pretty": "    ",
-                "compileDebug": true,
-                "locals": {
-                    "json": content() // bring in JSON files as a "locals" variable in Jade;
-                }
-            });
-        })
-        // rename the HTML file;
-        .pipe(function () {
-            return rename(function (path) {
-                var newPath = renameFile(path);
-                
-                path.basename = newPath.basename;
-                path.dirname = newPath.dirname;
-                path.extname = newPath.extname;
-            });
-        })
-        // finally put the compiled HTML file in the appropriate folder;
-        .pipe(function () {
-            return gulp.dest(selectedDestination);
-        });
+    // defines which destination to use (reset in a gulp task);
+    compileConfig = {
+        "dest": config.pages.dest.dist
+    };
 
 // run both documentation and distribution builds;
 gulp.task("jade:pages", function (callback) {
@@ -55,17 +23,50 @@ gulp.task("jade:pages", function (callback) {
 });
 
 // build the HTML pages for the distribution build;
-gulp.task("jade:pages:dist", function () {
+gulp.task("jade:pages:dist", function (callback) {
     // define where we want the Jade files to be built;
-    selectedDestination = config.pages.dest.dist;
-    // pass in the Jade files that we want to compile;
-    return gulp.src(config.pages.compile).pipe(whichDestination());
+    compileConfig.dest = config.pages.dest.dist;
+    run(
+        "jade:pages:compile",
+        callback
+    );
 });
 
-// build the HTML pages (based off of pages, modules are built elsewhere) for the docs build;
-gulp.task("jade:pages:docs", function () {
+// build the HTML pages for the docs build;
+// this does not build HTML pages for modules;
+gulp.task("jade:pages:docs", function (callback) {
     // define where we want the Jade files to be built;
-    selectedDestination = config.pages.dest.docs;
-    // pass in the Jade files that we want to compile;
-    return gulp.src(config.pages.compile).pipe(whichDestination());
+    compileConfig.dest = config.pages.dest.docs;
+    run(
+        "jade:pages:compile",
+        callback
+    );
+});
+
+// compile HTML;
+// default state will compile to the dist folder, but the above tasks can change the config;
+gulp.task("jade:pages:compile", function () {
+    return gulp.src(config.pages.compile)
+        .pipe(plumber({
+            "errorHandler": handleErrors
+        }))
+        // create some HTML from Jade;
+        // cf. http://jade-lang.com/api/
+        .pipe(jade({
+            "pretty": "    ",
+            "compileDebug": true,
+            "locals": {
+                "json": content() // bring in JSON files as a "locals" variable in Jade;
+            }
+        }))
+        // rename the HTML file;
+        .pipe(rename(function (path) {
+            var newPath = renameFile(path);
+            
+            path.basename = newPath.basename;
+            path.dirname = newPath.dirname;
+            path.extname = newPath.extname;
+        }))
+        // finally put the compiled HTML file in the appropriate folder;
+        .pipe(gulp.dest(compileConfig.dest));
 });
