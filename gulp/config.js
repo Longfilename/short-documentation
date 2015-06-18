@@ -55,8 +55,8 @@ module.exports = {
     "scss": {
         "compile": [src + "/scss/*.scss", "!" + src + "/scss/_*.scss"],
         "dest": {
-            "build": dist + "/css",
-            "docs":  docs + "/css"
+            "dist": dist + "/css",
+            "docs": docs + "/css"
         },
         "maps": "./",
         // config for a plugin that fixes CSS with browser prefixes;

@@ -19,6 +19,7 @@ gulp.task("build:dist", function (callback) {
         "clean:dist",
         "jade:dist",
         "js:dist",
+        "scss:dist",
         // then do the callback;
         callback
     );
@@ -30,6 +31,7 @@ gulp.task("build:docs", function (callback) {
         "clean:docs",
         "jade:docs",
         "js:docs",
+        "scss:docs",
         // then do the callback;
         callback
     );
