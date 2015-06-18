@@ -1,18 +1,20 @@
+var config = require("./config"),
+    // traverse the file system;
+    file = require("file"),
+    // read the contents of the readme.md file;
+    fs   = require("fs");
+
 // return module content to pass into the Jade compiler;
 module.exports = function () {
-        // traverse the file system;
-    var file = require("file"),
-        // read the contents of the readme.md file;
-        fs   = require("fs"),
         // create an object to return;
-        json = {
+    var json = {
             "pages": [],
             "modules": []
         },
         // define the locations where we'll look for pages and modules;
         folders = [
-            "src/modules/",
-            "src/pages/"
+            config.src + "/modules/",
+            config.src + "/pages/"
         ],
         // get a files extension, used in determining what to do with the file;
         getExtension = function (filename) {

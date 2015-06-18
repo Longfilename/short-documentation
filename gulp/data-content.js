@@ -1,9 +1,11 @@
+var config = require("./config"),
+    // traverse the file system;
+    file = require("file");
+
 // return module content to pass into the Jade compiler;
 module.exports = function () {
-        // traverse the file system;
-    var file = require("file"),
         // create an object to return;
-        json = {},
+    var json = {},
         // cf. http://stackoverflow.com/questions/9210542/node-js-require-cache-possible-to-invalidate
         // function to clear the require cache so we can load newer versions of the JSON data;
         requireUncached = function (module) {
@@ -12,8 +14,8 @@ module.exports = function () {
         },
         // folders where we're looking for .json files;
         jsonFolders = [
-            "src/modules/",
-            "src/pages/"
+            config.src + "/modules/",
+            config.src + "/pages/"
         ],
         // remove the above folders from the path;
         removeFolders = function (path) {
