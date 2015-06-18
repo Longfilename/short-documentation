@@ -6,7 +6,7 @@ var gulp         = require("gulp"),
     handleErrors = require("../handle-errors");         // function to fire on error;
 
 // build default.html;
-gulp.task("jade:docs", function () {
+gulp.task("jade:documentation", function () {
     gulp.src(config.template)
         .pipe(plumber({
             errorHandler: handleErrors

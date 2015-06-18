@@ -4,32 +4,13 @@ var src  = "src",  // files to dev on;
     dist = "dist", // where production ready files are written to;
     docs = "docs"; // where documentation files are written to;
 
-/*
-
-module jade:
-build: n/a
-docs-in:      /modules/folder1/folder2/module.jade
-docs-in:      /modules/folder1/folder2/module-filename.jade
-docs-exclude: !_*.jade, !demo.jade, !demo-*.jade
-docs-out:     /html/module-folder1-folder2.html
-docs-out:     /html/module-folder1-folder2-filename.html
-
-page jade:
-in:      /pages/folder1/folder2/page.jade
-in:      /pages/folder1/folder2/page-filename.jade
-exclude: !_*.jade, _docs/*
-out:     /html/page-folder1-folder2.html
-out:     /html/page-folder1-folder2-filename.html
-
-index page
-
-*/
-
-
 module.exports = {
+    // helper functions need these base values;
+    "src": src,
     // delete documentation and the build;
     "clean": {
-        "src": [dist, docs]
+        "dist": dist,
+        "docs": docs
     },
     // generate HTML;
     "jade": {
