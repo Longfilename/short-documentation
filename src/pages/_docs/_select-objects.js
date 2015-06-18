@@ -5,7 +5,8 @@ jQuery(function ($) {
     var $h1 = $("h1"),
         $h2 = $("h2"),
         $objects = $h1.find("select.objects"),
-        $files = $h2.find("select.files");
+        $files = $h2.find("select.files"),
+        dataAttr = "config";
     
     // build the modules / pages SELECT;
     $objects
@@ -26,14 +27,14 @@ jQuery(function ($) {
                             
                             // need to make some adjustments to the data;
                             // don't want these parts of the path during Jade processing;
-                            item.path =  "./html/" + item.html;
+                            item.iframeSrc =  "./html/" + item.html;
                             item.folder = "./" + item.folder;
                             
                             // build the OPTION;
                             $option
                                 .html(item.title)
                                 // attach the data to this OPTION so when we can access it onChange;
-                                .data("config", item);
+                                .data(dataAttr, item);
                             
                             // put the OPTION in the OPTGROUP;
                             $optgroup.append($option);
@@ -51,13 +52,13 @@ jQuery(function ($) {
         })
         .on("change", function () {
             var $option = $(this).find("option:selected"),
-                config = $option.data().config;
+                config = $option.data()[dataAttr];
             
             // update the label;
             $h1.find("span").text($objects.val());
         
             // load this page or module;
-            $("iframe").prop("src", config.path);
+            $("iframe").prop("src", config.iframeSrc);
         
             // clear any previous files;
             $files.empty();
