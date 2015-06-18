@@ -12,6 +12,17 @@ module.exports = {
         "dist": dist,
         "docs": docs
     },
+    // web server and synchronised browser testing;
+    "browsersync": {
+        // configure what gets served;
+        "server": {
+            "baseDir": "./",  // set the root to be the base, this way we can go to docs, and build;
+            "directory": true // enable directory browsing;
+        },
+        // configure the URL to access the server;
+        "host": "localhost",
+        "port": 3000
+    },
     // generate HTML;
     "jade": {
         "pages": {
