@@ -55,8 +55,6 @@ module.exports = {
             "dest": docs + "/html"
         },
         "documentation": {
-            // include one entry per module, and pages;
-            "paths": [src + "/{modules,pages}/**/readme.md"],
             "template": src + "/pages/_docs/default.jade",
             "dest": docs
         }
