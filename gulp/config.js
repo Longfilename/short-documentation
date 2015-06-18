@@ -80,7 +80,7 @@ module.exports = {
         // the bundle is written to the following two locations;
         "output": {
             // order of files must be the same;
-            "build": [
+            "dist": [
                 "./" + dist + "/js/page-home.js", // make sure the documentation JS is overwritten in build;
                 "./" + dist + "/js/page-home.js",
                 "./" + dist + "/js/page-landing.js",
@@ -100,7 +100,7 @@ module.exports = {
         // where this common file is written to;
         // it's written to two places, but it's only read from one;
         "dest": {
-            "build": dist + "/js",
+            "dist": dist + "/js",
             "docs": docs + "/js"
         }
     }
