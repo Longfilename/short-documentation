@@ -1,30 +1,17 @@
 "use strict";
 
-var src   = "src",   // files to dev on;
-    build = "build", // where production ready files are written to;
-    docs  = "docs";  // where documentation files are written to;
-
-/*
-
-module jade:
-build: n/a
-docs-in:      /modules/folder1/folder2/module.jade
-docs-in:      /modules/folder1/folder2/module-filename.jade
-docs-exclude: !_*.jade, !demo.jade, !demo-*.jade
-docs-out:     /html/module-folder1-folder2.html
-docs-out:     /html/module-folder1-folder2-filename.html
-
-page jade:
-in:      /pages/folder1/folder2/page.jade
-in:      /pages/folder1/folder2/page-filename.jade
-exclude: !_*.jade, _docs/*
-out:     /html/page-folder1-folder2.html
-out:     /html/page-folder1-folder2-filename.html
-
-*/
-
+var src  = "src",  // files to dev on;
+    dist = "dist", // where production ready files are written to;
+    docs = "docs"; // where documentation files are written to;
 
 module.exports = {
+    // helper functions need these base values;
+    "src": src,
+    // delete documentation and the build;
+    "clean": {
+        "dist": dist,
+        "docs": docs
+    },
     // web server and synchronised browser testing;
     "browsersync": {
         // configure what gets served;
@@ -36,54 +23,60 @@ module.exports = {
         "host": "localhost",
         "port": 3000
     },
-    // delete documentation and the build;
-    "clean": {
-        "src": [build, docs]
+    // configure the watches for each gulp task we want to run;
+    "watch": {
+        "jade": [
+            src + "/**/*.jade",
+            src + "/**/_*.json"
+        ],
+        "scss": [
+            src + "/**/*.scss"
+        ],
+        "js":   [
+            src + "/**/*.js"
+        ],
+        "copy": [
+            src + "/**/*{txt,ico}",
+            src + "/fonts/*",
+            src + "/**/-*.json",
+            src + "/img/*",
+            "!" + src + "/img/sprite/**/!(icon-sprite.png)"
+        ]
     },
     // generate HTML;
     "jade": {
-        "documentation": {
-            // include one entry per module, and pages;
-            "paths": [src + "/{modules,pages}/**/readme.md"],
-            "template": src + "/pages/_docs/default.jade",
-            "dest": docs
-        },
-        // pages for the documentation and the build;
         "pages": {
-            // whenever any of these files change;
-            "watch":   [src + "/**/*.jade"],
             // these files will be compiled;
             // don't include partials (those are being included somewhere else);
             // and don't include the documentation pages;
             "compile": [src + "/pages/**/*.jade", "!" + src + "/pages/_docs/*", "!" + src + "/pages/**/_*.jade"],
-            // to this location (with the same path/filename);
+            // to this location (files will have a new filename);
             "dest": {
-                "build": build + "/html",
-                "docs":  docs + "/html"
-            },
-            // the filename is treated differently if we're dealing with the page in the documentation folder;
-            "documentation": "_docs"
+                "dist": dist + "/html",
+                "docs": docs + "/html"
+            }
         },
         // modules for the documentation (the build doesn't need individual modules);
         "modules": {
-            // need to know the folder to parse out;
-            // yeah, it's not likely to change, but if it does, we don't have to do it in two places;
-            "src": src,
             // for each demo.jade, we'll create a page for the module;
-            // this is the wrapper jade for the actual module;
-            "module": [src + "/modules/**/demo.jade"],
+            // this is the wrapper Jade for the module;
+            "module": [src + "/modules/**/demo*.jade"],
             // this is the iframe page we're putting the module into;
             "iframe": [src + "/pages/_docs/_iframe.jade"],
-            // and this is where the iframe HTML is deposited;
+            // and this is where the iframe HTML is compiled;
             "dest": docs + "/html"
+        },
+        "documentation": {
+            "template": src + "/pages/_docs/default.jade",
+            "dest": docs
         }
     },
     // generate CSS for the documentation and the build;
     "scss": {
         "compile": [src + "/scss/*.scss", "!" + src + "/scss/_*.scss"],
         "dest": {
-            "build": build + "/css",
-            "docs":  docs + "/css"
+            "dist": dist + "/css",
+            "docs": docs + "/css"
         },
         "maps": "./",
         // config for a plugin that fixes CSS with browser prefixes;
@@ -118,11 +111,11 @@ module.exports = {
         // the bundle is written to the following two locations;
         "output": {
             // order of files must be the same;
-            "build": [
-                "./" + build + "/js/page-home.js", // make sure the documentation JS is overwritten in build;
-                "./" + build + "/js/page-home.js",
-                "./" + build + "/js/page-landing.js",
-                "./" + build + "/js/page-article.js"
+            "dist": [
+                "./" + dist + "/js/page-home.js", // make sure the documentation JS is overwritten in build;
+                "./" + dist + "/js/page-home.js",
+                "./" + dist + "/js/page-landing.js",
+                "./" + dist + "/js/page-article.js"
             ],
             "docs": [
                 "./" + docs + "/js/page-documentation.js",
@@ -138,17 +131,16 @@ module.exports = {
         // where this common file is written to;
         // it's written to two places, but it's only read from one;
         "dest": {
-            "build": build + "/js",
+            "dist": dist + "/js",
             "docs": docs + "/js"
         }
     },
     // copy none generated files to the documentation and the build;
-    // i think we need a build and a doc version;
     "copy": {
         // copy over any remaining file types that aren't handled by the other tasks;
         // these aren't altered in anyway, it's a straight copy;
         "compile": {
-            "build": [
+            "dist": [
                 // include any text, or icon file (in the root);
                 src + "*.{txt,ico}",
                 // include the fonts;
@@ -169,13 +161,7 @@ module.exports = {
                 // include the fonts;
                 src + "/**/*.ttf",
                 // include the module and page files for display;
-                // and include only the JSON files used for Ajax;
-                src + "/**/-*.json",
-                src + "/**/_*.json",
-                src + "/**/*.md",
-                src + "/**/*.jade",
-                src + "/**/*.scss",
-                src + "/**/*.js",
+                src + "/**/*.{json,md,jade,scss,js}",
                 // get all images;
                 src + "/**/*.{gif,png,jpg,jpeg,svg,ico}",
                 // except generated images;
@@ -184,86 +170,16 @@ module.exports = {
                 "!" + src + "/img/sprite/",
                 "!" + src + "/img/sprite/*",
                 // and documentation pages;
-                "!" + src + "/**/demo.jade"
+                "!" + src + "/**/demo.jade",
+                // and includes (not visible through the docs anyway);
+                "!" + src + "/includes/*",
+                // and scss (not visible through the docs anyway);
+                "!" + src + "/scss/*"
             ]
         },
         "dest": {
-            "build": build,
-            "docs":  docs
-        }
-    },
-    // what files to watch once gulp is running;
-    "watch": {
-        "jade": [src + "/**/*.jade", src + "/**/_*.json"],
-        "scss": src + "/**/*.scss",
-        "js": src + "/**/*.js",
-        "copy": [
-            src + "/**/*{txt,ico}",
-            src + "/fonts/*",
-            src + "/**/-*.json",
-            src + "/img/*",
-            "!" + src + "/img/sprite/**/!(icon-sprite.png)"
-        ]
-        //"sprites": src + "/images/sprites/*"
-    },
-    
-    
-    
-    sprites: {
-        src: src + "/images/sprites/*.png",
-        dest: {
-            css: src + "/sass/",
-            image: src + "/images/"
-        },
-        options: {
-            cssName: "_sprites.scss",
-            cssFormat: "css",
-            cssOpts: {
-                cssClass: function (item) {
-                    // If this is a hover sprite, name it as a hover one (e.g. "home-hover" -> "home:hover")
-                    if (item.name.indexOf("-hover") !== -1) {
-                        return ".icon-" + item.name.replace("-hover", ":hover");
-                        // Otherwise, use the name as the selector (e.g. "home" -> "home")
-                    } else {
-                        return ".icon-" + item.name;
-                    }
-                }
-            },
-            imgName: "icon-sprite.png",
-            imgPath: "../images/icon-sprite.png"
-        }
-    },
-    optimize: {
-        css: {
-            src: build + "/css/*.css",
-            dest: build + "/css/",
-            options: {
-                keepSpecialComments: 0
-            }
-        },
-        js: {
-            src: build + "/js/*.js",
-            dest: build + "/js/",
-            options: {}
-        },
-        images: {
-            src: [
-                src + "/images/**",
-                "!" + src + "/images/sprites/**/!(icon-sprite.png)"
-            ],
-            dest: build + "/images",
-            options: {
-                optimizationLevel: 3,
-                progessive: true,
-                interlaced: true
-            }
-        },
-        html: {
-            src: build + "/**/*.html",
-            dest: build,
-            options: {
-                collapseWhitespace: true
-            }
+            "dist": dist,
+            "docs": docs
         }
     }
 };
