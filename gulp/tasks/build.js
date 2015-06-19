@@ -1,38 +1,34 @@
-var gulp        = require("gulp"),
-    runSequence = require("run-sequence");
+var gulp = require("gulp"),
+    run  = require("run-sequence"); // run gulp tasks in sequence;
 
 // run both dist and docs builds;
 gulp.task("build", function (callback) {
-    // first run clean;
-    runSequence(
+    run(
         "build:dist",
         "build:docs",
-        // then do the callback;
         callback
     );
 });
 
 // run all tasks needed for a build (in order);
 gulp.task("build:dist", function (callback) {
-    // first run clean;
-    runSequence(
+    run(
         "clean:dist",
         "jade:dist",
         "js:dist",
         "scss:dist",
-        // then do the callback;
+        "copy:dist",
         callback
     );
 });
 
 gulp.task("build:docs", function (callback) {
-    // first run clean;
-    runSequence(
+    run(
         "clean:docs",
         "jade:docs",
         "js:docs",
         "scss:docs",
-        // then do the callback;
+        "copy:docs",
         callback
     );
 });

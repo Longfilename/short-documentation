@@ -114,5 +114,58 @@ module.exports = {
             "dist": dist + "/js",
             "docs": docs + "/js"
         }
+    },
+    // copy none generated files to the documentation and the build;
+    "copy": {
+        // copy over any remaining file types that aren't handled by the other tasks;
+        // these aren't altered in anyway, it's a straight copy;
+        "compile": {
+            "dist": [
+                // include any text, or icon file (in the root);
+                src + "*.{txt,ico}",
+                // include the fonts;
+                src + "/**/*.ttf",
+                // and include only the JSON files used for Ajax;
+                src + "/**/-*.json",
+                // get all images;
+                src + "/**/*.{gif,png,jpg,jpeg,svg,ico}",
+                // except generated images;
+                "!" + src + "/img/sprite/**/!(icon-sprite.png)",
+                // and their source material;
+                "!" + src + "/img/sprite/",
+                "!" + src + "/img/sprite/*"
+            ],
+            "docs": [
+                // include any text, or icon file (in the root);
+                src + "*.{txt,ico}",
+                // include the fonts;
+                src + "/**/*.ttf",
+                // include the module and page files for display;
+                // and include only the JSON files used for Ajax;
+                src + "/**/-*.json",
+                src + "/**/_*.json",
+                src + "/**/*.md",
+                src + "/**/*.jade",
+                src + "/**/*.scss",
+                src + "/**/*.js",
+                // get all images;
+                src + "/**/*.{gif,png,jpg,jpeg,svg,ico}",
+                // except generated images;
+                "!" + src + "/img/sprite/**/!(icon-sprite.png)",
+                // and their source material;
+                "!" + src + "/img/sprite/",
+                "!" + src + "/img/sprite/*",
+                // and documentation pages;
+                "!" + src + "/**/demo.jade",
+                // and includes (not visible through the docs anyway);
+                "!" + src + "/includes/*",
+                // and scss (not visible through the docs anyway);
+                "!" + src + "/scss/*"
+            ]
+        },
+        "dest": {
+            "dist": dist,
+            "docs": docs
+        }
     }
 };
