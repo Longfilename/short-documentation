@@ -27,7 +27,7 @@ jQuery(function ($) {
                     
                     // if this is a JSON file, we need to stringify the response;
                     if (extension === "json") {
-                        content = JSON.stringify(data, null, "\t");
+                        content = JSON.stringify(data, null, "    ");
                     // JS files come back as an object;
                     } else if (extension === "js") {
                         content = data.responseText;

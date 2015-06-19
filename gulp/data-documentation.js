@@ -58,11 +58,11 @@ module.exports = function () {
             // for each folder, this is the data we store about it;
             var item = {
                     // array of each file type for this folder (page or module);
+                    "md":   [], // markdown is first so it'll be the default view when selecting a page/module;
                     "json": [],
                     "jade": [],
                     "js":   [],
                     "scss": [],
-                    "md":   [],
                     "jadeArray": [],     // temp storage of all Jade files, but there's only one "page" per entry;
                     "html":   "[empty]", // html page to load in the iframe;
                     "folder": "[empty]", // folder + filename (in the arrays above) generate a path to all files;
