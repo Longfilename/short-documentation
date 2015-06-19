@@ -23,7 +23,7 @@ module.exports = function () {
         // rename file;
         renameFile = function (file, folder, prefix) {
             var newFilename = "",
-                folderArray  = folder.split("/").splice(1);
+                folderArray  = folder.split("/");
             
             // myFolder/myPage/page.jade                 --> page-myFolder-myPage.html
             // myFolder/myPage/_helper.jade              --> _helper.jade
@@ -39,6 +39,8 @@ module.exports = function () {
                     newFilename = (newFilename === "") ? folder : newFilename + "-" + folder;
                 });
                 
+                // remove the parent folder;
+                newFilename = newFilename.replace(config.src + "-", "");
                 // remove instances of demo, module, and page;
                 newFilename = newFilename + file.replace("demo", "").replace(prefix, "");
                 // change it from a jade to html page;
@@ -61,11 +63,15 @@ module.exports = function () {
                     "js":   [],
                     "scss": [],
                     "md":   [],
-                    "jadeArray": [],   // temp storage of all Jade files, but there's only one "page" per entry;
-                    "html": "[empty]", // html page to load in the iframe;
-                    "folder": folder,  // folder + filename (in the arrays above) generate a path to all files;
-                    "title": "[empty]" // used in the SELECT for pages/modules;
+                    "jadeArray": [],     // temp storage of all Jade files, but there's only one "page" per entry;
+                    "html":   "[empty]", // html page to load in the iframe;
+                    "folder": "[empty]", // folder + filename (in the arrays above) generate a path to all files;
+                    "title":  "[empty]"  // used in the SELECT for pages/modules;
                 };
+            
+            // remove the src folder from the path;
+            // we want to load doc file, not src files in the documentation app; 
+            item.folder = folder.replace(config.src + "/", "");
             
             // if we're not in the documentation folder;
             // and if we have files, loop through them;
@@ -111,7 +117,7 @@ module.exports = function () {
             // each jade entry equals one page entry (unless that jade file has an _ in it);
             item.jade.map(function (newItem, index) {
                 // make a copy of the object so we can manipulate it and still loop through the original content;
-                var itemClone = newObject = JSON.parse(JSON.stringify(item));
+                var itemClone = JSON.parse(JSON.stringify(item));
                 
                 // since we're creating one entry per HTML page;
                 // set the page title of this one to that index (this one is 1, next one is 2, etc.);

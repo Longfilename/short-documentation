@@ -28,7 +28,7 @@ jQuery(function ($) {
                             // need to make some adjustments to the data;
                             // don't want these parts of the path during Jade processing;
                             item.iframeSrc =  "./html/" + item.html;
-                            item.folder = "./" + item.folder;
+                            item.folder = item.folder;
                             
                             // build the OPTION;
                             $option
@@ -72,12 +72,12 @@ jQuery(function ($) {
                         $optgroup = $("<optgroup label='" + key + "' />"),
                         // each file gets an OPTION;
                         $option;
-                
+                    
                     // loop through the files (if there are any);
                     keyData.length && keyData.map(function (file) {
                         // create an OPTION;
                         $option = $("<option />");
-                        $option.html(config.folder + file);
+                        $option.html(config.folder + "/" + file);
                         // and add it to this OPTGROUP;
                         $optgroup.append($option);
                     });

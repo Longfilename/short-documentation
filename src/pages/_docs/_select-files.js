@@ -29,7 +29,7 @@ jQuery(function ($) {
                     if (extension === "json") {
                         content = JSON.stringify(data, null, "\t");
                     // JS files come back as an object;
-                    } else if (urlType === "js") {
+                    } else if (extension === "js") {
                         content = data.responseText;
                     }
                     
