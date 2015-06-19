@@ -39,14 +39,14 @@ div.col-banner {
 }
 div.col-iframe {
     box-sizing: content-box;
-    flex: 2;
+    flex: 1;
     order: 1;
     padding: 16px;
     position: relative;
     overflow: hidden;
 }
 div.col-readme {
-    flex: 1;
+    flex: 0 0 768px;
     order: 2;
     background: #fdf6e3;
     overflow: hidden;
