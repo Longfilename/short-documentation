@@ -23,6 +23,26 @@ module.exports = {
         "host": "localhost",
         "port": 3000
     },
+    // configure the watches for each gulp task we want to run;
+    "watch": {
+        "jade": [
+            src + "/**/*.jade",
+            src + "/**/_*.json"
+        ],
+        "scss": [
+            src + "/**/*.scss"
+        ],
+        "js":   [
+            src + "/**/*.js"
+        ],
+        "copy": [
+            src + "/**/*{txt,ico}",
+            src + "/fonts/*",
+            src + "/**/-*.json",
+            src + "/img/*",
+            "!" + src + "/img/sprite/**/!(icon-sprite.png)"
+        ]
+    },
     // generate HTML;
     "jade": {
         "pages": {
@@ -141,13 +161,7 @@ module.exports = {
                 // include the fonts;
                 src + "/**/*.ttf",
                 // include the module and page files for display;
-                // and include only the JSON files used for Ajax;
-                src + "/**/-*.json",
-                src + "/**/_*.json",
-                src + "/**/*.md",
-                src + "/**/*.jade",
-                src + "/**/*.scss",
-                src + "/**/*.js",
+                src + "/**/*.{json,md,jade,scss,js}",
                 // get all images;
                 src + "/**/*.{gif,png,jpg,jpeg,svg,ico}",
                 // except generated images;

@@ -13,6 +13,33 @@ var gulp          = require("gulp"),
     run           = require("run-sequence"),        // run gulp tasks in sequence;
     handleErrors  = require("../handle-errors"); // function to fire on error;
 
+// start the chain to execute all the SCSS tasks;
+gulp.task("scss", function (callback) {
+    run(
+        "scss:dist",
+        "scss:docs",
+        callback
+    );
+});
+
+// build the CSS files for the distribution build;
+gulp.task("scss:dist", function (callback) {
+    compileConfig.destination = config.dest.dist;
+    run(
+        "scss:compile",
+        callback
+    );
+});
+
+// build the CSS files for the docs build;
+gulp.task("scss:docs", function (callback) {
+    compileConfig.destination = config.dest.docs;
+    run(
+        "scss:compile",
+        callback
+    );
+});
+
 // generate CSS from SCSS (run sprites first so it can generate its SCSS file);
 gulp.task("scss:compile", function () {
     // don’t write sourcemaps of sourcemaps;
@@ -41,31 +68,4 @@ gulp.task("scss:compile", function () {
         .pipe(size())
         // finally put the compiled CSS into a CSS file;
         .pipe(gulp.dest(compileConfig.destination));
-});
-
-// start the chain to execute all the SCSS tasks;
-gulp.task("scss", function (callback) {
-    run(
-        "scss:dist",
-        "scss:docs",
-        callback
-    );
-});
-
-// build the CSS files for the distribution build;
-gulp.task("scss:dist", function (callback) {
-    compileConfig.destination = config.dest.dist;
-    run(
-        "scss:compile",
-        callback
-    );
-});
-
-// build the CSS files for the docs build;
-gulp.task("scss:docs", function (callback) {
-    compileConfig.destination = config.dest.docs;
-    run(
-        "scss:compile",
-        callback
-    );
 });

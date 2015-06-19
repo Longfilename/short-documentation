@@ -1,3 +1,10 @@
-var gulp = require("gulp");
+var gulp = require("gulp"),
+    run  = require("run-sequence"); // run gulp tasks in sequence;;
 
-gulp.task("default", ["browsersync"]);
+gulp.task("default", function (callback) {
+    run(
+        "browsersync",
+        "watch",
+        callback
+    );
+});
