@@ -3,20 +3,21 @@
   "version": "1.0.0",
   "description": "ShortDocumentation is yet another front-end framework.",
   "private": true,
-  "scripts": {
-    "start": "node ./server/server",
-    "postinstall": "bower install"
+  "jspm": {
+    "directories": {},
+    "dependencies": {
+      "bootstrap-sass": "npm:bootstrap-sass@^3.3.5",
+      "breakpoint-sass": "npm:breakpoint-sass@^2.6.1",
+      "jquery": "github:components/jquery@^2.1.4"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "core-js": "npm:core-js@^0.9.4"
+    }
   },
-  "browserify": {
-    "transform": [
-      "babelify",
-      "browserify-handlebars",
-      "browserify-shim"
-    ]
-  },
-  "browser": {},
-  "browserify-shim": {},
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "babelify": "^5.0.4",
     "bower": "^1.3.12",
     "browser-sync": "^2.2.3",
@@ -49,20 +50,12 @@
     "gulp-useref": "^1.1.1",
     "gulp-util": "^3.0.4",
     "gulp.spritesmith": "^3.5.3",
+    "jspm": "^0.15.7",
     "lazypipe": "^0.2.3",
     "mkdirp": "^0.5.0",
     "require-dir": "^0.1.0",
     "run-sequence": "^1.1.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
-  },
-  "devDependencies": {
-    "bootstrap-sass": "^3.3.4",
-    "breakpoint-sass": "^2.6.1",
-    "jquery": "^2.1.4"
-  },
-  "engines": {
-    "node": ">=0.12.0",
-    "npm": "2.x"
   }
 }
