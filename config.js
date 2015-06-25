@@ -1,4 +1,5 @@
 System.config({
+  "baseURL": "/",
   "transpiler": "babel",
   "babelOptions": {
     "optional": [
@@ -9,6 +10,46 @@ System.config({
     "*": "*.js",
     "github:*": "jspm_packages/github/*.js",
     "npm:*": "jspm_packages/npm/*.js"
+  },
+  "bundles": {
+    "dist/js/all": [
+      "github:components/jquery@2.1.4/jquery",
+      "src/js/_library1",
+      "src/js/_library2",
+      "src/modules/list/ajax/module",
+      "src/js/_library3",
+      "src/modules/list/_common",
+      "src/modules/list/templated/_logic",
+      "src/pages/contact-form/page",
+      "src/modules/carousel/home/module",
+      "src/pages/landing/page",
+      "src/pages/search-results/page",
+      "github:components/jquery@2.1.4",
+      "src/modules/header/module",
+      "src/modules/list/templated/module",
+      "src/pages/home/page",
+      "src/modules/footer/module",
+      "src/pages/article/page",
+      "src/js/all"
+    ],
+    "docs/js/all": [
+      "github:components/jquery@2.1.4/jquery",
+      "src/js/_library1",
+      "src/js/_library2",
+      "src/modules/list/ajax/module",
+      "src/js/_library3",
+      "src/pages/contact-form/page",
+      "src/modules/carousel/home/module",
+      "src/pages/landing/page",
+      "src/pages/search-results/page",
+      "github:components/jquery@2.1.4",
+      "src/modules/header/module",
+      "src/modules/list/templated/module",
+      "src/pages/home/page",
+      "src/modules/footer/module",
+      "src/pages/article/page",
+      "src/js/all"
+    ]
   }
 });
 

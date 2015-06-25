@@ -95,11 +95,9 @@ module.exports = {
     },
     // concatenate JS files for the documentation and the build;
     "js": {
-        "common": "src/js/common.js",
         // which files to process;
         "src": [
             "src/js/**/*.js",
-            "src/pages/**/*.js",
             // don't parse any files in a folder that starts with an underscore;
             // and don't parse any files that start with an underscore;
             "!**/_*.js",
