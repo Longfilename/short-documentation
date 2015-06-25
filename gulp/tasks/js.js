@@ -18,6 +18,8 @@ var gulp          = require("gulp"),
     plumber       = require("gulp-plumber"),        // error trapping so an error doesn't kill Gulp;
     handleErrors  = require("../handle-errors");    // function to fire on error;
 
+var file = require("file");
+
 // start the chain to execute all the JS tasks;
 gulp.task("js", function (callback) {
     run(
@@ -123,3 +125,55 @@ gulp.task("js:compile", function () {
             "stream": true
         }));
 });
+
+gulp.task("js:xxx", function () {
+        // all the config we need for browserify;
+    var fileArray = {
+            // the input files;
+            "input": [],
+            // and where we want them built;
+            "output": {
+                "dist": [],
+                "docs": []
+            }
+        },
+        // what to do with each folder we're looking through;
+        parseFolder = function (folder, dirs, files) {
+            // if we have files, loop through them;
+            (files.length) && files.forEach(function (file, index) {
+                var path, filename;
+                
+                // if we're actually dealing with a JS file (that doesn't start with an underscore);
+                if (file.indexOf(".js") > 0 && file.indexOf("_") !== 0) {
+                    filename = file;
+                    // now remove the part of the path we don't care about (src/page by default);
+                    path = folder.replace(config.xxxPaths.input, "") + "/";
+                    // create the proper path to the file;
+                    path = config.xxxPaths.input + path + filename;
+                    // save this file for browerify to use as an input;
+                    fileArray.input.push(path);
+                    
+                    // generate the filename we'll publish as (for both dist and docs);
+                    // /folder1/folder2/page.js ==> page-folder1-folder2.js;
+                    path = folder.replace(config.xxxPaths.input, "");
+                    filename = "page-" + path.replace("_", "-").replace(/\//g, "-") + ".js";
+                    
+                    path = config.xxxPaths.output.dist + filename;
+                    fileArray.output.dist.push(path);
+                    
+                    path = config.xxxPaths.output.docs + filename;
+                    fileArray.output.docs.push(path);
+                }
+            });
+        };
+    
+    // go through the file system, grab all data JSON files and put the values into this object;
+    file.walkSync(config.xxxPaths.input, parseFolder);
+    
+    console.log(fileArray);
+    
+    // return all the data we collected;
+    return fileArray;
+});
+
+

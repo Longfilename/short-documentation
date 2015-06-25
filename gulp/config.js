@@ -96,13 +96,14 @@ module.exports = {
     // concatenate JS files for the documentation and the build;
     "js": {
         // which files to process;
-        "xsrc": [
-            "src/js/**/*.js",
-            // don't parse any files in a folder that starts with an underscore;
-            // and don't parse any files that start with an underscore;
-            "!**/_*.js",
-            "!_**/*.js"
-        ],
+        "xxx": "src/pages/**/*.js",
+        "xxxPaths": {
+            "input": src + "/pages/",
+            "output": {
+                "dist": dist + "/js/",
+                "docs": docs + "/js/"
+            }
+        },
         // enable source maps;
         "debug": true,
         // enable file names and size reporting in the console;
