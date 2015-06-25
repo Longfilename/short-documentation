@@ -96,14 +96,48 @@ module.exports = {
     // concatenate JS files for the documentation and the build;
     "js": {
         // which files to process;
-        "src": [
+        "xsrc": [
             "src/js/**/*.js",
             // don't parse any files in a folder that starts with an underscore;
             // and don't parse any files that start with an underscore;
             "!**/_*.js",
             "!_**/*.js"
         ],
-        // where to put the compiled files;
+        // enable source maps;
+        "debug": true,
+        // enable file names and size reporting in the console;
+        "showFiles": {
+            "showFiles": true
+        },
+        // a separate bundle will be generated for each item;
+        "input": [
+            "./" + src + "/pages/_docs/page.js",
+            "./" + src + "/pages/home/page.js",
+            "./" + src + "/pages/landing/page.js",
+            "./" + src + "/pages/article/page.js"
+        ],
+        // the bundle is written to the following two locations;
+        "output": {
+            // order of files must be the same;
+            "dist": [
+                "./" + dist + "/js/page-home.js", // make sure the documentation JS is overwritten in build;
+                "./" + dist + "/js/page-home.js",
+                "./" + dist + "/js/page-landing.js",
+                "./" + dist + "/js/page-article.js"
+            ],
+            "docs": [
+                "./" + docs + "/js/page-documentation.js",
+                "./" + docs + "/js/page-home.js",
+                "./" + docs + "/js/page-landing.js",
+                "./" + docs + "/js/page-article.js"
+            ]
+        },
+        // name the bundle that will contain common JS (shared across multiple bundles);
+        "common": "common.js",
+        // where this common file lives (for the build process);
+        "src": "./" + src + "/js",
+        // where this common file is written to;
+        // it's written to two places, but it's only read from one;
         "dest": {
             "dist": dist + "/js",
             "docs": docs + "/js"

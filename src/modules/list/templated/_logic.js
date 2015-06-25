@@ -1,4 +1,4 @@
-import jQuery from "jquery";
+var jQuery = window.jQuery;
 
 jQuery(function () {
     console.log("list-templated logic");

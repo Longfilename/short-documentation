@@ -1,4 +1,4 @@
-import jQuery from "jquery";
+var jQuery = window.jQuery;
 import lib2 from "../../js/_library2";
 
 jQuery(function () {
