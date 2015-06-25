@@ -1,2 +1,2 @@
-require("../../modules/footer/module");
-require("../../modules/header/module");
+require("../modules/footer/module");
+require("../modules/header/module");

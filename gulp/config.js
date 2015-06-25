@@ -96,7 +96,14 @@ module.exports = {
     // concatenate JS files for the documentation and the build;
     "js": {
         // which files to process;
-        "src": ["src/pages/**/*.js", "!src/pages/**/_*.js", "!src/pages/_**/*.js"],
+        "src": [
+            "src/js/**/*.js",
+            "src/pages/**/*.js",
+            // don't parse any files in a folder that starts with an underscore;
+            // and don't parse any files that start with an underscore;
+            "!**/_*.js",
+            "!_**/*.js"
+        ],
         // where to put the compiled files;
         "dest": {
             "dist": dist + "/js",

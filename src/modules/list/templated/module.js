@@ -1,5 +1,5 @@
 import jQuery from "jquery";
-import lib3 from "../../../js/library3";
+import lib3 from "../../../js/_library3";
 
 require("../_common");
 require("./_logic");

@@ -49,9 +49,16 @@ gulp.task("js:compile", function () {
             {
                 templateData: {
                     generateCommand: function (file) {
-                        var input = file.path.toString().replace(file.cwd + "/", "").replace(".js", "");
-                        var output = compileConfig.dest + "/" + rename(file);
-                        var command = "jspm bundle-sfx " + input + " " + output;
+                        var input, output, command;
+                        
+                        // file to parse;
+                        input = file.path.toString().replace(file.cwd + "/", "").replace(".js", "");
+                        // where to put the generated content;
+                        // if this file came from the /js/ folder, leave the filename alone;
+                        output = (file.path.toString().indexOf("/js/") > -1) ? "common.js" : rename(file);
+                        output = compileConfig.dest + "/" + output;
+                        // command to generate the compiled JS;
+                        command = "jspm bundle-sfx " + input + " " + output;
                         
                         return command;
                     }
