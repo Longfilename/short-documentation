@@ -95,6 +95,7 @@ module.exports = {
     },
     // concatenate JS files for the documentation and the build;
     "js": {
+        "common": "src/js/common.js",
         // which files to process;
         "src": [
             "src/js/**/*.js",
