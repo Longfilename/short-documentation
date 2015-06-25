@@ -1,5 +1,5 @@
-var jQuery = window.jQuery = require("jquery");
+import jQuery from "jquery";
 
-jQuery(function ($) {
+jQuery(function () {
     console.log("list-templated logic");
 });
