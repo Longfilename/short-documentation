@@ -126,11 +126,19 @@ gulp.task("js:compile", function () {
         }));
 });
 
+// concat all the JS files;
 gulp.task("js:xxx", function () {
+    console.log(xxx());
+});
+
+var xxx = function () {
         // all the config we need for browserify;
     var fileArray = {
             // the input files;
-            "input": [],
+            "input": {
+                "dist": [],
+                "docs": []
+            },
             // and where we want them built;
             "output": {
                 "dist": [],
@@ -151,15 +159,22 @@ gulp.task("js:xxx", function () {
                     // create the proper path to the file;
                     path = config.xxxPaths.input + path + filename;
                     // save this file for browerify to use as an input;
-                    fileArray.input.push(path);
+                    fileArray.input.docs.push(path);
+                    
+                    // don't save the documentation JS in the dist;
+                    if (path.indexOf("docs") === -1) {
+                        fileArray.input.dist.push(path);
+                    }
                     
                     // generate the filename we'll publish as (for both dist and docs);
                     // /folder1/folder2/page.js ==> page-folder1-folder2.js;
                     path = folder.replace(config.xxxPaths.input, "");
                     filename = "page-" + path.replace("_", "-").replace(/\//g, "-") + ".js";
                     
-                    path = config.xxxPaths.output.dist + filename;
-                    fileArray.output.dist.push(path);
+                    if (path.indexOf("docs") === -1) {
+                        path = config.xxxPaths.output.dist + filename;
+                        fileArray.output.dist.push(path);
+                    }
                     
                     path = config.xxxPaths.output.docs + filename;
                     fileArray.output.docs.push(path);
@@ -170,10 +185,8 @@ gulp.task("js:xxx", function () {
     // go through the file system, grab all data JSON files and put the values into this object;
     file.walkSync(config.xxxPaths.input, parseFolder);
     
-    console.log(fileArray);
-    
     // return all the data we collected;
     return fileArray;
-});
+};
 
 
