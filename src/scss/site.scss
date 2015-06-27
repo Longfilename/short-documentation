@@ -1,17 +1,17 @@
-@import "../../node_modules/breakpoint-sass/stylesheets/breakpoint";
+@import "../../node_modules/breakpoint-sass/stylesheets/breakpoint"; // mixin to allow breakpoint specific styles;
 
-@import "./bootstrap";     // customized bootstrap;
-@import "./variables";     // sitewide variables and mixins, based on settings in bootstrap;
-@import "./mixins";
-@import "./reset";
-@import "./base";
-@import "./fonts";
-@import "./layout";
+@import "./bootstrap";       // customized bootstrap;
+@import "./variables";       // sitewide variables, may be based on settings in bootstrap;
+@import "./bootstrap-reset"; // change base bootstrap styles;
+@import "./mixins";          // sitewide mixins;
+@import "./fonts";           // custom fonts;
+@import "./base";            // base styles; needed? isn't that what bootstrap is for?
+@import "./layout";          // sitewide structural (not content) styles;
 
+// import all module styles;
 @import "../modules/carousel/home/module";
 @import "../modules/footer/module";
 @import "../modules/header/module";
 @import "../modules/list/module";
 @import "../modules/list/ajax/module";
 @import "../modules/list/templated/module";
-

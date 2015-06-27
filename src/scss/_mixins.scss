@@ -1,3 +1,4 @@
+// change bootstap clearfix (it uses overflow which causes problems in older browsers);
 @mixin clearfix () {
     &:before,
     &:after {
