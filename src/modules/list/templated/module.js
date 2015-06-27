@@ -1,4 +1,4 @@
-var jQuery = window.jQuery;
+import jQuery from "jQuery"
 import lib3 from "../../../js/_library3";
 
 import common from "../_common";
