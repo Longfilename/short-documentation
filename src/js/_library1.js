@@ -1,5 +1,5 @@
 import jQuery from "jQuery"
 
 jQuery(function () {
-    console.log("list-templated logic");
+    console.log("lib1");
 });

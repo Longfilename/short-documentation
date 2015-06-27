@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+    head
+        - var title = "Article Page (Red-Purple)"
+        include ../../../includes/head
+    body
+        div.container-fluid
+            include ../../../modules/header/module
+            div.row
+                div.col-xs-12.col-md-8
+                    main
+                        h1 Red-Purple article title
+                        include ./_content
+                div.col-xs-12.col-md-4
+                    p related content
+            include ../../../modules/footer/module
+        
+        include ../../../includes/scripts
+        script(src="../js/page-article-red.js")

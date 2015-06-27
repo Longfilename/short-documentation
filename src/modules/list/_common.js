@@ -1,5 +1,5 @@
-var jQuery = window.jQuery = require("jquery");
+import jQuery from "jQuery"
 
-jQuery(function ($) {
+jQuery(function () {
     console.log("list common");
 });
