@@ -1,24 +1,19 @@
 var gulp          = require("gulp"),
     config        = require("../config").js,
-    compileConfig = {
-        "outputs": config.output.dist,
-        "destination": config.dest.dist
-    },
-    babelify      = require("babelify"),
-    browserSync   = require("browser-sync"),
-    browserify    = require("browserify"),
-    buffer        = require("vinyl-buffer"),
-    factor        = require("factor-bundle"),
-    size          = require("gulp-size"),
-    source        = require("vinyl-source-stream"),
-    path          = require("path"),
-    fs            = require("fs"),
-    mkdirp        = require("mkdirp"),
+    babelify      = require("babelify"),            // ES6 to ES5 conversion;
+    browserSync   = require("browser-sync"),        // inform the browser what's going on;
+    browserify    = require("browserify"),          // transcode JS;
+    buffer        = require("vinyl-buffer"),        // not 100% sure;
+    factor        = require("factor-bundle"),       // extract common js functions into a global file;
+    size          = require("gulp-size"),           // report on filesize of gulp streams;
+    source        = require("vinyl-source-stream"), // adds a file to a gulp stream;
+    fs            = require("fs"),                  // allows us to walk a filesystem (and create empty files);
+    mkdirp        = require("mkdirp"),              // make directories (so we can make files);
     run           = require("run-sequence"),        // run gulp tasks in sequence;
     plumber       = require("gulp-plumber"),        // error trapping so an error doesn't kill Gulp;
-    handleErrors  = require("../handle-errors");    // function to fire on error;
-
-var file = require("file");
+    handleErrors  = require("../handle-errors"),    // function to fire on error;
+    pages         = require("../data-pages")(),     // get the pages for browserify to work with;
+    compileConfig = {};                             // configuration for dist/docs settings;
 
 // start the chain to execute all the JS tasks;
 gulp.task("js", function (callback) {
@@ -32,8 +27,9 @@ gulp.task("js", function (callback) {
 // build the JS files for the distribution build;
 gulp.task("js:dist", function (callback) {
     compileConfig = {
-        "outputs": config.output.dist,
-        "destination": config.dest.dist
+        "input": pages.input.dist,
+        "output": pages.output.dist,
+        "destination": config.paths.dest.dist
     };
     run(
         "js:empty:folders",
@@ -46,8 +42,9 @@ gulp.task("js:dist", function (callback) {
 // build the JS files for the docs build;
 gulp.task("js:docs", function (callback) {
     compileConfig = {
-        "outputs": config.output.docs,
-        "destination": config.dest.docs
+        "input": pages.input.docs,
+        "output": pages.output.docs,
+        "destination": config.paths.dest.docs
     };
     run(
         "js:empty:folders",
@@ -58,6 +55,7 @@ gulp.task("js:docs", function (callback) {
 });
 
 // create empty folders, so we can put empty files in them;
+// this will only build the dist or docs at a time - as specified by compileConfig;
 gulp.task("js:empty:folders", function () {
     mkdirp.sync(compileConfig.destination, function (err) {
         if (err) {
@@ -67,9 +65,10 @@ gulp.task("js:empty:folders", function () {
 });
 
 // create empty files so factor-bundle has files to work with;
+// this will only build the dist or docs at a time - as specified by compileConfig;
 gulp.task("js:empty:files", function () {
     // merge the path and filename so Node knows what file to create;
-    var files = compileConfig.outputs.concat("./" + compileConfig.destination + "/" + config.common);
+    var files = compileConfig.output.concat(compileConfig.destination + "/" + config.common);
     
     // for each file in the array;
     files.forEach(function (filename) {
@@ -88,7 +87,7 @@ gulp.task("js:compile", function () {
     browserSync.notify("Compiling JS");
     
     return browserify({
-            "entries": config.input,
+            "entries": compileConfig.input,
             "extensions": ['.js', '.json', '.es6']
         })
         .transform(babelify.configure({
@@ -100,8 +99,8 @@ gulp.task("js:compile", function () {
         // opts.entries or opts.e should be the array of entry files to create a page-specific bundle for each file.
         // If you don't pass in an opts.entries, this information is gathered from browserify itself.
         .plugin(factor, {
-            "entries": config.input,
-            "outputs": compileConfig.outputs
+            "entries": compileConfig.input,
+            "outputs": compileConfig.output
         })
         // turn stream of files into a vinyl object (so gulp can play with it); 
         .bundle()
@@ -116,7 +115,9 @@ gulp.task("js:compile", function () {
             "errorHandler": handleErrors
         }))
         // report the size;
-        .pipe(size(config.showFiles))
+        .pipe(size({
+            "showFiles": config.reportFilesizes
+        }))
         // finally put the compiled js;
         // and the docs folder;
         .pipe(gulp.dest(compileConfig.destination))
@@ -125,68 +126,3 @@ gulp.task("js:compile", function () {
             "stream": true
         }));
 });
-
-// concat all the JS files;
-gulp.task("js:xxx", function () {
-    console.log(xxx());
-});
-
-var xxx = function () {
-        // all the config we need for browserify;
-    var fileArray = {
-            // the input files;
-            "input": {
-                "dist": [],
-                "docs": []
-            },
-            // and where we want them built;
-            "output": {
-                "dist": [],
-                "docs": []
-            }
-        },
-        // what to do with each folder we're looking through;
-        parseFolder = function (folder, dirs, files) {
-            // if we have files, loop through them;
-            (files.length) && files.forEach(function (file, index) {
-                var path, filename;
-                
-                // if we're actually dealing with a JS file (that doesn't start with an underscore);
-                if (file.indexOf(".js") > 0 && file.indexOf("_") !== 0) {
-                    filename = file;
-                    // now remove the part of the path we don't care about (src/page by default);
-                    path = folder.replace(config.xxxPaths.input, "") + "/";
-                    // create the proper path to the file;
-                    path = config.xxxPaths.input + path + filename;
-                    // save this file for browerify to use as an input;
-                    fileArray.input.docs.push(path);
-                    
-                    // don't save the documentation JS in the dist;
-                    if (path.indexOf("docs") === -1) {
-                        fileArray.input.dist.push(path);
-                    }
-                    
-                    // generate the filename we'll publish as (for both dist and docs);
-                    // /folder1/folder2/page.js ==> page-folder1-folder2.js;
-                    path = folder.replace(config.xxxPaths.input, "");
-                    filename = "page-" + path.replace("_", "-").replace(/\//g, "-") + ".js";
-                    
-                    if (path.indexOf("docs") === -1) {
-                        path = config.xxxPaths.output.dist + filename;
-                        fileArray.output.dist.push(path);
-                    }
-                    
-                    path = config.xxxPaths.output.docs + filename;
-                    fileArray.output.docs.push(path);
-                }
-            });
-        };
-    
-    // go through the file system, grab all data JSON files and put the values into this object;
-    file.walkSync(config.xxxPaths.input, parseFolder);
-    
-    // return all the data we collected;
-    return fileArray;
-};
-
-

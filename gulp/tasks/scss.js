@@ -1,8 +1,5 @@
 var gulp          = require("gulp"),
-    config        = require("../config").scss,   // configuration for this module;
-    compileConfig = {
-        "destination": config.dest.dist
-    },
+    config        = require("../config").scss,
     plumber       = require("gulp-plumber"),        // error trapping so an error doesn't kill Gulp;
     browserSync   = require("browser-sync"),        // update content in the browser;
     sass          = require("gulp-sass"),           // SCSS to CSS conversion;
@@ -11,7 +8,8 @@ var gulp          = require("gulp"),
     sourcemaps    = require("gulp-sourcemaps"),     // generate source maps for the SCSS;
     size          = require("gulp-size"),           // report on file sizes;
     run           = require("run-sequence"),        // run gulp tasks in sequence;
-    handleErrors  = require("../handle-errors"); // function to fire on error;
+    handleErrors  = require("../handle-errors"),    // function to fire on error;
+    compileConfig = {};                             // contain settings for dist/docs compilation;
 
 // start the chain to execute all the SCSS tasks;
 gulp.task("scss", function (callback) {

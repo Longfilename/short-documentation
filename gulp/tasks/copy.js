@@ -1,12 +1,8 @@
-var gulp   = require("gulp"),
-    config = require("../config.js").copy,
-    run    = require("run-sequence"),      // run gulp tasks in sequence;
-    size   = require("gulp-size");         // report on file sizes;
-    // defines which destination to use (reset in a gulp task);
-    compileConfig = {
-        "src": config.compile.dist,
-        "dest": config.dest.dist
-    };
+var gulp          = require("gulp"),
+    config        = require("../config.js").copy,
+    run           = require("run-sequence"), // run gulp tasks in sequence;
+    size          = require("gulp-size");    // report on file sizes;
+    compileConfig = {};                      // defines which destination to use (reset in a gulp task);
 
 // run both documentation and distribution builds;
 gulp.task("copy", function (callback) {
