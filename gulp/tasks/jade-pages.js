@@ -1,12 +1,12 @@
 var gulp          = require("gulp"),
     config        = require("../config.js").jade,
-    content       = require("../data-content.js"), // parse the JSON files into an object to pass to Jade;
-    renameFile    = require("../rename-page.js"),  // transform a path object from gulp-rename;
     run           = require("run-sequence"),       // run gulp tasks in sequence;
     jade          = require("gulp-jade"),          // translate jade into HTML;
     rename        = require("gulp-rename"),        // allows us to rename files;
     plumber       = require("gulp-plumber"),       // error trapping so an error doesn't kill Gulp;
     handleErrors  = require("../handle-errors"),   // function to fire on error;
+    content       = require("../data-content.js"), // parse the JSON files into an object to pass to Jade;
+    renameFile    = require("../rename-page.js"),  // transform a path object from gulp-rename;
     compileConfig = {};                            // defines which destination to use (reset in a gulp task);
 
 // run both documentation and distribution builds;

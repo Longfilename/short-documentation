@@ -1,7 +1,7 @@
 doctype html
 html(lang="en")
     head
-        title ShortDocumentation for [insert project name]
+        title ShortDocumentation for [insert project name] 
         link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css")
         link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/solarized_light.min.css")
         script(src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js")
@@ -11,7 +11,7 @@ html(lang="en")
         
         script(src="//code.jquery.com/jquery-2.1.4.min.js")
         script var ShortDocs = {}; ShortDocs.data = !{JSON.stringify(content, null, 4)};
-        script(src="./js/documentation.js")
+        script(src="./js/page--docs.js")
         
         // bad bad bad, we dont want to cross link build, src, and docs;
         link(rel="stylesheet", href="../src/pages/_docs/page.css")

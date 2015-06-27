@@ -10,6 +10,9 @@ module.exports = function (path) {
         newBasename = newBasename + "-" + path.basename.replace("page-", "");
     }
     
+    // convert slashes to dashes;
+    newBasename = newBasename.replace(/\//g, "-");
+    
     // return the new object values to use in gulp-rename;
     return {
         "basename": newBasename,
