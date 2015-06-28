@@ -50,6 +50,10 @@ module.exports = {
             // don't include partials (those are being included somewhere else);
             // and don't include the documentation pages;
             "compile": [src + "/pages/**/*.jade", "!" + src + "/pages/_docs/*", "!" + src + "/pages/**/_*.jade"],
+            // define the root page (usually index or default);
+            // this is a generated list of all pages (for easy presentation);
+            // make sure this is also set in browersync;
+            "root": "index",
             // to this location (files will have a new filename);
             "dest": {
                 "dist": dist + "/html",
