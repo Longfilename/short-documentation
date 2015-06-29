@@ -14,6 +14,7 @@ gulp.task("jade:dist", function (callback) {
     // these don't NEED to run in sequence, but I find it easier to debug when they're in order;
     run(
         "jade:pages:dist",
+        "jade:pages:index:dist",
         callback
     );
 });
@@ -22,8 +23,8 @@ gulp.task("jade:docs", function (callback) {
     // these don't NEED to run in sequence, but I find it easier to debug when they're in order;
     run(
         "jade:pages:docs",
+        "jade:pages:index:docs",
         "jade:modules",
-        "jade:documentation",
         callback
     );
 });

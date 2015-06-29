@@ -17,9 +17,9 @@ module.exports = {
     // open URL (run at after everything is built, and browsersync is running);
     "open": {
         // file to trigger gulp stream;
-        "src": "./build/docs/default.html",
+        "src": docs + "/index.html",
         // URL to open;
-        "url": "http://" + server + ":" + port + "/build/docs/default.html"
+        "url": "http://" + server + ":" + port + "/" + docs + "/index.html"
     },
     // web server and synchronised browser testing;
     "browsersync": {
@@ -62,7 +62,11 @@ module.exports = {
             // these files will be compiled;
             // don't include partials (those are being included somewhere else);
             // and don't include the documentation pages;
-            "compile": [src + "/pages/**/*.jade", "!" + src + "/pages/_docs/*", "!" + src + "/pages/**/_*.jade"],
+            "compile": [
+                      src + "/pages/**/*.jade",
+                "!" + src + "/pages/_short-documentation/*",
+                "!" + src + "/pages/**/_*.jade"
+            ],
             // define the root page (usually index or default);
             // this is a generated list of all pages (for easy presentation);
             // make sure this is also set in browersync;
@@ -79,13 +83,19 @@ module.exports = {
             // this is the wrapper Jade for the module;
             "module": [src + "/modules/**/demo*.jade"],
             // this is the iframe page we're putting the module into;
-            "iframe": [src + "/pages/_docs/_iframe.jade"],
+            "iframe": [src + "/pages/_short-documentation/docs/_iframe.jade"],
             // and this is where the iframe HTML is compiled;
             "dest": docs + "/html"
         },
-        "documentation": {
-            "template": src + "/pages/_docs/default.jade",
-            "dest": docs
+        "index": {
+            "dist": {
+                "template": src + "/pages/_short-documentation/dist/page.jade",
+                "dest": dist
+            },
+            "docs": {
+                "template": src + "/pages/_short-documentation/docs/page.jade",
+                "dest": docs
+            }
         }
     },
     // generate CSS for the documentation and the build;
@@ -157,7 +167,7 @@ module.exports = {
                 // include the fonts;
                 src + "/**/*.ttf",
                 // include the module and page files for display;
-                src + "/**/*.{json,md,jade,scss,js}",
+                src + "/**/*.{json,md,jade,scss,css,js}",
                 // get all images;
                 src + "/**/*.{gif,png,jpg,jpeg,svg,ico}",
                 // except generated images;

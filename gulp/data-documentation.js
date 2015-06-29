@@ -75,7 +75,7 @@ module.exports = function () {
             
             // if we're not in the documentation folder;
             // and if we have files, loop through them;
-            (folder.indexOf("_docs") === -1) && (files.length) && files.forEach(function (file, index) {
+            (files.length) && (folder.indexOf("_short-documentation") === -1) && files.forEach(function (file, index) {
                 var extension = getExtension(file),
                     readme,
                     newFilename,

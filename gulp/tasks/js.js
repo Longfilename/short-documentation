@@ -83,15 +83,17 @@ gulp.task("js:empty:files", function () {
 
 // concat all the JS files;
 gulp.task("js:compile", function () {
-    // tell the user what's were doing;
+    var extensions = [".js", ".json", ".es6"];
+    
+    // tell the user what were doing;
     browserSync.notify("Compiling JS");
     
     return browserify({
             "entries": compileConfig.input,
-            "extensions": ['.js', '.json', '.es6']
+            "extensions": extensions
         })
         .transform(babelify.configure({
-            extensions: ['.js', '.json', '.es6']
+            extensions: extensions
         }))
         // opts.o or opts.outputs should be an array that pairs up with the files array;
         // to specify where each bundle output for each entry file should be written.

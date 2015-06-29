@@ -28,7 +28,7 @@ module.exports = function () {
         // what to do with each folder we're looking through;
         parseFolder = function (folder, dirs, files) {
             // if we have files, loop through them;
-            (files.length) && files.forEach(function (file, index) {
+            (files.length) && (folder.indexOf("_short-documentation") === -1) && files.forEach(function (file, index) {
                 // create a unique key per JSON file made up of the directory it is in;
                 var path, newPath;
                 

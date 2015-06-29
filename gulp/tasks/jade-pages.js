@@ -61,8 +61,8 @@ gulp.task("jade:pages:compile", function () {
             var newPath = renameFile(path);
             
             path.basename = newPath.basename;
-            path.dirname = newPath.dirname;
-            path.extname = newPath.extname;
+            path.dirname  = newPath.dirname;
+            path.extname  = newPath.extname;
         }))
         // finally put the compiled HTML file in the appropriate folder;
         .pipe(gulp.dest(compileConfig.dest));
