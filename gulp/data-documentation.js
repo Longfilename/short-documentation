@@ -28,7 +28,7 @@ module.exports = function () {
             // myFolder/myPage/page.jade                 --> page-myFolder-myPage.html
             // myFolder/myPage/_helper.jade              --> _helper.jade
             // myFolder/myModule/module.jade             --> module-myFolder-myModule.html
-            // myFolder/myModule/your_module/module.jade --> module-myFolder-myModule-your-module.html
+            // myFolder/myModule/your_module/module.jade --> module-myFolder-myModule-your_module.html
             
             // if a file has an underscore, don't manipulate it, just output the filename;
             if (file.indexOf("_") === 0) {
@@ -47,8 +47,6 @@ module.exports = function () {
                 newFilename = newFilename.replace(".jade", ".html");
                 // change pages- and modules- (built from folder structure) to page- and module-
                 newFilename = newFilename.replace(prefix + "s", prefix);
-                // replace all underscores with dashes;
-                newFilename = newFilename.replace("_", "-", /g/);
             }
             
             return newFilename;
