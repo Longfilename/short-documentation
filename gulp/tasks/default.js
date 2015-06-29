@@ -3,8 +3,10 @@ var gulp = require("gulp"),
 
 gulp.task("default", function (callback) {
     run(
+        "build",
         "browsersync",
         "watch",
+        "open",
         callback
     );
 });

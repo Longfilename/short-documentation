@@ -1,8 +1,10 @@
 "use strict";
 
-var src  = "src",  // files to dev on;
-    dist = "build/dist", // where production ready files are written to;
-    docs = "build/docs"; // where documentation files are written to;
+var src    = "src",        // files to dev on;
+    dist   = "build/dist", // where production ready files are written to;
+    docs   = "build/docs", // where documentation files are written to;
+    server = "localhost",  // URL of the server we're starting;
+    port   = 3000;         // URL of the server we're starting;
 
 module.exports = {
     // helper functions need these base values;
@@ -12,16 +14,27 @@ module.exports = {
         "dist": dist,
         "docs": docs
     },
+    // open URL (run at after everything is built, and browsersync is running);
+    "open": {
+        // file to trigger gulp stream;
+        "src": "./build/docs/default.html",
+        // URL to open;
+        "url": "http://" + server + ":" + port + "/build/docs/default.html"
+    },
     // web server and synchronised browser testing;
     "browsersync": {
         // configure what gets served;
         "server": {
-            "baseDir": "./",  // set the root to be the base, this way we can go to docs, and build;
-            "directory": true // enable directory browsing;
+            "baseDir": "./",   // set the root to be the base, this way we can go to docs, and build;
+            "directory": true, // enable directory browsing;
+            "routes": {
+                "/node_modules": "node_modules"
+            }
         },
+        "open": false,
         // configure the URL to access the server;
-        "host": "localhost",
-        "port": 3000
+        "host": server,
+        "port": port
     },
     // configure the watches for each gulp task we want to run;
     "watch": {
