@@ -19,7 +19,7 @@ module.exports = {
         // file to trigger gulp stream;
         "src": docs + "/index.html",
         // URL to open;
-        "url": "http://" + server + ":" + port + "/" + docs + "/index.html"
+        "url": "http://" + server + ":" + port + "/" + dist + "/index.html"
     },
     // web server and synchronised browser testing;
     "browsersync": {
