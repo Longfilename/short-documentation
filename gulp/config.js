@@ -1,8 +1,8 @@
 "use strict";
 
 var src  = "src",  // files to dev on;
-    dist = "dist", // where production ready files are written to;
-    docs = "docs"; // where documentation files are written to;
+    dist = "build/dist", // where production ready files are written to;
+    docs = "build/docs"; // where documentation files are written to;
 
 module.exports = {
     // helper functions need these base values;
