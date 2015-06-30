@@ -1,4 +1,4 @@
-import jQuery from "jQuery"
+import jQuery from "jQuery";
 import lib1 from "../../js/_library1";
 
 jQuery(function () {

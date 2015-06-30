@@ -1,5 +1,5 @@
-var jQuery = window["jQuery"],
-    ShortDocs = window["ShortDocs"];
+var jQuery = window.jQuery,
+    ShortDocs = window.ShortDocs;
 
 jQuery(function ($) {
     var $h1 = $("h1"),
@@ -55,13 +55,13 @@ jQuery(function ($) {
             
             // update the label;
             $h1.find("span").text($objects.val());
-        
+            
             // load this page or module;
             $("iframe").prop("src", config.iframeSrc);
-        
+            
             // clear any previous files;
             $files.empty();
-        
+            
             // and add new OPTIONs in the files SELECT;
             Object.keys(config).map(function (key) {
                 // don't do anything with the folder name;
@@ -80,7 +80,7 @@ jQuery(function ($) {
                         // and add it to this OPTGROUP;
                         $optgroup.append($option);
                     });
-                
+                    
                     // once all the files are added for this group;
                     // add the OPTGROUP to the SELECT;
                     // if it has content;
