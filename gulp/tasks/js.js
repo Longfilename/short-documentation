@@ -12,7 +12,7 @@ var gulp          = require("gulp"),
     run           = require("run-sequence"),        // run gulp tasks in sequence;
     plumber       = require("gulp-plumber"),        // error trapping so an error doesn't kill Gulp;
     handleErrors  = require("../handle-errors"),    // function to fire on error;
-    pages         = require("../data-pages")(),     // get the pages for browserify to work with;
+    js            = require("../data-js")(),        // get the JS files for browserify to work with;
     compileConfig = {};                             // configuration for dist/docs settings;
 
 // start the chain to execute all the JS tasks;
@@ -27,8 +27,8 @@ gulp.task("js", function (callback) {
 // build the JS files for the distribution build;
 gulp.task("js:dist", function (callback) {
     compileConfig = {
-        "input": pages.input.dist,
-        "output": pages.output.dist,
+        "input": js.input.dist,
+        "output": js.output.dist,
         "destination": config.paths.dest.dist
     };
     run(
@@ -42,8 +42,8 @@ gulp.task("js:dist", function (callback) {
 // build the JS files for the docs build;
 gulp.task("js:docs", function (callback) {
     compileConfig = {
-        "input": pages.input.docs,
-        "output": pages.output.docs,
+        "input": js.input.docs,
+        "output": js.output.docs,
         "destination": config.paths.dest.docs
     };
     run(
