@@ -1,3 +1,3 @@
-require("../../modules/carousel/home/module");
-require("../../modules/footer/module");
-require("../../modules/header/module");
+import "../../modules/carousel/home/module";
+import "../../modules/footer/module";
+import "../../modules/header/module";

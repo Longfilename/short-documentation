@@ -144,25 +144,113 @@ module.exports = {
         // name the bundle that will contain common JS (shared across multiple bundles);
         // this file is created by browserify;
         "common": "common.js",
-        "hint": {
+        "lint": {
             "src": ["src/**/*.js"],
             "settings": {
-                "lookup": false,
-                "eqeqeq": true,
-                "globals": {
-                    "jQuery": true
+                "hint": {
+                    "lookup": false,
+                    "eqeqeq": true,
+                    "globals": {
+                        "jQuery": true
+                    },
+                    "nonbsp": true,
+                    "undef": true,
+                    "unused": true,
+    
+                    "esnext": true,
+                    "eqnull": true,
+    
+                    "browser": true,
+                    "browserify": true,
+                    "devel": true,
+                    "jquery": true
                 },
-                "nonbsp": true,
-                "undef": true,
-                "unused": true,
-                
-                "esnext": true,
-                "eqnull": true,
-                
-                "browser": true,
-                "browserify": true,
-                "devel": true,
-                "jquery": true
+                "jscs": {
+                    "esnext": true,
+                    "requireCurlyBraces": [
+                        "if",
+                        "else",
+                        "for",
+                        "while",
+                        "do",
+                        "try",
+                        "catch"
+                    ],
+                    "requireOperatorBeforeLineBreak": true,
+                    "requireParenthesesAroundIIFE": true,
+                    "requireCommaBeforeLineBreak": true,
+                    "requireCamelCaseOrUpperCaseIdentifiers": true,
+                    "requireDotNotation": "except_snake_case",
+                    "requireSpacesInForStatement": true,
+                    "requireSpaceBetweenArguments": true,
+                    "maximumLineLength": {
+                        "value": 100,
+                        "tabSize": 4,
+                        "allExcept": ["urlComments", "regex"]
+                    },
+                    "validateQuoteMarks": { "mark": "\"", "escape": true },
+    
+                    "disallowMixedSpacesAndTabs": "smart",
+                    "disallowTrailingWhitespace": true,
+                    "disallowMultipleLineStrings": true,
+                    "disallowTrailingComma": true,
+    
+                    "requireSpaceBeforeBlockStatements": true,
+                    "requireSpacesInFunctionExpression": {
+                        "beforeOpeningCurlyBrace": true
+                    },
+                    "requireSpacesInsideParentheses": "all",
+                    "requireSpaceAfterKeywords": [
+                        "if",
+                        "else",
+                        "for",
+                        "while",
+                        "do",
+                        "switch",
+                        "return",
+                        "try",
+                        "catch"
+                    ],
+                    "requireSpacesInsideObjectBrackets": "all",
+                    "requireSpacesInsideBrackets": true,
+                    "requireSemicolons": true,
+                    "requireSpacesInConditionalExpression": true,
+                    "requireSpaceAfterBinaryOperators": true,
+                    "requireLineFeedAtFileEnd": true,
+                    "requireSpaceBeforeBinaryOperators": [
+                        "=", "+=", "-=", "*=", "/=", "%=", "<<=", ">>=", ">>>=",
+                        "&=", "|=", "^=", "+=",
+        
+                        "+", "-", "*", "/", "%", "<<", ">>", ">>>", "&",
+                        "|", "^", "&&", "||", "===", "==", ">=",
+                        "<=", "<", ">", "!=", "!=="
+                    ],
+                    "requireSpacesInAnonymousFunctionExpression": {
+                        "beforeOpeningCurlyBrace": true
+                    },
+                    "requireSpacesInNamedFunctionExpression": {
+                        "beforeOpeningCurlyBrace": true
+                    },
+                    "requirePaddingNewLinesBeforeLineComments": true,
+                    "validateLineBreaks": "LF",
+    
+                    "disallowKeywords": [ "with" ],
+                    "disallowKeywordsOnNewLine": [ "else" ],
+                    "disallowSpacesInFunctionExpression": {
+                        "beforeOpeningRoundBrace": true
+                    },
+                    "disallowSpacesInNamedFunctionExpression": {
+                        "beforeOpeningRoundBrace": true
+                    },
+                    "disallowSpacesInAnonymousFunctionExpression": {
+                        "beforeOpeningRoundBrace": true
+                    },
+                    "disallowSpaceAfterObjectKeys": true,
+                    "disallowSpaceAfterPrefixUnaryOperators": true,
+                    "disallowSpaceBeforePostfixUnaryOperators": true,
+                    "disallowSpaceBeforeBinaryOperators": [ ",", ":" ],
+                    "disallowMultipleLineBreaks": true
+                }
             }
         }
     },

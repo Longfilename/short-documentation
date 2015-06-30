@@ -1,7 +1,8 @@
 var gulp          = require("gulp"),
     config        = require("../config").js,
-    jshint        = require("gulp-jshint"),         // JS linting (make sure it's written consistently);
-    stylish       = require("jshint-stylish"),      // 
+    jshint        = require("gulp-jshint"),         // JS linting (make sure it's valid);
+    stylish       = require("jshint-stylish"),      // reporter for jshint;
+    jscs          = require("gulp-jscs"),           // JS linting (make sure it's written consistently);
     babelify      = require("babelify"),            // ES6 to ES5 conversion;
     browserSync   = require("browser-sync"),        // inform the browser what's going on;
     browserify    = require("browserify"),          // transcode JS;
@@ -86,10 +87,11 @@ gulp.task("js:empty:files", function () {
 });
 
 // ensure the JS files are written in a consistent fashion;
-gulp.task("js:hint", function () {
-    return gulp.src(config.hint.src)
-        .pipe(jshint(config.hint.settings))
-        .pipe(jshint.reporter(stylish));
+gulp.task("js:lint", function () {
+    return gulp.src(config.lint.src)
+        .pipe(jshint(config.lint.settings.hint))
+        .pipe(jshint.reporter(stylish))
+        .pipe(jscs(config.lint.settings.jscs));
 });
 
 // concat all the JS files;
