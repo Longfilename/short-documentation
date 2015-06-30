@@ -17,9 +17,13 @@ module.exports = {
     // open URL (run at after everything is built, and browsersync is running);
     "open": {
         // file to trigger gulp stream;
-        "src": docs + "/index.html",
+        // we don't do anything with this file, it's just needed for a gulp stream;
+        "src": src + "/pages/_short-documentation/dist/page.jade",
         // URL to open;
-        "url": "http://" + server + ":" + port + "/" + dist + "/index.html"
+        "url": {
+            "dist": "http://" + server + ":" + port + "/" + dist + "/index.html",
+            "docs": "http://" + server + ":" + port + "/" + docs + "/index.html",
+        }
     },
     // web server and synchronised browser testing;
     "browsersync": {

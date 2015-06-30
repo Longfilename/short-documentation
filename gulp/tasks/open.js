@@ -1,11 +1,28 @@
 var gulp   = require("gulp"),
     config = require("../config").open,
-    open   = require("gulp-open"); // we can open specific URLs (not just server root);
+    run    = require("run-sequence"), // run gulp tasks in sequence;
+    open   = require("gulp-open");    // we can open specific URLs (not just server root);
 
 // open our custom index file for easy access to the dist, and the docs;
-gulp.task("open", function () {
+// by default, we open up the dist URL;
+gulp.task("open", function (callback) {
+    run(
+        "open:dist",
+        "open:docs",
+        callback
+    );
+});
+
+gulp.task("open:dist", function () {
     gulp.src(config.src)
         .pipe(open("", {
-            "url": config.url
+            "url": config.url.dist
+        }));
+});
+
+gulp.task("open:docs", function () {
+    gulp.src(config.src)
+        .pipe(open("", {
+            "url": config.url.docs
         }));
 });

@@ -10,3 +10,23 @@ gulp.task("default", function (callback) {
         callback
     );
 });
+
+gulp.task("dist", function (callback) {
+    run(
+        "build:dist",
+        "browsersync",
+        "watch:dist",
+        "open:dist",
+        callback
+    );
+});
+
+gulp.task("docs", function (callback) {
+    run(
+        "build:docs",
+        "browsersync",
+        "watch:docs",
+        "open:docs",
+        callback
+    );
+});

@@ -53,7 +53,7 @@ gulp.task("jade:pages:compile", function () {
             "pretty": "    ",
             "compileDebug": true,
             "locals": {
-                "json": content() // bring in JSON files as a "locals" variable in Jade;
+                "json": content() // bring in JSON files as a "locals.json" variable in Jade;
             }
         }))
         // rename the HTML file;

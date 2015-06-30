@@ -4,13 +4,9 @@ var gulp   = require("gulp"),
     run    = require("run-sequence");    // run gulp tasks in sequence;
 
 // delete previously generated files so we can put new generated files in an empty folder;
+// to clean both, delete the parent folder (build);
 gulp.task("clean", function (callback) {
-    // these don't NEED to run in sequence, but I find it easier to debug when they're in order;
-    run(
-        "clean:docs",
-        "clean:dist",
-        callback
-    );
+    del(config.docs.split("/")[0], callback);
 });
 
 gulp.task("clean:docs", function (callback) {
