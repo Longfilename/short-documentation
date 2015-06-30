@@ -37,7 +37,7 @@ gulp.task("js:dist", function (callback) {
     run(
         "js:empty:folders",
         "js:empty:files",
-        "js:hint",
+        "js:lint",
         "js:compile",
         callback
     );
@@ -53,7 +53,7 @@ gulp.task("js:docs", function (callback) {
     run(
         "js:empty:folders",
         "js:empty:files",
-        "js:hint",
+        "js:lint",
         "js:compile",
         callback
     );

@@ -104,6 +104,7 @@ module.exports = {
     },
     // generate CSS for the documentation and the build;
     "scss": {
+        "lint": [src + "**/*.scss"],
         "compile": [src + "/scss/*.scss", "!" + src + "/scss/_*.scss"],
         "dest": {
             "dist": dist + "/css",
@@ -167,6 +168,7 @@ module.exports = {
                 },
                 "jscs": {
                     "esnext": true,
+                    "disallowSpacesInsideParentheses": true,
                     "requireCurlyBraces": [
                         "if",
                         "else",
@@ -184,7 +186,7 @@ module.exports = {
                     "requireSpacesInForStatement": true,
                     "requireSpaceBetweenArguments": true,
                     "maximumLineLength": {
-                        "value": 100,
+                        "value": 255,
                         "tabSize": 4,
                         "allExcept": ["urlComments", "regex"]
                     },
@@ -199,7 +201,6 @@ module.exports = {
                     "requireSpacesInFunctionExpression": {
                         "beforeOpeningCurlyBrace": true
                     },
-                    "requireSpacesInsideParentheses": "all",
                     "requireSpaceAfterKeywords": [
                         "if",
                         "else",
@@ -226,7 +227,8 @@ module.exports = {
                         "<=", "<", ">", "!=", "!=="
                     ],
                     "requireSpacesInAnonymousFunctionExpression": {
-                        "beforeOpeningCurlyBrace": true
+                        "beforeOpeningCurlyBrace": true,
+                        "beforeOpeningRoundBrace": true
                     },
                     "requireSpacesInNamedFunctionExpression": {
                         "beforeOpeningCurlyBrace": true
