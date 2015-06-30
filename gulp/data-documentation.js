@@ -1,13 +1,13 @@
 var config = require("./config"),
-    // traverse the file system;
-    file = require("file"),
-    // read the contents of the readme.md file;
-    fs   = require("fs");
+    file   = require("file"), // traverse the file system;
+    fs     = require("fs");   // read the contents of the readme.md file;
 
-// return module content to pass into the Jade compiler;
+// return content to pass into the Jade compiler;
+// this module is used to generate a list of files associated with pages and modules;
+// this is used on the documentation page to generate navigation;
 module.exports = function () {
         // create an object to return;
-    var json = {
+    var data = {
             "pages": [],
             "modules": []
         },
@@ -21,6 +21,7 @@ module.exports = function () {
             return filename.split(".").pop();
         },
         // rename file;
+        // this is so we can properly link up the IFRAME url;
         renameFile = function (file, folder, prefix) {
             var newFilename = "",
                 folderArray  = folder.split("/");
@@ -57,10 +58,10 @@ module.exports = function () {
             var item = {
                     // array of each file type for this folder (page or module);
                     "md":   [], // markdown is first so it'll be the default view when selecting a page/module;
-                    "json": [],
-                    "jade": [],
-                    "js":   [],
-                    "scss": [],
+                    "json": [], // the rest of the files...
+                    "jade": [], // are organized...
+                    "js":   [], // by...
+                    "scss": [], // extension;
                     "jadeArray": [],     // temp storage of all Jade files, but there's only one "page" per entry;
                     "html":   "[empty]", // html page to load in the iframe;
                     "folder": "[empty]", // folder + filename (in the arrays above) generate a path to all files;
@@ -90,6 +91,7 @@ module.exports = function () {
                         item.title = readme[0].replace("# ", "");
                     }
                     // no need to document the documentation;
+                    // documentation files are named demo.jade or demo-foobar.jade;
                     if (file.indexOf("demo") !== 0) {
                         // save this file;
                         item[extension].push(file);
@@ -101,6 +103,7 @@ module.exports = function () {
                             pageOrModule = (file.indexOf("page") === 0) ? "page" : "module";
                             
                             // rename the file;
+                            // take the JADE filename and generate an HTML filename;
                             newFilename = renameFile(file, folder, pageOrModule);
                             
                             // store each jade page here, we'll filter them later;
@@ -130,19 +133,20 @@ module.exports = function () {
                 if (itemClone.html.indexOf("_") === -1) {
                     // if this is a page object;
                     if (folder.indexOf("pages/") > -1) {
-                        json.pages.push(itemClone);
+                        data.pages.push(itemClone);
                     // otherwise it's a modules object;
                     } else {
-                        json.modules.push(itemClone);
+                        data.modules.push(itemClone);
                     }
                 }
             });
         };
     
-    // go through the file system, grab all files and put them into the "json" object;
+    // go through the file system, grab all files and put them into the data object;
     folders.map(function (folder) {
         file.walkSync(folder, parseFolder);
     });
     
-    return json;
+    // return the content for Jade to use;
+    return data;
 };
