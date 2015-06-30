@@ -143,7 +143,28 @@ module.exports = {
         "reportFilesizes": true,
         // name the bundle that will contain common JS (shared across multiple bundles);
         // this file is created by browserify;
-        "common": "common.js"
+        "common": "common.js",
+        "hint": {
+            "src": ["src/**/*.js"],
+            "settings": {
+                "lookup": false,
+                "eqeqeq": true,
+                "globals": {
+                    "jQuery": true
+                },
+                "nonbsp": true,
+                "undef": true,
+                "unused": true,
+                
+                "esnext": true,
+                "eqnull": true,
+                
+                "browser": true,
+                "browserify": true,
+                "devel": true,
+                "jquery": true
+            }
+        }
     },
     // copy none generated files to the documentation and the build;
     "copy": {

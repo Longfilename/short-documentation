@@ -1,5 +1,7 @@
 var gulp          = require("gulp"),
     config        = require("../config").js,
+    jshint        = require("gulp-jshint"),         // JS linting (make sure it's written consistently);
+    stylish       = require("jshint-stylish"),      // 
     babelify      = require("babelify"),            // ES6 to ES5 conversion;
     browserSync   = require("browser-sync"),        // inform the browser what's going on;
     browserify    = require("browserify"),          // transcode JS;
@@ -34,6 +36,7 @@ gulp.task("js:dist", function (callback) {
     run(
         "js:empty:folders",
         "js:empty:files",
+        "js:hint",
         "js:compile",
         callback
     );
@@ -49,6 +52,7 @@ gulp.task("js:docs", function (callback) {
     run(
         "js:empty:folders",
         "js:empty:files",
+        "js:hint",
         "js:compile",
         callback
     );
@@ -79,6 +83,13 @@ gulp.task("js:empty:files", function () {
             }
         });
     });
+});
+
+// ensure the JS files are written in a consistent fashion;
+gulp.task("js:hint", function () {
+    return gulp.src(config.hint.src)
+        .pipe(jshint(config.hint.settings))
+        .pipe(jshint.reporter(stylish));
 });
 
 // concat all the JS files;
