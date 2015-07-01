@@ -1,1 +1,5 @@
-console.log("lib3");
+import jQuery from "jQuery";
+
+jQuery(function () {
+    console.log("lib3");
+});

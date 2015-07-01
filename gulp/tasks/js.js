@@ -1,5 +1,6 @@
 var gulp          = require("gulp"),
     config        = require("../config").js,
+    eslint        = require("gulp-eslint"),
     jshint        = require("gulp-jshint"),         // JS linting (make sure it's valid);
     stylish       = require("jshint-stylish"),      // reporter for jshint;
     jscs          = require("gulp-jscs"),           // JS linting (make sure it's written consistently);
@@ -88,10 +89,14 @@ gulp.task("js:empty:files", function () {
 
 // ensure the JS files are written in a consistent fashion;
 gulp.task("js:lint", function () {
-    return gulp.src(config.lint.src)
+    return gulp.src(config.linstSrc)
+        .pipe(eslint(config.eslint))
+        .pipe(eslint.format());
+    /*
         .pipe(jshint(config.lint.settings.hint))
         .pipe(jshint.reporter(stylish))
         .pipe(jscs(config.lint.settings.jscs));
+    */
 });
 
 // concat all the JS files;

@@ -7,7 +7,7 @@ jQuery(function ($) {
         $files = $h2.find("select.files"),
         $bodyCode = $("code.content"),
         $bodyDiv = $("div.content"),
-        convert = new Markdown.getSanitizingConverter().makeHtml;
+        convert = Markdown.getSanitizingConverter().makeHtml;
     
     // on change, grab the contents of the URL and display them;
     $files.on("change", function () {
