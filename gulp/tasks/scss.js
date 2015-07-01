@@ -26,6 +26,7 @@ gulp.task("scss", function (callback) {
 gulp.task("scss:dist", function (callback) {
     compileConfig.destination = config.dest.dist;
     run(
+        "scss:lint",
         "scss:compile",
         callback
     );
@@ -35,6 +36,7 @@ gulp.task("scss:dist", function (callback) {
 gulp.task("scss:docs", function (callback) {
     compileConfig.destination = config.dest.docs;
     run(
+        "scss:lint",
         "scss:compile",
         callback
     );
