@@ -1,11 +1,10 @@
 section.carousel-home {
-    @include breakpoint($breakpoint-sm) {
-        color: red;
-    }
-    
-    margin-top: 1;
     margin-top: 1;
     margin-left: 1px;
     margin-right: 2px;
     margin-bottom: 0;
+    
+    @include breakpoint($breakpoint-sm) {
+        color: red;
+    }
 }

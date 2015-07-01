@@ -38,6 +38,8 @@
     "gulp-release-tasks": "0.0.3",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^1.3.3",
+    "gulp-scss-lint": "^0.2.0",
+    "gulp-scss-lint-stylish": "^0.1.3",
     "gulp-shell": "^0.4.2",
     "gulp-size": "^1.2.2",
     "gulp-sourcemaps": "^1.5.0",

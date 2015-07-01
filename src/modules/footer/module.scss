@@ -1,15 +1,17 @@
 footer.site-footer {
-    background: #779ECB;
+    background: #779ecb;
     font-size: 14px;
     
     @include breakpoint($breakpoint-sm) {
-        background: #77DD77;
+        background: #7d7;
     }
+    
     @include breakpoint($breakpoint-md) {
-        background: #F49AC2;
+        background: #f49ac2;
     }
+    
     @include breakpoint($breakpoint-lg) {
-        background: #FFB347;
+        background: #ffb347;
     }
     
     h1 {

@@ -104,7 +104,7 @@ module.exports = {
     },
     // generate CSS for the documentation and the build;
     "scss": {
-        "lint": [src + "**/*.scss"],
+        "linstSrc": [src + "/**/*.scss", "!" + src + "/scss/_bootstrap-variables.scss"],
         "compile": [src + "/scss/*.scss", "!" + src + "/scss/_*.scss"],
         "dest": {
             "dist": dist + "/css",
