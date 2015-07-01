@@ -51,7 +51,6 @@ gulp.task("js:docs", function (callback) {
     run(
         "js:empty:folders",
         "js:empty:files",
-        "js:lint",
         "js:compile",
         callback
     );
