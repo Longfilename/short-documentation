@@ -1,39 +1,47 @@
-# ShortDocumentation
+# generator-xxx [![Build Status](https://secure.travis-ci.org/someuser/generator-xxx.png?branch=master)](https://travis-ci.org/someuser/generator-xxx)
 
-## Naming Conventions
+> [Yeoman](http://yeoman.io) generator
 
-### Dist Pages
 
-```
-/src/pages/article/page.jade             ==> /dist/html/page-article.html
-/src/pages/article/page-foo.jade         ==> /dist/html/page-article-foo.html
-/src/pages/article/foo/page.jade         ==> /dist/html/page-article-foo.html
-/src/pages/article/foo/page-bar.jade     ==> /dist/html/page-article-foo-bar.html
-/src/pages/article/foo/bar/page.jade     ==> /dist/html/page-article-foo-bar.html
-/src/pages/article/foo/bar/page-baz.jade ==> /dist/html/page-article-foo-bar-baz.html
-```
+## Getting Started
 
-### Documentation Pages (same as Dist)
+### What is Yeoman?
 
-```
-/src/pages/article/page.jade             ==> /docs/html/page-article.html
-/src/pages/article/page-foo.jade         ==> /docs/html/page-article-foo.html
-/src/pages/article/foo/page.jade         ==> /docs/html/page-article-foo.html
-/src/pages/article/foo/page-bar.jade     ==> /docs/html/page-article-foo-bar.html
-/src/pages/article/foo/bar/page.jade     ==> /docs/html/page-article-foo-bar.html
-/src/pages/article/foo/bar/page-baz.jade ==> /docs/html/page-article-foo-bar-baz.html
+Trick question. It's not a thing. It's this guy:
+
+![](http://i.imgur.com/JHaAlBJ.png)
+
+Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
+
+Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
+
+```bash
+$ npm install -g yo
 ```
 
-### Documentation Modules
+### Yeoman Generators
 
-```
-/src/pages/module/promo/demo.jade             ==> /docs/html/module-promo.html
-/src/pages/module/promo/demo-foo.jade         ==> /docs/html/module-promo-foo.html
-/src/pages/module/promo/foo/demo.jade         ==> /docs/html/module-promo-foo.html
-/src/pages/module/promo/foo/demo-bar.jade     ==> /docs/html/module-promo-foo-bar.html
-/src/pages/module/promo/foo/bar/demo.jade     ==> /docs/html/module-promo-foo-bar.html
-/src/pages/module/promo/foo/bar/demo-baz.jade ==> /docs/html/module-promo-foo-bar-baz.html
+Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
+
+To install generator-xxx from npm, run:
+
+```bash
+$ npm install -g generator-xxx
 ```
 
-#### Test image
-![FPO Image](http://placehold.it/350x150 "FPO Image")
+Finally, initiate the generator:
+
+```bash
+$ yo xxx
+```
+
+### Getting To Know Yeoman
+
+Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
+
+If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
+
+
+## License
+
+MIT
