@@ -6,14 +6,14 @@
 
 ### Installation
 
-Install [Yeoman](http://yeoman.io) Yeoman and the Short Documentation generator.
+Install [Yeoman](http://yeoman.io) and the Short Documentation generator.
 
 ```bash
 $ npm install -g yo
 $ npm install -g generator-short-documentation
 ```
 
-Create a new folder. Then create the JSON config (filename needs to be config-yeoman.json) file for the generator ([](./sample-config-yeoman.json) sample JSON).
+Create a new folder. Then create the JSON config (filename needs to be config-yeoman.json) file for the generator ([sample JSON](./sample-config-yeoman.json)).
 
 #### config-yeoman.json
 
