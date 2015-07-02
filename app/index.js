@@ -82,68 +82,76 @@ var fs     = require("fs"),               // traverse the file system to load a 
                 if (jsObject) {
                     // if true, just create the base JS file;
                     if (typeof jsObject === "boolean") {
-                        this.template("src/modules/module/module.js", path + "/module.js");
+                        this.template("src/modules/module/module.js", path + "/module.js", content);
                     // if an array, create the named files;
                     } else {
                         // create a file for each entry in the module JS array;
                         for (jsKey in jsObject) {
-                            this.template("src/modules/module/module.js", path + "/" + jsObject[jsKey] + ".js");
+                            this.template("src/modules/module/module.js", path + "/" + jsObject[jsKey] + ".js", content);
                         }
                     }
                 }
             }
         },
-        /*
         copyPageFiles: function () {
-            var pageKey,
-                context,
-                i,
-                j = 0,
-                isLastKey = function (index) {
-                    return (Object.keys(configJSON.pages).length === index);
-                };
+            var page,     // a page from the page object (read from the JSON file);
+                content,  // content to pass to each file (content pulled from the JSON file);
+                jsObject; // JS property value for a module (can be true, or an array);
             
             // loop through each page in the JSON and build a folder for it;
-            for (pageKey in configJSON.pages) {
-                // create our own counter so we can detect when we're on the last key;
-                j = j + 1;
-                
+            for (page in configJSON.pages) {
                 // yeoman context - used to insert dynamic content into the files;
-                context = {
-                    "moduleName": pageKey,
-                    "moduleJade": ""
+                content = {
+                    "moduleName": page,
+                    "moduleJade": "",
+                    "moduleJS": ""
                 };
                 
-                // create the Jade include statements (for related modules) to insert into the page;
-                for (i = 0; i < configJSON.pages[pageKey].length; i = i + 1) {
-                    context.moduleJade = context.moduleJade + "        include ../../modules/" + configJSON.pages[pageKey][i] + "/module" + os.EOL;
-                }
+                // for each module in this page;
+                configJSON.pages[page].map(function (module) {
+                    // create the Jade include statements;
+                    content.moduleJade = content.moduleJade + "        include ../../modules/" + module + "/module" + os.EOL;
+                    
+                    // and create the JS import statements;
+                    // find the JS property of this module's object;
+                    jsObject = configJSON.modules[module].js || null;
+                    
+                    // if this module has JS to generate;
+                    if (jsObject) {
+                        // if true, just include the base JS file;
+                        if (typeof jsObject === "boolean") {
+                            content.moduleJS = content.moduleJS + "import ../../modules/" + module + "/module" + os.EOL;
+                        // if an array, include the named files;
+                        } else {
+                            // include a file for each entry in the module JS array;
+                            jsObject.map(function (js) {
+                                content.moduleJS = content.moduleJS + 'import "../../modules/' + module + '/' + js + '.js";' + os.EOL;
+                            });
+                        }
+                    }
+                });
                 
-                // create the include statement for the documentation;
-                documentationContext.pages = documentationContext.pages + "         \"../src/pages/" + pageKey + "/config.json\"" + ((isLastKey(j) == false) ? "," + os.EOL : "");
-                
-                // create these files for each page in our new site;
-                if (ifDocumentation()) {
-                    this.template("src/pages/_page/config.json", "src/pages/" + context.moduleName + "/config.json", context);
-                    this.template("src/pages/_page/readme.md",   "src/pages/" + context.moduleName + "/readme.md",   context);
-                }
-                this.template("src/pages/_page/page.jade",   "src/pages/" + context.moduleName + "/" + context.moduleName + ".jade",   context);
+                // now that the content for this page has been generated;
+                // create the files for this page;
+                this.template("src/pages/page/page.jade", "src/pages/" + content.moduleName + "/page.jade", content);
+                this.template("src/pages/page/page.js",   "src/pages/" + content.moduleName + "/page.js", content);
+                this.template("src/pages/page/readme.md", "src/pages/" + content.moduleName + "/readme.md", content);
             }
         },
         copyScssFiles: function () {
-            var context = {
+            var content = {
                 "modules": sassIncludes
             };
             
             // create these files for our new site;
-            this.copy("src/css/_base.scss",      "src/css/_base.scss");
-            this.copy("src/css/_fonts.scss",     "src/css/_fonts.scss");
-            this.copy("src/css/_layout.scss",    "src/css/_layout.scss");
-            this.copy("src/css/_mixins.scss",    "src/css/_mixins.scss");
-            this.copy("src/css/_reset.scss",     "src/css/_reset.scss");
-            this.copy("src/css/_variables.scss", "src/css/_variables.scss");
-            this.template("src/css/site.scss",   "src/css/site.scss", context);
+            this.copy("src/scss/_base.scss",      "src/scss/_base.scss");
+            this.copy("src/scss/_fonts.scss",     "src/scss/_fonts.scss");
+            this.copy("src/scss/_layout.scss",    "src/scss/_layout.scss");
+            this.copy("src/scss/_mixins.scss",    "src/scss/_mixins.scss");
+            this.copy("src/scss/_variables.scss", "src/scss/_variables.scss");
+            this.template("src/scss/site.scss",   "src/scss/site.scss", content);
         },
+        /*
         copyJavaScriptFiles: function () {
             var context = {
                 "modules": jsIncludes
