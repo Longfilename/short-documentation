@@ -1,4 +1,3 @@
-"use strict";
 var fs     = require("fs"),               // traverse the file system to load a JSON config;
     util   = require("util"),
     path   = require("path"),
@@ -151,33 +150,22 @@ var fs     = require("fs"),               // traverse the file system to load a 
             this.copy("src/scss/_variables.scss", "src/scss/_variables.scss");
             this.template("src/scss/site.scss",   "src/scss/site.scss", content);
         },
-        /*
         copyJavaScriptFiles: function () {
-            var context = {
-                "modules": jsIncludes
-            };
-            
-            this.template("src/js/global.js", "src/js/global.js", context);
-            this.copy("src/js/libs.js",       "src/js/libs.js");
-            this.copy("src/js/libs.js",       "src/js/modernizr.js");
+            // for now we don't have any global JS files to copy over;
+            // so create a folder in preperation for future files;
+            this.mkdir("src/js");
         },
         copyImgFiles: function () {
-            // create these files for our new site;
-            this.copy("src/img/device-icons/64x64-favicon.ico",        "src/img/device-icons/64x64-favicon.ico");
-            this.copy("src/img/device-icons/180x180-ios-icon.png",     "src/img/device-icons/180x180-ios-icon.png");
-            this.copy("src/img/device-icons/192x192-android-icon.png", "src/img/device-icons/192x192-android-icon.png");
-            this.copy("src/img/device-icons/config-windows-tiles.xml", "src/img/device-icons/config-windows-tiles.xml");
-            this.copy("src/img/device-icons/128x128-windows-tile.png", "src/img/device-icons/128x128-windows-tile.png");
-            this.copy("src/img/device-icons/270x270-windows-tile.png", "src/img/device-icons/270x270-windows-tile.png");
-            this.copy("src/img/device-icons/558x270-windows-tile.png", "src/img/device-icons/558x270-windows-tile.png");
-            this.copy("src/img/device-icons/558x558-windows-tile.png", "src/img/device-icons/558x558-windows-tile.png");
+         // for now we don't have any image files to copy over;
+         // so create a folder in preperation for future files;
+         this.mkdir("src/img");
         },
         copyIncludeFiles: function () {
             // create these files for our new site;
-            this.copy("src/includes/_head.jade",    "src/includes/_head.jade");
-            this.copy("src/includes/_html.jade",    "src/includes/_html.jade");
-            this.copy("src/includes/_scripts.jade", "src/includes/_scripts.jade");
+            this.copy("src/includes/head.jade",    "src/includes/head.jade");
+            this.copy("src/includes/scripts.jade", "src/includes/scripts.jade");
         },
+        /*
         copyConfigFiles: function () {
             // yeoman context - used to insert dynamic content into the files;
             var context = {
