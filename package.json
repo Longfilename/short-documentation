@@ -1,43 +1,36 @@
 {
-  "name": "short-documentation",
-  "version": "1.0.0",
-  "description": "ShortDocumentation is yet another front-end framework.",
-  "private": true,
+  "name": "generator-short-documentation",
+  "version": "0.0.1",
+  "description": "Yeoman generator",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": "longfilename/generator-short-documentation",
+  "author": {
+    "name": "Tim Stephens",
+    "email": "longfilename@gmail.com",
+    "url": "https://github.com/longfilename"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "app"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
   "dependencies": {
-    "bootstrap-sass": "^3.3.5",
-    "breakpoint-sass": "^2.6.1",
-    "browsernizr": "^1.0.2",
-    "jquery": "^2.1.4"
+    "yeoman-generator": "~0.16.0",
+    "chalk": "~0.4.0",
+    "yosay": "^0.1.0"
   },
   "devDependencies": {
-    "babelify": "^5.0.4",
-    "browser-sync": "^2.2.3",
-    "browserify": "^10.2.4",
-    "del": "^1.1.1",
-    "errorhandler": "^1.3.4",
-    "factor-bundle": "^2.4.1",
-    "file": "^0.2.2",
-    "gulp": "^3.8.11",
-    "gulp-autoprefixer": "^2.1.0",
-    "gulp-eslint": "^0.15.0",
-    "gulp-filter": "^2.0.2",
-    "gulp-jade": "^1.0.1",
-    "gulp-notify": "^2.2.0",
-    "gulp-open": "^0.3.2",
-    "gulp-plumber": "^0.6.6",
-    "gulp-release-tasks": "0.0.3",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^1.3.3",
-    "gulp-scss-lint": "^0.2.0",
-    "gulp-scss-lint-stylish": "^0.1.3",
-    "gulp-size": "^1.2.2",
-    "gulp-sourcemaps": "^1.5.0",
-    "gulp-tap": "^0.1.3",
-    "gulp-uglify": "^1.1.0",
-    "mkdirp": "^0.5.0",
-    "require-dir": "^0.1.0",
-    "run-sequence": "^1.1.0",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "mocha": "*"
+  },
+  "peerDependencies": {
+    "yo": ">=1.0.0"
   }
 }
