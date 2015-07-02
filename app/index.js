@@ -9,17 +9,6 @@ var fs     = require("fs"),               // traverse the file system to load a 
     // the global project configuration object;
     configJSON,
     
-    // global documentation context (because it's populated away from where it is used);
-    documentationContext = {
-        "pages": "",
-        "modules": ""
-    },
-    
-    // check if the user wanted documentation generated;
-    ifDocumentation = function () {
-        return configJSON.project.documentation;
-    },
-    
     // strings that will be inserted into the global Sass file;
     sassIncludes = "",
     
@@ -37,11 +26,6 @@ var fs     = require("fs"),               // traverse the file system to load a 
                 
                 // turn the JSON response into a JS object;
                 configJSON = JSON.parse(data);
-                
-                // record the project title;
-                documentationContext.projectName = configJSON.project.name;
-                
-                console.log(configJSON);
                 
                 // let Yeoman know that this async function is done so we can move onto the next function;
                 done();
@@ -109,6 +93,7 @@ var fs     = require("fs"),               // traverse the file system to load a 
                 // for each module in this page;
                 configJSON.pages[page].map(function (module) {
                     // create the Jade include statements;
+                    // make sure to indent twice (4 space tabs) for proper nesting;
                     content.moduleJade = content.moduleJade + "        include ../../modules/" + module + "/module" + os.EOL;
                     
                     // and create the JS import statements;
@@ -165,7 +150,6 @@ var fs     = require("fs"),               // traverse the file system to load a 
             this.copy("src/includes/head.jade",    "src/includes/head.jade");
             this.copy("src/includes/scripts.jade", "src/includes/scripts.jade");
         },
-        /*
         copyConfigFiles: function () {
             // yeoman context - used to insert dynamic content into the files;
             var context = {
@@ -173,31 +157,21 @@ var fs     = require("fs"),               // traverse the file system to load a 
             };
             
             // editor and gulp plugin configurations, nothing to serve to the client browser;
-            this.copy(".eslintrc",      ".eslintrc");
-            this.copy(".gitignore",     ".gitignore");
-            this.copy(".scss-lint.yml", ".scss-lint.yml");
-            this.copy("gulpfile.js",    "gulpfile.js");
-            this.copy("package.json",   "package.json");
-            this.template("readme.md",  "readme.md", context);
+            this.copy(".eslintrc",      ".eslintrc");          // JS lint config (for gulp:js);
+            this.copy(".gitignore",     ".gitignore");         // tell git what files to not track;
+            this.copy(".scss-lint.yml", ".scss-lint.yml");     // SCSS lint config (for gulp:scss);
+            this.copy("gulpfile.js",    "gulpfile.js");        // gulp loader (all tasks are defined in /gulp);
+            this.copy("package.json",   "package.json");       // npm config;
+            this.template("readme.md",  "readme.md", context); // project overview;
         },
         copyDocumentationApp: function () {
-            if(ifDocumentation()) {
-                // way too many files being copied over - but lets it get working, then i can optimize;
-                this.copy("docs/css/jquery.snippet.min.css", "docs/css/jquery.snippet.min.css");
-                this.copy("docs/css/reset.css",              "docs/css/reset.css");
-                this.copy("docs/css/style.css",              "docs/css/style.css");
-                this.copy("docs/js/jquery.min.js",           "docs/js/jquery.min.js");
-                this.copy("docs/js/jquery.snippet.min.js",   "docs/js/jquery.snippet.min.js");
-                this.copy("docs/js/jquery.sortElements.js",  "docs/js/jquery.sortElements.js");
-                this.copy("docs/js/markdown.converter.js",   "docs/js/markdown.converter.js");
-                this.copy("docs/js/markdown.sanitizer.js",   "docs/js/markdown.sanitizer.js");
-                this.copy("docs/js/script.js",               "docs/js/script.js");
-                this.template("docs/config.json",            "docs/config.json", documentationContext);
-                this.template("docs/default.html",           "docs/default.html", documentationContext);
-                this.copy("docs/frame.html",                 "docs/frame.html");
-            }
+            // copy over all documentation files;
+            this.bulkDirectory("src/pages/_short-documentation", "src/pages/_short-documentation");
         },
-        */
+        copyGulp: function () {
+            // copy over all gulp files;
+            this.bulkDirectory("gulp", "gulp");
+        },
         hello: function () {
             // welcome the user to our generator;
             console.log(yosay("Woohoo no errors!"));
