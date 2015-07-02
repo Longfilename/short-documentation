@@ -12,7 +12,9 @@ Install [Yeoman](http://yeoman.io) and the Short Documentation generator.
 $ npm install -g yo
 $ npm install -g generator-short-documentation
 
-// create your project folder, and create a config-yeoman.json file, from that folder, run yeoman;
+# create your project folder
+# create a config-yeoman.json file
+# from that folder, run the following:
 
 $ yo short-documentation
 $ npm install
@@ -56,12 +58,6 @@ The filename needs to be config-yeoman.json for the generator ([sample JSON](./s
     }
 }
 ```
-
-### Continue Installation
-
-```bash
-```
-
 
 ## License
 
