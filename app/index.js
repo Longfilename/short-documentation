@@ -130,7 +130,6 @@ var fs     = require("fs"),               // traverse the file system to load a 
             // create these files for our new site;
             this.copy("src/scss/_base.scss",      "src/scss/_base.scss");
             this.copy("src/scss/_fonts.scss",     "src/scss/_fonts.scss");
-            this.copy("src/scss/_layout.scss",    "src/scss/_layout.scss");
             this.copy("src/scss/_mixins.scss",    "src/scss/_mixins.scss");
             this.copy("src/scss/_variables.scss", "src/scss/_variables.scss");
             this.template("src/scss/site.scss",   "src/scss/site.scss", content);
@@ -142,7 +141,7 @@ var fs     = require("fs"),               // traverse the file system to load a 
         },
         copyImgFiles: function () {
          // for now we don't have any image files to copy over;
-         // so create a folder in preperation for future files;
+         // so create a folder in preparation for future files;
          this.mkdir("src/img");
         },
         copyIncludeFiles: function () {
