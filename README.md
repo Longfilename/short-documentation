@@ -11,11 +11,17 @@ Install [Yeoman](http://yeoman.io) and the Short Documentation generator.
 ```bash
 $ npm install -g yo
 $ npm install -g generator-short-documentation
+
+// create your project folder, and create a config-yeoman.json file, from that folder, run yeoman;
+
+$ yo short-documentation
+$ npm install
+$ gulp
 ```
 
-Create a new folder. Then create the JSON config (filename needs to be config-yeoman.json) file for the generator ([sample JSON](./sample-config-yeoman.json)).
-
 #### config-yeoman.json
+
+The filename needs to be config-yeoman.json for the generator ([sample JSON](./sample-config-yeoman.json)).
 
 ```javascript
 {
@@ -51,27 +57,10 @@ Create a new folder. Then create the JSON config (filename needs to be config-ye
 }
 ```
 
-### Yeoman Generators
-
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
-
-To install generator-short-documentation from npm, run:
+### Continue Installation
 
 ```bash
-$ npm install -g generator-short-documentation
 ```
-
-Finally, initiate the generator:
-
-```bash
-$ yo short-documentation
-```
-
-### Getting To Know Yeoman
-
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
-
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
 
 
 ## License
