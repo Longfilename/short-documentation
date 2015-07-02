@@ -21,8 +21,7 @@ var fs     = require("fs"),               // traverse the file system to load a 
         return configJSON.project.documentation;
     },
     
-    // strings that will be inserted into the global JS and Sass files;
-    jsIncludes = "",
+    // strings that will be inserted into the global Sass file;
     sassIncludes = "",
     
     shortDocumentationGenerator = yeoman.generators.Base.extend({
@@ -43,62 +42,58 @@ var fs     = require("fs"),               // traverse the file system to load a 
                 // record the project title;
                 documentationContext.projectName = configJSON.project.name;
                 
+                console.log(configJSON);
+                
                 // let Yeoman know that this async function is done so we can move onto the next function;
                 done();
             });
         },
         copyModuleFiles: function () {
-            var moduleKey,
-                jsKey,
-                context,
-                path,
-                j = 0,
-                isLastKey = function (index) {
-                    return (Object.keys(configJSON.modules).length === index);
-                };
+            var module,   // a module from the modules object (read from the JSON file);
+                content,  // content to pass to each file (content pulled from the JSON file);
+                path,     // path of the module we're going to create;
+                jsObject, // JS property value for this module (can be true, or an array);
+                jsKey;    // jsObject[jsKey] is the filename for the JS file we're going to create; 
             
             // loop through each module in the JSON and build a folder for it;
-            for (moduleKey in configJSON.modules) {
-                // create our own counter so we can detect when we're on the last key;
-                j = j + 1;
-                
+            for (module in configJSON.modules) {
                 // yeoman context - used to insert dynamic content into the files;
-                context = {
-                    "moduleName": moduleKey
+                content = {
+                    "moduleName": module
                 };
                 
                 // path to the new module;
-                path = "src/modules/" + context.moduleName;
+                path = "src/modules/" + content.moduleName;
                 
                 // record the sass file for later inclusion in the global Sass file;
-                sassIncludes = sassIncludes + '@import "../modules/' + context.moduleName + '/module";' + os.EOL;
+                sassIncludes = sassIncludes + '@import "../modules/' + content.moduleName + '/module";' + os.EOL;
                 
                 // create these files for each module in our new site;
                 // assume every module needs a Jade and Sass file;
-                this.template("src/modules/_module/module.jade", path + "/module.jade", context);
-                this.template("src/modules/_module/module.scss", path + "/module.scss", context);
+                this.template("src/modules/module/_content.json", path + "/_content.json", content);
+                this.template("src/modules/module/demo.jade",     path + "/demo.jade", content);
+                this.template("src/modules/module/module.jade",   path + "/module.jade", content);
+                this.template("src/modules/module/module.scss",   path + "/module.scss", content);
+                this.template("src/modules/module/readme.md",     path + "/readme.md", content);
+                
+                jsObject = configJSON.modules[module].js || null;
                 
                 // if we have JS to generate;
-                if (configJSON.modules[moduleKey].js) {
-                    // create a file for each entry in the module JS array;
-                    for (jsKey in configJSON.modules[moduleKey].js) {
-                        this.template("src/modules/_module/module.js", path + "/" + configJSON.modules[moduleKey].js[jsKey] + ".js");
-                        
-                        // record the sass file for later inclusion in the global Sass file;
-                        jsIncludes = jsIncludes + "//= include ../modules/" + context.moduleName + "/" + configJSON.modules[moduleKey].js[jsKey] + ".js" + os.EOL;
+                if (jsObject) {
+                    // if true, just create the base JS file;
+                    if (typeof jsObject === "boolean") {
+                        this.template("src/modules/module/module.js", path + "/module.js");
+                    // if an array, create the named files;
+                    } else {
+                        // create a file for each entry in the module JS array;
+                        for (jsKey in jsObject) {
+                            this.template("src/modules/module/module.js", path + "/" + jsObject[jsKey] + ".js");
+                        }
                     }
                 }
-                
-                // only include the following if we want documentation;
-                if (ifDocumentation()) {
-                    this.template("src/modules/_module/config.json", path + "/config.json", context);
-                    this.template("src/modules/_module/readme.md", path + "/readme.md", context);
-                }
-                
-                // create the include statement for the documentation;
-                documentationContext.modules = documentationContext.modules + "         \"../src/modules/" + moduleKey + "/config.json\"" + ((isLastKey(j) == false) ? "," + os.EOL : "");
             }
         },
+        /*
         copyPageFiles: function () {
             var pageKey,
                 context,
@@ -182,16 +177,12 @@ var fs     = require("fs"),               // traverse the file system to load a 
             };
             
             // editor and gulp plugin configurations, nothing to serve to the client browser;
-            this.copy(".bowerrc",             ".bowerrc");
-            this.copy(".editorconfig",        ".editorconfig");
-            this.copy(".jshintrc",            ".jshintrc");
-            this.copy("bower.json",           "bower.json");
-            this.copy("config-scss-lint.yml", "config-scss-lint.yml");
-            this.copy("gulpfile.js",          "gulpfile.js");
-            this.copy("package.json",         "package.json");
-            this.template("readme.md",        "readme.md", context);
-            // this one will be served to the client;
-            this.copy("crossdomain.xml",      "crossdomain.xml");
+            this.copy(".eslintrc",      ".eslintrc");
+            this.copy(".gitignore",     ".gitignore");
+            this.copy(".scss-lint.yml", ".scss-lint.yml");
+            this.copy("gulpfile.js",    "gulpfile.js");
+            this.copy("package.json",   "package.json");
+            this.template("readme.md",  "readme.md", context);
         },
         copyDocumentationApp: function () {
             if(ifDocumentation()) {
@@ -210,6 +201,7 @@ var fs     = require("fs"),               // traverse the file system to load a 
                 this.copy("docs/frame.html",                 "docs/frame.html");
             }
         },
+        */
         hello: function () {
             // welcome the user to our generator;
             console.log(yosay("Woohoo no errors!"));
