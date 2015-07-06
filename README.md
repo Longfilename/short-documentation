@@ -64,6 +64,7 @@ $ npm install            # project dependencies are installed;
 $ gulp                   # run gulp (browser will open a page index, and the documentation);
 ```
 
+At this point, the config-yeoman.json file is no longer needed. A new module, or a new page can be added manually.
 
 ## License
 

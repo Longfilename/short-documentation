@@ -1,8 +1,41 @@
-# ShortDocumentation
+# Short Documentation
+
+Navigate to your project folder.
+
+```bash
+$ npm install # project dependencies are installed;
+$ gulp        # run gulp (browser will open a template index (list of all pages), and the documentation);
+
+# or you can run one of the following:
+
+$ gulp dist   # run the templates only (no documentation);
+$ gulp docs   # run the documentation only (no templates);
+```
+
+## What have I installed?
+
+```
+.eslintrc
+.gitignore
+.scss-lint.yml
+config-yeoman.json
+gulp
+gulpfile.js
+package.json
+readme.md
+src
+│    fonts
+│    img
+│    includes
+│    js
+│    modules
+│    pages
+│    scss
+```
 
 ## Naming Conventions
 
-### Dist Pages
+#### Dist Pages
 
 ```
 /src/pages/article/page.jade             ==> /dist/html/page-article.html
@@ -13,7 +46,7 @@
 /src/pages/article/foo/bar/page-baz.jade ==> /dist/html/page-article-foo-bar-baz.html
 ```
 
-### Documentation Pages (same as Dist)
+#### Documentation Pages (same as Dist)
 
 ```
 /src/pages/article/page.jade             ==> /docs/html/page-article.html
@@ -24,7 +57,7 @@
 /src/pages/article/foo/bar/page-baz.jade ==> /docs/html/page-article-foo-bar-baz.html
 ```
 
-### Documentation Modules
+#### Documentation Modules
 
 ```
 /src/pages/module/promo/demo.jade             ==> /docs/html/module-promo.html
