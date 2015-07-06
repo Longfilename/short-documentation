@@ -21,28 +21,27 @@ $ gulp docs   # run the documentation only (no templates);
 ├── .scss-lint.yml                        # SCSS lint configuration for "gulp-scss-lint";
 ├── config-yeoman.json                    # configuration file used to generate this project (can be deleted);
 ├── gulp                                  # Gulp tasks and configuration;
-|   ├── tasks
-|   |   ├── browser-sync.js
-|   |   ├── build.js
-|   |   ├── clean.js
-|   |   ├── copy.js
-|   |   ├── default.js
-|   |   ├── jade-modules.js
-|   |   ├── jade-pages-index.js
-|   |   ├── jade-pages.js
-|   |   ├── jade.js
-|   |   ├── js.js
-|   |   ├── open.js
-|   |   ├── scss.js
-|   |   └── watch.js
-|   ├── config.js
-|   ├── data-content.js
-|   ├── data-documentation.js
-|   ├── data-js.js
-|   ├── handle-errors.js
-|   ├── rename-js.js
-|   ├── rename-module.js
-|   └── rename-page.js
+|   ├── config.js                         # settings for Gulp (intended to be edited);
+|   ├── data-content.js                   # builds a JS object of module JSON content for Jade parsing (dist);
+|   ├── data-documentation.js             # builds a JS object of content for Jade documentation parsing (docs);
+|   ├── data-js.js                        # builds a JS object of files to parse, and generate for browserify;
+|   ├── handle-errors.js                  # simple error handling for Gulp streams;
+|   ├── rename-module.js                  # rename module-based pages for the documentation;
+|   ├── rename-page.js                    # rename page-based pages for the documentation, and the distribution;
+|   └── tasks                             # tasks for Gulp to run; the files above this folder are configuration settings;
+|       ├── browser-sync.js
+|       ├── build.js
+|       ├── clean.js
+|       ├── copy.js
+|       ├── default.js
+|       ├── jade-modules.js
+|       ├── jade-pages-index.js
+|       ├── jade-pages.js
+|       ├── jade.js
+|       ├── js.js
+|       ├── open.js
+|       ├── scss.js
+|       └── watch.js
 ├── gulpfile.js                           #
 ├── package.json                          #
 ├── readme.md                             #
