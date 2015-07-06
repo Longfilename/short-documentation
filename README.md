@@ -4,24 +4,21 @@
 
 ## Installation
 
-Install [Yeoman](http://yeoman.io) and the Short Documentation generator.
+Install [Yeoman](http://yeoman.io) and the [Short Documentation](https://github.com/Longfilename/ShortDocumentation) generator.
 
 ```bash
 $ npm install -g yo
 $ npm install -g generator-short-documentation
-
-# create your project folder
-# create a config-yeoman.json file
-# from that folder, run the following:
-
-$ yo short-documentation
-$ npm install
-$ gulp
 ```
+
+## Configuration
+
+* create your project folder
+* create a config-yeoman.json file ([sample JSON](./sample-config-yeoman.json))
 
 ### config-yeoman.json
 
-The filename needs to be config-yeoman.json for the generator to work ([sample JSON](./sample-config-yeoman.json)). This config file tells the generator what to build. This JSON file should save you 30min to an hour at the beginning of each project by creating all the files and folders you need, and linking them together (like including the proper modules in the page Jade).
+config-yeoman.json config file tells the generator what to build. This JSON file should save you significant time at the beginning of each project by creating all the files and folders you need, and linking them together (like including the proper modules in the page Jade).
 
 ```javascript
 {
@@ -57,11 +54,21 @@ The filename needs to be config-yeoman.json for the generator to work ([sample J
 }
 ```
 
-## modules
+## Implementation
+
+Navigate to your project folder (that contains config-yeoman.json).
+
+```bash
+$ yo short-documentation # project files and folders are created;
+$ npm install            # project dependencies are installed;
+$ gulp                   # run gulp (this will open two pages, a templates index, and the documentation);
+```
+
+### modules
 
 Each module (or block/component/widget) is intended to be self-contained. If you need to find the JS that impacts the header module, look in the "header" folder. Need to alter the style of the header module? Look in the "header" folder.
 
-## pages
+### pages
 
 Following a similar approach to modules, pages are intended to be self-contained. The primary difference, pages don't have page-specific SCSS (all CSS is compiled into one "site.css" file for every page to load).
 
