@@ -14,51 +14,73 @@ $ gulp docs   # run the documentation only (no templates);
 
 ## What have I installed?
 
-```
+```bash
 .
-├── .eslintrc
-├── .gitignore
-├── .scss-lint.yml
-├── config-yeoman.json
-├── gulp
-├── gulpfile.js
-├── package.json
-├── readme.md
-└── src
-    ├── fonts
-    ├── img
-    ├── includes
-    ├── js
-    ├── modules
-    |   └── [myModule]
-    |       ├── _content.json
-    |       ├── demo.jade
-    |       ├── module.jade
-    |       ├── module.js
-    |       ├── module.scss
-    |       └── readme.md
-    ├── pages
-    |   ├── _short-documentation
-    |   |   ├── dist
-    |   |   |   └── page.jade
-    |   |   └── docs
-    |   |   |   ├── _flex-resize.js
-    |   |   |   ├── _iframe.jade
-    |   |   |   └── _select-files.js
-    |   |   |   ├── _select-objects.js # test comment;
-    |   |   |   ├── pages.css
-    |   |   |   └── page.jade
-    |   |   |   ├── page.js
-    |   └── [myPage]
-    |       ├── page.jade
-    |       ├── page.js
-    |       └── readme.md
-    └── scss
-        ├── _base.scss
-        ├── _fonts.scss
-        ├── _mixins.scss
-        ├── _variables.scss
-        └── site.scss
+├── .eslintrc                             # JavaScript lint configuration for "gulp-eslint";
+├── .gitignore                            # define the files and directories Git should ignore (all generated files are defined in here);
+├── .scss-lint.yml                        # SCSS lint configuration for "gulp-scss-lint";
+├── config-yeoman.json                    # configuration file used to generate this project (can be deleted);
+├── gulp                                  # Gulp tasks and configuration;
+|   ├── tasks
+|   |   ├── browser-sync.js
+|   |   ├── build.js
+|   |   ├── clean.js
+|   |   ├── copy.js
+|   |   ├── default.js
+|   |   ├── jade-modules.js
+|   |   ├── jade-pages-index.js
+|   |   ├── jade-pages.js
+|   |   ├── jade.js
+|   |   ├── js.js
+|   |   ├── open.js
+|   |   ├── scss.js
+|   |   └── watch.js
+|   ├── config.js
+|   ├── data-content.js
+|   ├── data-documentation.js
+|   ├── data-js.js
+|   ├── handle-errors.js
+|   ├── rename-js.js
+|   ├── rename-module.js
+|   └── rename-page.js
+├── gulpfile.js                           #
+├── package.json                          #
+├── readme.md                             #
+└── src                                   #
+    ├── fonts                             #
+    ├── img                               #
+    ├── includes                          #
+    ├── js                                #
+    ├── modules                           #
+    |   └── [myModule]                    #
+    |       ├── _content.json             #
+    |       ├── demo.jade                 #
+    |       ├── module.jade               #
+    |       ├── module.js                 #
+    |       ├── module.scss               #
+    |       └── readme.md                 #
+    ├── pages                             #
+    |   ├── _short-documentation          #
+    |   |   ├── dist                      #
+    |   |   |   └── page.jade             #
+    |   |   └── docs                      #
+    |   |   |   ├── _flex-resize.js       #
+    |   |   |   ├── _iframe.jade          #
+    |   |   |   └── _select-files.js      #
+    |   |   |   ├── _select-objects.js    # test comment;
+    |   |   |   ├── pages.css             #
+    |   |   |   └── page.jade             #
+    |   |   |   ├── page.js               #
+    |   └── [myPage]                      #
+    |       ├── page.jade                 #
+    |       ├── page.js                   #
+    |       └── readme.md                 #
+    └── scss                              #
+        ├── _base.scss                    #
+        ├── _fonts.scss                   #
+        ├── _mixins.scss                  #
+        ├── _variables.scss               #
+        └── site.scss                     #
 ```
 
 ## Naming Conventions
