@@ -16,7 +16,7 @@ $ npm install -g generator-short-documentation
 * create your project folder
 * create a config-yeoman.json file ([sample JSON](./sample-config-yeoman.json))
 
-### config-yeoman.json
+#### config-yeoman.json
 
 config-yeoman.json config file tells the generator what to build. This JSON file should save you significant time at the beginning of each project by creating all the files and folders you need, and linking them together (like including the proper modules in the page Jade).
 
