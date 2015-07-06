@@ -22,7 +22,7 @@ module.exports = {
         // URL to open;
         "url": {
             "dist": "http://" + server + ":" + port + "/" + dist + "/index.html",
-            "docs": "http://" + server + ":" + port + "/" + docs + "/index.html",
+            "docs": "http://" + server + ":" + port + "/" + docs + "/index.html"
         }
     },
     // web server and synchronised browser testing;

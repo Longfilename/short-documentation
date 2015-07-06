@@ -132,6 +132,17 @@ include ../../modules/promo/module
 
 Modules have the module Jade, and the documentation Jade (which includes the module Jade).
 
+Module "pages" aren't built for the distribution, just the documentation.
+
+```
+/src/pages/module/promo/demo.jade             ==> /build/docs/html/module-promo.html
+/src/pages/module/promo/demo-foo.jade         ==> /build/docs/html/module-promo-foo.html
+/src/pages/module/promo/foo/demo.jade         ==> /build/docs/html/module-promo-foo.html
+/src/pages/module/promo/foo/demo-bar.jade     ==> /build/docs/html/module-promo-foo-bar.html
+/src/pages/module/promo/foo/bar/demo.jade     ==> /build/docs/html/module-promo-foo-bar.html
+/src/pages/module/promo/foo/bar/demo-baz.jade ==> /build/docs/html/module-promo-foo-bar-baz.html
+```
+
 ###### Module folder contents: JavaScript
 
 If a module is interactive, it'll have a JS file - put all module functionality into this file. If there is shared functionality across multiple modules of very different types, put the JS into the /src/js folder, and import it as needed. If there is shared functionality across multiple modules of similar functionality, nest the modules and put the JS in the parent folder, like the example below.
@@ -174,18 +185,25 @@ The readme.md file is to capture any information (useful for the next developer 
 
 #### What is a page?
 
-Pages are what you think they are :) HTML pages comprised of modules.
+Pages are stitched together modules with some structural HTML. 
 
 #### Page folder contents
 
-#### Page naming conventions
+Pages are simpler than modules because modules are the bulk of the project work.
 
-## Naming Conventions
+###### Page folder contents: Jade
 
+Jade files that start with page, or page- are compiled for the documentation and distribution builds.
 
+###### Page folder contents: JavaScript
 
+page.js should import the JavaScript for all modules that are in this page. There will be duplication across different pages (think primary navigation). The repetitive JS will be factored out into a common.js file (defined in the gulp config file). 
 
-#### Distribution Pages
+###### Page folder contents: Markdown
+
+The readme.md file is to capture any information (useful for the next developer on the project) about this page that doesn't easily fit into comments.
+
+#### Page Naming Convention
 
 Documentation pages go through the same renaming pattern, but the destination isn't /build/dist/, it's /build/docs/.
 
@@ -198,15 +216,6 @@ Documentation pages go through the same renaming pattern, but the destination is
 /src/pages/article/foo/bar/page-baz.jade ==> /build/dist/html/page-article-foo-bar-baz.html
 ```
 
-#### Documentation Modules
+## Gulp config
 
-Module "pages" don't need to be built for the distribution, just the documentation.
-
-```
-/src/pages/module/promo/demo.jade             ==> /build/docs/html/module-promo.html
-/src/pages/module/promo/demo-foo.jade         ==> /build/docs/html/module-promo-foo.html
-/src/pages/module/promo/foo/demo.jade         ==> /build/docs/html/module-promo-foo.html
-/src/pages/module/promo/foo/demo-bar.jade     ==> /build/docs/html/module-promo-foo-bar.html
-/src/pages/module/promo/foo/bar/demo.jade     ==> /build/docs/html/module-promo-foo-bar.html
-/src/pages/module/promo/foo/bar/demo-baz.jade ==> /build/docs/html/module-promo-foo-bar-baz.html
-```
+Ugh, so much more to talk about here.
