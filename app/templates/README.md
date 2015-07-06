@@ -90,7 +90,9 @@ $ gulp docs   # run the documentation only (no templates);
 
 Module, widget, component, block... they're all the same in this context. Use wireframes to help define the modules. A box on a wireframe typically maps to a module. e.g. navigation, rail promo, slider, a form. Some modules are very small, some are large single page applications.
 
-#### Module folder contents: JSON
+#### Module folder contents
+
+###### Module folder contents: JSON
 
 The content that a module displays should not be stored in Jade (or JS, or SCSS). The idea of these modules is easy reusability, so abstract out the content so you can easily swap the content for each iteration of the module. Gulp will make the JSON files available in Jade (so we can use the content when building the HTML files).
 
@@ -126,11 +128,10 @@ include ../../modules/promo/module
 include ../../modules/promo/module
 ```
 
-#### Module folder contents: Jade
+###### Module folder contents: Jade
 
 Modules have the module Jade, and the documentation Jade (which includes the module Jade).
 
-#### Module folder contents
 ###### Module folder contents: JavaScript
 
 If a module is interactive, it'll have a JS file - put all module functionality into this file. If there is shared functionality across multiple modules of very different types, put the JS into the /src/js folder, and import it as needed. If there is shared functionality across multiple modules of similar functionality, nest the modules and put the JS in the parent folder, like the example below.
