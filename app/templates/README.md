@@ -15,22 +15,50 @@ $ gulp docs   # run the documentation only (no templates);
 ## What have I installed?
 
 ```
-.eslintrc
-.gitignore
-.scss-lint.yml
-config-yeoman.json
-gulp
-gulpfile.js
-package.json
-readme.md
-src
-│    fonts
-│    img
-│    includes
-│    js
-│    modules
-│    pages
-│    scss
+.
+├── .eslintrc
+├── .gitignore
+├── .scss-lint.yml
+├── config-yeoman.json
+├── gulp
+├── gulpfile.js
+├── package.json
+├── readme.md
+└── src
+    ├── fonts
+    ├── img
+    ├── includes
+    ├── js
+    ├── modules
+    |   └── [myModule]
+    |       ├── _content.json
+    |       ├── demo.jade
+    |       ├── module.jade
+    |       ├── module.js
+    |       ├── module.scss
+    |       └── readme.md
+    ├── pages
+    |   ├── _short-documentation
+    |   |   ├── dist
+    |   |   |   └── page.jade
+    |   |   └── docs
+    |   |   |   ├── _flex-resize.js
+    |   |   |   ├── _iframe.jade
+    |   |   |   └── _select-files.js
+    |   |   |   ├── _select-objects.js # test comment;
+    |   |   |   ├── pages.css
+    |   |   |   └── page.jade
+    |   |   |   ├── page.js
+    |   └── [myPage]
+    |       ├── page.jade
+    |       ├── page.js
+    |       └── readme.md
+    └── scss
+        ├── _base.scss
+        ├── _fonts.scss
+        ├── _mixins.scss
+        ├── _variables.scss
+        └── site.scss
 ```
 
 ## Naming Conventions
