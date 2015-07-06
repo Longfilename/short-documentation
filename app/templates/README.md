@@ -84,6 +84,49 @@ $ gulp docs   # run the documentation only (no templates);
         └── site.scss                     # include all SCSS files needed for the site;
 ```
 
+## Building a module
+
+#### What is a module?
+
+Module, widget, component, block... they're all the same in this context. Use wireframes to help define the modules. A box on a wireframe typically maps to a module. e.g. navigation, rail promo, slider, a form. Some modules are very small, some are large single page applications.
+
+#### Module folder contents
+
+##### JSON file(s)
+
+The content that a module displays should not be stored in Jade (or JS, or SCSS). The idea of these modules is easy reusability, so abstract out the content so you can easily swap the content for each iteration of the module. Gulp will make the JSON files available in Jade (so we can use the content when building the HTML files).
+
+The JSON is available in Jade via the "json" variable. In a single iteration module, you can define the content in the module itself (since it never changes):
+
+```JavaScript
+{
+    "module": "page-footer"
+}
+```
+
+```Jade
+- var content = json["page-footer/_content.json"]
+
+div=content.moduleName
+```
+
+```HTML
+<div>page-footer</div>
+```
+
+But when you have multiple iterations, define the content in the page:
+
+```Jade
+- var content = json["promo/_feature1.json"]
+include ../../modules/promo/module
+- var content = json["promo/_feature2.json"]
+include ../../modules/promo/module
+- var content = json["promo/_feature3.json"]
+include ../../modules/promo/module
+```
+
+## Building a page
+
 ## Naming Conventions
 
 #### Distribution Pages
