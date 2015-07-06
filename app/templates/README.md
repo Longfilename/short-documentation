@@ -92,29 +92,32 @@ Module, widget, component, block... they're all the same in this context. Use wi
 
 #### Module folder contents
 
-##### JSON file(s)
+##### JSON
 
 The content that a module displays should not be stored in Jade (or JS, or SCSS). The idea of these modules is easy reusability, so abstract out the content so you can easily swap the content for each iteration of the module. Gulp will make the JSON files available in Jade (so we can use the content when building the HTML files).
 
 The JSON is available in Jade via the "json" variable. In a single iteration module, you can define the content in the module itself (since it never changes):
 
+/src/modules/page-footer/_content.json
 ```JavaScript
 {
     "module": "page-footer"
 }
 ```
 
+/src/modules/page-footer/module.jade
 ```Jade
 - var content = json["page-footer/_content.json"]
 
 div=content.moduleName
 ```
 
+Generated HTML:
 ```HTML
 <div>page-footer</div>
 ```
 
-But when you have multiple iterations, define the content in the page:
+But when you have multiple iterations, define the content in the page so you can use the module repeatedly. This way you don't have to repeat the Jade/HTML whenever there's a new iteration.
 
 ```Jade
 - var content = json["promo/_feature1.json"]
@@ -125,9 +128,62 @@ include ../../modules/promo/module
 include ../../modules/promo/module
 ```
 
+##### Jade
+
+Modules have the module Jade, and the documentation Jade (which includes the module Jade).
+
+##### JavaScript
+
+If a module is interactive, it'll have a JS file - put all module functionality into this file. If there is shared functionality across multiple modules of very different types, put the JS into the /src/js folder, and import it as needed. If there is shared functionality across multiple modules of similar functionality, nest the modules and put the JS in the parent folder, like the example below.
+
+```bash
+.
+└── src
+    └── modules
+        └── slideshow
+            ├── popover.js
+            ├── hero
+            |   └── module.js
+            └── villan
+                └── module.js
+```
+
+##### CSS
+
+All module CSS will be contained in the module.scss file. Sure, the module will inherit styles from parent elements, but the bulk of the styles should be defined here so the next developer doesn't have to look far to understand how this is put together.
+
+##### Markdown
+
+The readme file is intended to give the next developer a leg up on comprehending this module. This is not intended to be a reiteration of requirements (those are documented elsewhere, right?). This readme is to help understand the history of the module, and why things are the way they are.
+
+#### Module naming conventions
+
+The JSON files should either start with an underscore (to indicate the content is used in Jade parsing) or with a dash (to indicate this JSON file is accessed via Ajax in the browser. JSON files that start with a dash are copied to the distribution folder.
+
+Jade files that start with demo, or demo- are compiled for the documentation. These Jade files contain wrapper HTML for the module so it displays properly in the documentation application. Modules shouldn't include wrapper structural HTML (unless the structure is necessary for the module). The structural HTML should be in the page. And when the module is to be displayed by itself - in the documentation - the structural HTML comes from the demo files.
+
+Jade files that start with module, or module- are compiled for both the documentation, and the distribution. These files shouldn't contain content, just HTML and Jade logic.
+
+There should be one module.js file (if required, not all modules are interactive). This file is imported into each page.js file when needed.
+
+There should one module.scss file. This file is imported into site.scss (which is compiled to site.css and is used on every page).
+
+The readme.md file is to capture any information (useful for the next developer on the project) about this module that doesn't easily fit into comments.
+
 ## Building a page
 
+#### What is a page?
+
+Pages are what you think they are :) HTML pages comprised of modules.
+
+#### Page folder contents
+
+#### Page naming conventions
+
 ## Naming Conventions
+
+
+
 
 #### Distribution Pages
 
