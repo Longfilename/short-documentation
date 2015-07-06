@@ -8,7 +8,7 @@ var gulp         = require("gulp"),
     rename       = require("gulp-rename"),         // so we can create multiple HTML files off one jade file;
     handleErrors = require("../handle-errors");    // function to fire on error;
 
-// run jade-json first to make sure the global variable has been created;
+// build the documentation pages for each module;
 gulp.task("jade:modules", function () {
     // we'll use this config for two jade functions;
     var jadeConfig = {
