@@ -1,5 +1,6 @@
 var jQuery = window.jQuery;
 
+// set click events to control the width of the documentation panels;
 jQuery(function ($) {
     var $columnIframe = $("div.col-iframe"),
         $columnReadme = $("div.col-readme");

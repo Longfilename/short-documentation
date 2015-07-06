@@ -52,72 +52,62 @@ $ gulp docs   # run the documentation only (no templates);
     |   ├── head.jade                     # HEAD content (typically very repetitive for HTML templates);
     |   └── scripts.jade                  # SCRIPT tags at the bottom of every page;
     ├── js                                # (empty) folder for site wide JS files;
-    ├── modules                           #
-    |   └── [myModule]                    #
-    |       ├── _content.json             #
-    |       ├── demo.jade                 #
-    |       ├── module.jade               #
-    |       ├── module.js                 #
-    |       ├── module.scss               #
-    |       └── readme.md                 #
-    ├── pages                             #
-    |   ├── _short-documentation          #
-    |   |   ├── dist                      #
-    |   |   |   └── page.jade             #
-    |   |   └── docs                      #
-    |   |       ├── _flex-resize.js       #
-    |   |       ├── _iframe.jade          #
-    |   |       └── _select-files.js      #
-    |   |       ├── _select-objects.js    #
-    |   |       ├── pages.css             #
-    |   |       └── page.jade             #
-    |   |       ├── page.js               #
-    |   └── [myPage]                      #
-    |       ├── page.jade                 #
-    |       ├── page.js                   #
-    |       └── readme.md                 #
-    └── scss                              #
-        ├── _base.scss                    #
-        ├── _fonts.scss                   #
-        ├── _mixins.scss                  #
-        ├── _variables.scss               #
-        └── site.scss                     #
+    ├── modules                           # all modules/components/widgets for this project;
+    |   └── [myModule]                    # each module gets its own folder;
+    |       ├── _content.json             # content/data - don't put your content into Jade;
+    |       ├── demo.jade                 # "page" for the docs, put necessary wrapper HTML around the module so it'll display properly in the documentation;
+    |       ├── module.jade               # module HTML;
+    |       ├── module.js                 # JavaScript for this module;
+    |       ├── module.scss               # CSS for this module;
+    |       └── readme.md                 # information to convey to the next developer about this module;
+    ├── pages                             # all Jade pages for this project;
+    |   ├── _short-documentation          # documentation templates, these shouldn't need to be altered;
+    |   |   ├── dist                      # "pages" for the distribution build;
+    |   |   |   └── page.jade             # index of all "page" based pages (not documentation module pages);
+    |   |   └── docs                      # files for the documentation build;
+    |   |       ├── _flex-resize.js       # control the width of the documentation panels;
+    |   |       ├── _iframe.jade          # module page template for the documentation; module demo files are compiled, then inserted into this Jade page;
+    |   |       ├── _select-files.js      # display the code for the file selected for the selected object (page/module);
+    |   |       ├── _select-objects.js    # load the selected page/module page, and update the file SELECT with the selected object's files;
+    |   |       ├── pages.css             # CSS used in the documentation (this is not compiled to anywhere);
+    |   |       └── page.jade             # root documentation page (contains all documentation content in a JSON object);
+    |   |       └── page.js               # aggregate all JavaScript needed for the documentation app;
+    |   └── [myPage]                      # each page type gets its own folder;
+    |       ├── page.jade                 # page HTML;
+    |       ├── page.js                   # JavaScript needed for this page;
+    |       └── readme.md                 # information to convey to the next developer about this page;
+    └── scss                              # site wide CSS;
+        ├── _base.scss                    # base tag CSS, nothing module specific;
+        ├── _fonts.scss                   # define the fonts you're including in /src/fonts;
+        ├── _mixins.scss                  # SCSS mixins used across the site;
+        ├── _variables.scss               # SCSS variables used across the site (colors, widths, breakpoints, etc.);
+        └── site.scss                     # include all SCSS files needed for the site;
 ```
 
 ## Naming Conventions
 
-#### Dist Pages
+#### Distribution Pages
+
+Documentation pages go through the same renaming pattern, but the destination isn't /build/dist/, it's /build/docs/.
 
 ```
-/src/pages/article/page.jade             ==> /dist/html/page-article.html
-/src/pages/article/page-foo.jade         ==> /dist/html/page-article-foo.html
-/src/pages/article/foo/page.jade         ==> /dist/html/page-article-foo.html
-/src/pages/article/foo/page-bar.jade     ==> /dist/html/page-article-foo-bar.html
-/src/pages/article/foo/bar/page.jade     ==> /dist/html/page-article-foo-bar.html
-/src/pages/article/foo/bar/page-baz.jade ==> /dist/html/page-article-foo-bar-baz.html
-```
-
-#### Documentation Pages (same as Dist)
-
-```
-/src/pages/article/page.jade             ==> /docs/html/page-article.html
-/src/pages/article/page-foo.jade         ==> /docs/html/page-article-foo.html
-/src/pages/article/foo/page.jade         ==> /docs/html/page-article-foo.html
-/src/pages/article/foo/page-bar.jade     ==> /docs/html/page-article-foo-bar.html
-/src/pages/article/foo/bar/page.jade     ==> /docs/html/page-article-foo-bar.html
-/src/pages/article/foo/bar/page-baz.jade ==> /docs/html/page-article-foo-bar-baz.html
+/src/pages/article/page.jade             ==> /build/dist/html/page-article.html
+/src/pages/article/page-foo.jade         ==> /build/dist/html/page-article-foo.html
+/src/pages/article/foo/page.jade         ==> /build/dist/html/page-article-foo.html
+/src/pages/article/foo/page-bar.jade     ==> /build/dist/html/page-article-foo-bar.html
+/src/pages/article/foo/bar/page.jade     ==> /build/dist/html/page-article-foo-bar.html
+/src/pages/article/foo/bar/page-baz.jade ==> /build/dist/html/page-article-foo-bar-baz.html
 ```
 
 #### Documentation Modules
 
-```
-/src/pages/module/promo/demo.jade             ==> /docs/html/module-promo.html
-/src/pages/module/promo/demo-foo.jade         ==> /docs/html/module-promo-foo.html
-/src/pages/module/promo/foo/demo.jade         ==> /docs/html/module-promo-foo.html
-/src/pages/module/promo/foo/demo-bar.jade     ==> /docs/html/module-promo-foo-bar.html
-/src/pages/module/promo/foo/bar/demo.jade     ==> /docs/html/module-promo-foo-bar.html
-/src/pages/module/promo/foo/bar/demo-baz.jade ==> /docs/html/module-promo-foo-bar-baz.html
-```
+Module "pages" don't need to be built for the distribution, just the documentation.
 
-#### Test image
-![FPO Image](http://placehold.it/350x150 "FPO Image")
+```
+/src/pages/module/promo/demo.jade             ==> /build/docs/html/module-promo.html
+/src/pages/module/promo/demo-foo.jade         ==> /build/docs/html/module-promo-foo.html
+/src/pages/module/promo/foo/demo.jade         ==> /build/docs/html/module-promo-foo.html
+/src/pages/module/promo/foo/demo-bar.jade     ==> /build/docs/html/module-promo-foo-bar.html
+/src/pages/module/promo/foo/bar/demo.jade     ==> /build/docs/html/module-promo-foo-bar.html
+/src/pages/module/promo/foo/bar/demo-baz.jade ==> /build/docs/html/module-promo-foo-bar-baz.html
+```
