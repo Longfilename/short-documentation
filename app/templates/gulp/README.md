@@ -29,4 +29,40 @@
         ├── scss.js                 # compile CSS;
         └── watch.js                # set watch tasks to trigger rebuilding of assets;
 ```
+## config.js
 
+The property names in config map to the tasks they are used for.
+
+```JavaScript
+{
+    "src": "",         // mapping to the "src" for the helper functions; (in case the folder name is changed);
+    "clean": {},       // settings for the clean task;
+    "open": {},        // settings for the open task;
+    "browsersync": {}, // settings for the browsersync task; // starting to see the pattern yet?;
+    "watch": {},       // settings for the watch task;
+    "jade": {},        // settings for the jade task;
+    "scss": {},        // settings for the scss task;
+    "js": {},          // settings for the js task;
+    "copy": {}         // settings for the copy task;
+};
+```
+
+## Common tasks to run
+
+```bash
+$ gulp
+```
+
+`gulp dist` will generate both the documentation and the distribution builds, and set a watch for each.
+
+```bash
+$ gulp docs
+```
+
+`gulp docs` will generate the documentation build, and set a watch for this build.
+
+```bash
+$ gulp dist
+```
+
+`gulp dist` will generate the distribution build, and set a watch for this build.

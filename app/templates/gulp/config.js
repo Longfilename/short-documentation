@@ -7,7 +7,7 @@ var src    = "src",        // files to dev on;
     port   = 3000;         // URL of the server we're starting;
 
 module.exports = {
-    // helper functions need these base values;
+    // helper functions need this base value;
     "src": src,
     // delete documentation and the build;
     "clean": {
