@@ -1,11 +1,11 @@
 var gulp         = require("gulp"),
     config       = require("../config.js").jade.index,
-    content      = require("../data-documentation.js"), // parse the JSON files into an object to pass to Jade;
-    jade         = require("gulp-jade"),                // translate jade into HTML;
-    rename       = require("gulp-rename"),              // allows us to rename files;
-    plumber      = require("gulp-plumber"),             // error trapping so an error doesn't kill Gulp;
-    run          = require("run-sequence"),             // run gulp tasks in sequence;
-    handleErrors = require("../handle-errors"),         // function to fire on error;
+    content      = require("../helpers/data-documentation.js"), // parse the JSON files into an object to pass to Jade;
+    jade         = require("gulp-jade"),                        // translate jade into HTML;
+    rename       = require("gulp-rename"),                      // allows us to rename files;
+    plumber      = require("gulp-plumber"),                     // error trapping so an error doesn't kill Gulp;
+    run          = require("run-sequence"),                     // run gulp tasks in sequence;
+    handleErrors = require("../helpers/handle-errors"),         // function to fire on error;
     // jade configuration settings for both dist and docs;
     configJade   = {
         "pretty": "    ",

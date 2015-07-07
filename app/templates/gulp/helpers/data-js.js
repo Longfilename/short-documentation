@@ -1,4 +1,4 @@
-var config = require("./config").js,
+var config = require("../config").js,
     file   = require("file"), // traverse the file system;
     fs     = require("fs");   // read the contents of the readme.md file;
 

@@ -1,4 +1,4 @@
-var config = require("./config"),
+var config = require("../config"),
     file   = require("file"); // traverse the file system;
 
 // return content to pass into the Jade compiler;
@@ -43,7 +43,7 @@ module.exports = function () {
                     // set the key;
                     path = removeFolders(folder) + "/" + file;
                     // set the path to the file to include the contents of the JSON file as a variable;
-                    newPath = "../" + folder + "/" + file;
+                    newPath = "../../" + folder + "/" + file;
                     // save the value in the json object so we reference it later with Jade;
                     // create a unique key per JSON file made up of the directory it is in;
                     data[path] = requireUncached(newPath);

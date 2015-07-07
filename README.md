@@ -68,4 +68,4 @@ At this point, the `config-yeoman.json` file is no longer needed. A new module, 
 
 ## License
 
-MIT
+The code is available under the MIT license.

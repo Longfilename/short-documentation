@@ -1,20 +1,20 @@
 var gulp          = require("gulp"),
     config        = require("../config").js,
     eslint        = require("gulp-eslint"),
-    babelify      = require("babelify"),            // ES6 to ES5 conversion;
-    browserSync   = require("browser-sync"),        // inform the browser what's going on;
-    browserify    = require("browserify"),          // transcode JS;
-    buffer        = require("vinyl-buffer"),        // not 100% sure;
-    factor        = require("factor-bundle"),       // extract common js functions into a global file;
-    size          = require("gulp-size"),           // report on filesize of gulp streams;
-    source        = require("vinyl-source-stream"), // adds a file to a gulp stream;
-    fs            = require("fs"),                  // allows us to walk a filesystem (and create empty files);
-    mkdirp        = require("mkdirp"),              // make directories (so we can make files);
-    run           = require("run-sequence"),        // run gulp tasks in sequence;
-    plumber       = require("gulp-plumber"),        // error trapping so an error doesn't kill Gulp;
-    handleErrors  = require("../handle-errors"),    // function to fire on error;
-    js            = require("../data-js")(),        // get the JS files for browserify to work with;
-    compileConfig = {};                             // configuration for dist/docs settings;
+    babelify      = require("babelify"),                 // ES6 to ES5 conversion;
+    browserSync   = require("browser-sync"),             // inform the browser what's going on;
+    browserify    = require("browserify"),               // transcode JS;
+    buffer        = require("vinyl-buffer"),             // not 100% sure;
+    factor        = require("factor-bundle"),            // extract common js functions into a global file;
+    size          = require("gulp-size"),                // report on filesize of gulp streams;
+    source        = require("vinyl-source-stream"),      // adds a file to a gulp stream;
+    fs            = require("fs"),                       // allows us to walk a filesystem (and create empty files);
+    mkdirp        = require("mkdirp"),                   // make directories (so we can make files);
+    run           = require("run-sequence"),             // run gulp tasks in sequence;
+    plumber       = require("gulp-plumber"),             // error trapping so an error doesn't kill Gulp;
+    handleErrors  = require("../helpers/handle-errors"), // function to fire on error;
+    js            = require("../helpers/data-js")(),     // get the JS files for browserify to work with;
+    compileConfig = {};                                  // configuration for dist/docs settings;
 
 // start the chain to execute all the JS tasks;
 gulp.task("js", function (callback) {

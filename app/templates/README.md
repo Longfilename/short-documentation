@@ -1,10 +1,12 @@
 # Short Documentation
 
+## Quick Start
+
 ```bash
 $ npm install # project dependencies are installed;
 $ gulp        # run gulp (browser will open a template index, and the documentation);
 
-# or you can run one of the following:
+# alternatively, you can run one of the following:
 
 $ gulp dist   # run the templates only (no documentation);
 $ gulp docs   # run the documentation only (no templates);
@@ -216,4 +218,6 @@ Documentation pages go through the same renaming pattern, but the destination is
 
 ## Gulp
 
-... to be continued.
+This project is intentionally unfinished. You'll notice a lack of image processing, or sprite generation, and plenty of other gulp plugins that are extremely useful. The kitchen sink is not included with this project because those plugins tend to change from project to project. By not including EVERYTHING, you don't have to start the project by ripping parts out.
+
+Most of what will be edited in Gulp is the [config.js](./gulp/README.md) file. This contains the settings for each Gulp task.

@@ -1,12 +1,12 @@
 var gulp         = require("gulp"),
     config       = require("../config.js").jade,
-    content      = require("../data-content.js"),  // parse the JSON files into an object to pass to Jade;
-    renameFile   = require("../rename-module.js"), // transform a filename object from gulp-tap;
-    jade         = require("gulp-jade"),           // translate jade into HTML;
-    tap          = require("gulp-tap"),            // allows us access to the generated HTML;
-    plumber      = require("gulp-plumber"),        // error trapping so an error doesn't kill Gulp;
-    rename       = require("gulp-rename"),         // so we can create multiple HTML files off one jade file;
-    handleErrors = require("../handle-errors");    // function to fire on error;
+    content      = require("../helpers/data-content.js"),  // parse the JSON files into an object to pass to Jade;
+    renameFile   = require("../helpers/rename-module.js"), // transform a filename object from gulp-tap;
+    jade         = require("gulp-jade"),                   // translate jade into HTML;
+    tap          = require("gulp-tap"),                    // allows us access to the generated HTML;
+    plumber      = require("gulp-plumber"),                // error trapping so an error doesn't kill Gulp;
+    rename       = require("gulp-rename"),                 // so we can create multiple HTML files off one jade file;
+    handleErrors = require("../helpers/handle-errors");    // function to fire on error;
 
 // build the documentation pages for each module;
 gulp.task("jade:modules", function () {

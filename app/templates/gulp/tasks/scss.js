@@ -1,17 +1,17 @@
 var gulp            = require("gulp"),
     config          = require("../config").scss,
-    plumber         = require("gulp-plumber"),           // error trapping so an error doesn't kill Gulp;
-    browserSync     = require("browser-sync"),           // update content in the browser;
-    scss            = require("gulp-sass"),              // SCSS to CSS conversion;
-    scssLint        = require("gulp-scss-lint"),         // verify the SCSS is written properly; 
-    scssLintStylish = require("gulp-scss-lint-stylish"), // 
-    gulpFilter      = require("gulp-filter"),            // remove some files from the glob (and add them back);
-    autoprefixer    = require("gulp-autoprefixer"),      // add browser prefixes to the CSS;
-    sourcemaps      = require("gulp-sourcemaps"),        // generate source maps for the SCSS;
-    size            = require("gulp-size"),              // report on file sizes;
-    run             = require("run-sequence"),           // run gulp tasks in sequence;
-    handleErrors    = require("../handle-errors"),       // function to fire on error;
-    compileConfig   = {};                                // contain settings for dist/docs compilation;
+    plumber         = require("gulp-plumber"),             // error trapping so an error doesn't kill Gulp;
+    browserSync     = require("browser-sync"),             // update content in the browser;
+    scss            = require("gulp-sass"),                // SCSS to CSS conversion;
+    scssLint        = require("gulp-scss-lint"),           // verify the SCSS is written properly; 
+    scssLintStylish = require("gulp-scss-lint-stylish"),   // reporter for scssLint;
+    gulpFilter      = require("gulp-filter"),              // remove some files from the glob (and add them back);
+    autoprefixer    = require("gulp-autoprefixer"),        // add browser prefixes to the CSS;
+    sourcemaps      = require("gulp-sourcemaps"),          // generate source maps for the SCSS;
+    size            = require("gulp-size"),                // report on file sizes;
+    run             = require("run-sequence"),             // run gulp tasks in sequence;
+    handleErrors    = require("../helpers/handle-errors"), // function to fire on error;
+    compileConfig   = {};                                  // contain settings for dist/docs compilation;
 
 // start the chain to execute all the SCSS tasks;
 gulp.task("scss", function (callback) {
@@ -24,6 +24,7 @@ gulp.task("scss", function (callback) {
 
 // build the CSS files for the distribution build;
 gulp.task("scss:dist", function (callback) {
+    // configure the files scss:compile will compile;
     compileConfig.destination = config.dest.dist;
     run(
         "scss:lint",
@@ -34,13 +35,16 @@ gulp.task("scss:dist", function (callback) {
 
 // build the CSS files for the docs build;
 gulp.task("scss:docs", function (callback) {
+    // configure the files scss:compile will compile;
     compileConfig.destination = config.dest.docs;
     run(
+        "scss:lint",
         "scss:compile",
         callback
     );
 });
 
+// verify the SCSS is written properly;
 gulp.task("scss:lint", function () {
     return gulp.src(config.linstSrc)
         .pipe(scssLint({

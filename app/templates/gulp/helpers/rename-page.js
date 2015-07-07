@@ -1,4 +1,4 @@
-var root = require("./config").jade.pages.root;
+var root = require("../config").jade.pages.root;
 
 // take a path (from gulp-rename) and change the filename;
 module.exports = function (path) {
