@@ -177,7 +177,7 @@ Jade files that start with `module`, or `module-` are compiled for both the docu
 
 There should be one `module.js` file (if required, not all modules are interactive). This file is imported into each `page.js` file when needed.
 
-There should one `module.scss` file. This file is imported into `site.scss` (which is compiled to site.css and is used on every page).
+There should one `module.scss` file. This file is imported into `site.scss` (which is compiled to `site.css` and is used on every page).
 
 The `readme.md` file is to capture any information (useful for the next developer on the project) about this module that doesn't easily fit into comments.
 
@@ -189,23 +189,23 @@ Pages are stitched together modules with some structural HTML.
 
 #### Page folder contents
 
-Pages are simpler than modules because modules are the bulk of the project work.
+Pages are simpler than modules because pages are collections of modules, no SCSS needed.
 
 ###### Page folder contents: Jade
 
-Jade files that start with page, or page- are compiled for the documentation and distribution builds.
+Jade files that start with `page`, or `page-` are compiled for the documentation and distribution builds.
 
 ###### Page folder contents: JavaScript
 
-page.js should import the JavaScript for all modules that are in this page. There will be duplication across different pages (think primary navigation). The repetitive JS will be factored out into a common.js file (defined in the gulp config file). 
+`page.js` should import the JavaScript for all modules that are in this page. There will be duplication across different pages (think primary navigation). The repetitive JS will be factored out into a `common.js` file (defined in the gulp config file). 
 
 ###### Page folder contents: Markdown
 
-The readme.md file is to capture any information (useful for the next developer on the project) about this page that doesn't easily fit into comments.
+The `readme.md` file is to capture any information (useful for the next developer on the project) about this page that doesn't easily fit into comments.
 
 #### Page Naming Convention
 
-Documentation pages go through the same renaming pattern, but the destination isn't /build/dist/, it's /build/docs/.
+Documentation pages go through the same renaming pattern, but the destination isn't `/build/dist/`, it's `/build/docs/`.
 
 ```
 /src/pages/article/page.jade             ==> /build/dist/html/page-article.html
