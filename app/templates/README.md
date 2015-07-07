@@ -1,8 +1,5 @@
 # Short Documentation
 
-[![Build Status](https://travis-ci.org/longfilename/ShortDocumentation.svg)](https://travis-ci.org/longfilename/ShortDocumentation)
-[![devDependency Status](https://david-dm.org/longfilename/ShortDocumentation/dev-status.svg)](https://david-dm.org/longfilename/ShortDocumentation#info=devDependencies)
-
 ```bash
 $ npm install # project dependencies are installed;
 $ gulp        # run gulp (browser will open a template index, and the documentation);
