@@ -216,6 +216,6 @@ Documentation pages go through the same renaming pattern, but the destination is
 /src/pages/article/foo/bar/page-baz.jade ==> /build/dist/html/page-article-foo-bar-baz.html
 ```
 
-## Gulp config
+## Gulp
 
-Ugh, so much more to talk about here.
+... to be continued.
