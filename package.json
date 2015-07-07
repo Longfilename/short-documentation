@@ -1,5 +1,5 @@
 {
-  "name": "short-documentation",
+  "name": "generator-short-documentation",
   "version": "0.0.1",
   "description": "yeoman-generator for front-end templates and documentation. This project makes use of Jade, SCSS, and ES6 (through Babel).",
   "license": "MIT",
