@@ -55,11 +55,15 @@ $ gulp
 
 `gulp dist` will generate both the documentation and the distribution builds, and set a watch for each.
 
+&nbsp
+
 ```bash
 $ gulp docs
 ```
 
 `gulp docs` will generate the documentation build, and set a watch for this build.
+
+&nbsp
 
 ```bash
 $ gulp dist
