@@ -1,6 +1,7 @@
 # Short Documentation
 
-Navigate to your project folder.
+[![Build Status](https://travis-ci.org/longfilename/ShortDocumentation.svg)](https://travis-ci.org/longfilename/ShortDocumentation)
+[![devDependency Status](https://david-dm.org/longfilename/ShortDocumentation/dev-status.svg)](https://david-dm.org/longfilename/ShortDocumentation#info=devDependencies)
 
 ```bash
 $ npm install # project dependencies are installed;
