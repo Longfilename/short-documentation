@@ -3,8 +3,9 @@
 ## Quick Start
 
 ```bash
-$ npm install # project dependencies are installed;
-$ gulp        # run gulp (browser will open a template index, and the documentation);
+$ npm install           # project dependencies are installed;
+$ gem install scss_lint # SCSS linting requires Ruby and scss-lint
+$ gulp                  # run gulp (browser will open a template index, and the documentation);
 
 # alternatively, you can run one of the following:
 

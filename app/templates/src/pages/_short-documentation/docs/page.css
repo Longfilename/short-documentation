@@ -16,15 +16,21 @@ body {
 }
 div.container {
     display: flex;
+    -webkit-display: flex;
     flex-direction: column;
+    -webkit-flex-direction: column;
     flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap;
     align-items: stretch;
     height: 100%;
 }
 div.row {
     display: flex;
+    -webkit-display: flex;
     flex-direction: row;
+    -webkit-flex-direction: row;
     flex-wrap: nowrap;
+    -webkit-flex-wrap: nowrap;
     align-items: stretch;
     height: 100%;
 }
