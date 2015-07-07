@@ -88,7 +88,7 @@ $ gulp docs   # run the documentation only (no templates);
 
 #### What is a module?
 
-Module, widget, component, block... they're all the same in this context. Use wireframes to help define the modules. A box on a wireframe typically maps to a module. e.g. navigation, rail promo, slider, a form. Some modules are very small, some are large single page applications.
+Module, widget, component, block... they're all the same in this context. A box on a wireframe typically maps to a module. e.g. navigation, rail promo, slider, a form. Some modules are very small, some are large single page applications.
 
 #### Module folder contents
 
@@ -96,7 +96,7 @@ Module, widget, component, block... they're all the same in this context. Use wi
 
 The content that a module displays should not be stored in Jade (or JS, or SCSS). The idea of these modules is easy reusability, so abstract out the content so you can easily swap the content for each iteration of the module. Gulp will make the JSON files available in Jade (so we can use the content when building the HTML files).
 
-The JSON is available in Jade via the "json" variable. In a single iteration module, you can define the content in the module itself (since it never changes):
+The JSON is available in Jade via the `json` variable. In a single iteration module, you can define the content in the module itself (since it never changes):
 
 /src/modules/page-footer/_content.json
 ```JavaScript
@@ -130,9 +130,9 @@ include ../../modules/promo/module
 
 ###### Module folder contents: Jade
 
-Modules have the module Jade, and the documentation Jade (which includes the module Jade).
+Modules have the module Jade (`module`, and `module-`), and the documentation Jade (demo, and demo-). The documentation Jade should include wrapper Jade, and then an include to the module Jade so code isn't unnecessarily duplicated.
 
-Module "pages" aren't built for the distribution, just the documentation.
+Module "pages" aren't built for the distribution, just the documentation. Below are examples of how the naming convention is built for the module pages.
 
 ```
 /src/pages/module/promo/demo.jade             ==> /build/docs/html/module-promo.html
@@ -145,7 +145,7 @@ Module "pages" aren't built for the distribution, just the documentation.
 
 ###### Module folder contents: JavaScript
 
-If a module is interactive, it'll have a JS file - put all module functionality into this file. If there is shared functionality across multiple modules of very different types, put the JS into the /src/js folder, and import it as needed. If there is shared functionality across multiple modules of similar functionality, nest the modules and put the JS in the parent folder, like the example below.
+If a module is interactive, it'll have a JS file - put all module functionality into this file (or files). If there is shared functionality across multiple modules of very different types, put the JS into the /src/js folder, and import it as needed. If there is shared functionality across multiple modules of similar functionality, nest the modules and put the JS in the parent folder, like `popover.js` in the example below.
 
 ```bash
 .
@@ -161,7 +161,7 @@ If a module is interactive, it'll have a JS file - put all module functionality 
 
 ###### Module folder contents: CSS
 
-All module CSS will be contained in the module.scss file. Sure, the module will inherit styles from parent elements, but the bulk of the styles should be defined here so the next developer doesn't have to look far to understand how this is put together.
+All module CSS will be contained in the `module.scss` file. Sure, the module will inherit styles from parent elements, but the bulk of the styles should be defined here so the next developer doesn't have to look far and wide to understand how this module is assembled.
 
 ###### Module folder contents: Markdown
 
@@ -169,17 +169,17 @@ The readme file is intended to give the next developer a leg up on comprehending
 
 #### Module naming conventions
 
-The JSON files should either start with an underscore (to indicate the content is used in Jade parsing) or with a dash (to indicate this JSON file is accessed via Ajax in the browser. JSON files that start with a dash are copied to the distribution folder.
+The JSON files should either start with an underscore (to indicate the content is used in Jade parsing) or with a dash (to indicate this JSON file is accessed via Ajax in the browser). JSON files that start with a dash are copied to the distribution folder.
 
-Jade files that start with demo, or demo- are compiled for the documentation. These Jade files contain wrapper HTML for the module so it displays properly in the documentation application. Modules shouldn't include wrapper structural HTML (unless the structure is necessary for the module). The structural HTML should be in the page. And when the module is to be displayed by itself - in the documentation - the structural HTML comes from the demo files.
+Jade files that start with `demo`, or `demo-` are compiled for the documentation. These Jade files contain wrapper HTML for the module so it displays properly in the documentation application. Modules shouldn't include wrapper structural HTML (unless the structure is necessary for the module). The structural HTML should be in the page Jade. And when the module is to be displayed by itself, in the documentation, the structural HTML comes from the demo files.
 
-Jade files that start with module, or module- are compiled for both the documentation, and the distribution. These files shouldn't contain content, just HTML and Jade logic.
+Jade files that start with `module`, or `module-` are compiled for both the documentation, and the distribution. These files shouldn't contain content, just HTML and Jade logic.
 
-There should be one module.js file (if required, not all modules are interactive). This file is imported into each page.js file when needed.
+There should be one `module.js` file (if required, not all modules are interactive). This file is imported into each `page.js` file when needed.
 
-There should one module.scss file. This file is imported into site.scss (which is compiled to site.css and is used on every page).
+There should one `module.scss` file. This file is imported into `site.scss` (which is compiled to site.css and is used on every page).
 
-The readme.md file is to capture any information (useful for the next developer on the project) about this module that doesn't easily fit into comments.
+The `readme.md` file is to capture any information (useful for the next developer on the project) about this module that doesn't easily fit into comments.
 
 ## Building a page
 

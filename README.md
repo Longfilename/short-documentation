@@ -18,7 +18,7 @@ $ npm install -g generator-short-documentation # install short-documentation glo
 
 #### config-yeoman.json
 
-config-yeoman.json config file tells the generator what to build. This JSON file should save you significant time at the beginning of each project by creating all the files and folders you need, and linking them together (like including the proper modules in the page Jade).
+`config-yeoman.json` tells the generator what to build. This JSON file should save you significant time at the beginning of each project by creating all the files and folders you need, and linking them together (like including the proper modules in the page Jade).
 
 ```javascript
 {
@@ -56,7 +56,7 @@ config-yeoman.json config file tells the generator what to build. This JSON file
 
 ## Implementation
 
-Navigate to your project folder (that contains config-yeoman.json).
+Navigate to your project folder (that contains `config-yeoman.json`).
 
 ```bash
 $ yo short-documentation # project files and folders are created;
@@ -64,7 +64,7 @@ $ npm install            # project dependencies are installed;
 $ gulp                   # run gulp (browser will open a page index, and the documentation);
 ```
 
-At this point, the config-yeoman.json file is no longer needed. A new module, or a new page can be added manually.
+At this point, the `config-yeoman.json` file is no longer needed. A new module, or a new page can be added manually.
 
 ## License
 
