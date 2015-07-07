@@ -1,6 +1,6 @@
 {
   "name": "generator-short-documentation",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "yeoman-generator for front-end templates and documentation. This project makes use of Jade, SCSS, and ES6 (through Babel).",
   "license": "MIT",
   "main": "app/index.js",
@@ -19,9 +19,6 @@
   "scripts": {
     "test": "mocha"
   },
-  "files": [
-    "app"
-  ],
   "keywords": [
     "yeoman-generator"
   ],
