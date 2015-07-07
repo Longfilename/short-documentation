@@ -4,7 +4,7 @@ Navigate to your project folder.
 
 ```bash
 $ npm install # project dependencies are installed;
-$ gulp        # run gulp (browser will open a template index (list of all pages), and the documentation);
+$ gulp        # run gulp (browser will open a template index, and the documentation);
 
 # or you can run one of the following:
 
