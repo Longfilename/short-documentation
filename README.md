@@ -1,8 +1,5 @@
 # Short Documentation (Yeoman Generator)
 
-[![Build Status](https://travis-ci.org/Longfilename/short-documentation.svg)](https://travis-ci.org/Longfilename/short-documentation)
-[![devDependency Status](https://david-dm.org/Longfilename/short-documentation/dev-status.svg)](https://david-dm.org/Longfilename/short-documentation#info=devDependencies)
-
 Yeoman generator for front-end projects that incorporates documentation. The generated project uses Jade, SCSS, and ES6. The goal of this project organization is to facilitate faster development, and an easier hand-off to the next developer.
 
 ## Installation
