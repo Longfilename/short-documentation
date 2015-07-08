@@ -1,16 +1,27 @@
 # Short Documentation
 
+Short Documentation is an HTML template and documentation project. Following a naming convention and code organization allow for a documentation app for minimal effort. This project is optimized for HTML Template projects. HTML Templates (example pages) are built and validated by the client before the more intensive task of CMS integration happens. Short Documentation uses Jade, SCSS, and ES6. It purposefully does not include common elements like sprite generation, or Bootstrap, Foundation, lodash, etc, but jQuery was included - because I use it in more sites than not. Each project will most likely require customization. This is intended to be a good start.
+
+## Primary features of Short Documentation (I'm not going to list all the dependencies in `[package.json](./package.json)`):
+
+#### Jade
+
+[Jade](https://www.npmjs.com/package/gulp-jade) is used because of the high reusability of code and use of variables.
+
+#### SCSS
+
+[SCSS](https://www.npmjs.com/package/gulp-sass) is used because it rocks - much like Jade. It offers high reusability of code and variables. I also find it easier to read than complex CSS.
+
+#### ES6, Babelify, and Browerify (with bundle-factor)
+
+Whew, what a mouthful for JavaScript. Write your JavaScript in ES6, [Babel](https://www.npmjs.com/package/babel-core) is used for ES6 to ES5 conversion. [Browserify](https://www.npmjs.com/package/browserify) allows the babel transform to occur. [factor-bundle](https://www.npmjs.com/package/factor-bundle) is a plugin that refactors the JavaScript so that code that is used on more than one page is consolidated to one `common.js` file. This way each page loads (at least) two JavaScript files. `common.js` which includes at a minimum code used on this page, and a page specific file `page-foo.js` that contains script only used on this page.
+
 ## Quick Start
 
 ```bash
 $ npm install           # project dependencies are installed;
 $ gem install scss_lint # SCSS linting requires Ruby and scss-lint
-$ gulp                  # run gulp (browser will open a template index, and the documentation);
-
-# alternatively, you can run one of the following:
-
-$ gulp dist   # run the templates only (no documentation);
-$ gulp docs   # run the documentation only (no templates);
+$ gulp                  # runs gulp default (browser will open a template index, and the documentation app);
 ```
 
 ## What have I installed?

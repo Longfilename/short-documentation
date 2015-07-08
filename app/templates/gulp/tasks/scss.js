@@ -26,6 +26,7 @@ gulp.task("scss", function (callback) {
 gulp.task("scss:dist", function (callback) {
     // configure the files scss:compile will compile;
     compileConfig.destination = config.dest.dist;
+    compileConfig.outputStyle = "compressed";
     run(
         "scss:lint",
         "scss:compile",
@@ -37,6 +38,7 @@ gulp.task("scss:dist", function (callback) {
 gulp.task("scss:docs", function (callback) {
     // configure the files scss:compile will compile;
     compileConfig.destination = config.dest.docs;
+    compileConfig.outputStyle = "nested";
     run(
         "scss:lint",
         "scss:compile",
@@ -68,7 +70,9 @@ gulp.task("scss:compile", function () {
         // build the sourcemaps;
         .pipe(sourcemaps.init())
         // convert SCSS to CSS;
-        .pipe(scss())
+        .pipe(scss({
+            outputStyle: compileConfig.outputStyle
+        }))
         // add vendor prefixes to the CSS;
         .pipe(autoprefixer(config.autoprefixer))
         // filter out the map files;
