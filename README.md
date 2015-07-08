@@ -1,12 +1,12 @@
 # Short Documentation (Yeoman Generator)
 
-Yeoman generator for the [Short Documentation](./app/templates) project.
+[Yeoman](http://yeoman.io) generator for the [Short Documentation](https://github.com/Longfilename/ShortDocumentation) project.
 
 Short Documentation is an HTML template and documentation project. The code organization and naming convention allow for a documentation build for minimal effort. Short Documentation uses Jade, SCSS, and ES6, and uses `config-yeoman.json` as a jump start on project development (by building out all the files and folders as defined in the JSON file.
 
 ## Installation
 
-Install [Yeoman](http://yeoman.io) and the [Short Documentation](https://github.com/Longfilename/ShortDocumentation) generator.
+Install Yeoman and the Short Documentation generator.
 
 ```bash
 $ npm install -g yo                            # install yeoman globally;

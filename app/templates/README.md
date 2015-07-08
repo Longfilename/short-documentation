@@ -2,7 +2,7 @@
 
 Short Documentation is an HTML template and documentation project. Following a naming convention and code organization allow for a documentation app for minimal effort. This project is optimized for HTML Template projects. HTML Templates (example pages) are built and validated by the client before the more intensive task of CMS integration happens. Short Documentation uses Jade, SCSS, and ES6. It purposefully does not include common elements like sprite generation, or Bootstrap, Foundation, lodash, etc, but jQuery was included - because I use it in more sites than not. Each project will most likely require customization. This is intended to be a good start.
 
-## Primary features of Short Documentation (I'm not going to list all the dependencies in `[package.json](./package.json)`):
+## Primary features of Short Documentation (I'm not going to list all the dependencies in `package.json`):
 
 #### Jade
 
@@ -211,4 +211,6 @@ Documentation pages go through the same renaming pattern, but the destination is
 
 This project is intentionally unfinished. You'll notice a lack of image processing, or sprite generation, and plenty of other gulp plugins that are extremely useful. The kitchen sink is not included with this project because those plugins tend to change from project to project. By not including EVERYTHING, you don't have to start the project by ripping parts out.
 
-Most of what will be edited in Gulp is the [config.js](./gulp) file. This contains the settings for each Gulp task.
+Details about the Gulp tasks can be seen in the [Gulp folder](./gulp/) `README.md`. 
+
+Most of what will be edited in Gulp is the [config.js](./gulp/config.js) file. This contains the settings for each Gulp task.

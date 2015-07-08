@@ -7,6 +7,7 @@ var gulp          = require("gulp"),
     buffer        = require("vinyl-buffer"),             // not 100% sure;
     factor        = require("factor-bundle"),            // extract common js functions into a global file;
     size          = require("gulp-size"),                // report on filesize of gulp streams;
+    uglify        = require("gulp-uglify"),              // compress the JS;
     source        = require("vinyl-source-stream"),      // adds a file to a gulp stream;
     fs            = require("fs"),                       // allows us to walk a filesystem (and create empty files);
     mkdirp        = require("mkdirp"),                   // make directories (so we can make files);
@@ -30,8 +31,12 @@ gulp.task("js:dist", function (callback) {
     compileConfig = {
         "input": js.input.dist,
         "output": js.output.dist,
-        "destination": config.paths.dest.dist
+        "destination": config.paths.dest.dist,
+        "uglify": {}
     };
+    if (config.compress.dist === false) {
+        compileConfig.uglify.compress = false;
+    }
     run(
         "js:empty:folders",
         "js:empty:files",
@@ -46,8 +51,12 @@ gulp.task("js:docs", function (callback) {
     compileConfig = {
         "input": js.input.docs,
         "output": js.output.docs,
-        "destination": config.paths.dest.docs
+        "destination": config.paths.dest.docs,
+        "uglify": {} 
     };
+    if (config.compress.docs === false) {
+        compileConfig.uglify.compress = false;
+    }
     run(
         "js:empty:folders",
         "js:empty:files",
@@ -130,6 +139,8 @@ gulp.task("js:compile", function () {
         .pipe(size({
             "showFiles": config.reportFilesizes
         }))
+        // compress (or not, depending on the setting);
+        .pipe(uglify(compileConfig.uglify))
         // finally put the compiled js;
         // and the docs folder;
         .pipe(gulp.dest(compileConfig.destination))

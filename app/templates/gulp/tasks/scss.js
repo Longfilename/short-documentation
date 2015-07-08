@@ -26,7 +26,7 @@ gulp.task("scss", function (callback) {
 gulp.task("scss:dist", function (callback) {
     // configure the files scss:compile will compile;
     compileConfig.destination = config.dest.dist;
-    compileConfig.outputStyle = "compressed";
+    compileConfig.outputStyle = config.compress.dist ? "compressed" : "nested";
     run(
         "scss:lint",
         "scss:compile",
@@ -38,7 +38,7 @@ gulp.task("scss:dist", function (callback) {
 gulp.task("scss:docs", function (callback) {
     // configure the files scss:compile will compile;
     compileConfig.destination = config.dest.docs;
-    compileConfig.outputStyle = "nested";
+    compileConfig.outputStyle = config.compress.docs ? "compressed" : "nested";
     run(
         "scss:lint",
         "scss:compile",

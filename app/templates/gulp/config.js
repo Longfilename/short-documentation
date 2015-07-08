@@ -123,6 +123,11 @@ module.exports = {
                 "android 4"
             ],
             "cascade": true
+        },
+        // define the compression settings for each build;
+        "compress": {
+            "docs": false,
+            "dist": true
         }
     },
     // concatenate JS files for the documentation and the build;
@@ -139,6 +144,11 @@ module.exports = {
                 "dist": dist + "/js",
                 "docs": docs + "/js"
             }
+        },
+        // define the compression settings for each build;
+        "compress": {
+            "docs": false,
+            "dist": true
         },
         // enable file names and size reporting in the console;
         "reportFilesizes": true,
