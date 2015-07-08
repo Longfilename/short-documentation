@@ -70,3 +70,34 @@ $ gulp dist
 ```
 
 `gulp dist` will generate the distribution build, and set a watch for this build.
+
+## Map of significant Gulp tasks
+
+I seem to really like making these trees.
+
+```bash
+
+default                                 # default gulp task;
+├── dist                                # run all gulp tasks needed to generate the distribution build;
+|   ├── build:dist                      # build and copy all files;
+|   |   ├── clean:dist                  # remove any existing files in the destination;
+|   |   ├── jade:dist                   # compile HTML;
+|   |   |   ├── jade:pages:dist         # compile all the page HTML;
+|   |   |   └── jade:pages:index:dist   # compile the index file for the pages;
+|   |   ├── js:dist                     # lint and compile JavaScript;
+|   |   ├── scss:dist                   # lint and compile CSS;
+|   |   └── copy:dist                   # copy (no processing) of all the files defined in the config file;
+|   ├── browsersync                     # start up a web server;
+|   ├── watch:dist                      # start watching files for changes, so we can push updates to browsersync;
+|   └── open:dist                       # open the distribution index in a browser;
+└── docs                                # same as all the above tasks, but for the documentation app instead of the distribution build;
+    ├── build:docs
+    |   ├── clean:docs
+    |   ├── jade:docs                   # different for documentation;
+    |   |   ├── jade:pages:docs         # build all the page HTML;
+    |   |   ├── jade:pages:index:docs   # build the index file for the documentation app;
+    |   |   └── jade:modules            # build all the module HTML;
+    ├── browsersync
+    ├── watch:docs
+    └── open:docs                       # open the documentation app in a browser;
+```
