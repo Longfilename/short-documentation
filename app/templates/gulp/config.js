@@ -67,7 +67,7 @@ module.exports = {
             // don't include partials (those are being included somewhere else);
             // and don't include the documentation pages;
             "compile": [
-                      src + "/pages/**/*.jade",
+                src + "/pages/**/*.jade",
                 "!" + src + "/pages/_short-documentation/*",
                 "!" + src + "/pages/**/_*.jade"
             ],
