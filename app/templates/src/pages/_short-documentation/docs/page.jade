@@ -13,8 +13,7 @@ html(lang="en")
         script var ShortDocs = {}; ShortDocs.data = !{JSON.stringify(content, null, 4)};
         script(src="./js/_short-documentation.js")
         
-        // bad bad bad, we dont want to cross link build, src, and docs;
-        link(rel="stylesheet", href="./pages/_short-documentation/docs/page.css")
+        link(rel="stylesheet", href="./css/short-documentation.css")
     
     body
         div.container
@@ -35,8 +34,8 @@ html(lang="en")
                         pre
                             code.content
                         div.content
-            div.row
-                div.col-banner
+            div.row.row-config
+                div.col-config
                     p
                         a.set-flex-width(data-widths=["0 0 1200px", "1"]) iframe (1200)
                         a.set-flex-width(data-widths=["0 0 1024px", "1"]) iframe (1024)

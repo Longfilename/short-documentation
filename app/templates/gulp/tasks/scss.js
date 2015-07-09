@@ -25,6 +25,7 @@ gulp.task("scss", function (callback) {
 // build the CSS files for the distribution build;
 gulp.task("scss:dist", function (callback) {
     // configure the files scss:compile will compile;
+    compileConfig.input       = config.compile.dist;
     compileConfig.destination = config.dest.dist;
     compileConfig.outputStyle = config.compress.dist ? "compressed" : "nested";
     run(
@@ -37,6 +38,7 @@ gulp.task("scss:dist", function (callback) {
 // build the CSS files for the docs build;
 gulp.task("scss:docs", function (callback) {
     // configure the files scss:compile will compile;
+    compileConfig.input       = config.compile.docs;
     compileConfig.destination = config.dest.docs;
     compileConfig.outputStyle = config.compress.docs ? "compressed" : "nested";
     run(
@@ -63,7 +65,7 @@ gulp.task("scss:compile", function () {
     // tell the user what's were doing;
     browserSync.notify("Compiling SCSS");
     
-    return gulp.src(config.compile)
+    return gulp.src(compileConfig.input)
         .pipe(plumber({
             errorHandler: handleErrors
         }))

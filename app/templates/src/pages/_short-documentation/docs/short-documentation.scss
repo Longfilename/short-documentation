@@ -1,0 +1,230 @@
+// styles for the one-page documentation application;
+// quick reset;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// prevent scrollbars at the page level;
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    color: #333;
+    font: normal 16px/1.4 "Helvetic Neue", sans-serif;
+    font-weight: lighter;
+}
+
+// container for all page content;
+div.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    height: 100%;
+    
+    // row of columns;
+    div.row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        height: 100%;
+    }
+    
+    // left column;
+    // contains an IFRAME that is used to display module and page HTML pages.
+    div.col-iframe {
+        box-sizing: content-box;
+        flex: 1;
+        order: 1;
+        padding: 16px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    // container for the IFRAME tag;
+    div.iframe-container {
+        position: absolute;
+        top: 16px;
+        bottom: 16px;
+        left: 16px;
+        right: 16px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    
+    // right column;
+    // contains the file contents for the the selected module/page:md/jade/scss/js
+    div.col-readme {
+        flex: 0 0 768px;
+        order: 2;
+        background: #fdf6e3;
+        overflow: scroll;
+    }
+    
+    // second row (div.col-config);
+    div.row-config {
+        height: 72px;
+    }
+    
+    // documentation configuration;
+    // this DIV contains buttons to set the widths of the content columns;
+    div.col-config {
+        order: 1;
+        padding: 16px;
+        width: 100%;
+        background: #eee;
+        
+        // container for all buttons;
+        p {
+            font-size: 14px;
+            font-weight: normal;
+            text-align: center;
+        }
+        
+        // button to change the width of the columsn;
+        a {
+            cursor: pointer;
+            display: inline-block;
+            border: 1px solid #333;
+            padding: 5px 10px;
+            
+            & + a {
+                margin-left: 1em;
+            }
+        }
+    }
+}
+
+// div.col-content header;
+// contains the SELECT navigation;
+header {
+    background: #eee;
+    
+    h1,
+    h2 {
+        position: relative;
+        line-height: 1.2;
+        font-weight: lighter;
+    }
+    
+    // contains the object SELECT (modules or pages);
+    h1 {
+        font-size: 24px;
+        padding: 16px;
+    }
+    
+    // contains the files SELECT (listing of files for the selected module or page);
+    h2 {
+        font-size: 18px;
+        padding: 16px;
+        border-top: 1px solid #333;
+        
+        // adjust the size of the down arrows (to indicate this is a SELECT);
+        span {
+            &:before {
+                border-width: 14px;
+                margin-left: -14px;
+                right: 18px;
+                margin-top: -8px;
+            }
+            
+            &:after {
+                border-width: 11px;
+                margin-left: -11px;
+                right: 21px;
+                margin-top: -8px;
+            }
+        }
+    }
+    
+    // fake SELECT downfacing arrow in the H1 and H2;
+    span {
+        display: block;
+        padding: 0 40px 0 0;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        
+        &:before,
+        &:after {
+            top: 50%;
+            right: 16px;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            margin-top: -10px;
+        }
+        
+        &:before {
+            border-color: #eee;
+            border-top-color: #333;
+            border-width: 16px;
+            margin-left: -16px;
+        }
+        
+        &:after {
+            border-top-color: #eee;
+            border-width: 13px;
+            margin-left: -13px;
+            right: 19px;
+        }
+    }
+    
+    // the SELECT is hidden and positioned on top of the content;
+    // so when the user clicks on the text, they'll actually be clicking on this SELECT;
+    // which will open the options, and allow the user to change their selection;
+    // onChange JS runs to populate the SPAN tag in the H1/H2 with the selected OPTION text;
+    select {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 50%;
+        margin-top: -7px;
+        opacity: 0;
+    }
+}
+
+// main content block inside div.col-readme;
+main {
+    padding: 16px;
+}
+
+// inside the MAIN tag;
+// file contents are inserted into code.content and styled with a syntax highlighter script;
+pre,
+code.content {
+    display: block;
+}
+
+// inside the MAIN tag;
+// markdown content will not be inserted into code.content, it'll be inserted into this DIV;
+div.content {
+    * + * {
+        margin-top: 1em;
+    }
+    
+    ul {
+        margin: 1em 0 0;
+        padding-left: 2em;
+        
+        a {
+            cursor: pointer;
+        }
+    }
+}
