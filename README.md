@@ -63,6 +63,7 @@ Navigate to your project folder (that contains `config-yeoman.json`).
 ```bash
 $ yo short-documentation # project files and folders are created;
 $ npm install            # project dependencies are installed;
+$ gem install scss_lint  # SCSS linting requires Ruby and scss-lint;
 $ gulp                   # run gulp (browser will open a page index, and the documentation);
 ```
 

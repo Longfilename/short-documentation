@@ -20,7 +20,7 @@ Whew, what a mouthful for JavaScript. Write your JavaScript in ES6, [Babel](http
 
 ```bash
 $ npm install           # project dependencies are installed;
-$ gem install scss_lint # SCSS linting requires Ruby and scss-lint
+$ gem install scss_lint # SCSS linting requires Ruby and scss-lint;
 $ gulp                  # runs gulp default (browser will open a template index, and the documentation app);
 ```
 
