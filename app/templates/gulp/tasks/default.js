@@ -3,8 +3,10 @@ var gulp = require("gulp"),
 
 gulp.task("default", function (callback) {
     run(
-        "dist", // fire off all distribution build tasks;
-        "docs", // start all documentation build tasks;
+        "build",       // build and copy all files;
+        "browsersync", // start up a web server;
+        "watch",       // start watching files for changes - so we can push updates to browsersync;
+        "open",        // open our starting URL in a browser;
         callback
     );
 });

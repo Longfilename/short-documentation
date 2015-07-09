@@ -76,28 +76,33 @@ $ gulp dist
 I seem to really like making these trees.
 
 ```bash
+$ gulp default                      # default gulp task;
+├── build                           # build and copy all files;
+├── browsersync                     # start up a web server;
+├── watch                           # start watching files for changes - so we can push updates to browsersync;
+└── open                            # open the distribution and documentation in a browser;
 
-default                                 # default gulp task;
-├── dist                                # run all gulp tasks needed to generate the distribution build;
-|   ├── build:dist                      # build and copy all files;
-|   |   ├── clean:dist                  # remove any existing files in the destination;
-|   |   ├── jade:dist                   # compile HTML;
-|   |   |   ├── jade:pages:dist         # compile all the page HTML;
-|   |   |   └── jade:pages:index:dist   # compile the index file for the pages;
-|   |   ├── js:dist                     # lint and compile JavaScript;
-|   |   ├── scss:dist                   # lint and compile CSS;
-|   |   └── copy:dist                   # copy (no processing) of all the files defined in the config file;
-|   ├── browsersync                     # start up a web server;
-|   ├── watch:dist                      # start watching files for changes, so we can push updates to browsersync;
-|   └── open:dist                       # open the distribution index in a browser;
-└── docs                                # same as all the above tasks, but for the documentation app instead of the distribution build;
-    ├── build:docs
-    |   ├── clean:docs
-    |   ├── jade:docs                   # different for documentation;
-    |   |   ├── jade:pages:docs         # build all the page HTML;
-    |   |   ├── jade:pages:index:docs   # build the index file for the documentation app;
-    |   |   └── jade:modules            # build all the module HTML;
-    ├── browsersync
-    ├── watch:docs
-    └── open:docs                       # open the documentation app in a browser;
+$ gulp dist                         # run all gulp tasks needed to generate the distribution build;
+├── build:dist
+|   ├── clean:dist                  # remove any existing files in the destination;
+|   ├── jade:dist                   # compile HTML;
+|   |   ├── jade:pages:dist         # compile all the page HTML;
+|   |   └── jade:pages:index:dist   # compile the index file for the pages;
+|   ├── js:dist                     # lint and compile JavaScript;
+|   ├── scss:dist                   # lint and compile CSS;
+|   └── copy:dist                   # copy (no processing) of all the files defined in the config file;
+├── browsersync
+├── watch:dist
+└── open:dist
+
+$ gulp docs                         # same as all the above tasks, but for the documentation app instead of the distribution build;
+├── build:docs
+|   ├── clean:docs
+|   ├── jade:docs                   # different for documentation;
+|   |   ├── jade:pages:docs         # build all the page HTML;
+|   |   ├── jade:pages:index:docs   # build the index file for the documentation app;
+|   |   └── jade:modules            # build all the module HTML;
+├── browsersync
+├── watch:docs
+└── open:docs
 ```
