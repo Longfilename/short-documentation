@@ -19,8 +19,10 @@ jQuery(function ($) {
         $h2.find("span").text(url);
         
         // gogo Ajax;
-        $.get(url)
-            // no error trapping... yet;
+        $.ajax({
+                url: url,
+                dataType: "text"
+            })            // no error trapping... yet;
             .always(function (data) {
                 var whichContent = function () {
                     var content = data;
@@ -30,7 +32,9 @@ jQuery(function ($) {
                         content = JSON.stringify(data, null, "    ");
                     // JS files come back as an object;
                     } else if (extension === "js") {
-                        content = data.responseText;
+                        // responseText might not be available;
+                        // some JS files it is... some it is not;
+                        content = data.responseText || data;
                     }
                     
                     return content;
