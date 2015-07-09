@@ -156,9 +156,9 @@ module.exports = yeoman.generators.Base.extend({
         };
         
         // editor and gulp plugin configurations, nothing to serve to the client browser;
-        this.copy("eslintrc.txt",      ".eslintrc");          // JS lint config (for gulp:js);
-        this.copy("gitignore.txt",     ".gitignore");         // tell git what files to not track;
-        this.copy("scss-lint.yml.txt", ".scss-lint.yml");     // SCSS lint config (for gulp:scss);
+        this.copy(".eslintrc",         ".eslintrc");          // JS lint config (for gulp:js);
+        this.copy(".gitignore",        ".gitignore");         // tell git what files to not track;
+        this.copy(".scss-lint.yml",    ".scss-lint.yml");     // SCSS lint config (for gulp:scss);
         this.copy("gulpfile.js",       "gulpfile.js");        // gulp loader (all tasks are defined in /gulp);
         this.copy("package.json",      "package.json");       // npm config;
         this.template("readme.md",     "readme.md", context); // project overview;
