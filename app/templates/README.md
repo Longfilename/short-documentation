@@ -2,7 +2,7 @@
 
 Short Documentation is an HTML template and documentation project. Following a naming convention and code organization allow for a documentation app for minimal effort. This project is optimized for HTML Template projects. HTML Templates (example pages) are built and validated by the client before the more intensive task of CMS integration happens. Short Documentation uses Jade, SCSS, and ES6. It purposefully does not include common elements like sprite generation, or Bootstrap, Foundation, lodash, etc, but jQuery was included - because I use it in more sites than not. Each project will most likely require customization. This is intended to be a good start.
 
-## Primary features of Short Documentation (I'm not going to list all the dependencies in `package.json`):
+## Primary features of Short Documentation
 
 #### Jade
 
