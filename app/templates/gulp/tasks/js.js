@@ -101,10 +101,10 @@ gulp.task("js:compile", function () {
     browserSync.notify("Compiling JS");
     
     return browserify({
-        "entries": compileConfig.input,
-        "extensions": extensions,
-        "compact": compileConfig.compact,
-        "comments": !compileConfig.compact
+            "entries": compileConfig.input,
+            "extensions": extensions,
+            "compact": compileConfig.compact,
+            "comments": !compileConfig.compact
         })
         .transform(babelify.configure({
             extensions: extensions

@@ -1,13 +1,17 @@
 var gulp   = require("gulp"),
-    config = require("../config.js").watch;
+    config = require("../config.js").watch,
+    run    = require("run-sequence"); // run gulp tasks in sequence;
 
-gulp.task("watch", function () {
-    gulp.watch(config.jade, ["jade"]);
-    gulp.watch(config.scss, ["scss"]);
-    gulp.watch(config.js,   ["js"]);
-    gulp.watch(config.copy, ["copy"]);
+// run watches for both the documentation and distribution builds;
+gulp.task("watch", function (callback) {
+    run(
+        "watch:dist",
+        "watch:docs",
+        callback
+    );
 });
 
+// watch for any changed files, and if so, run the distribution task for that file type;
 gulp.task("watch:dist", function () {
     gulp.watch(config.jade, ["jade:dist"]);
     gulp.watch(config.scss, ["scss:dist"]);
@@ -15,6 +19,7 @@ gulp.task("watch:dist", function () {
     gulp.watch(config.copy, ["copy:dist"]);
 });
 
+// watch for any changed files, and if so, run the documentation task for that file type;
 gulp.task("watch:docs", function () {
     gulp.watch(config.jade, ["jade:docs"]);
     gulp.watch(config.scss, ["scss:docs"]);

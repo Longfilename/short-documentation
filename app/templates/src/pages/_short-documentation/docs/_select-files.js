@@ -22,7 +22,8 @@ jQuery(function ($) {
         $.ajax({
                 url: url,
                 dataType: "text"
-            })            // no error trapping... yet;
+            })
+            // no error trapping... yet;
             .always(function (data) {
                 var whichContent = function () {
                     var content = data;
