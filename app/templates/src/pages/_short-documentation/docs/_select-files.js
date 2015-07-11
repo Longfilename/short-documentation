@@ -28,11 +28,8 @@ jQuery(function ($) {
                 var whichContent = function () {
                     var content = data;
                     
-                    // if this is a JSON file, we need to stringify the response;
-                    if (extension === "json") {
-                        content = JSON.stringify(data, null, "    ");
                     // JS files come back as an object;
-                    } else if (extension === "js") {
+                    if (extension === "js") {
                         // responseText might not be available;
                         // some JS files it is... some it is not;
                         content = data.responseText || data;
