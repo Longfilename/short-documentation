@@ -2,7 +2,7 @@ var gulp   = require("gulp"),
     config = require("../config.js").watch;
 
 // run watches for both the documentation and distribution builds;
-gulp.task("watch", function (callback) {
+gulp.task("watch", function () {
     gulp.watch(config.jade, ["jade"]);
     gulp.watch(config.scss, ["scss"]);
     gulp.watch(config.js,   ["js"]);

@@ -1,4 +1,5 @@
 var config = require("../config"),
+    slash  = require("slash"), // needed to fix file paths on Windows;
     file   = require("file"); // traverse the file system;
 
 // return content to pass into the Jade compiler;
@@ -25,6 +26,10 @@ module.exports = function () {
         // remove the above folders from the path;
         removeFolders = function (path) {
             jsonFolders.map(function (folder) {
+                // because paths on Windows and OS X are different;
+                // fix the paths on Windows (so it's the same as OS X);
+                path = path.replace(/\//g, "/").replace(/\\/g, "/");
+                // then remove part of the path we don't care about;
                 path = path.replace(folder, "");
             });
             
@@ -41,7 +46,7 @@ module.exports = function () {
                 // if we're actually dealing with a json file;
                 if (getExtension(file) === "json") {
                     // set the key;
-                    path = removeFolders(folder) + "/" + file;
+                    path = slash(removeFolders(folder) + "/" + file);
                     // set the path to the file to include the contents of the JSON file as a variable;
                     newPath = "../../" + folder + "/" + file;
                     // save the value in the json object so we reference it later with Jade;

@@ -17,7 +17,7 @@ module.exports = function (path) {
     }
     
     // convert slashes to dashes;
-    newBasename = newBasename.replace(/\//g, "-");
+    newBasename = newBasename.replace(/\\/g, "/").replace(/\//g, "-");
     
     // return the new object values to use in gulp-rename;
     return {

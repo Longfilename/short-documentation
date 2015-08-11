@@ -50,7 +50,7 @@ gulp.task("scss:docs", function (callback) {
 
 // verify the SCSS is written properly;
 gulp.task("scss:lint", function () {
-    return gulp.src(config.linstSrc)
+    return gulp.src(config.lintSrc)
         .pipe(scssLint({
             "config": ".scss-lint.yml",
             "customReport": scssLintStylish
