@@ -1,6 +1,7 @@
 var config = require("../config"),
-    file   = require("file"), // traverse the file system;
-    fs     = require("fs");   // read the contents of the readme.md file;
+    slash  = require("slash"), // needed to fix file paths on Windows;
+    file   = require("file"),  // traverse the file system;
+    fs     = require("fs");    // read the contents of the readme.md file;
 
 // return content to pass into the Jade compiler;
 // this module is used to generate a list of files associated with pages and modules;
@@ -70,7 +71,7 @@ module.exports = function () {
             
             // remove the src folder from the path;
             // we want to load doc file, not src files in the documentation app; 
-            item.folder = folder.replace(config.src + "/", "");
+            item.folder = slash(folder).replace(config.src + "/", "");
             
             // if we're not in the documentation folder;
             // and if we have files, loop through them;
@@ -107,7 +108,7 @@ module.exports = function () {
                             newFilename = renameFile(file, folder, pageOrModule);
                             
                             // store each jade page here, we'll filter them later;
-                            item.jadeArray.push(newFilename);
+                            item.jadeArray.push(slash(newFilename));
                         }
                     }
                 }
@@ -132,7 +133,7 @@ module.exports = function () {
                 // but there's no page to view for it;
                 if (itemClone.html.indexOf("_") === -1) {
                     // if this is a page object;
-                    if (folder.indexOf("pages/") > -1) {
+                    if (slash(folder).indexOf("pages/") > -1) {
                         data.pages.push(itemClone);
                     // otherwise it's a modules object;
                     } else {
