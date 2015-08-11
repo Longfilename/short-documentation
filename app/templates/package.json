@@ -1,7 +1,7 @@
 {
   "name": "short-documentation",
   "version": "1.0.0",
-  "description": "ShortDocumentation is yet another front-end framework.",
+  "description": "ShortDocumentation is yet another front-end framework. This project makes use of Jade, SCSS, and ES6 (Babel, Browserify).",
   "private": true,
   "dependencies": {
     "bootstrap-sass": "^3.3.5",
@@ -37,6 +37,7 @@
     "mkdirp": "^0.5.0",
     "require-dir": "^0.1.0",
     "run-sequence": "^1.1.0",
+    "slash": "^1.0.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   }

@@ -1,6 +1,6 @@
 var config = require("../config").js,
-    file   = require("file"), // traverse the file system;
-    fs     = require("fs");   // read the contents of the readme.md file;
+    slash  = require("slash"), // needed to fix file paths on Windows;
+    file   = require("file");  // traverse the file system;
 
 // return module content to pass into browserify;
 // we need to generate a list of all the JS files to process, and where they should be published;
@@ -27,14 +27,18 @@ module.exports = function () {
             var fixFilename = function (prefix, folders) {
                     var string = prefix + folders + ".js";
                     
-                    string = base + string.replace(/\//g, "-");
+                    // remove forward and back slashes for OS X & Windows;
+                    string = base + string.replace(/\//g, "-").replace(/\\/g, "-");
                     
                     return string;
                 },
                 // if this isn't a documentation file, add page- as a filename prefix;
-                prefix = (folder.indexOf("_short-documentation") === 0) ? "" : "page-";
+                prefix = (folder.indexOf("_short-documentation") === 0) ? "" : "page-",
+                // remove folder paths in OS X & Windows;
+                newFolder = folder.replace("src/pages/", "").replace("src\\pages\\", "");
             
-            return fixFilename(prefix, folder.replace("src/pages/", ""));
+            // use Slash to normalize the path across environments;
+            return slash(fixFilename(prefix, newFolder));
         },
         // what to do with each folder we're looking through;
         parseFolder = function (folder, dirs, files) {
