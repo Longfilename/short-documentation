@@ -105,10 +105,10 @@ module.exports = function () {
                             
                             // rename the file;
                             // take the JADE filename and generate an HTML filename;
-                            newFilename = renameFile(file, folder, pageOrModule);
+                            newFilename = renameFile(file, slash(folder), pageOrModule);
                             
                             // store each jade page here, we'll filter them later;
-                            item.jadeArray.push(slash(newFilename));
+                            item.jadeArray.push(newFilename);
                         }
                     }
                 }
