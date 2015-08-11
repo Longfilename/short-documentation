@@ -67,9 +67,9 @@ module.exports = {
             // don't include partials (those are being included somewhere else);
             // and don't include the documentation pages;
             "compile": [
-                src + "/pages/**/*.jade",
-                "!" + src + "/pages/_short-documentation/*",
-                "!" + src + "/pages/**/_*.jade"
+                "!" + src + "/pages/**/_*",
+                "!" + src + "/pages/_short-documentation/**/*",
+                src + "/pages/**/*.jade"
             ],
             // define the root page (usually index or default);
             // this is a generated list of all pages (for easy presentation);
