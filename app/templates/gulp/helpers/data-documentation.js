@@ -26,12 +26,13 @@ module.exports = function () {
         renameFile = function (file, folder, prefix) {
             var newFilename = "",
                 folderArray  = folder.split("/");
-            
-            // myFolder/myPage/page.jade                 --> page-myFolder-myPage.html
-            // myFolder/myPage/_helper.jade              --> _helper.jade
-            // myFolder/myModule/module.jade             --> module-myFolder-myModule.html
-            // myFolder/myModule/your_module/module.jade --> module-myFolder-myModule-your_module.html
-            
+
+            // myPage/page.jade                    --> page-myPage.html
+            // myPage/myFolder/page.jade           --> page-myPage-myFolder.html
+            // myPage/_helper.jade                 --> _helper.jade
+            // myModule/demo.jade                  --> module-myModule.html
+            // myModule/demo-variation.jade        --> module-myModule-variation.html
+
             // if a file has an underscore, don't manipulate it, just output the filename;
             if (file.indexOf("_") === 0) {
                 newFilename = file;
@@ -40,17 +41,17 @@ module.exports = function () {
                 folderArray.map(function (folder) {
                     newFilename = (newFilename === "") ? folder : newFilename + "-" + folder;
                 });
-                
+
                 // remove the parent folder;
                 newFilename = newFilename.replace(config.src + "-", "");
-                // remove instances of demo, module, and page;
+                // remove instances of demo;
                 newFilename = newFilename + file.replace("demo", "").replace(prefix, "");
                 // change it from a jade to html page;
                 newFilename = newFilename.replace(".jade", ".html");
                 // change pages- and modules- (built from folder structure) to page- and module-
                 newFilename = newFilename.replace(prefix + "s", prefix);
             }
-            
+
             return newFilename;
         },
         // for each folder we encounter...
@@ -63,16 +64,16 @@ module.exports = function () {
                     "jade": [], // are organized...
                     "js":   [], // by...
                     "scss": [], // extension;
-                    "jadeArray": [],     // temp storage of all Jade files, but there's only one "page" per entry;
+                    "htmlArray": [],     // storage of all html files;
                     "html":   "[empty]", // html page to load in the iframe;
                     "folder": "[empty]", // folder + filename (in the arrays above) generate a path to all files;
                     "title":  "[empty]"  // used in the SELECT for pages/modules;
                 };
-            
+
             // remove the src folder from the path;
-            // we want to load doc file, not src files in the documentation app; 
+            // we want to load doc file, not src files in the documentation app;
             item.folder = slash(folder).replace(config.src + "/", "");
-            
+
             // if we're not in the documentation folder;
             // and if we have files, loop through them;
             (files.length) && (folder.indexOf("_short-documentation") === -1) && files.forEach(function (file, index) {
@@ -80,7 +81,7 @@ module.exports = function () {
                     readme,
                     newFilename,
                     pageOrModule;
-                
+
                 // if this extension is of a file to store;
                 // we don't care about EVERY file, only every file we care about;
                 if (item.hasOwnProperty(extension)) {
@@ -91,63 +92,54 @@ module.exports = function () {
                         // so we can save it for our modules / pages object;
                         item.title = readme[0].replace("# ", "");
                     }
-                    // no need to document the documentation;
-                    // documentation files are named demo.jade or demo-foobar.jade;
-                    if (file.indexOf("demo") !== 0) {
-                        // save this file;
+                    // save this file;
+                    // if it's not a demo file (no need to preview those);
+                    if (file.indexOf("demo") === -1) {
                         item[extension].push(file);
+                    }
+                    
+                    // if this is a jade file, we want to track it because of the filename;
+                    // we use the jade filename to generate an HTML filename (to show in the IFRAME);
+                    // we don't need to generate an IFRAME URL for the default module files, just the demo files;
+                    if (extension === "jade" && file.indexOf("module") !== 0) {
+                        // are we working with a page or a module;
+                        pageOrModule = (file.indexOf("page") === 0) ? "page" : "module";
                         
-                        // if this is a jade file, we want to track it because of the filename;
-                        // we use the jade filename to generate an HTML filename (to show in the IFRAME);
-                        if (extension === "jade") {
-                            // are we working with a page or a module;
-                            pageOrModule = (file.indexOf("page") === 0) ? "page" : "module";
-                            
-                            // rename the file;
-                            // take the JADE filename and generate an HTML filename;
-                            newFilename = renameFile(file, slash(folder), pageOrModule);
-                            
-                            // store each jade page here, we'll filter them later;
-                            item.jadeArray.push(newFilename);
-                        }
+                        // rename the file;
+                        // take the JADE filename and generate an HTML filename;
+                        newFilename = renameFile(file, slash(folder), pageOrModule);
+                        
+                        // store each html page here;
+                        // the JS will parse these html pages into a SELECT;
+                        item.htmlArray.push(newFilename);
                     }
                 }
             });
-            
-            // after recording all pertinent information about this module/page, save it;
-            // but let's manipulate it first;
-            // each jade entry equals one page entry (unless that jade file has an _ in it);
-            item.jade.map(function (newItem, index) {
-                // make a copy of the object so we can manipulate it and still loop through the original content;
-                var itemClone = JSON.parse(JSON.stringify(item));
-                
-                // since we're creating one entry per HTML page;
-                // set the page title of this one to that index (this one is 1, next one is 2, etc.);
-                itemClone.html = itemClone.jadeArray[index];
-                
-                // don't pass this array down to the browser (we don't need it anymore);
-                delete itemClone.jadeArray;
-                
-                // don't create a "page" entry for an include (defined by an _);
+
+            // we only want items with a html file;
+            if (item.htmlArray.length) {
+                // don't create a entry for an include (defined by an _);
                 // it's already present in the object, so we can view it's contents via the file SELECT;
                 // but there's no page to view for it;
-                if (itemClone.html.indexOf("_") === -1) {
+                if (item.html.indexOf("_") === -1) {
+                    item.html = item.htmlArray[0];
+                    
                     // if this is a page object;
                     if (slash(folder).indexOf("pages/") > -1) {
-                        data.pages.push(itemClone);
-                    // otherwise it's a modules object;
+                        data.pages.push(item);
+                        // otherwise it's a modules object;
                     } else {
-                        data.modules.push(itemClone);
+                        data.modules.push(item);
                     }
                 }
-            });
+            }
         };
-    
+
     // go through the file system, grab all files and put them into the data object;
     folders.map(function (folder) {
         file.walkSync(folder, parseFolder);
     });
-    
+
     // return the content for Jade to use;
     return data;
 };
