@@ -53,11 +53,9 @@ module.exports = {
             src + "/**/*.js"
         ],
         "copy": [
-            src + "/**/*{txt,ico}",
+            src + "/**/*{txt,ico,json,md,jade,scss,css,js}",
             src + "/fonts/*",
-            src + "/**/-*.json",
-            src + "/img/*",
-            "!" + src + "/img/sprite/**/!(icon-sprite.png)"
+            src + "/img/*"
         ]
     },
     // generate HTML;
@@ -203,10 +201,7 @@ module.exports = {
                 // except generated images;
                 "!" + src + "/img/sprite/**/!(icon-sprite.png)",
                 // and their source material;
-                "!" + src + "/img/sprite/",
                 "!" + src + "/img/sprite/*",
-                // and documentation pages;
-                "!" + src + "/**/demo.jade",
                 // and includes (not visible through the docs anyway);
                 "!" + src + "/includes/*",
                 // and scss (not visible through the docs anyway);
