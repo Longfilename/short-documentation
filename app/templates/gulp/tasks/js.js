@@ -89,7 +89,11 @@ gulp.task("js:empty:files", function () {
 // eshint configuration is in the root: .eslintrc
 gulp.task("js:lint", function () {
     return gulp.src(config.linstSrc)
-        .pipe(eslint())
+        .pipe(eslint({
+            env: {
+                es6: true
+            }
+        }))
         .pipe(eslint.format());
 });
 

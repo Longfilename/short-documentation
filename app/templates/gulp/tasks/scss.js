@@ -29,7 +29,7 @@ gulp.task("scss:dist", function (callback) {
     compileConfig.destination = config.dest.dist;
     compileConfig.outputStyle = config.compress.dist ? "compressed" : "nested";
     run(
-        "scss:lint",
+        // "scss:lint",
         "scss:compile",
         callback
     );
@@ -42,7 +42,7 @@ gulp.task("scss:docs", function (callback) {
     compileConfig.destination = config.dest.docs;
     compileConfig.outputStyle = config.compress.docs ? "compressed" : "nested";
     run(
-        "scss:lint",
+        // "scss:lint",
         "scss:compile",
         callback
     );
@@ -60,7 +60,7 @@ gulp.task("scss:lint", function () {
 // generate CSS from SCSS (run sprites first so it can generate its SCSS file);
 gulp.task("scss:compile", function () {
     // don’t write sourcemaps of sourcemaps;
-    var filter = gulpFilter(["*.css", "!*.map"]);
+    var filter = gulpFilter(["*.css", "!*.map"], { restore: true });
     
     // tell the user what's were doing;
     browserSync.notify("Compiling SCSS");
@@ -82,7 +82,7 @@ gulp.task("scss:compile", function () {
         // write the sourcemaps to the CSS;
         .pipe(sourcemaps.write(config.maps))
         // restore map files;
-        .pipe(filter.restore())
+        .pipe(filter.restore)
         // report on their sizes;
         .pipe(size())
         // finally put the compiled CSS into a CSS file;
