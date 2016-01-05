@@ -1,11 +1,18 @@
 doctype html
 html(lang="en")
     head
-        title 
+        title
         script(src="//code.jquery.com/jquery-2.1.4.min.js")
     body
         ul
             - (content && content.pages) && content.pages.map(function (page) {
-                li
-                    a(href="./html/" + page.html)=page.title
+                - page.htmlArray.map(function (html) {
+                    li
+                        a(href="./html/" + html)=page.title
+                        - if (page.jade.length > 1) {
+                            |  (
+                            =html
+                            |  )
+                        - }
+                - })
             - })

@@ -2,10 +2,12 @@
 /* global ShortDocs */
 
 jQuery(($) => {
-    const $h1 = $("h1");
-    const $h2 = $("h2");
-    const $objects = $h1.find("select.objects");
-    const $files = $h2.find("select.files");
+    const $h1 = $("h1.objects");
+    const $label = $h1.find("span.label");
+    const $value = $h1.find("span.value");
+    const $objects = $h1.find("select");
+    const $files = $("h2.files select");
+    const $urls = $("p.urls select");
     const dataAttr = "config";
 
     // build the modules / pages SELECT;
@@ -36,6 +38,11 @@ jQuery(($) => {
                             // attach the data to this OPTION so when we can access it onChange;
                             .data(dataAttr, item);
 
+                        // if we have a home page, lets open with that one;
+                        if (item.title.toLowerCase().indexOf("home") > -1) {
+                            $option.attr("selected", true);
+                        }
+
                         // put the OPTION in the OPTGROUP;
                         $optgroup.append($option);
                     });
@@ -53,12 +60,26 @@ jQuery(($) => {
         .on("change", (event) => {
             const $selectedOption = $(event.target).find("option:selected");
             const config = $selectedOption.data()[dataAttr];
+            let $option;
+
+            // built the pages select;
+            $urls.empty();
+            // loop through the files (if there are any);
+            config.htmlArray.map(function (htmlFile) {
+                // create an OPTION;
+                $option = $("<option />");
+                $option.html(htmlFile);
+
+                // and add it to this OPTGROUP;
+                $urls.append($option);
+            });
+
+            // trigger the page events (which load the iframe);
+            $urls.trigger("change");
 
             // update the label;
-            $h1.find("span").text($objects.val());
-
-            // load this page or module;
-            $("iframe").prop("src", config.iframeSrc);
+            $label.text((config.folder.indexOf("pages/") === 0) ? "Page:" : "Module:");
+            $value.text($objects.val());
 
             // clear any previous files;
             $files.empty();

@@ -4,6 +4,7 @@
 jQuery(($) => {
     const $h2 = $("h2");
     const $files = $h2.find("select.files");
+    const $label = $h2.find("span.value");
     const $bodyCode = $("code.content");
     const $bodyDiv = $("div.content");
     const convert = Markdown.getSanitizingConverter().makeHtml;
@@ -15,15 +16,15 @@ jQuery(($) => {
         const extension = url.split(".").pop();
 
         // update the label;
-        $h2.find("span").text(url);
+        $label.text(url);
 
-        const ajaxParams = {
+        const ajaxConfig = {
             url: url,
             dataType: "text"
         };
 
         // gogo Ajax;
-        $.ajax(ajaxParams)
+        $.ajax(ajaxConfig)
             // no error trapping... yet;
             .always((data) => {
                 const whichContent = () => {

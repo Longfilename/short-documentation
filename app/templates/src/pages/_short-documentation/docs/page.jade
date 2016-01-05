@@ -1,44 +1,59 @@
 doctype html
 html(lang="en")
     head
-        title ShortDocumentation for [insert project name] 
+        title ShortDocumentation for [insert project name]
         link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css")
         link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/solarized_light.min.css")
         script(src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js")
-        
+
         script(src="https://pagedown.googlecode.com/hg/Markdown.Converter.js")
         script(src="https://pagedown.googlecode.com/hg/Markdown.Sanitizer.js")
-        
+
         script(src="//code.jquery.com/jquery-2.1.4.min.js")
         script var ShortDocs = {}; ShortDocs.data = !{JSON.stringify(content, null, 4)};
         script(src="./js/_short-documentation.js")
-        
-        link(rel="stylesheet", href="./css/short-documentation.css")
-    
+
+        link(rel="stylesheet", href="./css/page.css")
+
     body
         div.container
             div.row
                 div.col-iframe
-                    div.iframe-container
-                        iframe(frameborder="0")
-                
+                    div.col-content
+                        header
+                            p.urls
+                                span.arrow
+                                    span.label Preview URL:
+                                    span.value
+                                select
+                            p.resolution
+                                span.arrow
+                                    span.label Preview Width:
+                                    span.value default
+                                select
+                                    // the values are the flex values to use on change;
+                                    // need double quotes because the value is being parsed as JSON;
+                                    option(value='["1", "0 0 768px"]') default
+                                    option(value='["0 0 1242px", "1"]') 1200px
+                                    option(value='["0 0 1056px", "1"]') 1024px
+                                    option(value='["0 0 800px", "1"]') 768px
+                                    option(value='["0 0 512px", "1"]') 480px
+                        div.iframe-container
+                            iframe(frameborder="0")
                 div.col-readme
-                    header
-                        h1
-                            span
-                            select.objects
-                        h2
-                            span
-                            select.files
-                    main
-                        pre
-                            code.content
-                        div.content
-            div.row.row-config
-                div.col-config
-                    p
-                        a.set-flex-width(data-widths=["0 0 1200px", "1"]) iframe (1200)
-                        a.set-flex-width(data-widths=["0 0 1024px", "1"]) iframe (1024)
-                        a.set-flex-width(data-widths=["0 0 768px", "1"]) iframe (768)
-                        a.set-flex-width(data-widths=["0 0 480px", "1"]) iframe (480)
-                        a.set-flex-width(data-widths=["1", "0 0 768px"]) docs
+                    div.col-content
+                        header
+                            h1.objects
+                                span.arrow
+                                    span.label
+                                    span.value
+                                select
+                            h2.files
+                                span.arrow
+                                    span.label File:
+                                    span.value
+                                select
+                        main
+                            pre
+                                code.content
+                            div.content

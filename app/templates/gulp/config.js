@@ -201,7 +201,10 @@ module.exports = {
                 // except generated images;
                 "!" + src + "/img/sprite/**/!(icon-sprite.png)",
                 // and their source material;
+                "!" + src + "/img/sprite/",
                 "!" + src + "/img/sprite/*",
+                // and documentation pages;
+                "!" + src + "/**/demo.jade",
                 // and includes (not visible through the docs anyway);
                 "!" + src + "/includes/*",
                 // and scss (not visible through the docs anyway);
