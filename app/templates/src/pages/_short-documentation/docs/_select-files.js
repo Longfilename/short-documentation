@@ -1,43 +1,44 @@
-var jQuery = window.jQuery,
-    hljs = window.hljs,
-    Markdown = window.Markdown;
+// eslint configuration;
+/* global Markdown, hljs */
 
-jQuery(function ($) {
-    var $h2 = $("h2"),
-        $files = $h2.find("select.files"),
-        $bodyCode = $("code.content"),
-        $bodyDiv = $("div.content"),
-        convert = Markdown.getSanitizingConverter().makeHtml;
-    
+jQuery(($) => {
+    const $h2 = $("h2");
+    const $files = $h2.find("select.files");
+    const $bodyCode = $("code.content");
+    const $bodyDiv = $("div.content");
+    const convert = Markdown.getSanitizingConverter().makeHtml;
+
     // on change, grab the contents of the URL and display them;
-    $files.on("change", function () {
-        var url = $files.val(),
-            // what type of file is it? (we only care about json right now);
-            extension = url.split(".").pop();
-        
+    $files.on("change", () => {
+        const url = $files.val();
+        // what type of file is it? (we only care about json right now);
+        const extension = url.split(".").pop();
+
         // update the label;
         $h2.find("span").text(url);
-        
+
+        const ajaxParams = {
+            url: url,
+            dataType: "text"
+        };
+
         // gogo Ajax;
-        $.ajax({
-                url: url,
-                dataType: "text"
-            })
+        $.ajax(ajaxParams)
             // no error trapping... yet;
-            .always(function (data) {
-                var whichContent = function () {
-                    var content = data;
-                    
+            .always((data) => {
+                const whichContent = () => {
+                    let content = data;
+
                     // JS files come back as an object;
                     if (extension === "js") {
                         // responseText might not be available;
                         // some JS files it is... some it is not;
                         content = data.responseText || data;
                     }
-                    
+
                     return content;
                 };
-                
+
                 // insert the content;
                 // it could be markdown content (that we need to transform to HTML);
                 if (extension === "md") {
@@ -53,7 +54,7 @@ jQuery(function ($) {
                         .removeClass()
                         .addClass(extension)
                         .text(whichContent())
-                        .each(function (i, block) {
+                        .each((i, block) => {
                             // init highlight js (code color coding);
                             hljs.highlightBlock(block);
                         });
