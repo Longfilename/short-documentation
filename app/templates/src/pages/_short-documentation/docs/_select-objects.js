@@ -91,7 +91,7 @@ jQuery(($) => {
                 let $filesOption;
 
                 // don't do anything with the folder name;
-                if (typeof config[key] !== "string") {
+                if (typeof config[key] !== "string" && key !== "htmlArray") {
                     keyData = config[key];
                     $filesOptgroup = $("<optgroup label='" + key + "' />"); // each type of content gets a OPTGROUP (md, jade, scss, json, js);
 
