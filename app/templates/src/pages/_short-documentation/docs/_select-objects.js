@@ -38,8 +38,10 @@ jQuery(($) => {
                             // attach the data to this OPTION so when we can access it onChange;
                             .data(dataAttr, item);
 
+                        const notFoundIndex = -1;
+
                         // if we have a home page, lets open with that one;
-                        if (item.title.toLowerCase().indexOf("home") > -1) {
+                        if (item.title.toLowerCase().indexOf("home") > notFoundIndex) {
                             $option.attr("selected", true);
                         }
 
@@ -65,7 +67,7 @@ jQuery(($) => {
             // built the pages select;
             $urls.empty();
             // loop through the files (if there are any);
-            config.htmlArray.map(function (htmlFile) {
+            config.htmlArray.map((htmlFile) => {
                 // create an OPTION;
                 $option = $("<option />");
                 $option.html(htmlFile);
@@ -78,7 +80,7 @@ jQuery(($) => {
             $urls.trigger("change");
 
             // update the label;
-            $label.text((config.folder.indexOf("pages/") === 0) ? "Page:" : "Module:");
+            $label.text(config.folder.indexOf("pages/") === 0 ? "Page:" : "Module:");
             $value.text($objects.val());
 
             // clear any previous files;
