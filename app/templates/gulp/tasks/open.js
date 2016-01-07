@@ -14,15 +14,15 @@ gulp.task("open", function (callback) {
 });
 
 gulp.task("open:dist", function () {
-    gulp.src(config.src)
-        .pipe(open("", {
-            "url": config.url.dist
+    gulp.src(__filename)
+        .pipe(open({
+            uri: config.url.dist
         }));
 });
 
 gulp.task("open:docs", function () {
-    gulp.src(config.src)
-        .pipe(open("", {
-            "url": config.url.docs
+    gulp.src(__filename)
+        .pipe(open({
+            uri: config.url.docs
         }));
 });

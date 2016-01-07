@@ -16,8 +16,7 @@ gulp.task("dist", function (callback) {
         "build:dist",  // build and copy all files;
         "browsersync", // start up a web server;
         "watch:dist",  // start watching files for changes - so we can push updates to browsersync;
-        // open is disabled because it stopped working as expected after upgrading to Node 4;
-        // "open:dist",   // open our starting URL in a browser;
+        "open:dist",   // open our starting URL in a browser;
         callback
     );
 });
@@ -27,7 +26,7 @@ gulp.task("docs", function (callback) {
         "build:docs",
         "browsersync",
         "watch:docs",
-        // "open:docs",
+        "open:docs",
         callback
     );
 });
