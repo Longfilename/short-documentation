@@ -104,7 +104,7 @@ module.exports = yeoman.generators.Base.extend({
                 if (jsObject) {
                     // if true, just include the base JS file;
                     if (typeof jsObject === "boolean") {
-                        content.moduleJS = content.moduleJS + 'import "../../modules/' + module + '/module"' + os.EOL;
+                        content.moduleJS = content.moduleJS + 'import "../../modules/' + module + '/module";' + os.EOL;
                         // if an array, include the named files;
                     } else {
                         // include a file for each entry in the module JS array;
