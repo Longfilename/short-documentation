@@ -1,0 +1,50 @@
+.font {
+  margin: 100px 20px 20px;
+
+  &__title {
+    background: #fff;
+    padding: 20px 0 0 20px;
+    max-width: 60em;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  &__content {
+    background: #fff;
+    padding: 20px;
+
+    p {
+      margin: 0;
+      border-bottom: 1px dotted #ccc;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 1.5;
+
+      &:nth-child(1) {
+        border-top: 1px dotted #ccc;
+        font-size: 36px;
+      }
+
+      &:nth-child(2) {
+        font-size: 32px;
+      }
+
+      &:nth-child(3) {
+        font-size: 28px;
+      }
+
+      &:nth-child(4) {
+        font-size: 24px;
+      }
+
+      &:nth-child(5) {
+        font-size: 20px;
+      }
+
+      &:nth-child(6) {
+        font-size: 16px;
+      }
+    }
+  }
+}

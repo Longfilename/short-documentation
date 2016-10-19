@@ -1,0 +1,35 @@
+doctype html
+html(lang="en")
+  head
+    - var title = '/src/templates/' + folder
+    include ./_head
+
+  body
+    include ./_wrapper
+      div.templates
+        - pages.map((page, index) => {
+          a.button.templates__button.js__template--open(data-url=page.url)
+            i.fa.fa-desktop
+            |  Open #{ page.title } Template
+        - })
+      
+      div.card
+        div.card__content.card__content--rich-text
+          !=markdown
+      
+      div.template
+        a.button.template__close.js__template--close
+          span.template__close-text Close Template
+          i.fa.fa-times(aria-hidden="true")
+        
+        div.template__resizer
+          a.button.template__resizer-link.js__template--resizer(data-resizer="375px, 667px") 375px
+          a.button.template__resizer-link.js__template--resizer(data-resizer="768px, 1024px") 768px
+          a.button.template__resizer-link.js__template--resizer(data-resizer="1024px, 768px") 1024px
+          a.button.template__resizer-link.template__resizer-link--active.js__template--resizer(data-resizer="100%, 100%") 100%
+        
+        div.template__overlay
+          div.template__iframe-wrapper
+            iframe.template__iframe
+    
+    include ./_foot

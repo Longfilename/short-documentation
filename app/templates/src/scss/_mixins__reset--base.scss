@@ -1,0 +1,59 @@
+// reset mixins to allow reseting individual blocks;
+// BEM can’t rely upon global CSS;
+// all relevent styles need to be scoped to the block;
+@mixin reset-box-model {
+  box-sizing: border-box;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+@mixin reset-font {
+  vertical-align: baseline;
+  font: inherit;
+  font-size: 100%;
+}
+
+@mixin reset-block {
+  @include reset-box-model;
+  @include reset-font;
+
+  display: block;
+}
+
+@mixin reset-list {
+  @include reset-box-model;
+  @include reset-font;
+
+  display: block;
+  list-style: none;
+}
+
+@mixin reset-table {
+  @include reset-box-model;
+  @include reset-font;
+
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@mixin reset-table-cell {
+  @include reset-box-model;
+  @include reset-font;
+
+  vertical-align: middle;
+  text-align: left;
+  font-weight: normal;
+}
+
+@mixin reset-quote {
+  @include reset-box-model;
+  @include reset-font;
+
+  quotes: none;
+
+  &::before,
+  &::after {
+    content: '';
+  }
+}

@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+  head
+    include ./_head
+
+  body
+    include ./_wrapper
+      div.card
+        div.card__content.card__content--rich-text
+          h1 Colors
+          p Here is the color palatee for <a href="http://bbbprograms.org">bbbprograms.org</a>. All colors on the site (that aren’t defined in 3rd party plugins) are defined below. Even if the color is only used once.
+          p The <strong>$shade--</strong> colors have an alpha transparency, so they are shown on top of a gray/white stripped background to show the translucency of the color.
+          p Use <a href="http://chir.ag/projects/name-that-color/">http://chir.ag/projects/name-that-color/</a> to generate color names. It’s much easier than dreaming up a name for the fourth blue.
+      
+        div.colors
+          - Object.keys(scssVariables).forEach((key, index) => {
+            - if (key.indexOf('$color__') === -1) {
+              - var count = JSON.stringify(scssVariables).split(scssVariables[key]).length - 2
+              - var label = count > 1 ? "times" : "time"
+              div.color
+                div.color__gradient
+                  div.color__swatch(style="background: #{ scssVariables[key] };")
+                    div.color__hex=scssVariables[key]
+                div.color__label
+                  div.color__count used #{ count } #{ label }
+                  div.color__name #{ key }
+            - }
+          - })
+    
+    include ./_foot

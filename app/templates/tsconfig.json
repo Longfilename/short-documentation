@@ -1,0 +1,21 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "noImplicitAny": false,
+    "sourceMap": false
+  },
+  "filesGlob": [
+    "./src/**/*.ts",
+    "./typings/index.d.ts"
+  ],
+  "files": [
+    "./src/docs/docs.ts",
+    "./src/js/site.ts",
+    "./typings/index.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

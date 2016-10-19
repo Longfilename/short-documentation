@@ -1,0 +1,27 @@
+doctype html
+html(lang="en")
+  head
+    include ../templates/_head
+    
+    // undo grid styles;
+    style.
+      .promo-video,
+      .promo-podcast {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+    
+    - if (nullmargins) {
+      // remove margins on the module (better displayed in this format without the required margins);
+      style.
+        body > * {
+          margin: 0 !important;
+        }
+    - }
+
+  body
+    !=wrapper_before
+    !=html
+    !=wrapper_after
+    
+    include ../templates/_foot

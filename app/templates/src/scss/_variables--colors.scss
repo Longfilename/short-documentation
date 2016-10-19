@@ -1,0 +1,25 @@
+// colors (if you need to come up with a name for a color);
+// http://chir.ag/projects/name-that-color/
+$white: #fff;
+$black: #000;
+$daintree: #002b36;
+$tiber: #073642;
+$cutty-sark: #586e75;
+$pale-sky: #657b83;
+$granny-smith: #839496;
+$pewter: #93a1a1;
+$aths-special: #eee8d5;
+$old-lace: #fdf6e3;
+$pirate-gold: #b58900;
+
+// above are the colors in use;
+// below are the variables that should be used;
+// don’t litter the CSS with red, green, blue color variables;
+// red might not be red by the end of the project;
+// but a $color__component-element-text/bg--variant color will always be in use;
+
+// colors for each component;
+// centralized for easy oversight;
+// $color__component-element-text/bg--variant: $white;
+$color__component-element-bg--variant: $white;
+$color__component-element-text--variant: $white;

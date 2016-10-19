@@ -1,0 +1,155 @@
+// https://gist.github.com/mjlescano/fc472f778e77c4b760ab
+
+@mixin form-reset-general {
+  display: inline-block;
+  margin: 0;
+  border: 0;
+  background: none;
+  padding: 0;
+  width: auto;
+  line-height: inherit;
+  white-space: normal;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+%form-reset-general {
+  @include form-reset-general;
+}
+
+@mixin form-reset-special-box-sizing {
+  box-sizing: border-box;
+}
+
+%form-reset-special-box-sizing {
+  @include form-reset-special-box-sizing;
+}
+
+@mixin form-reset-input-specific {
+  &:focus {
+    outline: 0;
+  }
+
+  &[type=checkbox],
+  &[type=radio] {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  // Make webkit render the search input like a normal text field;
+  &[type=search] {
+    -webkit-appearance: textfield;
+    box-sizing: content-box;
+  }
+
+  // Turn off the recent search for webkit. It adds about 15px padding on the left;
+  @at-root {
+    ::-webkit-search-decoration {
+      display: none;
+    }
+  }
+}
+
+@mixin form-reset-input {
+  @include form-reset-general;
+  @include form-reset-input-specific;
+
+  // These elements are usually rendered a certain way by the browser;
+  &[type=reset],
+  &[type=button],
+  &[type=submit],
+  &[type=checkbox],
+  &[type=radio] {
+    @include form-reset-special-box-sizing;
+  }
+}
+
+%form-reset-input {
+  @extend %form-reset-general;
+  @include form-reset-input-specific;
+
+  // These elements are usually rendered a certain way by the browser;
+  &[type=reset],
+  &[type=button],
+  &[type=submit],
+  &[type=checkbox],
+  &[type=radio] {
+    @extend %form-reset-special-box-sizing;
+  }
+}
+
+@mixin form-reset-label {
+  @include form-reset-general;
+}
+
+%form-reset-label {
+  @extend %form-reset-general;
+}
+
+@mixin form-reset-select-specific {
+  &[multiple] {
+    vertical-align: top;
+  }
+}
+
+@mixin form-reset-select {
+  @include form-reset-general;
+  @include form-reset-special-box-sizing;
+  @include form-reset-select-specific;
+}
+
+%form-reset-select {
+  @extend %form-reset-general;
+  @extend %form-reset-special-box-sizing;
+  @include form-reset-select-specific;
+}
+
+@mixin form-reset-button-specific {
+  outline: none;
+  border: 0;
+  background: none;
+
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+  &:hover,
+  &:active,
+  &:focus {
+    outline: 0;
+  }
+
+  // IE8 and FF freak out if this rule is within another selector;
+  @at-root {
+    ::-webkit-file-upload-button {
+      border: 0;
+      background: none;
+      padding: 0;
+    }
+  }
+}
+
+@mixin form-reset-button {
+  @include form-reset-general;
+  @include form-reset-button-specific;
+}
+
+%form-reset-button {
+  @extend %form-reset-general;
+  @include form-reset-button-specific;
+}
+
+@mixin form-reset-textarea-specific {
+  vertical-align: top;
+}
+
+@mixin form-reset-textarea {
+  @include form-reset-general;
+  @include form-reset-textarea-specific;
+}
+
+%form-reset-textarea {
+  @extend %form-reset-general;
+  @include form-reset-textarea-specific;
+}

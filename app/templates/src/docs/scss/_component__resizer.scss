@@ -1,0 +1,68 @@
+.component__resizer {
+  position: relative;
+  border-bottom: 20px solid #fff;
+  background: #e6e6e6;
+  height: 40px;
+  overflow: hidden;
+
+  &-link {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid #fff;
+    cursor: pointer;
+    height: 20px;
+    text-align: center;
+    line-height: 18px;
+    font-size: 12px;
+
+    &::after {
+      display: none;
+    }
+
+    &:hover {
+      &::after {
+        display: inline;
+      }
+    }
+
+    &--375 {
+      z-index: 13;
+      width: 375px;
+
+      &::after {
+        content: 'Mobile: 375px';
+      }
+    }
+
+    &--768 {
+      z-index: 12;
+      width: 768px;
+
+      &::after {
+        content: 'Tablet (portrait): 768px';
+      }
+    }
+
+    &--1024 {
+      z-index: 11;
+      width: 1024px;
+
+      &::after {
+        content: 'Tablet (landscape): 1024px';
+      }
+    }
+
+    &--100 {
+      left: 0;
+      transform: none;
+      z-index: 10;
+      width: 100%;
+
+      &::after {
+        content: 'Full Width';
+      }
+    }
+  }
+}

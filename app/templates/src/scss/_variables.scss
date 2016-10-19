@@ -1,10 +1,7 @@
-// colors;
-// http://www.color-hex.com/ - if you need to come up with a name for a color;
+@import './variables--bootstrap';
+@import './variables--colors';
+@import './variables--fonts';
+@import './variables--grid';
 
-// font sizes;
-
-// breakpoint variables;
-// the smallest breakpoint size does not have a min-width;
-// $breakpoint-sm: (min-width: $screen-sm); // tablet       | small screen;
-// $breakpoint-md: (min-width: $screen-md); // desktop      | medium screen;
-// $breakpoint-lg: (min-width: $screen-lg); // wide desktop | large screen;
+// z-index stacks;
+// $z-index__hamburger: 120;

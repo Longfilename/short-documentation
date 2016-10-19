@@ -1,0 +1,32 @@
+// load node modules;
+@import 'node_modules/breakpoint-sass/stylesheets/breakpoint';
+$breakpoint--xs: min-width 480px; // phone;
+$breakpoint--sm: min-width 768px; // tablet portrait;
+$breakpoint--md: min-width 1024px; // tablet landscape;
+$breakpoint--lg: min-width 1200px; // desktop;
+
+$border-radius: 2px;
+
+@import './prism';
+@import './base';
+@import './button';
+@import './card';
+@import './colors';
+@import './component__resizer';
+@import './component__view';
+@import './font';
+@import './grid';
+@import './page-header';
+@import './perspective__nav';
+@import './perspective';
+@import './template';
+@import './tabs';
+
+pre[class*='language-'] {
+  margin: 0;
+  border-radius: 0;
+}
+
+.variant {
+  margin: 100px 0;
+}

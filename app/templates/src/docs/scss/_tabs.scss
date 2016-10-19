@@ -1,0 +1,22 @@
+.tabs {
+  &__nav {
+    &-link {
+      display: inline-block;
+      cursor: pointer;
+      padding: 10px 20px;
+
+      i.fa {
+        margin-right: 5px;
+      }
+
+      &--active {
+        background: #fdf6e3;
+      }
+    }
+  }
+
+  &__content {
+    &-tab {
+    }
+  }
+}

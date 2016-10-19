@@ -1,0 +1,1 @@
+cf. http://realfavicongenerator.net/

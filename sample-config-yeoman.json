@@ -1,44 +1,37 @@
 {
-    "project": {
-        "name": "myProjectName",
-        "documentation": true
+  "project": {
+    "name": "myProjectName"
+  },
+  "components": {
+    "ad": {
+      "js": true
     },
-    "modules": {
-        "ad": {
-            "js": true
-        },
-        "nav": {
-            "js": [
-                "_panda-header",
-                "module"
-            ]
-        },
-        "page-footer": {},
-        "page-header": {},
-        "slideshow-hero": {
-            "js": [
-                "_slick",
-                "_handlebars"
-            ]
-        }
+    "nav": {
+      "js": true
     },
-    "pages": {
-        "home": [
-            "page-header",
-            "nav",
-            "slideshow-hero",
-            "page-footer"
-        ],
-        "show": [
-            "page-header",
-            "nav",
-            "slideshow-hero",
-            "page-footer"
-        ],
-        "article": [
-            "page-header",
-            "nav",
-            "page-footer"
-        ]
+    "page-footer": {},
+    "page-header": {},
+    "slideshow-hero": {
+      "js": true
     }
+  },
+  "templates": {
+    "home": [
+      "page-header",
+      "nav",
+      "slideshow-hero",
+      "page-footer"
+    ],
+    "show": [
+      "page-header",
+      "nav",
+      "slideshow-hero",
+      "page-footer"
+    ],
+    "article": [
+      "page-header",
+      "nav",
+      "page-footer"
+    ]
+  }
 }

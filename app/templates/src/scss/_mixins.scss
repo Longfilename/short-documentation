@@ -1,12 +1,2 @@
-// change bootstap clearfix (it uses overflow which causes problems in older browsers);
-@mixin clearfix () {
-    &:before,
-    &:after {
-        content: "";
-        display: table;
-    }
-
-    &:after {
-        clear: both;
-    }
-}
+@import './mixins__reset--base'; // reset base HTML elements;
+@import './mixins__reset--forms'; // reset FORM elements;

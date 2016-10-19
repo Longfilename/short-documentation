@@ -1,7 +1,26 @@
-@import "./variables"; // sitewide variables;
-@import "./mixins";    // sitewide mixins;
-@import "./fonts";     // custom fonts;
-@import "./base";      // base styles;
+// sitewide variables;
+@import './variables';
 
-// import all module styles;
-<%= modules %>
+// load node modules;
+// load after variables because variables are used in Bootstrap;
+@import 'node_modules/breakpoint-sass/stylesheets/breakpoint';
+@import 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins';
+@import 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/grid';
+@import 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/responsive-utilities';
+
+// load global resources;
+@import './mixins';
+@import './bem-base'; // base BEM classes to @extend in the components;
+@import './global'; // base styles independent of a component;
+
+// since Bootstrap reset isn’t included, we need to bring in this style;
+// otherwise the grid won’t work;
+.container,
+.row,
+[class^='col-'] {
+  box-sizing: border-box;
+}
+
+// load site components;
+// @import '../components/component/component';
+<%= components %>

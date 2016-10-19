@@ -1,0 +1,41 @@
+div.perspective
+  nav.perspective__nav
+    - nav.design.map((design) => {
+        a.button.perspective__nav-link(href=design.url)
+          - design.icons && design.icons.split(' ').map((icon) => {
+            i.fa(class="fa-#{ icon }")
+            |  
+          - })
+          =design.text || 'untitled'
+    - })
+    
+    hr.perspective__nav-divider
+    
+    - nav.templates.map((template) => {
+        a.button.perspective__nav-link(href=template.url)
+          - template.icons && template.icons.split(' ').map((icon) => {
+            i.fa(class="fa-#{ icon }")
+            |  
+          - })
+          =template.text || 'untitled'
+    - })
+    
+    hr.perspective__nav-divider
+
+    - nav.components.map((component) => {
+        a.button.perspective__nav-link(href=component.url)
+          - component.icons && component.icons.split(' ').map((icon) => {
+            i.fa(class="fa-#{ icon }")
+            |  
+          - })
+          =component.text || 'untitled'
+    - })
+
+  
+  div.perspective__content-wrapper
+    div.perspective__content
+      header.page-header
+        a.button.page-header__menu.js__perspective
+          i.fa.fa-bars(aria-hidden="true")
+          span.page-header__menu-text=title
+      main 
