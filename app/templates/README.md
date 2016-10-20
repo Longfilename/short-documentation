@@ -9,6 +9,27 @@ This build tool makes use of the `scripts` property of `package.json`. The comma
 &nbsp;
 &nbsp;
 
+## Contents
+
++ [Installation](#installation)
++ [Initialization](#installation)
++ [Documentation Configuration](#documentation-configuration)
+  + [Component `readme.md`](#sample-component-readmemd)
+    + [Component YAML Options](#component-yaml-options)
+  + [Template `readme.md`](#sample-template-readmemd)
+    + [Template YAML Options](#template-yaml-options)
++ [Editor Configuration](#editor-configuration)
+  + [tsconfig.json](#tsconfigjson)
+  + [tslint.json](#tslintjson)
+  + [typings.json](#typingsjson)
+  + [.stylelintrc](#stylelintrc)
+  + [.editorconfig](#editorconfig)
++ [BEM](#bem)
++ [Image Compression](#image-compression)
+
+&nbsp;
+&nbsp;
+
 ## Installation
 
 ```bash
@@ -31,7 +52,94 @@ npm start server docs               # build the project with documentation, a we
 &nbsp;
 &nbsp;
 
-## Configuration Files
+## Documentation Configuration
+
+Short Documentation parses the components and templates folders looking for `readme.md` files. When a `readme.md` file is found, that component or template are included in the documentation app. The `readme.md` is not just a markdown file, it contains some YAML at the top to configure the display of the component or template.
+
+The YAML and Markdown are separated by Node. The YAML is used to configure the documentation navigation and page, the Markdown is content on the documentation page.
+
+&nbsp;
+
+#### Component `readme.md`
+
+```markdown
+---
+nav: Primary Navigation
+icons: bars bolt
+size: 100%
+jade: nav-primary.jade
+ts: nav-primary.ts
+views:
+  - title: Primary Navigation (Home page)
+    json: nav-primary--home.json
+  - title: Primary Navigation (Article pages)
+    json: nav-primary--article.json
+---
+
+# Primary Navigation
+
+Interactively procrastinate high-payoff content without backward-compatible data. Quickly cultivate optimal processes and tactical architectures. Completely iterate covalent strategic theme areas via accurate e-markets.
+
+Globally incubate standards compliant channels before scalable benefits. Quickly disseminate superior deliverables whereas web-enabled applications. Quickly drive clicks-and-mortar catalysts for change before vertical architectures.
+
+Credibly reintermediate backend ideas for cross-platform models. Continually reintermediate integrated processes through technically sound intellectual capital. Holistically foster superior methodologies without market-driven best practices.
+```
+
+&nbsp;
+
+#### Component YAML Options
+```yaml
+nav: Component Title                    # used in the documentation navigation;
+icons: bars bolt                        # optional. space-delimited list of FontAwesome icons to add in the documentation navigation;
+size: 350px                             # optional, default is 100%; CSS width value to apply to the container around the component;
+jade: component.jade                    # filename of the component Jade file;
+ts: component.ts                        # optional. filename of the component TypeScript file;
+views:                                  # list of component views to display (multiple are allowed);
+  - title: Component Title (variant)    # title of this view;
+    json: component.json                # JSON data used to render this view;
+```
+
+&nbsp;
+
+#### Template `readme.md`
+
+```markdown
+---
+nav: Article Pages
+icons: file-text-o
+pages:
+  - title: Privacy Policy
+    url: /article--privacy-policy.html
+  - title: Terms of Use
+    url: /article--terms-of-use.html
+  - title: Movie Review
+    url: /article--movie-review.html
+---
+
+# Article Pages
+
+Interactively procrastinate high-payoff content without backward-compatible data. Quickly cultivate optimal processes and tactical architectures. Completely iterate covalent strategic theme areas via accurate e-markets.
+
+Globally incubate standards compliant channels before scalable benefits. Quickly disseminate superior deliverables whereas web-enabled applications. Quickly drive clicks-and-mortar catalysts for change before vertical architectures.
+
+Credibly reintermediate backend ideas for cross-platform models. Continually reintermediate integrated processes through technically sound intellectual capital. Holistically foster superior methodologies without market-driven best practices.
+```
+
+&nbsp;
+
+#### Template YAML Options
+```yaml
+nav: Template Title                     # used in the documentation navigation;
+icons: file-text-o                      # optional. space-delimited list of FontAwesome icons to add in the documentation navigation;
+pages:                                  # list of template pages to display (multiple are allowed);
+  - title: Template Title (variant)     # title of this page;
+    json: template.json                 # JSON data used to render this page;
+```
+
+&nbsp;
+&nbsp;
+
+## Editor Configuration
 
 #### tsconfig.json
 
