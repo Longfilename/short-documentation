@@ -50,7 +50,7 @@ module.exports = function (startDocs) {
         const filename = path.split('/').slice(-1).toString();
 
         // report on the changed file;
-        console.log(filename.green, 'changed, rebuilding.');
+        console.log(filename.blue, 'changed, rebuilding.');
 
         watchObj.command();
 
@@ -59,6 +59,6 @@ module.exports = function (startDocs) {
         }
       });
 
-    console.log(val.green, 'watcher has been started.');
+    console.log(val.blue, 'watcher has been started.');
   });
 };
