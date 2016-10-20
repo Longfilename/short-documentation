@@ -7,5 +7,5 @@ module.exports = function () {
   // now we have a clean path to build everything;
   rimraf.sync(distFolder);
 
-  console.log(distFolder.green, 'was purged.');
+  console.log(distFolder.red, 'was purged.');
 };
