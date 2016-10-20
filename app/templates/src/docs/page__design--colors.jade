@@ -16,7 +16,8 @@ html(lang="en")
           - Object.keys(scssVariables).forEach((key, index) => {
             - if (key.indexOf('$color__') === -1) {
               - var count = JSON.stringify(scssVariables).split(scssVariables[key]).length - 2
-              - var label = count > 1 ? "times" : "time"
+              - var label = count === 0 ? "times" : "time"
+              - label = count > 1 ? "times" : label
               div.color
                 div.color__gradient
                   div.color__swatch(style="background: #{ scssVariables[key] };")
