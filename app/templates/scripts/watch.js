@@ -20,7 +20,7 @@ const config = {
     docs: docs.scss
   },
   js: {
-    path: ['src/**/*.js'],
+    path: ['src/**/*.ts'],
     command: js,
     docs: docs.js
   },
