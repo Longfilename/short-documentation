@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require('fs'); // traverse the file system to load a JSON config;
 const yeoman = require('yeoman-generator'); // yeoman toolset;
 const yosay = require('yosay'); // ASCII art for yeoman console message;
@@ -7,7 +9,7 @@ let config; // the global project configuration object (populated by the JSON co
 let scssIncludes = ''; // string that will be inserted into the global SCSS file (paths to all SCSS files);
 let jsIncludes = ''; // string that will be inserted into the global TS file (paths to all TS files);
 
-module.exports = yeoman.generators.Base.extend({
+module.exports = yeoman.Base.extend({
   readJSON: function () {
     const done = this.async();
 
@@ -35,7 +37,8 @@ module.exports = yeoman.generators.Base.extend({
   },
   copyComponentFiles: function () {
     // loop through each module in the JSON and build a folder for it;
-    for (component in config.components) {
+    for (let component in config.components) {
+
       // yeoman context - used to insert dynamic content into the files;
       const content = {
         name: component,
@@ -64,7 +67,7 @@ module.exports = yeoman.generators.Base.extend({
   },
   copyTemplateFiles: function () {
     // loop through each template in the JSON and build a folder for it;
-    for (template in config.templates) {
+    for (let template in config.templates) {
       // yeoman context - used to insert dynamic content into the files;
       const content = {
         name: `${ template } Page`,
