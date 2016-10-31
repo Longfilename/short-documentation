@@ -9,7 +9,7 @@ const Prism = require('prismjs'); // syntax highlighter;
 const pretty = require('./_pretty'); // beautify the HTML;
 
 // syntax highlighter languages;
-require('prismjs/components/prism-javascript.js');
+require('prismjs/components/prism-typescript.js');
 require('prismjs/components/prism-scss.js');
 require('prismjs/components/prism-json.js');
 
@@ -50,7 +50,7 @@ function getReadmeData (folderToParse) {
     (files.length) && files.forEach((currentFile) => {
       // only process this file if it is a readme.md file;
       // not all folders will have readme.md;
-      if (currentFile === 'readme.md') {
+      if (currentFile.toLowerCase() === 'readme.md') {
         const contents = fs.readFileSync(currentFolder + '/' + currentFile, 'utf-8'); // if not UTF-8, then a stream is returned;
         const fmContents = fm(contents); // separate the YAML from the Markdown;
 
@@ -97,10 +97,10 @@ function createComponentPage (component) {
       view.jsonContent = Prism.highlight(view.jsonContent, Prism.languages.json);
     }
 
-    if (component.yaml.js) {
-      view.js = component.yaml.js;
-      view.jsContent = fs.readFileSync(`src/components/${ component.folder }/${ component.yaml.js }`, 'utf-8');
-      view.jsContent = Prism.highlight(view.jsContent, Prism.languages.javascript);
+    if (component.yaml.ts) {
+      view.js = component.yaml.ts;
+      view.jsContent = fs.readFileSync(`src/components/${ component.folder }/${ component.yaml.ts }`, 'utf-8');
+      view.jsContent = Prism.highlight(view.jsContent, Prism.languages.typescript);
     }
 
     if (component.yaml.scss) {

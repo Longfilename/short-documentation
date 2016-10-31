@@ -20,7 +20,7 @@ html(lang="en")
               - label = count > 1 ? "times" : label
               div.color
                 div.color__gradient
-                  div.color__swatch(style="background: #{ scssVariables[key] };")
+                  div.color__chip(style="background: #{ scssVariables[key] };")
                     div.color__hex=scssVariables[key]
                 div.color__label
                   div.color__count used #{ count } #{ label }

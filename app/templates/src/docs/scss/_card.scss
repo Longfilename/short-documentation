@@ -1,34 +1,76 @@
 .card {
   display: block;
-  margin: 20px;
   border-radius: $border-radius;
 
-  &--variant-top {
-    margin-bottom: 0;
-
-    .card__content {
-      padding-bottom: 0;
-    }
+  + .card {
+    margin-top: 100px;
   }
 
-  &--variant-bottom {
-    margin-top: 0;
-
-    .card__content {
-      padding-top: 0;
-    }
+  // a component view (full width);
+  &__view {
+    border: 20px solid #fff;
+    border-width: 20px 0;
   }
 
-  &__title {
-    font-size: 16px;
-    font-weight: bold;
-  }
-
+  // content container of a card;
   &__content {
     background: #fff;
     padding: 20px;
-    max-width: 60em;
+    max-width: calc(60em - 40px);
+    margin: 0 20px;
 
+    // content is just a title;
+    &--title {
+      line-height: 1.6;
+      font-size: 16px;
+      font-weight: bold;
+      padding-bottom: 0;
+    }
+
+    // tab content follows elements that provide the top padding effect;
+    &--tabs {
+      padding-top: 0;
+    }
+
+    &--font {
+      max-width: none;
+
+      p {
+        margin: 0;
+        border-bottom: 1px dotted #ccc;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        line-height: 1.5;
+
+        &:nth-child(1) {
+          border-top: 1px dotted #ccc;
+          font-size: 36px;
+        }
+
+        &:nth-child(2) {
+          font-size: 32px;
+        }
+
+        &:nth-child(3) {
+          font-size: 28px;
+        }
+
+        &:nth-child(4) {
+          font-size: 24px;
+        }
+
+        &:nth-child(5) {
+          font-size: 20px;
+        }
+
+        &:nth-child(6) {
+          font-size: 16px;
+        }
+      }
+    }
+
+    // content is rich text (markdown);
     &--rich-text {
       line-height: 1.6;
       font-size: 16px;
@@ -61,6 +103,7 @@
         font-size: 16px;
       }
 
+      // add a top margin to everything but the first element;
       > * {
         margin-top: 10px;
 
