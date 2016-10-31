@@ -6,11 +6,7 @@
     "noImplicitAny": false,
     "sourceMap": false
   },
-  "filesGlob": [
-    "./src/**/*.ts",
-    "./typings/index.d.ts"
-  ],
-  "files": [
+  "include": [
     "./src/docs/docs.ts",
     "./src/js/site.ts",
     "./typings/index.d.ts"

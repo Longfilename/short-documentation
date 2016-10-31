@@ -70,7 +70,7 @@ module.exports = yeoman.Base.extend({
     for (let template in config.templates) {
       // yeoman context - used to insert dynamic content into the files;
       const content = {
-        name: `${ template } Page`,
+        name: `${ template }`,
         moduleJade: ''
       };
 

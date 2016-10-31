@@ -5,6 +5,7 @@ jQuery(($) => {
     const $iframeContainer = $view.find('.component__view-back');
     const $iframe = $view.find('.component__view-iframe');
     const resizedClass = 'component__view-back--resized';
+    const activeClass = 'component__resizer-link--active';
     const $links = $resizer.find('.component__resizer-link');
 
     $links.each((i, link) => {
@@ -27,6 +28,9 @@ jQuery(($) => {
         $iframeContainer.css({
           width: dataResizer
         });
+
+        $links.removeClass(activeClass);
+        $link.addClass(activeClass);
       });
     });
   });

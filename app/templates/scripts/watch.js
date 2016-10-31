@@ -4,7 +4,7 @@ const js = require('./js');
 const copy = require('./copy');
 const htmlTemplates = require('./html--templates');
 const htmlIndex = require('./html--index');
-const docs = require('./docs');
+const docs = require('./docs/docs');
 const watch = require('./watch');
 
 const config = {
@@ -20,7 +20,7 @@ const config = {
     docs: docs.scss
   },
   js: {
-    path: ['src/**/*.js'],
+    path: ['src/**/*.ts'],
     command: js,
     docs: docs.js
   },
@@ -50,7 +50,7 @@ module.exports = function (startDocs) {
         const filename = path.split('/').slice(-1).toString();
 
         // report on the changed file;
-        console.log(filename.green, 'changed, rebuilding.');
+        console.log(filename.blue, 'changed, rebuilding.');
 
         watchObj.command();
 
@@ -59,6 +59,6 @@ module.exports = function (startDocs) {
         }
       });
 
-    console.log(val.green, 'watcher has been started.');
+    console.log(val.blue, 'watcher has been started.');
   });
 };

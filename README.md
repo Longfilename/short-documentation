@@ -9,8 +9,8 @@ Short Documentation is an HTML template and documentation project. The code orga
 Install Yeoman and the Short Documentation generator.
 
 ```bash
-$ npm install -g yo                             # install yeoman globally;
-$ npm install -g generator-short-documentation  # install short-documentation globally;
+npm install -g yo                             # install yeoman globally;
+npm install -g generator-short-documentation  # install the short-documentation generator globally;
 ```
 
 ## Configuration
@@ -58,7 +58,7 @@ $ npm install -g generator-short-documentation  # install short-documentation gl
 Navigate to your project folder (that contains `config-yeoman.json`).
 
 ```bash
-$ yo short-documentation  # project files and folders are created;
+yo short-documentation  # project files and folders are created;
 ```
 
 At this point, the `config-yeoman.json` file is no longer needed, you can delete it. A new component, or a new template can be added manually.

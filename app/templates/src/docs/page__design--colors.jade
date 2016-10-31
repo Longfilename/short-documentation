@@ -8,7 +8,7 @@ html(lang="en")
       div.card
         div.card__content.card__content--rich-text
           h1 Colors
-          p Here is the color palatee for <a href="http://bbbprograms.org">bbbprograms.org</a>. All colors on the site (that aren’t defined in 3rd party plugins) are defined below. Even if the color is only used once.
+          p Here is the color palatee for INSERT_PROJECT_NAME. All colors on the site (that aren’t defined in 3rd party plugins) are defined below. Even if the color is only used once.
           p The <strong>$shade--</strong> colors have an alpha transparency, so they are shown on top of a gray/white stripped background to show the translucency of the color.
           p Use <a href="http://chir.ag/projects/name-that-color/">http://chir.ag/projects/name-that-color/</a> to generate color names. It’s much easier than dreaming up a name for the fourth blue.
       
@@ -16,7 +16,8 @@ html(lang="en")
           - Object.keys(scssVariables).forEach((key, index) => {
             - if (key.indexOf('$color__') === -1) {
               - var count = JSON.stringify(scssVariables).split(scssVariables[key]).length - 2
-              - var label = count > 1 ? "times" : "time"
+              - var label = count === 0 ? "times" : "time"
+              - label = count > 1 ? "times" : label
               div.color
                 div.color__gradient
                   div.color__swatch(style="background: #{ scssVariables[key] };")

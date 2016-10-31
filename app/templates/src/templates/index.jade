@@ -7,5 +7,5 @@ html(lang="en")
     ul
       - (locals && locals.json && locals.json.pages) && locals.json.pages.map((page) => {
         li
-          a(href=page.html)=page.html
+          a(href="./html/#{ page.html }")=page.html
       - })
