@@ -16,6 +16,7 @@
     text-align: center;
     line-height: 18px;
     font-size: 12px;
+    box-sizing: content-box;
 
     &::after {
       display: none;
@@ -25,6 +26,10 @@
       &::after {
         display: inline;
       }
+    }
+
+    &--active {
+      background: rgba(0, 0, 0, 0.25);
     }
 
     &--375 {
