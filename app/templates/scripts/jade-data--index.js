@@ -1,5 +1,5 @@
 const file = require('file'); // traverse the file system;
-const fs = require('fs'); // read the contents of the readme.md file;
+const fs = require('fs'); // read the contents of the README.md file;
 
 // path to look for page content;
 const folderRoot = 'src/templates/';

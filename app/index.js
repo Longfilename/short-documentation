@@ -56,7 +56,7 @@ module.exports = yeoman.Base.extend({
       this.template('src/components/component/_component.json', `${ path }/_${ content.name }.json`, content);
       this.template('src/components/component/component.jade', `${ path }/${ content.name }.jade`, content);
       this.template('src/components/component/component.scss', `${ path }/${ content.name }.scss`, content);
-      this.template('src/components/component/readme.md', `${ path }/readme.md`, content);
+      this.template('src/components/component/README.md', `${ path }/README.md`, content);
 
       // if we have JS to generate;
       if (content.js !== false) {
@@ -83,7 +83,7 @@ module.exports = yeoman.Base.extend({
 
       // create the files for this page;
       this.template('src/templates/template/template.jade', `src/templates/${ content.name }/${ content.name }.jade`, content);
-      this.template('src/templates/template/readme.md', `src/templates/${ content.name }/readme.md`, content);
+      this.template('src/templates/template/README.md', `src/templates/${ content.name }/README.md`, content);
     }
   },
   copyScssFiles: function () {
@@ -120,7 +120,7 @@ module.exports = yeoman.Base.extend({
     this.copy('tslint.json', 'tslint.json');
     this.copy('typings.json', 'typings.json');
 
-    this.template('readme.md', 'readme.md', { projectName: config.project.name });
+    this.template('README.md', 'README.md', { projectName: config.project.name });
   },
   copyDocumentationApp: function () {
     this.directory('src/docs', 'src/docs');

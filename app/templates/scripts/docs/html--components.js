@@ -32,13 +32,13 @@ module.exports = () => {
 
 
 
-// parse folders looking for readme.md files (to indicate the folder should be read by the documentation app);
+// parse folders looking for README.md files (to indicate the folder should be read by the documentation app);
 function getReadmeData (folderToParse) {
   // data object to return;
-  // this will be the collection of components/templates with documentation readme files;
+  // this will be the collection of components/templates with documentation README files;
   const folderData = [];
 
-  // go through each folder looking for a readme.md file, and if one is found, record the folder for the documentation;
+  // go through each folder looking for a README.md file, and if one is found, record the folder for the documentation;
   file.walkSync(folderToParse, parseFolder);
 
   return folderData;
@@ -48,9 +48,9 @@ function getReadmeData (folderToParse) {
   function parseFolder (currentFolder, dirs, files) {
     // only process this folder if it has files;
     (files.length) && files.forEach((currentFile) => {
-      // only process this file if it is a readme.md file;
-      // not all folders will have readme.md;
-      if (currentFile === 'readme.md') {
+      // only process this file if it is a README.md file;
+      // not all folders will have README.md;
+      if (currentFile === 'README.md') {
         const contents = fs.readFileSync(currentFolder + '/' + currentFile, 'utf-8'); // if not UTF-8, then a stream is returned;
         const fmContents = fm(contents); // separate the YAML from the Markdown;
 
