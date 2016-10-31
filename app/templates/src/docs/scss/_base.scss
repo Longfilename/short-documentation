@@ -10,3 +10,13 @@ body {
   min-height: 100%;
   font-family: 'Open Sans', sans-serif;
 }
+
+main {
+  padding-top: 20px;
+}
+
+// syntax highlighting;
+pre[class*='language-'] {
+  margin: 0;
+  border-radius: 0;
+}

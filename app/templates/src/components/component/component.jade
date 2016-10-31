@@ -1,3 +1,5 @@
 - var component = json["<%= name %>/_<%= name %>.json"]
-
-div(class=component.name)=component.name
+// start “<%= name %>” component; 
+div(class=component.name)
+  p=component.name
+// end “<%= name %>” component; 

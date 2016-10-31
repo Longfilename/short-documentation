@@ -4,14 +4,15 @@
   },
   "components": {
     "ad": {
-      "js": true
+      "js": true,
+      "size": "300px"
     },
     "nav": {
       "js": true
     },
     "page-footer": {},
     "page-header": {},
-    "slideshow-hero": {
+    "slideshow": {
       "js": true
     }
   },
@@ -19,13 +20,13 @@
     "home": [
       "page-header",
       "nav",
-      "slideshow-hero",
+      "slideshow",
       "page-footer"
     ],
     "show": [
       "page-header",
       "nav",
-      "slideshow-hero",
+      "slideshow",
       "page-footer"
     ],
     "article": [

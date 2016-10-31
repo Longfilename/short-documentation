@@ -1,8 +1,7 @@
 .component__resizer {
   position: relative;
-  border-bottom: 20px solid #fff;
   background: #e6e6e6;
-  height: 40px;
+  height: 22px;
   overflow: hidden;
 
   &-link {
@@ -64,6 +63,7 @@
       transform: none;
       z-index: 10;
       width: 100%;
+      border-width: 1px 0;
 
       &::after {
         content: 'Full Width';

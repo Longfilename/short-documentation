@@ -7,26 +7,16 @@ $breakpoint--lg: min-width 1200px; // desktop;
 
 $border-radius: 2px;
 
-@import './prism';
-@import './base';
+@import './prism'; // syntax color coding;
+@import './base'; // global styles;
 @import './button';
 @import './card';
 @import './colors';
 @import './component__resizer';
 @import './component__view';
-@import './font';
-@import './grid';
+@import './component-grid';
 @import './page-header';
 @import './perspective__nav';
 @import './perspective';
 @import './template';
 @import './tabs';
-
-pre[class*='language-'] {
-  margin: 0;
-  border-radius: 0;
-}
-
-.variant {
-  margin: 100px 0;
-}
