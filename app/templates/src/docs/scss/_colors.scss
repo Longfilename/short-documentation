@@ -1,3 +1,4 @@
+// container for all color elements;
 .colors {
   display: flex;
   flex-wrap: wrap;
@@ -5,15 +6,18 @@
   max-width: 90em;
 }
 
+// color swatch, one per color defined in the site SCSS;
 .color {
   margin: 20px;
   width: calc(20% - 40px);
 
+  // if a color swatch is transparent, a gradient background is added;
   &__gradient {
     background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, #666 35px, #999 70px);
   }
 
-  &__swatch {
+  // block with inline background color defined;
+  &__chip {
     position: relative;
     border-radius: 2px;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
@@ -21,6 +25,19 @@
     height: 0;
   }
 
+  // hex value displayed on top of the chip;
+  &__hex {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    color: #fff;
+  }
+
+  // text under the chip, contains the name and count;
   &__label {
     padding-top: 5px;
   }
@@ -35,16 +52,5 @@
     font-size: 10px;
     line-height: 16px;
     float: right;
-  }
-
-  &__hex {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 2px;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 5px;
-    color: #fff;
   }
 }
