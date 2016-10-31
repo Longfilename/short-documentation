@@ -31,7 +31,7 @@ mixin renderCode (view)
       - if (view.js) {
         a.tabs__nav-link
           i.fa.fa-bolt
-          |  JavaScript
+          |  TypeScript
       - }
     
       - if (view.scss) {
@@ -54,8 +54,8 @@ mixin renderCode (view)
     
       - if (view.js) {
         div.tabs__content-tab
-          pre.language-javascript
-            code.language-javascript!=view.jsContent
+          pre.language-typescript
+            code.language-typescript!=view.jsContent
       - }
     
       - if (view.scss) {
