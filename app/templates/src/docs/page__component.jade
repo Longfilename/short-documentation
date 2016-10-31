@@ -78,26 +78,26 @@ html(lang="en")
       
       - views.map((view, index) => {
         - if (size && size.indexOf('px')) {
-          section.variant
-            div.grid
-              div.grid__content 
-                h1.grid__title=view.title
-                +renderCode(view)
+          div.component-grid
+            div.component-grid__content 
+              div.card
+                div.card__content.card__content--title=view.title
               
-              div.grid__view(style="width: #{size};")
-                +renderView(view.html, 0)
+                div.card__content
+                  +renderCode(view)
+            
+            div.component-grid__view(style="width: #{size};")
+              +renderView(view.html, 0)
         
         - } else {
-          section.variant
-            div.card.card--variant-top
-              div.card__content
-                h1.card__title=view.title
-            
-            +renderView(view.html, 1)
-            
-            div.card.card--variant-bottom
-              div.card__content
-                +renderCode(view)
+          div.card
+            div.card__content.card__content--title=view.title
+          
+            div.card__view
+              +renderView(view.html, 1)
+          
+            div.card__content.card__content--tabs
+              +renderCode(view)
         - }
       - })
     

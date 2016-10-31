@@ -1,0 +1,18 @@
+.component-grid {
+  display: flex;
+  margin: 100px 0 0;
+
+  &__content {
+    flex: 1;
+    max-width: calc(60em - 20px);
+    overflow: hidden;
+
+    .card__content {
+      margin-right: 0;
+    }
+  }
+
+  &__view {
+    padding-top: 87px; // line up with the code view;
+  }
+}

@@ -13,19 +13,19 @@ html(lang="en")
     include ./_head
     
     style.
-      .font__content--300 {
+      .card__content--font-300 {
         font-weight: 300;
       }
-      .font__content--400 {
+      .card__content--font-400 {
         font-weight: 400;
       }
-      .font__content--600 {
+      .card__content--font-600 {
         font-weight: 600;
       }
-      .font__content--700 {
+      .card__content--font-700 {
         font-weight: 700;
       }
-      .font__content--800 {
+      .card__content--font-800 {
         font-weight: 800;
       }
 
@@ -37,29 +37,39 @@ html(lang="en")
           p Open Sans is the font used across INSERT_PROJECT_NAME. Below are the five (5) font weights imported into the CSS.
           p Here are some example alphabet sentances (all 26 letters used in a single sentance). Each weight is displayed in six (6) font-sizes (16px, 20px, 24px, 28px, 32px, 36px).
       
-      div.font
-        p.font__title Open Sans Light (300)
-        div.font__content.font__content--300
+      div.card
+        div.card__content.card__content--rich-text
+          h1 Open Sans Light (300)
+        
+        div.card__content.card__content--font.card__content--font-300
           +shiftSentances
       
-      div.font
-        p.font__title Open Sans Regular (400)
-        div.font__content.font__content--400
+      div.card
+        div.card__content.card__content--rich-text
+          h1 Open Sans Regular (400)
+        
+        div.card__content.card__content--font.card__content--font-400
           +shiftSentances
       
-      div.font
-        p.font__title Open Sans Semi-Bold (600)
-        div.font__content.font__content--600
+      div.card
+        div.card__content.card__content--rich-text
+          h1 Open Sans Semi-Bold (600)
+        
+        div.card__content.card__content--font.card__content--font-600
           +shiftSentances
       
-      div.font
-        p.font__title Open Sans Bold (700)
-        div.font__content.font__content--700
+      div.card
+        div.card__content.card__content--rich-text
+          h1 Open Sans Bold (700)
+        
+        div.card__content.card__content--font.card__content--font-700
           +shiftSentances
       
-      div.font
-        p.font__title Open Sans Extra-Bold (800)
-        div.font__content.font__content--800
+      div.card
+        div.card__content.card__content--rich-text
+          h1 Open Sans Extra-Bold (800)
+        
+        div.card__content.card__content--font.card__content--font-800
           +shiftSentances
     
     include ./_foot
