@@ -4,7 +4,7 @@ const js = require('./js');
 const copy = require('./copy');
 const htmlTemplates = require('./html--templates');
 const htmlIndex = require('./html--index');
-const docs = require('./docs');
+const docs = require('./docs/docs');
 const watch = require('./watch');
 
 const config = {
