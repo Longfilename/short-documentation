@@ -4,7 +4,8 @@
   },
   "components": {
     "ad": {
-      "js": true
+      "js": true,
+      "size": "300px"
     },
     "nav": {
       "js": true
