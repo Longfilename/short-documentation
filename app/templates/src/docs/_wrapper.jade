@@ -1,5 +1,6 @@
 div.perspective
   nav.perspective__nav
+    a.perspective__nav-title Design
     - nav.design.map((design) => {
         a.button.perspective__nav-link(href=design.url)
           - design.icons && design.icons.split(' ').map((icon) => {
@@ -11,6 +12,7 @@ div.perspective
     
     hr.perspective__nav-divider
     
+    a.perspective__nav-title Templates
     - nav.templates.map((template) => {
         a.button.perspective__nav-link(href=template.url)
           - template.icons && template.icons.split(' ').map((icon) => {
@@ -21,7 +23,8 @@ div.perspective
     - })
     
     hr.perspective__nav-divider
-
+    
+    a.perspective__nav-title Components
     - nav.components.map((component) => {
         a.button.perspective__nav-link(href=component.url)
           - component.icons && component.icons.split(' ').map((icon) => {
