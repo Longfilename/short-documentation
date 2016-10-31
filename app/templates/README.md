@@ -14,9 +14,9 @@ This build tool makes use of the `scripts` property of `package.json`. The comma
 + [Installation](#installation)
 + [Initialization](#installation)
 + [Documentation Configuration](#documentation-configuration)
-  + [Component `readme.md`](#sample-component-readmemd)
+  + [Component `README.md`](#sample-component-readmemd)
   + [Component YAML Options](#component-yaml-options)
-  + [Template `readme.md`](#sample-template-readmemd)
+  + [Template `README.md`](#sample-template-readmemd)
   + [Template YAML Options](#template-yaml-options)
 + [Editor Configuration](#editor-configuration)
   + [tsconfig.json](#tsconfigjson)
@@ -54,13 +54,13 @@ npm start server docs               # build the project with documentation, a we
 
 ## Documentation Configuration
 
-Short Documentation parses the components and templates folders looking for `readme.md` files. When a `readme.md` file is found, that component or template are included in the documentation app. The `readme.md` is not just a markdown file, it contains some YAML at the top to configure the display of the component or template.
+Short Documentation parses the components and templates folders looking for `README.md` files. When a `README.md` file is found, that component or template are included in the documentation app. The `README.md` is not just a markdown file, it contains some YAML at the top to configure the display of the component or template.
 
 The YAML and Markdown are separated by Node. The YAML is used to configure the documentation navigation and page, the Markdown is content on the documentation page.
 
 &nbsp;
 
-#### Component `readme.md`
+#### Component `README.md`
 
 ```markdown
 ---
@@ -101,7 +101,7 @@ views:                                  # list of component views to display (mu
 
 &nbsp;
 
-#### Template `readme.md`
+#### Template `README.md`
 
 ```markdown
 ---
