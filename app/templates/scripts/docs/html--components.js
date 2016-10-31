@@ -50,7 +50,7 @@ function getReadmeData (folderToParse) {
     (files.length) && files.forEach((currentFile) => {
       // only process this file if it is a readme.md file;
       // not all folders will have readme.md;
-      if (currentFile === 'readme.md') {
+      if (currentFile.toLowerCase() === 'readme.md') {
         const contents = fs.readFileSync(currentFolder + '/' + currentFile, 'utf-8'); // if not UTF-8, then a stream is returned;
         const fmContents = fm(contents); // separate the YAML from the Markdown;
 
