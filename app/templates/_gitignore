@@ -5,6 +5,14 @@ src/**/*.js
 npm-debug.*
 
 
+# Workspace 
+# ------------
+
+*.swp
+*.swo
+
+
+
 # Scss
 # --------
 
