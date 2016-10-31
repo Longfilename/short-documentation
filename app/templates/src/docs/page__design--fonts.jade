@@ -1,10 +1,12 @@
 - var sentances = "The quick brown fox jumps over the lazy dog. Six of the women quietly gave back prizes to the judge. Jay began removing six dozen black quilts with petty flaws. The judge quickly gave back six prizes to the women. Four women quietly gave the sixth prize back to the judge. Picking just six quinces, the new farm hand proved strong but lazy. We could jeopardize six of the gunboats by two quick moves. Six women quietly got the prizes back from the five judges. Six of the gunboats could be jeopardized by two quick moves. Judge Power quickly gave six embezzlers stiff sentences. Jack quietly gave dog owners most of his prize boxers. The laze judge was very quick to pay tax money for the barn. My folks proved his expert eloquence was just a big hazard. Jack’s eloquence may prove hazardous for the six big shows. Jack’s man found exactly a quarter in the woven zipper bag. James Boxwell, the banquet speaker, analyzed a few carvings. Quickly pack the box with five dozen modern jugs. Jack quietly moved up front and seized the big ball of wax. Dave quickly spotted the four women dozing in the jury box. Jacqueline was vexed by the folks who got the money prizes. Brown jars prevented the mixture from freezing too quickly. Jeff had his size to help him win quickly over Gene Baxter. Jack Farmer realized that big yellow quilts were expensive. The six men have power to seize the ship quickly. Maize quickly paid Jones for the five new taxis she bought. Jack typed requisitions for white moving boxes (long size). Weekly magazines request help for and by junior executives. Why did Max become eloquent over a zany gift like judhpurs? I quickly explained that many big jobs involve few hazards."
 - var sentancesArray = sentances.split('. ')
+
 mixin shiftSentances
   - for (var i = 0; i < 5; i++) {
     - sentancesArray.push(sentancesArray.shift())
     p=sentancesArray.join('. ')
   - }
+
 doctype html
 html(lang="en")
   head
@@ -32,7 +34,7 @@ html(lang="en")
       div.card
         div.card__content.card__content--rich-text
           h1 Fonts
-          p Open Sans is the font used across bbbprograms.org. Below are the five (5) font weights imported into the CSS.
+          p Open Sans is the font used across INSERT_PROJECT_NAME. Below are the five (5) font weights imported into the CSS.
           p Here are some example alphabet sentances (all 26 letters used in a single sentance). Each weight is displayed in six (6) font-sizes (16px, 20px, 24px, 28px, 32px, 36px).
       
       div.font
