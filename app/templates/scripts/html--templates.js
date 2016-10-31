@@ -5,7 +5,7 @@ const jade = require('jade'); // convert Jade into HTML;
 const util = require('./util');
 const jsonContent = require('./jade-data--content'); // component content (stored as a JSON object);
 const jadeSource = 'src/templates'; // Jade files to compile;
-const htmlDestination = 'dist'; // where the compiled Jade will be saved;
+const htmlDestination = 'dist/html'; // where the compiled Jade will be saved;
 
 module.exports = function () {
   // create the destination folders (they might not exist yet);

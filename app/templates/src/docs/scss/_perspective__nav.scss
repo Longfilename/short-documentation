@@ -1,6 +1,6 @@
 .perspective__nav {
   position: absolute;
-  top: 25%;
+  top: 15%;
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
@@ -10,10 +10,10 @@
   height: 65%;
   overflow: hidden;
   overflow-y: scroll;
-  text-align: center;
+  text-align: left;
 
   @include breakpoint($breakpoint--sm) {
-    padding: 0 30px;
+    padding: 0 30px 0 130px;
     height: auto;
     overflow: auto;
     overflow-y: auto;
@@ -28,6 +28,25 @@
     border: 0;
     background: #b6b4b6;
     height: 1px;
+
+    @include breakpoint($breakpoint--sm) {
+      margin: 10px 0 10px -100px;
+    }
+  }
+
+  &-title {
+    display: block;
+    margin: 10px;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    line-height: 16px;
+    color: #222;
+    font-size: 12px;
+
+    @include breakpoint($breakpoint--sm) {
+      position: absolute;
+      left: 30px;
+    }
   }
 
   &-link {
@@ -36,7 +55,9 @@
     transition: transform 0.4s, opacity 0.4s;
     opacity: 0;
     margin: 10px;
+    line-height: 16px;
     color: #222;
+    font-size: 16px;
 
     &--active {
       background: #b8b8b8;
@@ -69,7 +90,7 @@
 
 @media screen and (max-width: 77em) {
   .perspective__nav {
-    top: 15%;
+    top: 5%;
   }
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "generator-short-documentation",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "yeoman-generator for HTML template projects that provides easy documentation. This project makes use of Jade, SCSS, and TypeScript.",
   "license": "MIT",
   "main": "app/index.js",

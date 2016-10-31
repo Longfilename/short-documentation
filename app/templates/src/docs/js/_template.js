@@ -10,14 +10,18 @@ jQuery(($) => {
   const $overlay = $('.template__overlay');
   const $template = $('.template');
   const openClass = 'template--open';
+  const visibleClass = 'template__resizer--visible';
+  const resizedClass = 'template__iframe-wrapper--resized';
   const click = 'click.template';
   const resize = 'resize.template';
   const $html = $('html');
+  const $resizer = $('.template__resizer');
 
   $buttons.open.each((index, button) => {
     const $button = $(button);
 
     $button.on(click, () => {
+      $resizer.addClass(visibleClass);
       $html.addClass(openClass);
       $template.addClass(openClass);
       $iframe.prop('src', $button.data().url);
@@ -26,52 +30,32 @@ jQuery(($) => {
   });
 
   $buttons.close.on(click, () => {
+    $resizer.removeClass(visibleClass);
     $iframe.removeProp('src').removeAttr('src');
     $template.removeClass(openClass);
     $html.removeClass(openClass);
   });
 
-  $buttons.resizer.each((index, button) => {
-    const $button = $(button);
-    const size = $button.data().resizer.split(',');
-    const height = size[1];
-    const width = size[0];
-    const resizedClass = 'template__iframe-wrapper--resized';
-    const hiddenClass = 'template__resizer-link--hidden';
-    const activeClass = 'template__resizer-link--active';
+  $buttons.resizer.each((index, link) => {
+    const $link = $(link);
+    const dataResizer = $link.data().resizer;
 
-    $button.on(click, () => {
-      $iframeWrapper.css({
-        height: height,
-        width: width
-      });
-
-      if (width === '100%' && height === '100%') {
+    $link.on('click.resizer', () => {
+      if (dataResizer === '100%') {
         $iframeWrapper.removeClass(resizedClass);
       } else {
         $iframeWrapper.addClass(resizedClass);
       }
 
-      $buttons.resizer.removeClass(activeClass);
-      $button.addClass(activeClass);
+      $iframeWrapper.one('transitionend.resizer', () => {
+        setTimeout(() => {
+          $iframe.trigger('resize.view');
+        }, 750);
+      });
+
+      $iframeWrapper.css({
+        width: dataResizer
+      });
     });
-
-    // this is in the wrong place - too nested;
-    $window.on(resize, checkViability);
-
-    //
-
-    function checkViability () {
-      if ($overlay.height() < parseInt(height, 10) || $overlay.width() < parseInt(width, 10)) {
-        $button.addClass(hiddenClass);
-
-        // if this is the active one, make the last one (the biggest) the active;
-        if ($button.hasClass(activeClass)) {
-          $buttons.resizer.last().trigger(click);
-        }
-      } else {
-        $button.removeClass(hiddenClass);
-      }
-    }
   });
 });

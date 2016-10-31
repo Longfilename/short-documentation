@@ -2,7 +2,7 @@
 nav: <%= name %>
 pages:
   - title: <%= name %>
-    url: /html/<%= name %>/<%= name %>.html
+    url: /html/<%= name %>.html
 ---
 
 # <%= name %>

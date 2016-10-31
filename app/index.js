@@ -7,7 +7,7 @@ let config; // the global project configuration object (populated by the JSON co
 let scssIncludes = ''; // string that will be inserted into the global SCSS file (paths to all SCSS files);
 let jsIncludes = ''; // string that will be inserted into the global TS file (paths to all TS files);
 
-module.exports = yeoman.generators.Base.extend({
+module.exports = yeoman.Base.extend({
   readJSON: function () {
     const done = this.async();
 
@@ -67,7 +67,7 @@ module.exports = yeoman.generators.Base.extend({
     for (template in config.templates) {
       // yeoman context - used to insert dynamic content into the files;
       const content = {
-        name: `${ template } Page`,
+        name: `${ template }`,
         moduleJade: ''
       };
 

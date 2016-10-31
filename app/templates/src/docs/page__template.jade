@@ -6,6 +6,12 @@ html(lang="en")
 
   body
     include ./_wrapper
+      div.template__resizer
+        a.template__resizer-link.template__resizer-link--375.js__template--resizer(data-resizer="375px")
+        a.template__resizer-link.template__resizer-link--768.js__template--resizer(data-resizer="768px")
+        a.template__resizer-link.template__resizer-link--1024.js__template--resizer(data-resizer="1024px")
+        a.template__resizer-link.template__resizer-link--100.template__resizer-link--active.js__template--resizer(data-resizer="100%")
+      
       div.templates
         - pages.map((page, index) => {
           a.button.templates__button.js__template--open(data-url=page.url)
@@ -21,12 +27,6 @@ html(lang="en")
         a.button.template__close.js__template--close
           span.template__close-text Close Template
           i.fa.fa-times(aria-hidden="true")
-        
-        div.template__resizer
-          a.button.template__resizer-link.js__template--resizer(data-resizer="375px, 667px") 375px
-          a.button.template__resizer-link.js__template--resizer(data-resizer="768px, 1024px") 768px
-          a.button.template__resizer-link.js__template--resizer(data-resizer="1024px, 768px") 1024px
-          a.button.template__resizer-link.template__resizer-link--active.js__template--resizer(data-resizer="100%, 100%") 100%
         
         div.template__overlay
           div.template__iframe-wrapper
