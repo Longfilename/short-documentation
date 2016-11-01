@@ -1,14 +1,5 @@
-// container for all color elements;
-.colors {
-  display: flex;
-  flex-wrap: wrap;
-  background: #fff;
-  max-width: 90em;
-  margin: 0 20px;
-}
-
 // color swatch, one per color defined in the site SCSS;
-.color {
+.color-swatch {
   margin: 20px;
   width: calc(20% - 40px);
 

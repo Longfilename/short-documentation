@@ -1,4 +1,11 @@
 .tabs {
+  position: relative; // to overlap the dropshadows;
+  margin: 20px 0 0;
+
+  &:first-child {
+    margin: 0;
+  }
+
   &__nav {
     &-link {
       display: inline-block;
@@ -12,11 +19,6 @@
       &--active {
         background: #fdf6e3;
       }
-    }
-  }
-
-  &__content {
-    &-tab {
     }
   }
 }

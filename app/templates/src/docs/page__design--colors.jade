@@ -12,19 +12,19 @@ html(lang="en")
           p The <strong>$shade--</strong> colors have an alpha transparency, so they are shown on top of a gray/white stripped background to show the translucency of the color.
           p Use <a href="http://chir.ag/projects/name-that-color/">http://chir.ag/projects/name-that-color/</a> to generate color names. It’s much easier than dreaming up a name for the fourth blue.
       
-        div.colors
+        div.card__content.card__content--colors
           - Object.keys(scssVariables).forEach((key, index) => {
             - if (key.indexOf('$color__') === -1) {
               - var count = JSON.stringify(scssVariables).split(scssVariables[key]).length - 2
               - var label = count === 0 ? "times" : "time"
               - label = count > 1 ? "times" : label
-              div.color
-                div.color__gradient
-                  div.color__chip(style="background: #{ scssVariables[key] };")
-                    div.color__hex=scssVariables[key]
-                div.color__label
-                  div.color__count used #{ count } #{ label }
-                  div.color__name #{ key }
+              div.color-swatch
+                div.color-swatch__gradient
+                  div.color-swatch__chip(style="background: #{ scssVariables[key] };")
+                    div.color-swatch__hex=scssVariables[key]
+                div.color-swatch__label
+                  div.color-swatch__count used #{ count } #{ label }
+                  div.color-swatch__name #{ key }
             - }
           - })
     

@@ -82,9 +82,8 @@ html(lang="en")
           div.component-grid
             div.component-grid__content 
               div.card
-                div.card__content.card__content--title=view.title
-              
                 div.card__content
+                  h1.card__content-title=view.title
                   +renderCode(view)
             
             div.component-grid__view(style="width: #{size};")
@@ -92,12 +91,13 @@ html(lang="en")
         
         - } else {
           div.card
-            div.card__content.card__content--title=view.title
+            div.card__content.card__content--component-head
+              h1.card__content-title=view.title
           
             div.card__view
               +renderView(view.html, 1)
           
-            div.card__content.card__content--tabs
+            div.card__content.card__content--component-foot
               +renderCode(view)
         - }
       - })

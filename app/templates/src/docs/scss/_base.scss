@@ -12,7 +12,11 @@ body {
 }
 
 main {
-  padding-top: 20px;
+  padding: 20px;
+
+  > * + * {
+    margin-top: 100px;
+  }
 }
 
 // syntax highlighting;
