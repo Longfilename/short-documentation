@@ -2,38 +2,6 @@
   display: block;
   border-radius: $border-radius;
 
-  // a component view (full width);
-  &__view {
-    border: 20px solid #fff;
-    border-width: 20px 0;
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
-    margin: 0 -20px;
-    position: relative;
-
-    &::after,
-    &::before {
-      position: absolute;
-      content: '';
-      height: 10px;
-      background: #fff;
-      width: 100%;
-      max-width: 60em;
-    }
-
-    &::before {
-      top: -25px;
-      left: 20px;
-      height: 10px;
-    }
-
-    &::after {
-      bottom: -25px;
-      left: 20px;
-      height: 10px;
-    }
-  }
-
-  // content container of a card;
   &__content {
     background: #fff;
     padding: 20px;
