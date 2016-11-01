@@ -6,11 +6,11 @@ mixin renderView (path, resizer)
       div.component__view-back
         iframe.component__view-iframe(data-src=path)
   - if (resizer) {
-    div.component__resizer
-      a.component__resizer-link.component__resizer-link--375.js__component--resizer(data-resizer="375px")
-      a.component__resizer-link.component__resizer-link--768.js__component--resizer(data-resizer="768px")
-      a.component__resizer-link.component__resizer-link--1024.js__component--resizer(data-resizer="1024px")
-      a.component__resizer-link.component__resizer-link--100.component__resizer-link--active.js__component--resizer(data-resizer="100%")
+    div.resizer
+      a.resizer-link.resizer-link--375(data-resizer="375px")
+      a.resizer-link.resizer-link--768(data-resizer="768px")
+      a.resizer-link.resizer-link--1024(data-resizer="1024px")
+      a.resizer-link.resizer-link--100.resizer-link--active(data-resizer="100%")
   - }
 
 mixin renderCode (view)

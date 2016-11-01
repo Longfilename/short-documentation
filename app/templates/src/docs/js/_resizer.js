@@ -1,12 +1,12 @@
 jQuery(($) => {
-  $('.component__resizer').each((index, resizer) => {
+  $('.resizer').each((index, resizer) => {
     const $resizer = $(resizer);
     const $view = $resizer.prev();
     const $iframeContainer = $view.find('.component__view-back');
     const $iframe = $view.find('.component__view-iframe');
     const resizedClass = 'component__view-back--resized';
-    const activeClass = 'component__resizer-link--active';
-    const $links = $resizer.find('.component__resizer-link');
+    const activeClass = 'resizer-link--active';
+    const $links = $resizer.find('.resizer-link');
 
     $links.each((i, link) => {
       const $link = $(link);
