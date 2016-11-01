@@ -1,53 +1,55 @@
-.card__content--font-head {
-  padding-bottom: 0;
-}
-
-.card__content--font-body {
-  max-width: 90em;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: 0;
-    width: 100%;
-    max-width: 60em;
-    background: #fff;
-    height: 10px;
+.card__content {
+  &--font-head {
+    padding-bottom: 0;
   }
 
-  p {
-    margin: 0;
-    border-bottom: 1px dotted #ccc;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    line-height: 1.5;
+  &--font-body {
+    max-width: 90em;
+    position: relative;
 
-    &:nth-child(1) {
-      border-top: 1px dotted #ccc;
-      font-size: 36px;
+    &::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 0;
+      width: 100%;
+      max-width: 60em;
+      background: #fff;
+      height: 10px;
     }
 
-    &:nth-child(2) {
-      font-size: 32px;
-    }
+    p {
+      margin: 0;
+      border-bottom: 1px dotted #ccc;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 1.5;
 
-    &:nth-child(3) {
-      font-size: 28px;
-    }
+      &:nth-child(1) {
+        border-top: 1px dotted #ccc;
+        font-size: 36px;
+      }
 
-    &:nth-child(4) {
-      font-size: 24px;
-    }
+      &:nth-child(2) {
+        font-size: 32px;
+      }
 
-    &:nth-child(5) {
-      font-size: 20px;
-    }
+      &:nth-child(3) {
+        font-size: 28px;
+      }
 
-    &:nth-child(6) {
-      font-size: 16px;
+      &:nth-child(4) {
+        font-size: 24px;
+      }
+
+      &:nth-child(5) {
+        font-size: 20px;
+      }
+
+      &:nth-child(6) {
+        font-size: 16px;
+      }
     }
   }
 }

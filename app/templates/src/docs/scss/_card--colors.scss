@@ -1,19 +1,21 @@
-.card__content--colors {
-  display: flex;
-  flex-wrap: wrap;
-  background: #fff;
-  max-width: 90em;
-  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: 0;
-    width: 100%;
-    max-width: 60em;
+.card__content {
+  &--colors {
+    display: flex;
+    flex-wrap: wrap;
     background: #fff;
-    height: 10px;
+    max-width: 90em;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 0;
+      width: 100%;
+      max-width: 60em;
+      background: #fff;
+      height: 10px;
+    }
   }
 }
