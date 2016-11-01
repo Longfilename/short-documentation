@@ -1,11 +1,12 @@
 jQuery(($) => {
-  const page = location.pathname.split('/').pop();
+  const url = location.pathname.split('/').pop();
 
-  $('.perspective__nav-link').each((index, link) => {
+  $('.nav-link').each((index, link) => {
     const $link = $(link);
+    const prop = 'href';
 
-    if ($link.attr('href') === page) {
-      $link.addClass('perspective__nav-link--active').removeProp('href').removeAttr('href');
+    if ($link.attr(prop) === url) {
+      $link.addClass('nav-link--active').removeProp(prop).removeAttr(prop);
     }
   });
 });
