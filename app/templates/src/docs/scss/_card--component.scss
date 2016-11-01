@@ -8,21 +8,21 @@
   }
 
   &--component-view {
+    position: relative;
+    margin: 0 -20px;
     border: 20px solid #fff;
     border-width: 20px 0;
-    margin: 0 -20px;
     padding: 0;
-    position: relative;
     max-width: none;
 
     &::after,
     &::before {
       position: absolute;
-      content: '';
-      height: 10px;
       background: #fff;
       width: 100%;
       max-width: 60em;
+      height: 10px;
+      content: '';
     }
 
     &::before {

@@ -4,18 +4,18 @@
   }
 
   &--font-body {
-    max-width: 90em;
     position: relative;
+    max-width: 90em;
 
     &::before {
-      content: '';
       position: absolute;
       top: -10px;
       left: 0;
+      background: #fff;
       width: 100%;
       max-width: 60em;
-      background: #fff;
       height: 10px;
+      content: '';
     }
 
     p {
@@ -23,8 +23,8 @@
       border-bottom: 1px dotted #ccc;
       overflow: hidden;
       text-overflow: ellipsis;
-      white-space: nowrap;
       line-height: 1.5;
+      white-space: nowrap;
 
       &:nth-child(1) {
         border-top: 1px dotted #ccc;
