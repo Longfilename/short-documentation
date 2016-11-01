@@ -6,7 +6,7 @@ mixin renderView (path, resizer)
       div.component__view-back
         iframe.component__view-iframe(data-src=path)
   - if (resizer) {
-    div.resizer
+    div.resizer.resizer--component
       a.resizer-link.resizer-link--375(data-resizer="375px")
       a.resizer-link.resizer-link--768(data-resizer="768px")
       a.resizer-link.resizer-link--1024(data-resizer="1024px")

@@ -6,11 +6,12 @@ html(lang="en")
 
   body
     include ./includes/_wrapper
-      div.template__resizer
-        a.template__resizer-link.template__resizer-link--375.js__template--resizer(data-resizer="375px")
-        a.template__resizer-link.template__resizer-link--768.js__template--resizer(data-resizer="768px")
-        a.template__resizer-link.template__resizer-link--1024.js__template--resizer(data-resizer="1024px")
-        a.template__resizer-link.template__resizer-link--100.template__resizer-link--active.js__template--resizer(data-resizer="100%")
+      div.resizer.resizer--template
+        a.resizer-link.resizer-link--375(data-resizer="375px")
+        a.resizer-link.resizer-link--768(data-resizer="768px")
+        a.resizer-link.resizer-link--1024(data-resizer="1024px")
+        a.resizer-link.resizer-link--100.resizer-link--active(data-resizer="100%")
+
       
       div.templates
         - pages.map((page, index) => {

@@ -1,8 +1,23 @@
 .resizer {
-  position: relative;
   background: #e6e6e6;
   height: 22px;
   overflow: hidden;
+
+  &--component {
+    position: relative;
+  }
+
+  &--template {
+    display: none;
+    position: absolute;
+    top: 52px;
+    right: 0;
+    left: 0;
+  }
+
+  &--visible {
+    display: block;
+  }
 
   &-link {
     position: absolute;
