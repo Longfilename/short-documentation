@@ -2,10 +2,10 @@ doctype html
 html(lang="en")
   head
     - var title = '/src/templates/' + folder
-    include ./_head
+    include ./includes/_head
 
   body
-    include ./_wrapper
+    include ./includes/_wrapper
       div.template__resizer
         a.template__resizer-link.template__resizer-link--375.js__template--resizer(data-resizer="375px")
         a.template__resizer-link.template__resizer-link--768.js__template--resizer(data-resizer="768px")
@@ -32,4 +32,4 @@ html(lang="en")
           div.template__iframe-wrapper
             iframe.template__iframe
     
-    include ./_foot
+    include ./includes/_foot

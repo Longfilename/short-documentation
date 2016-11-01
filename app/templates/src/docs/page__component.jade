@@ -69,10 +69,10 @@ doctype html
 html(lang="en")
   head
     - var title = '/src/components/' + folder
-    include ./_head
+    include ./includes/_head
 
   body
-    include ./_wrapper
+    include ./includes/_wrapper
       article.card
         div.card__content.card__content--rich-text
           !=markdown
@@ -102,4 +102,4 @@ html(lang="en")
         - }
       - })
     
-    include ./_foot
+    include ./includes/_foot
