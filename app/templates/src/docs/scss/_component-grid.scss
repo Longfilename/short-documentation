@@ -1,18 +1,16 @@
 .component-grid {
   display: flex;
-  margin: 100px 0 0;
 
+  // left column;
+  // contains the title and tabs of code;
   &__content {
     flex: 1;
-    max-width: calc(60em - 20px);
-    overflow: hidden;
-
-    .card__content {
-      margin-right: 0;
-    }
+    max-width: 60em;
   }
 
+  // right column;
+  // contains an IFRAME of the component view;
   &__view {
-    padding-top: 87px; // line up with the code view;
+    padding-top: 107px; // line up with the code view tabs;
   }
 }

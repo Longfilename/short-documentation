@@ -2,115 +2,19 @@
   display: block;
   border-radius: $border-radius;
 
-  + .card {
-    margin-top: 100px;
-  }
-
-  // a component view (full width);
-  &__view {
-    border: 20px solid #fff;
-    border-width: 20px 0;
-  }
-
-  // content container of a card;
   &__content {
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
     background: #fff;
     padding: 20px;
-    max-width: calc(60em - 40px);
-    margin: 0 20px;
+    max-width: 60em;
 
-    // content is just a title;
-    &--title {
+    &-title {
+      display: block;
+      position: relative;
+      z-index: 1;
       line-height: 1.6;
       font-size: 16px;
       font-weight: bold;
-      padding-bottom: 0;
-    }
-
-    // tab content follows elements that provide the top padding effect;
-    &--tabs {
-      padding-top: 0;
-    }
-
-    &--font {
-      max-width: none;
-
-      p {
-        margin: 0;
-        border-bottom: 1px dotted #ccc;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        line-height: 1.5;
-
-        &:nth-child(1) {
-          border-top: 1px dotted #ccc;
-          font-size: 36px;
-        }
-
-        &:nth-child(2) {
-          font-size: 32px;
-        }
-
-        &:nth-child(3) {
-          font-size: 28px;
-        }
-
-        &:nth-child(4) {
-          font-size: 24px;
-        }
-
-        &:nth-child(5) {
-          font-size: 20px;
-        }
-
-        &:nth-child(6) {
-          font-size: 16px;
-        }
-      }
-    }
-
-    // content is rich text (markdown);
-    &--rich-text {
-      line-height: 1.6;
-      font-size: 16px;
-
-      code {
-        border-radius: 3px;
-        background: #fdf6e3;
-        padding: 3px 6px;
-        color: #657b83;
-        font-family: monospace;
-      }
-
-      a,
-      a:visited,
-      a:hover,
-      a:focus {
-        color: #657b83;
-
-        code {
-          color: #657b83;
-        }
-      }
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        font-size: 16px;
-      }
-
-      // add a top margin to everything but the first element;
-      > * {
-        margin-top: 10px;
-
-        &:first-child {
-          margin-top: 0;
-        }
-      }
     }
   }
 }

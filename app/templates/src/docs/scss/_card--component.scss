@@ -1,0 +1,40 @@
+.card__content {
+  &--component-head {
+    padding-bottom: 0;
+  }
+
+  &--component-foot {
+    padding-top: 0;
+  }
+
+  &--component-view {
+    position: relative;
+    margin: 0 -20px;
+    border: 20px solid #fff;
+    border-width: 20px 0;
+    padding: 0;
+    max-width: none;
+
+    &::after,
+    &::before {
+      position: absolute;
+      background: #fff;
+      width: 100%;
+      max-width: 60em;
+      height: 10px;
+      content: '';
+    }
+
+    &::before {
+      top: -25px;
+      left: 20px;
+      height: 10px;
+    }
+
+    &::after {
+      bottom: -25px;
+      left: 20px;
+      height: 10px;
+    }
+  }
+}

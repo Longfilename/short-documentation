@@ -1,11 +1,15 @@
 jQuery(($) => {
-  const page = location.pathname.split('/').pop();
+  const url = location.pathname.split('/').pop();
 
-  $('.perspective__nav-link').each((index, link) => {
+  $('.nav-link').each((index, link) => {
     const $link = $(link);
+    const prop = 'href';
+    const linkUrl = $link.attr(prop);
 
-    if ($link.attr('href') === page) {
-      $link.addClass('perspective__nav-link--active').removeProp('href').removeAttr('href');
+    // highlight the link that has a matching URL;
+    // if the user is at /docs/, highlight the index link;
+    if (linkUrl === url || (linkUrl === 'index.html' && url === '')) {
+      $link.addClass('nav-link--active').removeProp(prop).removeAttr(prop);
     }
   });
 });

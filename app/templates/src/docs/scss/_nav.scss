@@ -1,4 +1,4 @@
-.perspective__nav {
+.nav {
   position: absolute;
   top: 15%;
   left: 50%;
@@ -89,13 +89,13 @@
 }
 
 @media screen and (max-width: 77em) {
-  .perspective__nav {
+  .nav {
     top: 5%;
   }
 }
 
 @media screen and (max-width: 36.625em), screen and (max-height: 41.75em) {
-  .perspective__nav {
+  .nav {
     top: 5%;
 
     &-link {
