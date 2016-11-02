@@ -6,11 +6,13 @@
   &__content {
     flex: 1;
     max-width: 60em;
+    align-items: stretch; // make sure component-view content is at least as tall as the view;
   }
 
   // right column;
   // contains an IFRAME of the component view;
   &__view {
     padding-top: 107px; // line up with the code view tabs;
+    padding-bottom: 20px; // so a psudeo element overlaps the dropshadows properly;
   }
 }
