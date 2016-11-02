@@ -1,0 +1,55 @@
+.card__content {
+  &--font-head {
+    padding-bottom: 0;
+  }
+
+  &--font-body {
+    position: relative;
+    max-width: 90em;
+
+    &::before {
+      position: absolute;
+      top: -10px;
+      left: 0;
+      background: #fff;
+      width: 100%;
+      max-width: 60em;
+      height: 10px;
+      content: '';
+    }
+
+    p {
+      margin: 0;
+      border-bottom: 1px dotted #ccc;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.5;
+      white-space: nowrap;
+
+      &:nth-child(1) {
+        border-top: 1px dotted #ccc;
+        font-size: 36px;
+      }
+
+      &:nth-child(2) {
+        font-size: 32px;
+      }
+
+      &:nth-child(3) {
+        font-size: 28px;
+      }
+
+      &:nth-child(4) {
+        font-size: 24px;
+      }
+
+      &:nth-child(5) {
+        font-size: 20px;
+      }
+
+      &:nth-child(6) {
+        font-size: 16px;
+      }
+    }
+  }
+}

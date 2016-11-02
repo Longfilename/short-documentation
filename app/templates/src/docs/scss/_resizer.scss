@@ -1,8 +1,23 @@
-.component__resizer {
-  position: relative;
+.resizer {
   background: #e6e6e6;
   height: 22px;
   overflow: hidden;
+
+  &--component {
+    position: relative;
+  }
+
+  &--template {
+    display: none;
+    position: absolute;
+    top: 52px;
+    right: 0;
+    left: 0;
+  }
+
+  &--visible {
+    display: block;
+  }
 
   &-link {
     position: absolute;
@@ -25,6 +40,10 @@
       &::after {
         display: inline;
       }
+    }
+
+    &--hidden {
+      display: none;
     }
 
     &--active {
@@ -62,8 +81,8 @@
       left: 0;
       transform: none;
       z-index: 10;
-      width: 100%;
       border-width: 1px 0;
+      width: 100%;
 
       &::after {
         content: 'Full Width';

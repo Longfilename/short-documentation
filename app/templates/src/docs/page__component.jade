@@ -6,11 +6,11 @@ mixin renderView (path, resizer)
       div.component__view-back
         iframe.component__view-iframe(data-src=path)
   - if (resizer) {
-    div.component__resizer
-      a.component__resizer-link.component__resizer-link--375.js__component--resizer(data-resizer="375px")
-      a.component__resizer-link.component__resizer-link--768.js__component--resizer(data-resizer="768px")
-      a.component__resizer-link.component__resizer-link--1024.js__component--resizer(data-resizer="1024px")
-      a.component__resizer-link.component__resizer-link--100.component__resizer-link--active.js__component--resizer(data-resizer="100%")
+    div.resizer.resizer--component
+      a.resizer-link.resizer-link--375(data-resizer="375px")
+      a.resizer-link.resizer-link--768(data-resizer="768px")
+      a.resizer-link.resizer-link--1024(data-resizer="1024px")
+      a.resizer-link.resizer-link--100.resizer-link--active(data-resizer="100%")
   - }
 
 mixin renderCode (view)
@@ -39,6 +39,7 @@ mixin renderCode (view)
           i.fa.fa-css3
           |  SCSS
       - }
+    
     div.tabs__content
       - if (view.htmlContent) {
         div.tabs__content-tab
@@ -68,10 +69,10 @@ doctype html
 html(lang="en")
   head
     - var title = '/src/components/' + folder
-    include ./_head
+    include ./includes/_head
 
   body
-    include ./_wrapper
+    include ./includes/_wrapper
       article.card
         div.card__content.card__content--rich-text
           !=markdown
@@ -81,9 +82,8 @@ html(lang="en")
           div.component-grid
             div.component-grid__content 
               div.card
-                div.card__content.card__content--title=view.title
-              
                 div.card__content
+                  h1.card__content-title=view.title
                   +renderCode(view)
             
             div.component-grid__view(style="width: #{size};")
@@ -91,14 +91,15 @@ html(lang="en")
         
         - } else {
           div.card
-            div.card__content.card__content--title=view.title
+            div.card__content.card__content--component-head
+              h1.card__content-title=view.title
           
-            div.card__view
+            div.card__content.card__content--component-view
               +renderView(view.html, 1)
           
-            div.card__content.card__content--tabs
+            div.card__content.card__content--component-foot
               +renderCode(view)
         - }
       - })
     
-    include ./_foot
+    include ./includes/_foot
