@@ -1,17 +1,9 @@
-mixin renderView (path, resizer)
-  div.component__view
-    div.component__view-card
-      div.component__view-front
-        p.component__view-loading loading
-      div.component__view-back
-        iframe.component__view-iframe(data-src=path)
-  - if (resizer) {
-    div.resizer.resizer--component
-      a.resizer-link.resizer-link--375(data-resizer="375px")
-      a.resizer-link.resizer-link--768(data-resizer="768px")
-      a.resizer-link.resizer-link--1024(data-resizer="1024px")
-      a.resizer-link.resizer-link--100.resizer-link--active(data-resizer="100%")
-  - }
+mixin renderView (path)
+  div.component-view
+    div.component-view__loading
+      p.component-view__loading-text loading
+    div.component-view__loaded
+      iframe.component-view__iframe(data-src=path)
 
 mixin renderCode (view)
   div.tabs
@@ -87,7 +79,7 @@ html(lang="en")
                   +renderCode(view)
             
             div.component-grid__view(style="width: #{size};")
-              +renderView(view.html, 0)
+              +renderView(view.html)
         
         - } else {
           div.card
@@ -95,7 +87,12 @@ html(lang="en")
               h1.card__content-title=view.title
           
             div.card__content.card__content--component-view
-              +renderView(view.html, 1)
+              +renderView(view.html)
+              div.resizer.resizer--component
+                a.resizer-link.resizer-link--375(data-resizer="375px")
+                a.resizer-link.resizer-link--768(data-resizer="768px")
+                a.resizer-link.resizer-link--1024(data-resizer="1024px")
+                a.resizer-link.resizer-link--100.resizer-link--active(data-resizer="100%")
           
             div.card__content.card__content--component-foot
               +renderCode(view)
