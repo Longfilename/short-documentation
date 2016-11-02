@@ -1,9 +1,9 @@
 // cf. http://tympanus.net/Development/PerspectivePageViewNavigation/index4.html
 
 const $window = $(window);
-const $perspective = $('.perspective'); // outer content (contains everything);
-const $container = $('.perspective__content-wrapper'); // content for the content (and .content);
-const $content = $('.perspective__content'); // content content we adjust to emulate scroll position;
+const $perspective = $('.perspective'); // page wrapper (contains everything);
+const $wrapper = $('.perspective__window'); // content wrapper;
+const $content = $('.perspective__content'); // content;
 const click = 'touchstart.perspective click.perspective';
 const transitionEnd = 'transitionend.perspective';
 const animateClass = 'perspective--animate';
@@ -17,7 +17,7 @@ $('.js__perspective').on(click, showMenu);
 //
 
 function showMenu (event) {
-  // prevent a click from firing on the $container (and closing the modal);
+  // prevent a click from firing on the $wrapper (and closing the modal);
   event.stopPropagation();
 
   // record the scroll position so we can maintain it after closing the menu;
@@ -39,7 +39,7 @@ function showMenu (event) {
 
   // now configure the close event handler;
   // if this was done on page load - the transition end listener would be configured before we want it to be;
-  $container.one(click, hideMenu);
+  $wrapper.one(click, hideMenu);
 }
 
 function hideMenu (event) {
