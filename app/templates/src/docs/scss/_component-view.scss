@@ -23,12 +23,10 @@
   }
 
   &--loaded {
+    background: #fff;
+
     .component-view__loading {
       opacity: 0;
-    }
-
-    .component-view__loaded {
-
     }
   }
 
