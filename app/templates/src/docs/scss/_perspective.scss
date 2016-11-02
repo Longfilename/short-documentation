@@ -7,12 +7,12 @@
 
   // added via JS (onclick of the hamburger nav);
   // nav is enabled;
-  // the window is converted into an absolute layer;
+  // the content is converted into an absolute layer (so it can be moved with --animate);
   &--modalview {
     position: fixed;
     perspective: 1500px;
 
-    .perspective__window {
+    .perspective__content {
       position: absolute;
       cursor: pointer;
       width: 100%;
@@ -23,9 +23,9 @@
   }
 
   // added after --modalview is added;
-  // animates the window offscreen (mimics a minimization of the browser window);
+  // animates the content offscreen (mimics a minimized window);
   &--animate {
-    .perspective__window {
+    .perspective__content {
       transform: translateY(100%) translateZ(-1500px);
 
       // show the overlay that prevents the user from interacting with the content;
@@ -38,14 +38,13 @@
   }
 
   // wrapper around the content;
-  // enables a fake scroll effect when --modalview is applied;
-  // JS adjusts the content offset to mimic a scroll position;
-  &__window {
+  // acts as a minimized window when --modalview is applied;
+  &__content {
     transform: rotateY(0) translateZ(0);
     transform-origin: 50% 50%;
     transition: transform 0.4s;
     z-index: 10;
-    height: 100%;
+    background: #f2f2f2;
     min-height: 100%;
 
     // overlay that is hidden (opacity: 0) by default;
@@ -60,13 +59,7 @@
       width: 100%;
       height: 0;
       content: '';
+      z-index: 100;
     }
-  }
-
-  // content wrapper that is adjusted in --modalview to fake a scroll position
-  &__content {
-    background: #f2f2f2;
-    height: 100%;
-    min-height: 100%;
   }
 }
