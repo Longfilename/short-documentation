@@ -17,9 +17,9 @@ jQuery(($) => {
       $iframe = $('.template__iframe');
       resizedClass = 'template__iframe-wrapper--resized';
     } else {
-      $target = $resizer.prev().find('.component__view-back');
-      $iframe = $target.find('.component__view-iframe');
-      resizedClass = 'component__view-back--resized';
+      $target = $resizer.prev().find('.component-view__loaded');
+      $iframe = $target.find('.component-view__iframe');
+      resizedClass = 'component-view__loaded--resized';
     }
 
     $links.each((i, link) => {

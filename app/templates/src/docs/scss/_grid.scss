@@ -1,0 +1,31 @@
+.grid {
+  display: flex;
+
+  // left column;
+  // contains the title and tabs of code;
+  &__content {
+    flex: 1;
+    max-width: 60em;
+    align-items: stretch; // make sure component-view content is at least as tall as the view;
+  }
+
+  // right column (optional);
+  // contains buttons to open template pages;
+  &__templates {
+    padding: 20px 0 20px 20px;
+  }
+
+  // button wrapper within __templates;
+  &__template-button {
+    + .grid__template-button {
+      margin-top: 10px;
+    }
+  }
+
+  // right column (optional);
+  // contains an IFRAME of the component view;
+  &__view {
+    padding-top: 87px; // line up with the code view tabs;
+    padding-bottom: 20px; // so a psudeo element overlaps the dropshadows properly;
+  }
+}

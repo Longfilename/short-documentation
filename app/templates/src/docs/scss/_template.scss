@@ -1,30 +1,19 @@
-.templates {
-  margin: 0 10px 20px;
-
-  &__button {
-    color: #222;
-
-    &:hover,
-    &:focus {
-      background: #c8c8c8;
-    }
-
-    &:active {
-      background: #b8b8b8;
-    }
-  }
-}
-
 html.template--open {
   height: 100%;
 }
 
 .template {
+  margin: 0;
+
   &--open {
     .template__close,
-    .template__overlay,
     .template__resizer {
       display: block;
+    }
+
+    .template__overlay {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
     }
   }
 
@@ -33,35 +22,31 @@ html.template--open {
     position: absolute;
     top: 10px; // match page-header padding;
     right: 10px;
-    color: #222;
-
-    &:hover,
-    &:focus {
-      background: #c8c8c8;
-    }
-
-    &:active {
-      background: #b8b8b8;
-    }
 
     // don’t show the close iframe link text at mobile;
     &-text {
       display: none;
-      margin-right: 0.5em;
 
       @include breakpoint($breakpoint--sm) {
         display: inline;
       }
     }
+
+    .fa {
+      margin: 0 0 0 0.5em;
+    }
   }
 
   &__overlay {
-    display: none;
     position: absolute;
     top: 74px; // height of page-header + resizer;
     right: 0;
     bottom: 0;
     left: 0;
+    transform-origin: top left;
+    transform: translate(1024px, 18px) scale(0);
+    transition: all 0.3s;
+    opacity: 0.5;
     background: #f2f2f2;
   }
 

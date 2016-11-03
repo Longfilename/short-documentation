@@ -5,8 +5,10 @@ const fm = require('front-matter'); // read YAML at the beginning of Markdown fi
 const jade = require('jade'); // convert Jade into HTML;
 const MarkdownIt = require('markdown-it'); // convert Markdown into HTML;
 const scssToJson = require('scss-to-json'); // convert SCSS vars into JSON content;
-const filenames = require('./html--filenames.js');
+const Prism = require('prismjs'); // syntax highlighter;
+const pretty = require('./_pretty'); // beautify the HTML;
 
+const filenames = require('./html--filenames.js');
 const util = require('../util'); // Short Documentation utility functions;
 const getNavObject = require('./html--nav.js');
 
@@ -69,15 +71,23 @@ function createTemplatePage (template) {
   const htmlFilepath = docsDestination + '/' + htmlFilename;
   const markdownIt = new MarkdownIt();
   const renderedMarkdown = markdownIt.render(template.markdown);
-  const renderedHTML = jade.renderFile(jadeFilepath, {
+  const jadeConfig = {
     pretty: true,
     folder: template.folder,
     pages: template.yaml.pages,
     markdown: renderedMarkdown,
+    renderedHTML: [],
     nav: nav
+  };
+
+  template.yaml.pages.map((page) => {
+    const renderedHTML = fs.readFileSync('dist/html/show.html', 'utf-8');
+    const prettyHTML = Prism.highlight(renderedHTML, Prism.languages.html);
+
+    jadeConfig.renderedHTML.push(prettyHTML);
   });
 
-  fs.writeFile(htmlFilepath, renderedHTML);
+  fs.writeFile(htmlFilepath, jade.renderFile(jadeFilepath, jadeConfig));
 
   console.log(htmlFilepath.green, 'page was created from', jadeFilepath.green);
 }
