@@ -1,6 +1,6 @@
 .resizer {
   margin: 0;
-  background: #e6e6e6;
+  background: $color-bg__resizer;
   height: 22px;
   overflow: hidden;
 
@@ -35,9 +35,12 @@
 
     &::after {
       display: none;
+      color: $color-text__resizer-link;
     }
 
     &:hover {
+      background: $color-bg__resizer-link--hover;
+
       &::after {
         display: inline;
       }
@@ -48,7 +51,7 @@
     }
 
     &--active {
-      background: rgba(0, 0, 0, 0.25);
+      background: $color-bg__resizer-link--active;
     }
 
     &--375 {
