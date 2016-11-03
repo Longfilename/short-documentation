@@ -3,7 +3,7 @@ const browserify = require('browserify'); // allow require() statements in JS;
 const tsify = require('tsify'); // convert TS into ES5;
 const fs = require('fs'); // write to the file system;
 const util = require('./util');
-const jsFileSource = 'src/js/site.ts';
+const jsFileSource = 'src/ts/site.ts';
 let jsFileDestination = 'dist/js/site.js'; // output file;
 let jsFolderDestination = jsFileDestination.split('/'); // output directory (used to create the folder structure);
 
