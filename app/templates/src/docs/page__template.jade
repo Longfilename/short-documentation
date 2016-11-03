@@ -2,10 +2,10 @@ doctype html
 html(lang="en")
   head
     - var title = '/src/templates/' + folder
-    include ./includes/_head
+    include ./_head
 
   body
-    include ./includes/_wrapper
+    include ./components/page/page
       div.grid
         div.grid__content 
           div.card
@@ -52,4 +52,4 @@ html(lang="en")
           div.template__iframe-wrapper
             iframe.template__iframe
     
-    include ./includes/_foot
+    include ./_foot
