@@ -59,8 +59,14 @@ $size__component-view: 100px;
 
 $z-index__card--shadow-cover: 10;
 $z-index__card--title: 20;
-$z-index__component-view--loaded: 29;
-$z-index__component-view--loading: 30;
+$z-index__component-view--loaded: 10;
+$z-index__component-view--loading: 11;
+$z-index__page-frame: 10;
+$z-index__page-frame--overlay: 100;
+$z-index__resizer--mobile: 13;
+$z-index__resizer--tablet-sm: 12;
+$z-index__resizer--tablet-lg: 11;
+$z-index__resizer--desktop: 10;
 
 $breakpoint--xs: min-width 480px; // phone;
 $breakpoint--sm: min-width 768px; // tablet portrait;

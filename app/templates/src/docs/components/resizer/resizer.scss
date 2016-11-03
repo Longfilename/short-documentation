@@ -55,7 +55,7 @@
     }
 
     &--375 {
-      z-index: 13;
+      z-index: $z-index__resizer--mobile;
       width: 375px;
 
       &::after {
@@ -64,7 +64,7 @@
     }
 
     &--768 {
-      z-index: 12;
+      z-index: $z-index__resizer--tablet-sm;
       width: 768px;
 
       &::after {
@@ -73,7 +73,7 @@
     }
 
     &--1024 {
-      z-index: 11;
+      z-index: $z-index__resizer--tablet-lg;
       width: 1024px;
 
       &::after {
@@ -84,7 +84,7 @@
     &--100 {
       left: 0;
       transform: none;
-      z-index: 10;
+      z-index: $z-index__resizer--desktop;
       border-width: 1px 0;
       width: 100%;
 
