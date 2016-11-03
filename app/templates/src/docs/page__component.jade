@@ -1,9 +1,9 @@
 mixin renderView (path)
-  div.component-view
-    div.component-view__loading
-      p.component-view__loading-text loading
-    div.component-view__loaded
-      iframe.component-view__iframe(data-src=path)
+  div.view-component
+    div.view-component__loading
+      p.view-component__loading-text loading
+    div.view-component__loaded
+      iframe.view-component__iframe(data-src=path)
 
 mixin renderCode (view)
   div.tabs
@@ -88,7 +88,8 @@ html(lang="en")
           
             div.card__content.card__content--component-view
               +renderView(view.html)
-              div.resizer.resizer--component
+              
+              div.resizer.resizer--view-component
                 a.resizer-link.resizer-link--375(data-resizer="375px")
                 a.resizer-link.resizer-link--768(data-resizer="768px")
                 a.resizer-link.resizer-link--1024(data-resizer="1024px")

@@ -15,7 +15,7 @@ html(lang="en")
         div.grid__templates
           - pages.map((page, index) => {
             div.grid__template-button
-              a.button.js__template--open(href=page.url)
+              a.button.js__view-template--open(href=page.url)
                 i.fa.fa-desktop
                 |  Open #{ page.title } Template
           - })
@@ -37,19 +37,19 @@ html(lang="en")
                     code.language-html!=html
               - })
       
-      div.resizer.resizer--template
+      div.resizer.resizer--view-template
         a.resizer-link.resizer-link--375(data-resizer="375px")
         a.resizer-link.resizer-link--768(data-resizer="768px")
         a.resizer-link.resizer-link--1024(data-resizer="1024px")
         a.resizer-link.resizer-link--100.resizer-link--active(data-resizer="100%")
       
-      div.template
-        a.button.template__close.js__template--close
-          span.template__close-text Close Template
+      div.view-template
+        a.button.view-template__close.js__view-template--close
+          span.view-template__close-text Close Template
           i.fa.fa-times(aria-hidden="true")
         
-        div.template__overlay
-          div.template__iframe-wrapper
-            iframe.template__iframe
+        div.view-template__overlay
+          div.view-template__iframe-wrapper
+            iframe.view-template__iframe
     
     include ./_foot

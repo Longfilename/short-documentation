@@ -5,16 +5,16 @@ interface Buttons {
 
 jQuery(($: JQueryStatic) => {
   const $buttons: Buttons = {
-    close: $('.js__template--close'),
-    open: $('.js__template--open')
+    close: $('.js__view-template--close'),
+    open: $('.js__view-template--open')
   };
-  const $iframe: JQuery = $('.template__iframe');
+  const $iframe: JQuery = $('.view-template__iframe');
   const $html: JQuery = $('html');
   const $resizer: JQuery = $('.resizer');
-  const $template: JQuery = $('.template');
-  const openClass: string = 'template--open';
+  const $template: JQuery = $('.view-template');
+  const openClass: string = 'view-template--open';
   const visibleClass: string = 'resizer--visible';
-  const click: string = 'click.template';
+  const click: string = 'click.view-template';
 
   $buttons.open.each((index: number, button: Element) => {
     const $button: JQuery = $(button);
