@@ -5,10 +5,8 @@ $breakpoint--sm: min-width 768px; // tablet portrait;
 $breakpoint--md: min-width 1024px; // tablet landscape;
 $breakpoint--lg: min-width 1200px; // desktop;
 
-$border-radius: 2px;
-
-@import '../components/prism/prism'; // syntax color coding;
 @import './base'; // global styles;
+@import '../components/prism/prism'; // syntax color coding;
 @import '../components/button/button';
 @import '../components/card/card';
 @import '../components/card/card--colors';
