@@ -26,7 +26,7 @@
   &-divider {
     margin: 10px 0;
     border: 0;
-    background: #b6b4b6;
+    background: $color-bg__nav-divider;
     height: 1px;
 
     @include breakpoint($breakpoint--sm) {
@@ -40,7 +40,7 @@
     padding: 5px 10px;
     text-transform: uppercase;
     line-height: 16px;
-    color: #222;
+    color: $color-text__nav;
     font-size: 12px;
 
     @include breakpoint($breakpoint--sm) {
@@ -56,12 +56,12 @@
     opacity: 0;
     margin: 10px;
     line-height: 16px;
-    color: #222;
+    color: $color-text__nav;
     font-size: 16px;
 
     &--active,
     &--active:hover {
-      background: #b8b8b8;
+      background: $color-bg__nav-button--hover;
     }
 
     .page--animate & {
