@@ -15,11 +15,13 @@ jQuery(($) => {
   $buttons.open.each((index, button) => {
     const $button = $(button);
 
-    $button.on(click, () => {
+    $button.on(click, (e) => {
+      e.preventDefault();
+
       $resizer.addClass(visibleClass);
       $html.addClass(openClass);
       $template.addClass(openClass);
-      $iframe.prop('src', $button.data().url);
+      $iframe.prop('src', $button.attr('href'));
     });
   });
 
