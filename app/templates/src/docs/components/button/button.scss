@@ -5,16 +5,16 @@
   padding: 5px 10px;
   text-decoration: none;
   white-space: nowrap;
-  color: #222;
+  color: $color-text__button;
 
   &:hover,
   &:focus {
     outline: 0;
-    background: #c8c8c8;
+    background: $color-bg__button--hover;
   }
 
   &:active {
-    background: #b8b8b8;
+    background: $color-bg__button--active;
   }
 
   .fa {
