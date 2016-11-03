@@ -3,6 +3,8 @@ html.template--open {
 }
 
 .template {
+  margin: 0;
+
   &--open {
     .template__close,
     .template__resizer {
