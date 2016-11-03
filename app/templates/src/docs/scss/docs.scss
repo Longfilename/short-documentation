@@ -1,9 +1,8 @@
-@import './variables';
-
 // load node modules;
-@import 'node_modules/breakpoint-sass/stylesheets/breakpoint';
+@import 'node_modules/breakpoint-sass/stylesheets/breakpoint'; // responsive mixins;
 
 // load documentation components;
+@import './variables';
 @import './base';
 @import '../components/prism/prism';
 @import '../components/button/button';
