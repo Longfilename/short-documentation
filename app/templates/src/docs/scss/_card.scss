@@ -1,11 +1,13 @@
 .card {
   display: block;
+  height: 100%;
 
   &__content {
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
     background: #fff;
     padding: 20px;
     max-width: 60em;
+    height: 100%;
 
     &-title {
       display: block;
@@ -14,15 +16,6 @@
       line-height: 1.6;
       font-size: 16px;
       font-weight: bold;
-    }
-  }
-
-  // make sure the component view isn't taller than the content (looks odd);
-  .grid & {
-    height: 100%;
-
-    &__content {
-      height: 100%;
     }
   }
 }
