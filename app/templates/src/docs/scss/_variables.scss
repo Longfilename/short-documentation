@@ -13,15 +13,27 @@ $shade--black50: rgba(0, 0, 0, 0.5);
 $old-lace: #fdf6e3;
 $pale-sky: #657b83;
 
-$color__text: white;
+$color-text__button: $mine-shaft;
+$color-text__rich-text--code: $pale-sky;
+$color-text__rich-text--link: $pale-sky;
+
+$color-bg__button--hover: $silver--dark;
+$color-bg__button--active: $silver--light;
+$color-bg__card--shadow: $shade--black50;
+$color-bg__card--border: $white;
+$color-bg__font--divider: $silver--dark;
+$color-bg__rich-text--code: $old-lace;
+$color-bg__card--content: $white;
 
 $size__font: 16px;
+$size__line-height: 1.6;
 $size__shadow: 5px;
 $size__gutter: 20px;
 $size__content--narrow: 60em;
 $size__content--wide: 90em;
 
-$z-index--shadow-cover: 10;
+$z-index__card--shadow-cover: 10;
+$z-index__card--title: 20;
 
 $breakpoint--xs: min-width 480px; // phone;
 $breakpoint--sm: min-width 768px; // tablet portrait;
