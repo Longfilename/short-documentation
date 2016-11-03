@@ -18,17 +18,20 @@ $color-text__rich-text--code: $pale-sky;
 $color-text__rich-text--link: $pale-sky;
 $color-text__swatch--hex: $white;
 $color-text__swatch--count: $dove-gray;
+$color-text__component-view--loading: $silver--dark;
 
 $color-bg__button--hover: $silver--dark;
 $color-bg__button--active: $silver--light;
 $color-bg__card--shadow: $shade--black50;
 $color-bg__card--border: $white;
+$color-bg__card--content: $white;
 $color-bg__font--divider: $silver--dark;
 $color-bg__rich-text--code: $old-lace;
-$color-bg__card--content: $white;
 $color-bg__swatch--grad-dark: $dove-gray;
 $color-bg__swatch--grad-light: $dusty-gray;
 $color-bg__swatch--hex: $shade--black50;
+$color-bg__component-view--loaded: $white;
+$color-bg__component-view--loading: $dove-gray;
 
 $size__font: 16px;
 $size__line-height: 1.6;
@@ -36,9 +39,12 @@ $size__shadow: 5px;
 $size__gutter: 20px;
 $size__content--narrow: 60em;
 $size__content--wide: 90em;
+$size__component-view: 100px;
 
 $z-index__card--shadow-cover: 10;
 $z-index__card--title: 20;
+$z-index__component-view--loaded: 29;
+$z-index__component-view--loading: 30;
 
 $breakpoint--xs: min-width 480px; // phone;
 $breakpoint--sm: min-width 768px; // tablet portrait;
