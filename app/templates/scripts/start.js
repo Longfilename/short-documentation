@@ -1,6 +1,6 @@
 const clean = require('./clean');
 const scss = require('./scss');
-const js = require('./js');
+const ts = require('./ts');
 const copy = require('./copy');
 const htmlTemplates = require('./html--templates');
 const htmlIndex = require('./html--index');
@@ -14,14 +14,14 @@ const startDocs = options.indexOf('docs') > -1;
 
 clean();
 scss();
-js();
+ts();
 copy('src/images', 'dist/images'); // duplicate this call for any set of static files (fonts, images, etc.);
 htmlTemplates();
 htmlIndex();
 
 if (startDocs) {
   docs.scss();
-  docs.js();
+  docs.ts();
   docs.html();
 }
 

@@ -1,5 +1,5 @@
-const cssRender = require('./scss.js');
-const jsRender = require('./js.js');
+const scssRender = require('./scss.js');
+const tsRender = require('./ts.js');
 const htmlRender = require('./html.js');
 
 // define where all the component/template/iframe pages are built;
@@ -8,10 +8,8 @@ const docsDestination = 'dist/docs';
 
 module.exports = {
   scss: () => {
-    cssRender('src/docs/scss/docs.scss', `${ docsDestination }/docs.css`, ['> 5% in US', 'ie >= 9']);
+    scssRender('src/docs/scss/docs.scss', `${ docsDestination }/docs.css`, ['> 5% in US', 'ie >= 9']);
   },
-  js: () => {
-    jsRender('src/docs/js/docs.js', `${ docsDestination }/docs.js`);
-  },
+  ts: tsRender,
   html: htmlRender
 }

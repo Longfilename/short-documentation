@@ -1,10 +1,10 @@
 doctype html
 html(lang="en")
   head
-    include ./includes/_head
+    include ./_head
 
   body
-    include ./includes/_wrapper
+    include ./components/page/page
       div.card
         div.card__content.card__content--rich-text
           h1 Colors
@@ -28,4 +28,4 @@ html(lang="en")
             - }
           - })
     
-    include ./includes/_foot
+    include ./_foot

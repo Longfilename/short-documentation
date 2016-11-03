@@ -10,7 +10,10 @@ mixin shiftSentances
 doctype html
 html(lang="en")
   head
-    include ./includes/_head
+    include ./_head
+
+    // include the following CSS to properly display the site fonts;
+    //- link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800")
     
     style.
       .card__content--font-300 {
@@ -30,7 +33,7 @@ html(lang="en")
       }
 
   body
-    include ./includes/_wrapper
+    include ./components/page/page
       div.card
         div.card__content.card__content--rich-text
           h1 Fonts
@@ -72,4 +75,4 @@ html(lang="en")
         div.card__content.card__content--font-body.card__content--font-800
           +shiftSentances
     
-    include ./includes/_foot
+    include ./_foot
