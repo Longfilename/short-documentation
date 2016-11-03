@@ -1,20 +1,3 @@
-.templates {
-  margin: 0 10px 20px;
-
-  &__button {
-    color: #222;
-
-    &:hover,
-    &:focus {
-      background: #c8c8c8;
-    }
-
-    &:active {
-      background: #b8b8b8;
-    }
-  }
-}
-
 html.template--open {
   height: 100%;
 }
@@ -33,16 +16,6 @@ html.template--open {
     position: absolute;
     top: 10px; // match page-header padding;
     right: 10px;
-    color: #222;
-
-    &:hover,
-    &:focus {
-      background: #c8c8c8;
-    }
-
-    &:active {
-      background: #b8b8b8;
-    }
 
     // don’t show the close iframe link text at mobile;
     &-text {

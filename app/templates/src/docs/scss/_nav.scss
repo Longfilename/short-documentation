@@ -59,7 +59,8 @@
     color: #222;
     font-size: 16px;
 
-    &--active {
+    &--active,
+    &--active:hover {
       background: #b8b8b8;
     }
 
@@ -72,17 +73,6 @@
         &:nth-child(#{ $i + 1 }) {
           transition-delay: $i * 0.02s;
         }
-      }
-    }
-
-    &:link {
-      &:hover,
-      &:focus {
-        background: #c8c8c8;
-      }
-
-      &:active {
-        background: #b8b8b8;
       }
     }
   }
