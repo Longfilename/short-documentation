@@ -1,17 +1,17 @@
 .page-header {
-  background: #d8d8d8;
+  background: $color-bg__page-header;
   padding: 10px;
 
   &__menu {
-    color: #222;
+    color: $color-text__page-header-menu;
 
     &:hover,
     &:focus {
-      background: #c8c8c8;
+      background: $color-bg__page-header-menu--hover;
     }
 
     &:active {
-      background: #b8b8b8;
+      background: $color-bg__page-header-menu--active;
     }
   }
 }
