@@ -36,7 +36,13 @@ html(lang="en")
                   pre.language-html
                     code.language-html!=html
               - })
-    
+      
+      div.resizer.resizer--template
+        a.resizer-link.resizer-link--375(data-resizer="375px")
+        a.resizer-link.resizer-link--768(data-resizer="768px")
+        a.resizer-link.resizer-link--1024(data-resizer="1024px")
+        a.resizer-link.resizer-link--100.resizer-link--active(data-resizer="100%")
+      
       div.template
         a.button.template__close.js__template--close
           span.template__close-text Close Template
@@ -45,11 +51,5 @@ html(lang="en")
         div.template__overlay
           div.template__iframe-wrapper
             iframe.template__iframe
-    
-    div.resizer.resizer--template
-      a.resizer-link.resizer-link--375(data-resizer="375px")
-      a.resizer-link.resizer-link--768(data-resizer="768px")
-      a.resizer-link.resizer-link--1024(data-resizer="1024px")
-      a.resizer-link.resizer-link--100.resizer-link--active(data-resizer="100%")
     
     include ./includes/_foot
