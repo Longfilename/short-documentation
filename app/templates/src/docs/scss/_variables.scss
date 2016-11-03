@@ -1,0 +1,29 @@
+$white: #fff;
+$concrete: #f2f2f2;
+$mercury: #e6e6e6;
+$alto: #d8d8d8;
+$silver--dark: #c8c8c8;
+$silver--light: #b8b8b8;
+$shady-lady: #b6b4b6;
+$dusty-gray: #999;
+$dove-gray: #666;
+$mine-shaft: #222;
+$shade--black25: rgba(0, 0, 0, 0.25);
+$shade--black50: rgba(0, 0, 0, 0.5);
+$old-lace: #fdf6e3;
+$pale-sky: #657b83;
+
+$color__text: white;
+
+$size__font: 16px;
+$size__shadow: 5px;
+$size__gutter: 20px;
+$size__content--narrow: 60em;
+$size__content--wide: 90em;
+
+$z-index--shadow-cover: 10;
+
+$breakpoint--xs: min-width 480px; // phone;
+$breakpoint--sm: min-width 768px; // tablet portrait;
+$breakpoint--md: min-width 1024px; // tablet landscape;
+$breakpoint--lg: min-width 1200px; // desktop;

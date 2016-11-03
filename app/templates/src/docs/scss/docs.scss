@@ -1,12 +1,11 @@
+@import './variables';
+
 // load node modules;
 @import 'node_modules/breakpoint-sass/stylesheets/breakpoint';
-$breakpoint--xs: min-width 480px; // phone;
-$breakpoint--sm: min-width 768px; // tablet portrait;
-$breakpoint--md: min-width 1024px; // tablet landscape;
-$breakpoint--lg: min-width 1200px; // desktop;
 
-@import './base'; // global styles;
-@import '../components/prism/prism'; // syntax color coding;
+// load documentation components;
+@import './base';
+@import '../components/prism/prism';
 @import '../components/button/button';
 @import '../components/card/card';
 @import '../components/color-swatch/color-swatch';
