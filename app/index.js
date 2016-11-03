@@ -100,7 +100,7 @@ module.exports = yeoman.Base.extend({
     this.copy('src/scss/_variables.scss', 'src/scss/_variables.scss');
     this.template('src/scss/site.scss', 'src/scss/site.scss', { components: scssIncludes });
   },
-  copyJavaScriptFiles: function () {
+  copyTypeScriptFiles: function () {
     this.template('src/ts/site.ts', 'src/ts/site.ts', { components: jsIncludes });
   },
   copyImgFiles: function () {
