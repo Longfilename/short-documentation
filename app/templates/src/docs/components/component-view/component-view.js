@@ -43,6 +43,10 @@ jQuery(($) => {
 
       $iframe.css(css);
       $view.css(css);
+
+      window.setTimeout(() => {
+        $view.find('.component-view__loading').hide();
+      }, 350);
     }
   }
 });
