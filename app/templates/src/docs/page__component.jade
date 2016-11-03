@@ -71,14 +71,14 @@ html(lang="en")
       
       - views.map((view, index) => {
         - if (size && size.indexOf('px')) {
-          div.component-grid
-            div.component-grid__content 
+          div.grid
+            div.grid__content 
               div.card
                 div.card__content
                   h1.card__content-title=view.title
                   +renderCode(view)
             
-            div.component-grid__view(style="width: #{size};")
+            div.grid__view(style="width: #{size};")
               +renderView(view.html)
         
         - } else {

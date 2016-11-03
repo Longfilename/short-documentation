@@ -6,17 +6,18 @@ html(lang="en")
 
   body
     include ./includes/_wrapper
-      div.component-grid
-        div.component-grid__content 
+      div.grid
+        div.grid__content 
           div.card
             div.card__content.card__content--rich-text
               !=markdown
         
-        div.component-grid__view
+        div.grid__templates
           - pages.map((page, index) => {
-            a.button.js__template--open(href=page.url)
-              i.fa.fa-desktop
-              |  Open #{ page.title } Template
+            div.grid__template-button
+              a.button.js__template--open(href=page.url)
+                i.fa.fa-desktop
+                |  Open #{ page.title } Template
           - })
     
     div.template
