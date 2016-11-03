@@ -1,7 +1,7 @@
 // load components;
-import './_component-view';
-import './_nav';
-import './_perspective';
-import './_resizer';
-import './_tabs';
-import './_template';
+import '../components/component-view/_component-view';
+import '../components/nav/_nav';
+import '../components/perspective/_perspective';
+import '../components/resizer/_resizer';
+import '../components/tabs/_tabs';
+import '../components/template/_template';
