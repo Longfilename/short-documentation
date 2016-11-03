@@ -3,18 +3,18 @@
   height: 100%;
 
   &__content {
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
-    background: #fff;
-    padding: 20px;
-    max-width: 60em;
+    box-shadow: 0 0 $size__shadow 1px $color-bg__card--shadow;
+    background: $color-bg__card--content;
+    padding: $size__gutter;
+    max-width: $size__content--narrow;
     height: 100%;
 
     &-title {
       display: block;
       position: relative;
-      z-index: 1;
-      line-height: 1.6;
-      font-size: 16px;
+      z-index: $z-index__card--title;
+      line-height: $size__line-height;
+      font-size: $size__font;
       font-weight: bold;
     }
   }

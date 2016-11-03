@@ -5,29 +5,29 @@
 
   &--font-body {
     position: relative;
-    max-width: 90em;
+    max-width: $size__content--wide;
 
     &::before {
       position: absolute;
-      top: -10px;
+      top: 0 - $size__shadow;
       left: 0;
-      background: #fff;
+      background: $color-bg__card--border;
       width: 100%;
-      max-width: 60em;
-      height: 10px;
+      max-width: $size__content--narrow;
+      height: $size__shadow;
       content: '';
     }
 
     p {
       margin: 0;
-      border-bottom: 1px dotted #ccc;
+      border-bottom: 1px dotted $color-bg__font--divider;
       overflow: hidden;
       text-overflow: ellipsis;
       line-height: 1.5;
       white-space: nowrap;
 
       &:nth-child(1) {
-        border-top: 1px dotted #ccc;
+        border-top: 1px dotted $color-bg__font--divider;
         font-size: 36px;
       }
 

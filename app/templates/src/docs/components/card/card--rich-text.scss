@@ -1,13 +1,13 @@
 .card__content {
   &--rich-text {
-    line-height: 1.6;
-    font-size: 16px;
+    line-height: $size__line-height;
+    font-size: $size__font;
 
     code {
       border-radius: 3px;
-      background: #fdf6e3;
+      background: $color-bg__rich-text--code;
       padding: 3px 6px;
-      color: #657b83;
+      color: $color-text__rich-text--code;
       font-family: monospace;
     }
 
@@ -15,10 +15,10 @@
     a:visited,
     a:hover,
     a:focus {
-      color: #657b83;
+      color: $color-text__rich-text--link;
 
       code {
-        color: #657b83;
+        color: $color-text__rich-text--link;
       }
     }
 
@@ -28,7 +28,7 @@
     h4,
     h5,
     h6 {
-      font-size: 16px;
+      font-size: $size__font;
     }
 
     // add a top margin to everything but the first element;

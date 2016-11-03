@@ -3,18 +3,18 @@
     display: flex;
     position: relative;
     flex-wrap: wrap;
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
-    background: #fff;
-    max-width: 90em;
+    box-shadow: 0 0 $size__shadow 1px $color-bg__card--shadow;
+    max-width: $size__content--wide;
 
     &::before {
       position: absolute;
-      top: -10px;
+      z-index: $z-index__card--shadow-cover;
+      top: 0 - $size__shadow;
       left: 0;
-      background: #fff;
+      background: $color-bg__card--border;
       width: 100%;
-      max-width: 60em;
-      height: 10px;
+      max-width: $size__content--narrow;
+      height: $size__shadow;
       content: '';
     }
   }

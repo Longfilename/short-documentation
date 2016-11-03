@@ -9,9 +9,9 @@
 
   &--component-view {
     position: relative;
-    margin: 0 -20px;
-    border: 20px solid #fff;
-    border-width: 20px 0;
+    margin: 0 0 - $size__gutter;
+    border: $size__gutter solid $color-bg__card--border;
+    border-width: $size__gutter 0;
     padding: 0;
     max-width: none;
 
@@ -20,21 +20,21 @@
       position: absolute;
       background: #fff;
       width: 100%;
-      max-width: 60em;
-      height: 10px;
+      max-width: $size__content--narrow;
+      height: $size__shadow;
       content: '';
     }
 
     &::before {
-      top: -25px;
-      left: 20px;
-      height: 10px;
+      top: 0 - $size__shadow - $size__gutter;
+      left: $size__gutter;
+      height: $size__shadow;
     }
 
     &::after {
-      bottom: -25px;
-      left: 20px;
-      height: 10px;
+      bottom: 0 - $size__shadow - $size__gutter;
+      left: $size__gutter;
+      height: $size__shadow;
     }
   }
 }
