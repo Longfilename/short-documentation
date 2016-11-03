@@ -5,7 +5,7 @@
 
   // if a color swatch is transparent, a gradient background is added;
   &__gradient {
-    background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, $color-bg__swatch--grad-dark 35px, $color-bg__swatch--grad-light 70px);
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, $color-bg__color-swatch--grad-dark 35px, $color-bg__color-swatch--grad-light 70px);
   }
 
   // block with inline background color defined;
@@ -24,9 +24,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 2px;
-    background: $color-bg__swatch--hex;
+    background: $color-bg__color-swatch--hex;
     padding: 5px;
-    color: $color-text__swatch--hex;
+    color: $color-text__color-swatch--hex;
   }
 
   // text under the chip, contains the name and count;
@@ -41,7 +41,7 @@
 
   &__count {
     line-height: 16px;
-    color: $color-text__swatch--count;
+    color: $color-text__color-swatch--count;
     font-size: 10px;
 
     @include breakpoint($breakpoint--md) {
