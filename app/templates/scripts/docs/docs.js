@@ -10,8 +10,6 @@ module.exports = {
   scss: () => {
     cssRender('src/docs/scss/docs.scss', `${ docsDestination }/docs.css`, ['> 5% in US', 'ie >= 9']);
   },
-  js: () => {
-    jsRender('src/docs/js/docs.js', `${ docsDestination }/docs.js`);
-  },
+  js: jsRender,
   html: htmlRender
 }
