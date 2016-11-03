@@ -29,7 +29,7 @@ function createIndex (src, dest) {
   });
 
   // write the HTML to file;
-  fs.writeFile(dest, html);
+  fs.writeFileSync(dest, html);
 
   console.log(dest.green, 'page was created.');
 }
