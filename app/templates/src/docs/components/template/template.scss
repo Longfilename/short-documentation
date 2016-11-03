@@ -1,5 +1,11 @@
 html.template--open {
   height: 100%;
+
+  // added to the body tag when a template IFRAME is made visible;
+  // this is to prevent double scrollbars (page and iframe);
+  body {
+    overflow: hidden;
+  }
 }
 
 .template {

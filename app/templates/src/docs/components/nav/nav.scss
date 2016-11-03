@@ -19,7 +19,7 @@
     overflow-y: auto;
   }
 
-  .perspective--modalview & {
+  .page--modalview & {
     opacity: 1;
   }
 
@@ -64,7 +64,7 @@
       background: #b8b8b8;
     }
 
-    .perspective--animate & {
+    .page--animate & {
       transform: translateY(0);
       opacity: 1;
 

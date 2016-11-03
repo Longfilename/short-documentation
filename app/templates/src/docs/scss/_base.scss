@@ -1,23 +1,18 @@
+// normalize everything;
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+// make sure that full height elements fill the page;
 html,
 body {
   height: 100%;
   min-height: 100%;
 }
 
+// documentation font face (not the site font-face);
 body {
   font-family: 'Open Sans', sans-serif;
-}
-
-main {
-  padding: 20px;
-
-  > * + * {
-    margin-top: 100px;
-  }
 }
