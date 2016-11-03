@@ -20,14 +20,14 @@
 
     p {
       margin: 0;
-      border-bottom: 1px dotted $color-bg__font--divider;
+      border-bottom: 1px dotted $color-bg__card-font--divider;
       overflow: hidden;
       text-overflow: ellipsis;
       line-height: 1.5;
       white-space: nowrap;
 
       &:nth-child(1) {
-        border-top: 1px dotted $color-bg__font--divider;
+        border-top: 1px dotted $color-bg__card-font--divider;
         font-size: 36px;
       }
 

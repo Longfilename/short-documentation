@@ -5,9 +5,9 @@
 
     code {
       border-radius: 3px;
-      background: $color-bg__rich-text--code;
+      background: $color-bg__card-rich-text--code;
       padding: 3px 6px;
-      color: $color-text__rich-text--code;
+      color: $color-text__card-rich-text--code;
       font-family: monospace;
     }
 
@@ -15,10 +15,10 @@
     a:visited,
     a:hover,
     a:focus {
-      color: $color-text__rich-text--link;
+      color: $color-text__card-rich-text--link;
 
       code {
-        color: $color-text__rich-text--link;
+        color: $color-text__card-rich-text--link;
       }
     }
 
