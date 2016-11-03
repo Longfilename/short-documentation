@@ -26,11 +26,14 @@ html.template--open {
     // don’t show the close iframe link text at mobile;
     &-text {
       display: none;
-      margin-right: 0.5em;
 
       @include breakpoint($breakpoint--sm) {
         display: inline;
       }
+    }
+
+    .fa {
+      margin: 0 0 0 0.5em;
     }
   }
 
