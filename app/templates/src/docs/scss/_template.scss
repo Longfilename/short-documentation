@@ -5,9 +5,13 @@ html.template--open {
 .template {
   &--open {
     .template__close,
-    .template__overlay,
     .template__resizer {
       display: block;
+    }
+
+    .template__overlay {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
     }
   }
 
@@ -29,12 +33,15 @@ html.template--open {
   }
 
   &__overlay {
-    display: none;
     position: absolute;
     top: 74px; // height of page-header + resizer;
     right: 0;
     bottom: 0;
     left: 0;
+    transform-origin: top left;
+    transform: translate(1024px, 18px) scale(0);
+    transition: all 0.3s;
+    opacity: 0.5;
     background: #f2f2f2;
   }
 

@@ -18,17 +18,17 @@ jQuery(($) => {
     $button.on(click, (e) => {
       e.preventDefault();
 
+      $iframe.prop('src', $button.attr('href'));
       $resizer.addClass(visibleClass);
       $html.addClass(openClass);
       $template.addClass(openClass);
-      $iframe.prop('src', $button.attr('href'));
     });
   });
 
   $buttons.close.on(click, () => {
     $resizer.removeClass(visibleClass);
-    $iframe.removeProp('src').removeAttr('src');
     $template.removeClass(openClass);
     $html.removeClass(openClass);
+    $iframe.removeProp('src').removeAttr('src');
   });
 });
