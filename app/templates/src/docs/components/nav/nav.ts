@@ -1,10 +1,10 @@
-jQuery(($) => {
-  const url = location.pathname.split('/').pop();
+jQuery(($: JQueryStatic) => {
+  const url: string = location.pathname.split('/').pop();
 
-  $('.nav-link').each((index, link) => {
-    const $link = $(link);
-    const prop = 'href';
-    const linkUrl = $link.attr(prop);
+  $('.nav-link').each((index: number, link: Element) => {
+    const $link: JQuery = $(link);
+    const prop: string = 'href';
+    const linkUrl: string = $link.attr(prop);
 
     // highlight the link that has a matching URL;
     // if the user is at /docs/, highlight the index link;

@@ -1,27 +1,26 @@
-jQuery(($) => {
-  $('.tabs').each((index, tabs) => {
-    const $tabs = $(tabs);
-    const $nav = $tabs.find('.tabs__nav-link');
-    const $content = $tabs.find('.tabs__content-tab');
-    const activeClass = 'tabs__nav-link--active';
+jQuery(($: JQueryStatic) => {
+  $('.tabs').each((index: number, tabs: Element) => {
+    const $tabs: JQuery = $(tabs);
+    const $nav: JQuery = $tabs.find('.tabs__nav-link');
+    const $content: JQuery = $tabs.find('.tabs__content-tab');
+    const activeClass: string = 'tabs__nav-link--active';
 
-    let indexVisible = 0;
+    let indexVisible: number = 0;
 
     showTab();
 
-    $nav.each((j, link) => {
-      const $link = $(link);
+    $nav.each((i: number, link: Element) => {
+      const $link: JQuery = $(link);
 
       $link.on('click', () => {
-        indexVisible = j;
+        indexVisible = i;
         showTab();
       });
     });
 
-    function showTab () {
+    function showTab (): void {
       $content.hide();
       $nav.removeClass(activeClass);
-
       $content.eq(indexVisible).show();
       $nav.eq(indexVisible).addClass(activeClass);
     }

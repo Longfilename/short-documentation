@@ -1,16 +1,16 @@
-jQuery(($) => {
-  $('.resizer').each((index, resizer) => {
-    const $window = $(window);
-    const $resizer = $(resizer);
-    const hiddenClass = 'resizer-link--hidden';
-    const activeClass = 'resizer-link--active';
-    const $links = $resizer.find('.resizer-link');
-    const resize = 'resize.resizer';
-    const click = 'click.resizer';
+jQuery(($: JQueryStatic) => {
+  $('.resizer').each((index: number, resizer: Element) => {
+    const $window: JQuery = $(window);
+    const $resizer: JQuery = $(resizer);
+    const $links: JQuery = $resizer.find('.resizer-link');
+    const hiddenClass: string = 'resizer-link--hidden';
+    const activeClass: string = 'resizer-link--active';
+    const resize: string = 'resize.resizer';
+    const click: string = 'click.resizer';
 
-    let $target;
-    let $iframe;
-    let resizedClass;
+    let $target: JQuery;
+    let $iframe: JQuery;
+    let resizedClass: string;
 
     if ($resizer.hasClass('resizer--template')) {
       $target = $('.template__iframe-wrapper');
@@ -22,9 +22,9 @@ jQuery(($) => {
       resizedClass = 'component-view__loaded--resized';
     }
 
-    $links.each((i, link) => {
-      const $link = $(link);
-      const dataResizer = $link.data().resizer;
+    $links.each((i: number, link: Element) => {
+      const $link: JQuery = $(link);
+      const dataResizer: string = $link.data().resizer;
 
       $link.on(click, () => {
         if (dataResizer === '100%') {
@@ -51,7 +51,7 @@ jQuery(($) => {
 
       //
 
-      function checkViability () {
+      function checkViability (): void {
         if ($window.width() < parseInt(dataResizer, 10)) {
           $link.addClass(hiddenClass);
 

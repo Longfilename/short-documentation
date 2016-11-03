@@ -1,14 +1,14 @@
-jQuery(($) => {
-  const delay = 1000;
-  const $views = $('.component-view');
+jQuery(($: JQueryStatic) => {
+  const $views: JQuery = $('.component-view');
+  const delay: number = 1000;
 
   if ($views.length) {
     initIframe(0);
   }
 
-  function initIframe (index) {
-    const $view = $views.eq(index);
-    const $iframe = $view.find('.component-view__iframe');
+  function initIframe (index: number): void {
+    const $view: JQuery = $views.eq(index);
+    const $iframe: JQuery = $view.find('.component-view__iframe');
 
     $iframe
       .on('resize.view', setHeight)
@@ -20,11 +20,11 @@ jQuery(($) => {
     //
 
 
-    function startDelay () {
+    function startDelay (): void {
       window.setTimeout(showIframe, delay);
     }
 
-    function showIframe () {
+    function showIframe (): void {
       window.setTimeout(() => {
         $view.addClass('component-view--loaded');
 
@@ -36,8 +36,8 @@ jQuery(($) => {
       }, 350);
     }
 
-    function setHeight () {
-      const css = {
+    function setHeight (): void {
+      const css: { height: number } = {
         height: $iframe.contents().find('html').outerHeight()
       };
 
