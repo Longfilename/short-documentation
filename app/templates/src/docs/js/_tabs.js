@@ -4,6 +4,7 @@ jQuery(($) => {
     const $nav = $tabs.find('.tabs__nav-link');
     const $content = $tabs.find('.tabs__content-tab');
     const activeClass = 'tabs__nav-link--active';
+
     let indexVisible = 0;
 
     showTab();

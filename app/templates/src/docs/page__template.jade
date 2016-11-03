@@ -19,6 +19,23 @@ html(lang="en")
                 i.fa.fa-desktop
                 |  Open #{ page.title } Template
           - })
+      
+      div.card
+        div.card__content
+          div.tabs
+            div.tabs__nav
+              - pages.map((page, index) => {
+                a.tabs__nav-link
+                  i.fa.fa-html5
+                  |  #{ page.title }
+              - })
+            
+            div.tabs__content
+              - renderedHTML.map((html) => {
+                div.tabs__content-tab
+                  pre.language-html
+                    code.language-html!=html
+              - })
     
     div.template
       a.button.template__close.js__template--close
