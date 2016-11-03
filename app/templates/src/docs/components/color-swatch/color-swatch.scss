@@ -1,18 +1,18 @@
 // color swatch, one per color defined in the site SCSS;
 .color-swatch {
-  margin: 20px;
-  width: calc(20% - 40px);
+  margin: $size__gutter;
+  width: calc(20% - #{ $size__gutter } * 2);
 
   // if a color swatch is transparent, a gradient background is added;
   &__gradient {
-    background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, #666 35px, #999 70px);
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, $color-bg__swatch--grad-dark 35px, $color-bg__swatch--grad-light 70px);
   }
 
   // block with inline background color defined;
   &__chip {
     position: relative;
     border-radius: 2px;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 2px $color-bg__card--shadow;
     padding-bottom: 66%;
     height: 0;
   }
@@ -24,9 +24,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 2px;
-    background: rgba(0, 0, 0, 0.5);
+    background: $color-bg__swatch--hex;
     padding: 5px;
-    color: #fff;
+    color: $color-text__swatch--hex;
   }
 
   // text under the chip, contains the name and count;
@@ -35,13 +35,13 @@
   }
 
   &__name {
-    line-height: 16px;
-    font-size: 16px;
+    line-height: 1;
+    font-size: $size__font;
   }
 
   &__count {
     line-height: 16px;
-    color: #666;
+    color: $color-text__swatch--count;
     font-size: 10px;
 
     @include breakpoint($breakpoint--md) {
