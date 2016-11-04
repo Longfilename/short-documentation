@@ -81,25 +81,38 @@ function createComponentPage (component) {
     folder: component.folder
   };
 
+  // before we build the component HTML pages (doc and IFRAME pages);
+  // need to get the file contents of the HTML/JSON/TS/SCSS to display in the tabs for each view;
+  // per view becuase the HTML/JSON is different per view;
   jadeConfig.views.map((view, index) => {
+    // build the HTML to insert into the IFRAME;
     let htmlToInsert = getViewHTML(component.yaml.jade, component.folder, view);
 
+    // do we need to add CSS to the IFRAME page?
+    // this is used for components that have a default margin that isn't appropriate when display solo in the docs;
     view.nullmargins = component.yaml.nullmargins;
 
+    // create the IFRAME page for this view;
     createComponentIframe(htmlToInsert, component.folder, view, index);
 
-    view.html = filenames.componentIframeName(component.folder, index);
+    // add the HTML source to the view object to display in the view tabs;
     view.htmlContent = pretty(htmlToInsert);
     view.htmlContent = Prism.highlight(view.htmlContent, Prism.languages.html);
 
+    // if JSON was defined (optional);
+    // only one JSON file per view;
     if (view.json) {
       view.jsonContent = fs.readFileSync(`src/components/${ component.folder }/${ view.json }`, 'utf-8');
       view.jsonContent = Prism.highlight(view.jsonContent, Prism.languages.json);
     }
 
+    // if TypeScript is defined (optional);
     if (component.yaml.ts) {
+      // account for multiple TS files;
       view.ts = component.yaml.ts.trim().split(' ');
       view.tsContent = [];
+
+      // add the TS source to the view object to display in the view tabs;
       view.ts.map((ts, i) => {
         const fileContents = fs.readFileSync(`src/components/${ component.folder }/${ ts }`, 'utf-8');
 
@@ -107,9 +120,13 @@ function createComponentPage (component) {
       });
     }
 
+    // if SCSS is defined (optional);
     if (component.yaml.scss) {
+      // account for multiple SCSS files;
       view.scss = component.yaml.scss.trim().split(' ');
       view.scssContent = [];
+
+      // add the SCSS source to the view object to display in the view tabs;
       view.scss.map((scss, i) => {
         const fileContents = fs.readFileSync(`src/components/${ component.folder }/${ scss }`, 'utf-8');
 
@@ -118,24 +135,29 @@ function createComponentPage (component) {
     }
   });
 
+  // build the component page HTML;
   const renderedHTML = jade.renderFile(jadeFilepath, jadeConfig);
 
+  // create the component page;
   fs.writeFile(htmlFilepath, renderedHTML);
 
+  // tell the world what you just did;
   console.log(`${ htmlFilepath.green } was created from ${ jadeFilepath.green }`);
 }
 
+// build the HTML to insert into the IFRAME (for a view of a component);
 function getViewHTML (jadeSource, folder, view) {
   const jadeFilepath = `src/components/${ folder }/${ jadeSource }`;
   const htmlToInsert = jade.renderFile(jadeFilepath, {
     pretty: true,
-    component: jsonContent[`${ folder }/${ view.json }`], // undefined if no json is defined, no error is thrown;,
+    component: jsonContent[`${ folder }/${ view.json }`] || {},
     json: jsonContent
   });
 
   return htmlToInsert;
 }
 
+// build the IFRAME page (for a view of a component);
 function createComponentIframe (htmlToInsert, folder, view, index) {
   const htmlFilepath = `${ docsDestination }/iframe__${ folder }--${ index }.html`;
   const jadeFilepath = 'src/docs/iframe__component.jade';
@@ -148,7 +170,9 @@ function createComponentIframe (htmlToInsert, folder, view, index) {
     nullmargins: view.nullmargins
   });
 
+  // create the IFRAME page;
   fs.writeFile(htmlFilepath, renderedHTML);
 
+  // tell the world what you just did;
   console.log(`${ htmlFilepath.green } was created from ${ jadeFilepath.green }`);
 }
