@@ -66,6 +66,9 @@ module.exports = yeoman.Base.extend({
       }
     }
   },
+  copyComponentFavicon: function () {
+    this.directory('src/components/favicons', 'src/components/favicons');
+  },
   copyTemplateFiles: function () {
     // loop through each template in the JSON and build a folder for it;
     for (let template in config.templates) {
@@ -102,9 +105,6 @@ module.exports = yeoman.Base.extend({
   },
   copyTypeScriptFiles: function () {
     this.template('src/ts/site.ts', 'src/ts/site.ts', { components: jsIncludes });
-  },
-  copyImgFiles: function () {
-    this.directory('src/images', 'src/images');
   },
   copyIncludeFiles: function () {
     this.copy('src/templates/_foot.jade', 'src/templates/_foot.jade');
