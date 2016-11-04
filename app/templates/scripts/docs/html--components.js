@@ -95,6 +95,9 @@ function createComponentPage (component) {
     // create the IFRAME page for this view;
     createComponentIframe(htmlToInsert, component.folder, view, index);
 
+    // add the source file to display in a component IFRAME;
+    view.html = filenames.componentIframeName(component.folder, index);
+
     // add the HTML source to the view object to display in the view tabs;
     view.htmlContent = pretty(htmlToInsert);
     view.htmlContent = Prism.highlight(view.htmlContent, Prism.languages.html);
