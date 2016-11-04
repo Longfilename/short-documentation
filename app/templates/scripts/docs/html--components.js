@@ -98,12 +98,12 @@ function createComponentPage (component) {
     }
 
     if (component.yaml.ts) {
-      view.js = component.yaml.ts.trim().split(' ');
-      view.jsContent = [];
-      view.js.map((ts, i) => {
+      view.ts = component.yaml.ts.trim().split(' ');
+      view.tsContent = [];
+      view.ts.map((ts, i) => {
         const fileContents = fs.readFileSync(`src/components/${ component.folder }/${ ts }`, 'utf-8');
 
-        view.jsContent.push(Prism.highlight(fileContents, Prism.languages.typescript));
+        view.tsContent.push(Prism.highlight(fileContents, Prism.languages.typescript));
       });
     }
 

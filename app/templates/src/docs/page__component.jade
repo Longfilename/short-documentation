@@ -20,10 +20,10 @@ mixin renderCode (view)
           |  JSON
       - }
     
-      - view.js && view.js.map((ts) => {
+      - view.ts && view.ts.map((ts) => {
         a.tabs__nav-link
           i.fa.fa-bolt
-          - if (view.js.length > 1) {
+          - if (view.ts.length > 1) {
             |  #{ ts }
           - } else {
             |  TypeScript
@@ -53,10 +53,10 @@ mixin renderCode (view)
             code.language-json!=view.jsonContent
       - }
     
-      - view.js && view.js.map((ts, index) => {
+      - view.ts && view.ts.map((ts, index) => {
         div.tabs__content-tab
           pre.language-typescript
-            code.language-typescript!=view.jsContent[index]
+            code.language-typescript!=view.tsContent[index]
       - })
     
       - view.scss && view.scss.map((scss, index) => {
