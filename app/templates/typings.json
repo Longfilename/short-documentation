@@ -1,7 +1,0 @@
-{
-  "name": "highmark-thryve-typings",
-  "globalDependencies": {
-    "require": "github:DefinitelyTyped/DefinitelyTyped/requirejs/require.d.ts#1ec3d510e0c4d7c50e708ca7cb0765c7e06fa2ed",
-    "jquery": "github:DefinitelyTyped/DefinitelyTyped/jquery/jquery.d.ts#1ec3d510e0c4d7c50e708ca7cb0765c7e06fa2ed"
-  }
-}
