@@ -33,8 +33,8 @@ This build tool makes use of the `scripts` property of `package.json`. The comma
 ## Installation
 
 ```bash
-npm install -g typescript typings   # install global dependencies
-npm install                         # install local dependencies (and typings)
+npm install -g typescript # install global dependencies
+npm install               # install local dependencies (and typings)
 ```
 
 &nbsp;
@@ -43,10 +43,10 @@ npm install                         # install local dependencies (and typings)
 ## Initialization
 
 ```bash
-npm start                           # build the project
-npm start server                    # build the project with a web server and watcher
-npm start docs                      # build the project with documentation
-npm start server docs               # build the project with documentation, a web server, and a watcher
+npm start                 # build the project
+npm start server          # build the project with a web server and watcher
+npm start docs            # build the project with documentation
+npm start server docs     # build the project with documentation, a web server, and a watcher
 ```
 
 &nbsp;
@@ -163,14 +163,6 @@ The `files` referenced in the `tsconfig.json` are not used in compilation. Brows
 > TSLint checks your TypeScript code for readability, maintainability, and functionality errors.
 
 Configuration file for TSLint. Linting is not part of the NPM build. Configure your editor to run TSLint.
-
-&nbsp;
-
-#### typings.json
-
-[github.com/typings/typings](https://github.com/typings/typings)
-
-> Typings is the simple way to manage and install TypeScript definitions. It uses <code>typings.json</code>, which can resolve to the Typings Registry, GitHub, NPM, Bower, HTTP and local files. Packages can use type definitions from various sources and different versions, knowing they will never conflict for users.
 
 &nbsp;
 

@@ -1,3 +1,5 @@
+import * as debounce from 'lodash/debounce';
+
 jQuery(($: JQueryStatic) => {
   $('.resizer').each((index: number, resizer: Element) => {
     const $window: JQuery = $(window);
@@ -12,14 +14,14 @@ jQuery(($: JQueryStatic) => {
     let $iframe: JQuery;
     let resizedClass: string;
 
-    if ($resizer.hasClass('resizer--template')) {
-      $target = $('.template__iframe-wrapper');
-      $iframe = $('.template__iframe');
-      resizedClass = 'template__iframe-wrapper--resized';
+    if ($resizer.hasClass('resizer--view-template')) {
+      $target = $('.view-template__iframe-wrapper');
+      $iframe = $('.view-template__iframe');
+      resizedClass = 'view-template__iframe-wrapper--resized';
     } else {
-      $target = $resizer.prev().find('.component-view__loaded');
-      $iframe = $target.find('.component-view__iframe');
-      resizedClass = 'component-view__loaded--resized';
+      $target = $resizer.prev().find('.view-component__loaded');
+      $iframe = $target.find('.view-component__iframe');
+      resizedClass = 'view-component__loaded--resized';
     }
 
     $links.each((i: number, link: Element) => {
@@ -47,7 +49,7 @@ jQuery(($: JQueryStatic) => {
         $link.addClass(activeClass);
       });
 
-      $window.on(resize, checkViability).trigger(resize);
+      $window.on(resize, debounce(checkViability, 150)).trigger(resize);
 
       //
 
