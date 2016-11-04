@@ -98,9 +98,13 @@ function createComponentPage (component) {
     }
 
     if (component.yaml.ts) {
-      view.js = component.yaml.ts;
-      view.jsContent = fs.readFileSync(`src/components/${ component.folder }/${ component.yaml.ts }`, 'utf-8');
-      view.jsContent = Prism.highlight(view.jsContent, Prism.languages.typescript);
+      view.js = component.yaml.ts.trim().split(' ');
+      view.jsContent = [];
+      view.js.map((ts, i) => {
+        const fileContents = fs.readFileSync(`src/components/${ component.folder }/${ ts }`, 'utf-8');
+
+        view.jsContent.push(Prism.highlight(fileContents, Prism.languages.typescript));
+      });
     }
 
     if (component.yaml.scss) {
