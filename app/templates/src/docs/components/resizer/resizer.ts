@@ -1,3 +1,5 @@
+import * as debounce from 'lodash/debounce';
+
 jQuery(($: JQueryStatic) => {
   $('.resizer').each((index: number, resizer: Element) => {
     const $window: JQuery = $(window);
@@ -47,7 +49,7 @@ jQuery(($: JQueryStatic) => {
         $link.addClass(activeClass);
       });
 
-      $window.on(resize, checkViability).trigger(resize);
+      $window.on(resize, debounce(checkViability, 150)).trigger(resize);
 
       //
 
