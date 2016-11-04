@@ -1,6 +1,6 @@
 const chokidar = require('chokidar'); // watches for file changes;
 const scss = require('./scss');
-const js = require('./js');
+const ts = require('./ts');
 const copy = require('./copy');
 const htmlTemplates = require('./html--templates');
 const htmlIndex = require('./html--index');
@@ -19,9 +19,9 @@ const config = {
     command: scss,
     docs: docs.scss
   },
-  js: {
+  ts: {
     path: ['src/**/*.ts'],
-    command: js,
+    command: ts,
     docs: docs.js
   },
   html: {
