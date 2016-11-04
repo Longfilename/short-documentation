@@ -8,8 +8,7 @@
   },
   "include": [
     "./src/docs/ts/docs.ts",
-    "./src/ts/site.ts",
-    "./typings/index.d.ts"
+    "./src/ts/site.ts"
   ],
   "exclude": [
     "node_modules"
