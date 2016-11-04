@@ -4,12 +4,12 @@
     "module": "commonjs",
     "target": "es5",
     "noImplicitAny": false,
-    "sourceMap": false
+    "sourceMap": false,
+    "types": ["jquery", "lodash"]
   },
   "include": [
-    "./src/docs/docs.ts",
-    "./src/js/site.ts",
-    "./typings/index.d.ts"
+    "./src/docs/ts/docs.ts",
+    "./src/ts/site.ts"
   ],
   "exclude": [
     "node_modules"

@@ -1,4 +1,4 @@
-html.template--open {
+html.view-template--open {
   height: 100%;
 
   // added to the body tag when a template IFRAME is made visible;
@@ -8,16 +8,16 @@ html.template--open {
   }
 }
 
-.template {
+.view-template {
   margin: 0;
 
   &--open {
-    .template__close,
-    .template__resizer {
+    .view-template__close,
+    .view-template__resizer {
       display: block;
     }
 
-    .template__overlay {
+    .view-template__overlay {
       transform: translate(0, 0) scale(1);
       opacity: 1;
     }

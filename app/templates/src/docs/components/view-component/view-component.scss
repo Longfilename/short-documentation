@@ -1,4 +1,4 @@
-.component-view {
+.view-component {
   position: relative;
   transition: all 0.6s;
   height: $size__component-view;
@@ -25,7 +25,7 @@
   &--loaded {
     background: $color-bg__component-view--loaded;
 
-    .component-view__loading {
+    .view-component__loading {
       opacity: 0;
     }
   }

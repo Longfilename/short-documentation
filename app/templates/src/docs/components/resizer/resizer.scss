@@ -4,11 +4,11 @@
   height: 22px;
   overflow: hidden;
 
-  &--component {
+  &--view-component {
     position: relative;
   }
 
-  &--template {
+  &--view-template {
     display: none;
     position: absolute;
     top: 52px;

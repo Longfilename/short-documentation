@@ -119,7 +119,6 @@ module.exports = yeoman.Base.extend({
     this.copy('package.json', 'package.json');
     this.copy('tsconfig.json', 'tsconfig.json');
     this.copy('tslint.json', 'tslint.json');
-    this.copy('typings.json', 'typings.json');
 
     this.template('README.md', 'README.md', { projectName: config.project.name });
   },
