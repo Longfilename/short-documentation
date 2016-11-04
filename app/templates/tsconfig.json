@@ -4,7 +4,8 @@
     "module": "commonjs",
     "target": "es5",
     "noImplicitAny": false,
-    "sourceMap": false
+    "sourceMap": false,
+    "types": ["jquery", "lodash"]
   },
   "include": [
     "./src/docs/ts/docs.ts",
