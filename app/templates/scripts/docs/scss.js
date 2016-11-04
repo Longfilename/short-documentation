@@ -5,21 +5,16 @@ const autoprefixer = require('autoprefixer'); // defines which vendor prefixes t
 const fs = require('fs'); // write to the file system;
 const util = require('../util'); // Short Documentation utility functions;
 
-module.exports = scssRender;
-
-
-
-//
-
-
-
-function scssRender (scssInput, scssOutput, supportedBrowsers) {
+module.exports = (scssInput, scssOutput, supportedBrowsers) => {
+  // output directory (used to create the folder structure);
   const destinationFolder = scssOutput.split('/');
 
-  // remove the filename (we don't want a folder named 'site.css');
+  // remove the last item in the path array (the filename);
+  // we don't want a folder named 'site.css';
   destinationFolder.pop();
 
-  // create the destination folder (so FS doesn't error when writing the generated CSS file);
+  // create the destination folder;
+  // so FS doesn't error when writing the generated CSS file;
   util.makeFolders(destinationFolder);
 
   // compile SCSS into CSS;
@@ -29,16 +24,18 @@ function scssRender (scssInput, scssOutput, supportedBrowsers) {
     outputStyle: 'compressed'
   }, (err, result) => {
     if (err) {
-      console.error('error on Sass rendering.');
+      console.error('error on SCSS rendering.');
+
       return console.error(err);
     } else {
-      // run compiled Sass through a prefixer;
+      // run compiled SCSS through a prefixer for browser support;
       postcss([autoprefixer({
           browsers: supportedBrowsers,
           cascade: false
         })])
         .process(result.css.toString())
         .then((result) => {
+          // tell us of any warnings;
           result.warnings().forEach((warn) => {
             console.warn(warn.toString());
           });
@@ -46,6 +43,7 @@ function scssRender (scssInput, scssOutput, supportedBrowsers) {
           // write the compiled and prefixed CSS to a file;
           fs.writeFileSync(scssOutput, result.css);
 
+          // tell the world what you just did;
           console.log(scssOutput.green, 'file was created from', scssInput.green);
         });
     }

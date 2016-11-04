@@ -7,18 +7,17 @@ const MarkdownIt = require('markdown-it'); // convert Markdown into HTML;
 const scssToJson = require('scss-to-json'); // convert SCSS vars into JSON content;
 const Prism = require('prismjs'); // syntax highlighter;
 const pretty = require('./_pretty'); // beautify the HTML;
+const filenames = require('./html--filenames.js'); // documentation generated file filenames;
+const jsonContent = require('../jade-data--content'); // Short Documentation component content (JSON object);
+const util = require('../util'); // Short Documentation utility functions;
+const getNavObject = require('./html--nav.js'); // returns Short Documentation navigation object;
+const nav = getNavObject(); // get Short Documentation nav object;
+const docsDestination = 'dist/docs'; // destination for docs;
 
 // syntax highlighter languages;
 require('prismjs/components/prism-typescript.js');
 require('prismjs/components/prism-scss.js');
 require('prismjs/components/prism-json.js');
-
-const filenames = require('./html--filenames.js'); // documentation generated file filenames;
-const jsonContent = require('../jade-data--content'); // Short Documentation component content (JSON object);
-const util = require('../util'); // Short Documentation utility functions;
-const getNavObject = require('./html--nav.js');
-const nav = getNavObject();
-const docsDestination = 'dist/docs';
 
 module.exports = () => {
   getReadmeData('src/components').map((component) => {
@@ -51,10 +50,10 @@ function getReadmeData (folderToParse) {
       // only process this file if it is a readme.md file;
       // not all folders will have readme.md;
       if (currentFile.toLowerCase() === 'readme.md') {
-        const contents = fs.readFileSync(currentFolder + '/' + currentFile, 'utf-8'); // if not UTF-8, then a stream is returned;
+        const contents = fs.readFileSync(currentFolder + '/' + currentFile, 'utf-8');
         const fmContents = fm(contents); // separate the YAML from the Markdown;
 
-        // return a folder object (fit for both components and templates);
+        // return a folder object;
         folderData.push({
           folder: currentFolder.split('/').pop(),
           markdown: fmContents.body,
