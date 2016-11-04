@@ -182,6 +182,8 @@ Configuration file for Stylelint. Linting is not part of the NPM build. Configur
 
 > EditorConfig helps developers define and maintain consistent coding styles between different editors and IDEs. The EditorConfig project consists of a file format for defining coding styles and a collection of text editor plugins that enable editors to read the file format and adhere to defined styles. EditorConfig files are easily readable and they work nicely with version control systems.
 
+Configuration file for EditorConfig.
+
 &nbsp;
 &nbsp;
 
@@ -204,7 +206,7 @@ Compressing images is not part of the build process. Compress `/src/images` with
 * [ImageAlpha](https://pngmini.com/)
 * [JPEGmini](http://www.jpegmini.com/)
 
-To use, navigate to the `/src/images` directory and run the following:
+To use, navigate to the `images` directory and run the following:
 
 ```bash
 imageoptim -j -a -d ./
