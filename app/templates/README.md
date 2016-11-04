@@ -34,7 +34,7 @@ This build tool makes use of the `scripts` property of `package.json`. The comma
 
 ```bash
 npm install -g typescript # install global dependencies
-npm install               # install local dependencies (and typings)
+npm install               # install local dependencies (and types)
 ```
 
 &nbsp;
