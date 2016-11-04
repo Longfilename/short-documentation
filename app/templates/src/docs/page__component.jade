@@ -20,17 +20,25 @@ mixin renderCode (view)
           |  JSON
       - }
     
-      - if (view.js) {
+      - view.ts && view.ts.map((ts) => {
         a.tabs__nav-link
           i.fa.fa-bolt
-          |  TypeScript
-      - }
+          - if (view.ts.length > 1) {
+            |  #{ ts }
+          - } else {
+            |  TypeScript
+          - }
+      - })
     
-      - if (view.scss) {
+      - view.scss && view.scss.map((scss) => {
         a.tabs__nav-link
           i.fa.fa-css3
-          |  SCSS
-      - }
+          - if (view.scss.length > 1) {
+            |  #{ scss }
+          - } else {
+            |  SCSS
+          - }
+      - })
     
     div.tabs__content
       - if (view.htmlContent) {
@@ -45,17 +53,17 @@ mixin renderCode (view)
             code.language-json!=view.jsonContent
       - }
     
-      - if (view.js) {
+      - view.ts && view.ts.map((ts, index) => {
         div.tabs__content-tab
           pre.language-typescript
-            code.language-typescript!=view.jsContent
-      - }
+            code.language-typescript!=view.tsContent[index]
+      - })
     
-      - if (view.scss) {
+      - view.scss && view.scss.map((scss, index) => {
         div.tabs__content-tab
           pre.language-scss
-            code.language-scss!=view.scssContent
-      - }
+            code.language-scss!=view.scssContent[index]
+      - })
 
 doctype html
 html(lang="en")
