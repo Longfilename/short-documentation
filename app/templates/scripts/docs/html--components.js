@@ -108,9 +108,13 @@ function createComponentPage (component) {
     }
 
     if (component.yaml.scss) {
-      view.scss = component.yaml.scss;
-      view.scssContent = fs.readFileSync(`src/components/${ component.folder }/${ component.yaml.scss }`, 'utf-8');
-      view.scssContent = Prism.highlight(view.scssContent, Prism.languages.scss);
+      view.scss = component.yaml.scss.trim().split(' ');
+      view.scssContent = [];
+      view.scss.map((scss, i) => {
+        const fileContents = fs.readFileSync(`src/components/${ component.folder }/${ scss }`, 'utf-8');
+
+        view.scssContent.push(Prism.highlight(fileContents, Prism.languages.scss));
+      });
     }
   });
 

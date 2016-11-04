@@ -30,11 +30,15 @@ mixin renderCode (view)
           - }
       - })
     
-      - if (view.scss) {
+      - view.scss && view.scss.map((scss) => {
         a.tabs__nav-link
           i.fa.fa-css3
-          |  SCSS
-      - }
+          - if (view.scss.length > 1) {
+            |  #{ scss }
+          - } else {
+            |  SCSS
+          - }
+      - })
     
     div.tabs__content
       - if (view.htmlContent) {
@@ -55,11 +59,11 @@ mixin renderCode (view)
             code.language-typescript!=view.jsContent[index]
       - })
     
-      - if (view.scss) {
+      - view.scss && view.scss.map((scss, index) => {
         div.tabs__content-tab
           pre.language-scss
-            code.language-scss!=view.scssContent
-      - }
+            code.language-scss!=view.scssContent[index]
+      - })
 
 doctype html
 html(lang="en")
