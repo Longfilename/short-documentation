@@ -1,8 +1,9 @@
 ---
 nav: <%= name %>
 jade: <%= name %>.jade
-<% if (size) { %>size: <%= size %><% } %>
+scss: <%= name %>.scss
 <% if (js) { %>ts: <%= name %>.ts<% } %>
+<% if (size) { %>size: <%= size %><% } %>
 views:
   - title: <%= name %>
     json: _<%= name %>.json
