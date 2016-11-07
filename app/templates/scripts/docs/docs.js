@@ -1,9 +1,9 @@
-const scssRender = require('./scss.js');
-const tsRender = require('./ts.js');
-const htmlRender = require('./html.js');
+const scss = require('./scss.js');
+const ts = require('./ts.js');
+const html = require('./html.js');
 
 module.exports = {
-  scss: scssRender,
-  ts: tsRender,
-  html: htmlRender
+  scss: scss,
+  ts: ts,
+  html: html
 }

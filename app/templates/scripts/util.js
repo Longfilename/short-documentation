@@ -1,6 +1,7 @@
 module.exports = {
   makeFolders: makeFolders,
-  scss: scss
+  scss: scss,
+  ts: ts
 };
 
 // take an array (representing a path) and create the folders;
@@ -45,9 +46,6 @@ function scss (scssInput, scssOutput) {
   const autoprefixer = require('autoprefixer'); // defines which vendor prefixes to use;
   const fs = require('fs'); // write to the file system;
 
-  // define the supported browsers for CSS rendering;
-  const supportedBrowsers = ['> 5% in US', 'ie >= 9']
-
   // output directory (used to create the folder structure);
   const destinationFolder = scssOutput.split('/');
 
@@ -72,7 +70,7 @@ function scss (scssInput, scssOutput) {
     } else {
       // run compiled SCSS through a prefixer for browser support;
       postcss([autoprefixer({
-          browsers: supportedBrowsers,
+          browsers: ['> 5% in US', 'ie >= 9'],
           cascade: false
         })])
         .process(result.css.toString())
@@ -90,4 +88,37 @@ function scss (scssInput, scssOutput) {
         });
     }
   });
+}
+
+// doc and site JS rendering;
+function ts (tsInput, tsOutput) {
+  const colors = require('colors'); // pretty console output;
+  const browserify = require('browserify'); // allow require() statements in JS;
+  const tsify = require('tsify'); // convert TS into ES5;
+  const fs = require('fs'); // write to the file system;
+  const destinationFolder = tsOutput.split('/'); // output directory (used to create the folder structure);
+
+  // remove the last item in the path array (the filename);
+  // we don't want a folder named 'docs.js';
+  destinationFolder.pop();
+
+  // create the destination folders;
+  // so FS doesn't error when writing the generated JS file;
+  makeFolders(destinationFolder);
+
+  // compile TypeScript into JavaScript;
+  browserify()
+    .add(tsInput)
+    .plugin('tsify')
+    .transform('babelify', {
+        presets: [
+          'es2015'
+        ]
+    })
+    .transform({ global: true }, 'uglifyify')
+    .bundle()
+    .pipe(fs.createWriteStream(tsOutput));
+
+  // tell the world what you just did;
+  console.log(tsOutput.green, 'file was created from', tsInput.green);
 }
