@@ -131,8 +131,6 @@ function watch (config) {
   Object.getOwnPropertyNames(config).forEach((val, idx, array) => {
     const watchObj = config[val];
 
-    console.log(watchObj);
-
     // start the watcher, one watcher per property (html, scss, js, images);
     chokidar
       .watch(watchObj.path, { persistent: true })
