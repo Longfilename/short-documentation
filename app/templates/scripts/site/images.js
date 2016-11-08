@@ -1,5 +1,6 @@
 const colors = require('colors'); // pretty console output;
 const file = require('file'); // traverse the file system;
+const ncp = require('ncp').ncp; // recursive file copy;
 const copy = require('./copy');
 const util = require('../_util'); // Short Documentation shared functions;
 
@@ -21,6 +22,12 @@ function parseFolder (currentFolder, dirs, files) {
     util.makeFolders(distFolder.split('/'));
 
     // copy the component images to the dist folder;
-    copy(srcFolder, distFolder);
+    ncp(srcFolder, distFolder, (err) => {
+      if (err) {
+        return console.error(err);
+      }
+
+      console.log(srcFolder.green, 'images were copied to', distFolder.green);
+    });
   }
 }
