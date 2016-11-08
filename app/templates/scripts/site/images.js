@@ -1,11 +1,17 @@
 const colors = require('colors'); // pretty console output;
 const file = require('file'); // traverse the file system;
-const copy = require('./copy');
-const util = require('./util');
+const ncp = require('ncp').ncp; // recursive file copy;
+const util = require('../_util'); // Short Documentation shared functions;
 
-module.exports = function () {
+module.exports = () => {
   file.walkSync('src/components', parseFolder);
 };
+
+
+
+//
+
+
 
 function parseFolder (currentFolder, dirs, files) {
   const folderArray = currentFolder.split('/');
@@ -21,6 +27,12 @@ function parseFolder (currentFolder, dirs, files) {
     util.makeFolders(distFolder.split('/'));
 
     // copy the component images to the dist folder;
-    copy(srcFolder, distFolder);
+    ncp(srcFolder, distFolder, (err) => {
+      if (err) {
+        return console.error(err);
+      }
+
+      console.log(srcFolder.green, 'images were copied to', distFolder.green);
+    });
   }
 }

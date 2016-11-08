@@ -2,12 +2,12 @@ const colors = require('colors'); // pretty console output;
 const file = require('file'); // traverse the file system;
 const fs = require('fs'); // write to the file system;
 const jade = require('jade'); // convert Jade into HTML;
-const util = require('./util');
+const util = require('../_util'); // Short Documentation shared functions;
 const jsonContent = require('./jade-data--content'); // component content (stored as a JSON object);
 const jadeSource = 'src/templates'; // Jade files to compile;
 const htmlDestination = 'dist/html'; // where the compiled Jade will be saved;
 
-module.exports = function () {
+module.exports = () => {
   // create the destination folders (they might not exist yet);
   util.makeFolders(htmlDestination.split('/'));
 
