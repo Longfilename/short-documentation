@@ -2,7 +2,7 @@ const scss = require('./scss');
 const ts = require('./ts');
 const images = require('./images');
 const html = require('./html');
-const util = require('./util');
+const util = require('../_util'); // Short Documentation shared functions;
 
 const watchConfig = {
   images: {

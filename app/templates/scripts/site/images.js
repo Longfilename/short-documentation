@@ -1,7 +1,7 @@
 const colors = require('colors'); // pretty console output;
 const file = require('file'); // traverse the file system;
 const copy = require('./copy');
-const util = require('./util');
+const util = require('../_util'); // Short Documentation shared functions;
 
 module.exports = function () {
   file.walkSync('src/components', parseFolder);
