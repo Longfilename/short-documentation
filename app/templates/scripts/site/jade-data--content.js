@@ -45,7 +45,7 @@ function parseFolder (folder, dirs, files) {
       // define the property value (the contents of the JSON file);
       // relative to this file;
       // this path isn’t being saved, the contents of the file are;
-      const path = '../' + folder + '/' + folderFile;
+      const path = '../../' + folder + '/' + folderFile;
 
       // save the new property in the JSON object so we reference it with Jade;
       data[key] = requireUncached(path);

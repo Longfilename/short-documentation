@@ -69,6 +69,9 @@ module.exports = yeoman.Base.extend({
   copyComponentFavicon: function () {
     this.directory('src/components/favicons', 'src/components/favicons');
   },
+  copyComponentGrid: function () {
+    this.directory('src/components/grid', 'src/components/grid');
+  },
   copyTemplateFiles: function () {
     // loop through each template in the JSON and build a folder for it;
     for (let template in config.templates) {
@@ -96,10 +99,8 @@ module.exports = yeoman.Base.extend({
     this.copy('src/scss/_mixins__reset--base.scss', 'src/scss/_mixins__reset--base.scss');
     this.copy('src/scss/_mixins__reset--forms.scss', 'src/scss/_mixins__reset--forms.scss');
     this.copy('src/scss/_mixins.scss', 'src/scss/_mixins.scss');
-    this.copy('src/scss/_variables--bootstrap.scss', 'src/scss/_variables--bootstrap.scss');
     this.copy('src/scss/_variables--colors.scss', 'src/scss/_variables--colors.scss');
     this.copy('src/scss/_variables--fonts.scss', 'src/scss/_variables--fonts.scss');
-    this.copy('src/scss/_variables--grid.scss', 'src/scss/_variables--grid.scss');
     this.copy('src/scss/_variables.scss', 'src/scss/_variables.scss');
     this.template('src/scss/site.scss', 'src/scss/site.scss', { components: scssIncludes });
   },

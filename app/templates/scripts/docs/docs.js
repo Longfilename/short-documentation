@@ -1,11 +1,13 @@
-const scssRender = require('./scss.js');
-const tsRender = require('./ts.js');
-const htmlRender = require('./html.js');
+// import all documentation build scripts;
+const scss = require('./scss.js');
+const ts = require('./ts.js');
+const html = require('./html.js');
+const watch = require('./watch');
 
+// export them to be run from ../start.js;
 module.exports = {
-  scss: () => {
-    scssRender('src/docs/scss/docs.scss', 'dist/docs/docs.css', ['> 5% in US', 'ie >= 9']);
-  },
-  ts: tsRender,
-  html: htmlRender
-}
+  scss: scss,
+  ts: ts,
+  html: html,
+  watch: watch
+};
