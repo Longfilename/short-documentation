@@ -1,3 +1,6 @@
+// cf. https://github.com/jonschlinkert/pretty
+// customized version of this plugin (don't want spaces around comments);
+
 const beautify = require('js-beautify');
 
 module.exports = function pretty(str, options) {
