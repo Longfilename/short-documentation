@@ -1,4 +1,5 @@
 const colors = require('colors'); // pretty console output;
+const fs = require('fs'); // write to the file system;
 
 module.exports = {
   makeFolders: makeFolders,
@@ -9,8 +10,6 @@ module.exports = {
 
 // take an array (representing a path) and create the folders;
 function makeFolders (pathArray) {
-  const fs = require('fs'); // write to the file system;
-  const colors = require('colors'); // pretty console output;
   const mkdirp = require('mkdirp'); // create folders;
 
   if (pathArray.length) {
@@ -46,10 +45,7 @@ function scss (scssInput, scssOutput) {
   const sass = require('node-sass'); // render CSS from SCSS;
   const postcss = require('postcss'); // convert valid CSS into vendor prefixed CSS;
   const autoprefixer = require('autoprefixer'); // defines which vendor prefixes to use;
-  const fs = require('fs'); // write to the file system;
-
-  // output directory (used to create the folder structure);
-  const destinationFolder = scssOutput.split('/');
+  const destinationFolder = scssOutput.split('/'); // output directory (used to create the folder structure);
 
   // remove the last item in the path array (the filename);
   // we don't want a folder named 'site.css';
@@ -96,7 +92,6 @@ function scss (scssInput, scssOutput) {
 function ts (tsInput, tsOutput) {
   const browserify = require('browserify'); // allow require() statements in JS;
   const tsify = require('tsify'); // convert TS into ES5;
-  const fs = require('fs'); // write to the file system;
   const destinationFolder = tsOutput.split('/'); // output directory (used to create the folder structure);
 
   // remove the last item in the path array (the filename);
