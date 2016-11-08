@@ -12,14 +12,17 @@ site.ts();
 site.images();
 site.html();
 
-// if (startDocs) {
-//   docs.scss();
-//   docs.ts();
-//   docs.html();
-// }
-
 if (startServer) {
   site.server();
   site.watch();
-  // docs.watch();
+}
+
+if (startDocs) {
+  docs.scss();
+  docs.ts();
+  docs.html();
+
+  if (startServer) {
+    docs.watch();
+  }
 }
