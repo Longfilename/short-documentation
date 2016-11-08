@@ -1,7 +1,10 @@
+const colors = require('colors'); // pretty console output;
+
 module.exports = {
   makeFolders: makeFolders,
   scss: scss,
-  ts: ts
+  ts: ts,
+  watch: watch
 };
 
 // take an array (representing a path) and create the folders;
@@ -40,7 +43,6 @@ function makeFolders (pathArray) {
 
 // doc and site SCSS rendering;
 function scss (scssInput, scssOutput) {
-  const colors = require('colors'); // pretty console output;
   const sass = require('node-sass'); // render CSS from SCSS;
   const postcss = require('postcss'); // convert valid CSS into vendor prefixed CSS;
   const autoprefixer = require('autoprefixer'); // defines which vendor prefixes to use;
@@ -92,7 +94,6 @@ function scss (scssInput, scssOutput) {
 
 // doc and site JS rendering;
 function ts (tsInput, tsOutput) {
-  const colors = require('colors'); // pretty console output;
   const browserify = require('browserify'); // allow require() statements in JS;
   const tsify = require('tsify'); // convert TS into ES5;
   const fs = require('fs'); // write to the file system;
@@ -121,4 +122,32 @@ function ts (tsInput, tsOutput) {
 
   // tell the world what you just did;
   console.log(tsOutput.green, 'file was created from', tsInput.green);
+}
+
+function watch (config) {
+  const chokidar = require('chokidar'); // watches for file changes;
+
+  // configure watcher for each entry in the config;
+  Object.getOwnPropertyNames(config).forEach((val, idx, array) => {
+    const watchObj = config[val];
+
+    console.log(watchObj);
+
+    // start the watcher, one watcher per property (html, scss, js, images);
+    chokidar
+      .watch(watchObj.path, { persistent: true })
+      .on('change', (path, stats) => {
+        // on change, find out what file was changed;
+        const filename = path.split('/').slice(-1).toString();
+
+        // report on the changed file;
+        console.log(filename.blue, 'changed, rebuilding.');
+
+        // run the rebuilding command;
+        watchObj.command();
+      });
+
+    // tell the world what is going on;
+    console.log(val.blue, 'watcher has been started.');
+  });
 }
