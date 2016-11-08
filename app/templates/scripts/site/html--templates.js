@@ -7,7 +7,7 @@ const jsonContent = require('./jade-data--content'); // component content (store
 const jadeSource = 'src/templates'; // Jade files to compile;
 const htmlDestination = 'dist/html'; // where the compiled Jade will be saved;
 
-module.exports = function () {
+module.exports = () => {
   // create the destination folders (they might not exist yet);
   util.makeFolders(htmlDestination.split('/'));
 

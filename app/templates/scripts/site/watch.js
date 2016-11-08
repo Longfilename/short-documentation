@@ -23,6 +23,6 @@ const watchConfig = {
   }
 };
 
-module.exports = function () {
+module.exports = () => {
   util.watch(watchConfig);
 };

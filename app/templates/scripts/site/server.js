@@ -5,7 +5,7 @@ const server = express(); // start the server;
 const port = 8080;
 const distPath = 'dist/';
 
-module.exports = function () {
+module.exports = () => {
   server.use(express.static('dist')); // serve the static files from the dist folder;
 
   server.listen(port);

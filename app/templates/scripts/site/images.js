@@ -3,7 +3,7 @@ const file = require('file'); // traverse the file system;
 const copy = require('./copy');
 const util = require('../_util'); // Short Documentation shared functions;
 
-module.exports = function () {
+module.exports = () => {
   file.walkSync('src/components', parseFolder);
 };
 
