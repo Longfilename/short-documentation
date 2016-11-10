@@ -37,7 +37,7 @@ jQuery(($: JQueryStatic) => {
 
         $target.one('transitionend.resizer', () => {
           setTimeout(() => {
-            $iframe.trigger('resize.view');
+            $iframe.trigger('resize.view-component');
           }, 750);
         });
 
