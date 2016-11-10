@@ -22,6 +22,8 @@ jQuery(($: JQueryStatic) => {
     $button.on(click, (e: Event) => {
       e.preventDefault();
 
+      window.scrollTo(0, 0);
+
       $iframe.prop('src', $button.attr('href'));
       $resizer.addClass(visibleClass);
       $html.addClass(openClass);
