@@ -3,7 +3,7 @@ mixin renderView (path)
     div.view-component__loading
       p.view-component__loading-text loading
     div.view-component__loaded
-      iframe.view-component__iframe(data-src=path)
+      iframe.view-component__iframe(data-src=path, scrolling="no")
 
 mixin renderCode (view)
   div.tabs
