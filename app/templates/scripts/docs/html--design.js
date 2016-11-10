@@ -32,7 +32,7 @@ function createDesignPage (page) {
     pretty: true,
     nav: nav,
     title: 'src/scss/' + page.scss,
-    scssVariables: scssToJson('src/scss/' + page.scss)
+    scssVariables: page.scss ? scssToJson('src/scss/' + page.scss) : {}
   });
 
   // build the design page;
