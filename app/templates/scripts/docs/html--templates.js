@@ -81,7 +81,7 @@ function createTemplatePage (template) {
   // there can be multiple pages for a template;
   // get the source HTML for each to display in the tabs;
   template.yaml.pages.map((page) => {
-    const renderedHTML = fs.readFileSync(page, 'utf-8');
+    const renderedHTML = fs.readFileSync(`dist/${ page.url }`, 'utf-8');
     const prettyHTML = Prism.highlight(renderedHTML, Prism.languages.html);
 
     // record the pretty HTML;
