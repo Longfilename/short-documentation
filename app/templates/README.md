@@ -1,8 +1,10 @@
-# Short Documentation
+# <%= projectName %>
 
 * Jade¹
 * TypeScript
 * SCSS
+
+Built with [Short Documentation](https://github.com/Longfilename/short-documentation)
 
 This build tool makes use of the `scripts` property of `package.json`. The commands to execute are running external JavaScript files (stored in the `/scripts` folder). This way `package.json` won’t grow excessively large with the commands to build your project.
 
@@ -60,7 +62,7 @@ The YAML and Markdown are separated by Node. The YAML is used to configure the d
 
 &nbsp;
 
-#### Component `readme.md`
+#### Component `README.md`
 
 ```markdown
 ---
@@ -101,7 +103,7 @@ views:                                  # list of component views to display (mu
 
 &nbsp;
 
-#### Template `readme.md`
+#### Template `README.md`
 
 ```markdown
 ---
