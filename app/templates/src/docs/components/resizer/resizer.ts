@@ -1,4 +1,4 @@
-import * as debounce from 'lodash/debounce';
+import debounce = require('lodash/debounce');
 
 jQuery(($: JQueryStatic) => {
   $('.resizer').each((index: number, resizer: Element) => {
