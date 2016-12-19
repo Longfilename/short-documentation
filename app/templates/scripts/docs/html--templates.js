@@ -81,7 +81,9 @@ function createTemplatePage (template) {
   // there can be multiple pages for a template;
   // get the source HTML for each to display in the tabs;
   template.yaml.pages.map((page) => {
-    const renderedHTML = fs.readFileSync(`dist/${ page.url }`, 'utf-8');
+    // in case the preview URL has a querystring, strip it out during generation (it'll still be present in the link);
+    const url = page.url.split('?')[0];
+    const renderedHTML = fs.readFileSync(`dist/${ url }`, 'utf-8');
     const prettyHTML = Prism.highlight(renderedHTML, Prism.languages.html);
 
     // record the pretty HTML;
