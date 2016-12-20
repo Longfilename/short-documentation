@@ -8,11 +8,13 @@ const scssToJson = require('scss-to-json'); // convert SCSS vars into JSON conte
 const Prism = require('prismjs'); // syntax highlighter;
 const pretty = require('../_pretty'); // beautify the HTML;
 const filenames = require('./html--filenames.js'); // documentation generated file filenames;
-const jsonContent = require('../site/jade-data--content'); // Short Documentation component content (JSON object);
+const getJsonContent = require('../site/jade-data--content'); // Short Documentation component content (JSON object);
 const util = require('../_util'); // Short Documentation shared functions;
 const getNavObject = require('./html--nav.js'); // returns Short Documentation navigation object;
 const nav = getNavObject(); // get Short Documentation nav object;
 const docsDestination = 'dist/docs'; // destination for docs;
+
+let jsonContent = [];
 
 // syntax highlighter languages;
 require('prismjs/components/prism-typescript.js');
@@ -20,6 +22,8 @@ require('prismjs/components/prism-scss.js');
 require('prismjs/components/prism-json.js');
 
 module.exports = () => {
+  jsonContent = getJsonContent();
+
   getReadmeData('src/components').map((component) => {
     createComponentPage(component);
   });

@@ -12,7 +12,7 @@ const jsonFolders = [
 const data = {};
 
 // export the JSON data for Jade to use;
-module.exports = getData();
+module.exports = getData;
 
 
 
