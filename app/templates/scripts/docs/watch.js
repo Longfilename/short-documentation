@@ -16,7 +16,7 @@ module.exports = () => {
       command: ts
     },
     html: {
-      path: ['src/**/*.jade', 'src/**/*.json', 'src/**/README.md'],
+      path: ['src/**/*.pug', 'src/**/*.json', 'src/**/README.md'],
       command: html
     }
   });

@@ -7,11 +7,11 @@ const jsonFolders = [
 ];
 
 // this module gets all JSON files in the modules and pages folders;
-// these are used to populate module content inside Jade files;
+// these are used to populate module content inside Pug files;
 // create an object to return;
 const data = {};
 
-// export the JSON data for Jade to use;
+// export the JSON data for Pug to use;
 module.exports = getData;
 
 
@@ -28,7 +28,7 @@ function getData () {
   });
 
   // once all the JSON files have been parsed;
-  // return the JSON data so we can use it in Jade processing;
+  // return the JSON data so we can use it in Pug processing;
   return data;
 }
 
@@ -47,7 +47,7 @@ function parseFolder (folder, dirs, files) {
       // this path isn’t being saved, the contents of the file are;
       const path = '../../' + folder + '/' + folderFile;
 
-      // save the new property in the JSON object so we reference it with Jade;
+      // save the new property in the JSON object so we reference it with Pug;
       data[key] = requireUncached(path);
     }
   });
@@ -59,7 +59,7 @@ function removeFolders (path) {
   let newPath = path;
 
   // loop through the starting locations and remove those parts from the recorded path;
-  // this way in Jade you don’t repeat yourself;
+  // this way in Pug you don’t repeat yourself;
   // reference the JSON content as 'my/component/content.json' instead of 'src/components/my/component/component.json';
   jsonFolders.map((folder) => {
     newPath = newPath.replace(folder, '');

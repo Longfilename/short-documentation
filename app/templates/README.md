@@ -1,6 +1,6 @@
 # <%= projectName %>
 
-* Jade¹
+* Pug
 * TypeScript
 * SCSS
 
@@ -69,7 +69,7 @@ The YAML and Markdown are separated by Node. The YAML is used to configure the d
 nav: Primary Navigation
 icons: bars bolt
 size: 100%
-jade: nav-primary.jade
+pug: nav-primary.pug
 ts: nav-primary.ts
 views:
   - title: Primary Navigation (Home page)
@@ -94,7 +94,7 @@ Credibly reintermediate backend ideas for cross-platform models. Continually rei
 nav: Component Title                    # used in the documentation navigation;
 icons: bars bolt                        # optional. space-delimited list of FontAwesome icons to add in the documentation navigation;
 size: 350px                             # optional, default is 100%; CSS width value to apply to the container around the component;
-jade: component.jade                    # filename of the component Jade file;
+pug: component.pug                      # filename of the component Pug file;
 ts: component.ts                        # optional. filename of the component TypeScript file;
 views:                                  # list of component views to display (multiple are allowed);
   - title: Component Title (variant)    # title of this view;
@@ -195,7 +195,7 @@ Configuration file for EditorConfig.
 
 > BEM (Block Element Modifier) is a highly useful, powerful and simple naming convention to make your front-end code easier to read and understand, easier to work with, easier to scale, more robust and explicit and a lot more strict.
 
-The HTML and SCSS are built with the BEM methodology. This allows for very flexible components that can be nested and won’t conflict with other components (or 3rd party modules). Jade mixins have been added to the project that allow the dev to apply a CSS reset to each BEM component, as opposed to applying a CSS reset to the site. **BEM modules should not rely upon global styles.**
+The HTML and SCSS are built with the BEM methodology. This allows for very flexible components that can be nested and won’t conflict with other components (or 3rd party modules). Pug mixins have been added to the project that allow the dev to apply a CSS reset to each BEM component, as opposed to applying a CSS reset to the site. **BEM modules should not rely upon global styles.**
 
 &nbsp;
 &nbsp;
@@ -213,16 +213,3 @@ To use, navigate to the `images` directory and run the following:
 ```bash
 imageoptim -j -a -d ./
 ```
-
-&nbsp;
-&nbsp;
-
-&nbsp;
-&nbsp;
-
-&nbsp;
-&nbsp;
-
----
-
-¹ [Jade](https://github.com/jadejs/jade) is still in use because [Pug](https://github.com/pugjs/pug) is still in beta.

@@ -6,7 +6,7 @@ const filenames = require('./html--filenames.js'); // Short Documentation utilit
 const getDesignPages = require('./html--nav-design.js'); // Short Documentation design navigation;
 
 module.exports = () => {
-  // navigation object to be used in Jade file creation;
+  // navigation object to be used in Pug file creation;
   const nav = {
     design: getDesignPages,
     templates: [],

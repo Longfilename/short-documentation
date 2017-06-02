@@ -21,7 +21,7 @@ module.exports = () => {
       command: ts
     },
     html: {
-      path: ['src/components/**/*.jade', 'src/templates/**/*.jade', 'src/components/**/*.json'],
+      path: ['src/components/**/*.pug', 'src/templates/**/*.pug', 'src/components/**/*.json'],
       command: html
     }
   });

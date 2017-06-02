@@ -2,7 +2,7 @@ const colors = require('colors'); // pretty console output;
 const file = require('file'); // traverse the file system;
 const fs = require('fs'); // write to the file system;
 const fm = require('front-matter'); // read YAML at the beginning of Markdown files;
-const jade = require('jade'); // convert Jade into HTML;
+const pug = require('pug'); // convert Pug into HTML;
 const MarkdownIt = require('markdown-it'); // convert Markdown into HTML;
 const scssToJson = require('scss-to-json'); // convert SCSS vars into JSON content;
 const Prism = require('prismjs'); // syntax highlighter;
@@ -64,12 +64,12 @@ function getReadmeData (folderToParse) {
 
 // create the documentation template pages;
 function createTemplatePage (template) {
-  const jadeFilepath = 'src/docs/page__template.jade';
+  const pugFilepath = 'src/docs/page__template.pug';
   const htmlFilename = filenames.templatePageName(template.folder);
   const htmlFilepath = docsDestination + '/' + htmlFilename;
   const markdownIt = new MarkdownIt();
   const renderedMarkdown = markdownIt.render(template.markdown);
-  const jadeConfig = {
+  const pugConfig = {
     pretty: true,
     folder: template.folder,
     pages: template.yaml.pages,
@@ -87,12 +87,12 @@ function createTemplatePage (template) {
     const prettyHTML = Prism.highlight(renderedHTML, Prism.languages.html);
 
     // record the pretty HTML;
-    jadeConfig.renderedHTML.push(prettyHTML);
+    pugConfig.renderedHTML.push(prettyHTML);
   });
 
   // build the template page;
-  fs.writeFile(htmlFilepath, jade.renderFile(jadeFilepath, jadeConfig));
+  fs.writeFile(htmlFilepath, pug.renderFile(pugFilepath, pugConfig));
 
   // tell the world what we did;
-  console.log(htmlFilepath.green, 'page was created from', jadeFilepath.green);
+  console.log(htmlFilepath.green, 'page was created from', pugFilepath.green);
 }

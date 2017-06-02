@@ -1,7 +1,7 @@
 const colors = require('colors'); // pretty console output;
 const file = require('file'); // traverse the file system;
 const fs = require('fs'); // write to the file system;
-const jade = require('jade'); // convert Jade into HTML;
+const pug = require('pug'); // convert Pug into HTML;
 const scssToJson = require('scss-to-json'); // convert SCSS vars into JSON content;
 const getDesignPages = require('./html--nav-design.js'); // Short Documentation design navigation;
 const getNavObject = require('./html--nav.js'); // returns Short Documentation navigation object;
@@ -25,10 +25,10 @@ module.exports = () => {
 
 // create the documentation design pages;
 function createDesignPage (page) {
-  const jadeFilepath = page.jade;
+  const pugFilepath = page.pug;
   const htmlFilename = page.url;
   const htmlFilepath = docsDestination + '/' + htmlFilename;
-  const renderedHTML = jade.renderFile(jadeFilepath, {
+  const renderedHTML = pug.renderFile(pugFilepath, {
     pretty: true,
     nav: nav,
     title: 'src/scss/' + page.scss,
@@ -39,5 +39,5 @@ function createDesignPage (page) {
   fs.writeFile(htmlFilepath, renderedHTML);
 
   // tell the world what we did;
-  console.log(htmlFilepath.green, 'page was created from', jadeFilepath.green);
+  console.log(htmlFilepath.green, 'page was created from', pugFilepath.green);
 }

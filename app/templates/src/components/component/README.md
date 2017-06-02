@@ -1,6 +1,6 @@
 ---
 nav: <%= name %>
-jade: <%= name %>.jade
+pug: <%= name %>.pug
 scss: <%= name %>.scss
 <% if (js) { %>ts: <%= name %>.ts<% } %>
 <% if (size) { %>size: <%= size %><% } %>

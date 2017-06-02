@@ -2,13 +2,13 @@ module.exports = [
   {
     text: 'Colors',
     url: 'index.html',
-    jade: 'src/docs/page__design--colors.jade',
+    pug: 'src/docs/page__design--colors.pug',
     scss: '_variables--colors.scss'
   },
   {
     text: 'Fonts',
     url: 'design--fonts.html',
-    jade: 'src/docs/page__design--fonts.jade',
+    pug: 'src/docs/page__design--fonts.pug',
     scss: '_variables--fonts.scss'
   }
 ]

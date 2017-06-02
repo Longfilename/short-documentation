@@ -2,13 +2,13 @@ const colors = require('colors'); // pretty console output;
 const file = require('file'); // traverse the file system;
 const fs = require('fs'); // write to the file system;
 const fm = require('front-matter'); // read YAML at the beginning of Markdown files;
-const jade = require('jade'); // convert Jade into HTML;
+const pug = require('pug'); // convert Pug into HTML;
 const MarkdownIt = require('markdown-it'); // convert Markdown into HTML;
 const scssToJson = require('scss-to-json'); // convert SCSS vars into JSON content;
 const Prism = require('prismjs'); // syntax highlighter;
 const pretty = require('../_pretty'); // beautify the HTML;
 const filenames = require('./html--filenames.js'); // documentation generated file filenames;
-const getJsonContent = require('../site/jade-data--content'); // Short Documentation component content (JSON object);
+const getJsonContent = require('../site/pug-data--content'); // Short Documentation component content (JSON object);
 const util = require('../_util'); // Short Documentation shared functions;
 const getNavObject = require('./html--nav.js'); // returns Short Documentation navigation object;
 const nav = getNavObject(); // get Short Documentation nav object;
@@ -69,12 +69,12 @@ function getReadmeData (folderToParse) {
 }
 
 function createComponentPage (component) {
-  const jadeFilepath = 'src/docs/page__component.jade';
+  const pugFilepath = 'src/docs/page__component.pug';
   const htmlFilename = filenames.componentPageName(component.folder);
   const htmlFilepath = docsDestination + '/' + htmlFilename;
   const markdownIt = new MarkdownIt();
   const renderedMarkdown = markdownIt.render(component.markdown);
-  const jadeConfig = {
+  const pugConfig = {
     pretty: true,
     nav: nav,
     markdown: renderedMarkdown,
@@ -87,9 +87,9 @@ function createComponentPage (component) {
   // before we build the component HTML pages (doc and IFRAME pages);
   // need to get the file contents of the HTML/JSON/TS/SCSS to display in the tabs for each view;
   // per view becuase the HTML/JSON is different per view;
-  jadeConfig.views.map((view, index) => {
+  pugConfig.views.map((view, index) => {
     // build the HTML to insert into the IFRAME;
-    let htmlToInsert = getViewHTML(component.yaml.jade, component.folder, view);
+    let htmlToInsert = getViewHTML(component.yaml.pug, component.folder, view);
 
     // do we need to add CSS to the IFRAME page?
     // this is used for components that have a default margin that isn't appropriate when display solo in the docs;
@@ -142,19 +142,19 @@ function createComponentPage (component) {
   });
 
   // build the component page HTML;
-  const renderedHTML = jade.renderFile(jadeFilepath, jadeConfig);
+  const renderedHTML = pug.renderFile(pugFilepath, pugConfig);
 
   // create the component page;
   fs.writeFile(htmlFilepath, renderedHTML);
 
   // tell the world what you just did;
-  console.log(`${ htmlFilepath.green } was created from ${ jadeFilepath.green }`);
+  console.log(`${ htmlFilepath.green } was created from ${ pugFilepath.green }`);
 }
 
 // build the HTML to insert into the IFRAME (for a view of a component);
-function getViewHTML (jadeSource, folder, view) {
-  const jadeFilepath = `src/components/${ folder }/${ jadeSource }`;
-  const htmlToInsert = jade.renderFile(jadeFilepath, {
+function getViewHTML (pugSource, folder, view) {
+  const pugFilepath = `src/components/${ folder }/${ pugSource }`;
+  const htmlToInsert = pug.renderFile(pugFilepath, {
     pretty: true,
     component: jsonContent[`${ folder }/${ view.json }`] || {},
     json: jsonContent
@@ -166,8 +166,8 @@ function getViewHTML (jadeSource, folder, view) {
 // build the IFRAME page (for a view of a component);
 function createComponentIframe (htmlToInsert, folder, view, index) {
   const htmlFilepath = `${ docsDestination }/iframe__${ folder }--${ index }.html`;
-  const jadeFilepath = 'src/docs/iframe__component.jade';
-  const renderedHTML = jade.renderFile(jadeFilepath, {
+  const pugFilepath = 'src/docs/iframe__component.pug';
+  const renderedHTML = pug.renderFile(pugFilepath, {
     pretty: true,
     title: view.title,
     wrapper_before: view.wrapper_before,
@@ -180,5 +180,5 @@ function createComponentIframe (htmlToInsert, folder, view, index) {
   fs.writeFile(htmlFilepath, renderedHTML);
 
   // tell the world what you just did;
-  console.log(`${ htmlFilepath.green } was created from ${ jadeFilepath.green }`);
+  console.log(`${ htmlFilepath.green } was created from ${ pugFilepath.green }`);
 }

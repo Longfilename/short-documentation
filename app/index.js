@@ -53,9 +53,9 @@ module.exports = yeoman.Base.extend({
       scssIncludes = `${ scssIncludes }@import '../components/${ content.name }/${ content.name }';${ os.EOL }`;
 
       // create these files for each component in our new site;
-      // assume every component needs a Jade and SCSS file;
+      // assume every component needs a Pug and SCSS file;
       this.template('src/components/component/_component.json', `${ path }/_${ content.name }.json`, content);
-      this.template('src/components/component/component.jade', `${ path }/${ content.name }.jade`, content);
+      this.template('src/components/component/component.pug', `${ path }/${ content.name }.pug`, content);
       this.template('src/components/component/component.scss', `${ path }/${ content.name }.scss`, content);
       this.template('src/components/component/README.md', `${ path }/README.md`, content);
 
@@ -78,18 +78,18 @@ module.exports = yeoman.Base.extend({
       // yeoman context - used to insert dynamic content into the files;
       const content = {
         name: `${ template }`,
-        moduleJade: ''
+        modulePug: ''
       };
 
       // for each module in this page;
       config.templates[template].map((component) => {
-        // create the Jade include statements;
+        // create the Pug include statements;
         // make sure to indent twice (2 space indent) for proper nesting;
-        content.moduleJade = `${ content.moduleJade }    include ../../components/${ component }/${ component }${ os.EOL }`;
+        content.modulePug = `${ content.modulePug }    include ../../components/${ component }/${ component }${ os.EOL }`;
       });
 
       // create the files for this page;
-      this.template('src/templates/template/template.jade', `src/templates/${ content.name }/${ content.name }.jade`, content);
+      this.template('src/templates/template/template.pug', `src/templates/${ content.name }/${ content.name }.pug`, content);
       this.template('src/templates/template/README.md', `src/templates/${ content.name }/README.md`, content);
     }
   },
@@ -108,9 +108,9 @@ module.exports = yeoman.Base.extend({
     this.template('src/ts/site.ts', 'src/ts/site.ts', { components: jsIncludes });
   },
   copyIncludeFiles: function () {
-    this.copy('src/templates/_foot.jade', 'src/templates/_foot.jade');
-    this.copy('src/templates/_head.jade', 'src/templates/_head.jade');
-    this.copy('src/templates/index.jade', 'src/templates/index.jade');
+    this.copy('src/templates/_foot.pug', 'src/templates/_foot.pug');
+    this.copy('src/templates/_head.pug', 'src/templates/_head.pug');
+    this.copy('src/templates/index.pug', 'src/templates/index.pug');
   },
   copyConfigFiles: function () {
     // editor and gulp plugin configurations, nothing to serve to the client browser;
