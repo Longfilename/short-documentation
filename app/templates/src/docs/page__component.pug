@@ -86,7 +86,7 @@ html(lang="en")
                   h1.card__content-title=view.title
                   +renderCode(view)
             
-            div.grid__view(style="width: #{size};")
+            div.grid__view(style=`width: ${size};`)
               +renderView(view.html)
         
         - } else {
