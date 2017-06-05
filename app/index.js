@@ -94,11 +94,7 @@ module.exports = yeoman.Base.extend({
     }
   },
   copyScssFiles: function () {
-    this.copy('src/scss/_bem-base.scss', 'src/scss/_bem-base.scss');
     this.copy('src/scss/_global.scss', 'src/scss/_global.scss');
-    this.copy('src/scss/_mixins__reset--base.scss', 'src/scss/_mixins__reset--base.scss');
-    this.copy('src/scss/_mixins__reset--forms.scss', 'src/scss/_mixins__reset--forms.scss');
-    this.copy('src/scss/_mixins.scss', 'src/scss/_mixins.scss');
     this.copy('src/scss/_variables--colors.scss', 'src/scss/_variables--colors.scss');
     this.copy('src/scss/_variables--fonts.scss', 'src/scss/_variables--fonts.scss');
     this.copy('src/scss/_variables.scss', 'src/scss/_variables.scss');
