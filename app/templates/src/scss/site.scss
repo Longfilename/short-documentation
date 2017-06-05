@@ -3,8 +3,6 @@
 
 // load global resources;
 @import './variables';
-@import './mixins';
-@import './bem-base'; // base BEM classes to @extend in the components;
 @import './global'; // base styles independent of a component;
 
 // load site components;
