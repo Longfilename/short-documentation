@@ -32,7 +32,8 @@ function createDesignPage (page) {
     pretty: true,
     nav: nav,
     title: 'src/scss/' + page.scss,
-    scssVariables: page.scss ? scssToJson('src/scss/' + page.scss) : {}
+    scssVariables: page.scss ? scssToJson('src/scss/' + page.scss) : {},
+    css: fs.readFileSync('dist/css/site.css', 'utf-8')
   });
 
   // build the design page;

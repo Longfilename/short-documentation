@@ -41,7 +41,7 @@ function makeFolders (pathArray) {
 }
 
 // doc and site SCSS rendering;
-function scss (scssInput, scssOutput) {
+function scss (scssInput, scssOutput, callback) {
   const sass = require('node-sass'); // render CSS from SCSS;
   const postcss = require('postcss'); // convert valid CSS into vendor prefixed CSS;
   const autoprefixer = require('autoprefixer'); // defines which vendor prefixes to use;
@@ -83,6 +83,8 @@ function scss (scssInput, scssOutput) {
 
           // tell the world what you just did;
           console.log(scssOutput.green, 'file was created from', scssInput.green);
+
+          callback && callback();
         });
     }
   });

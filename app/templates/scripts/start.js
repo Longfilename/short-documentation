@@ -7,22 +7,23 @@ const startServer = options.indexOf('server') > -1;
 const startDocs = options.indexOf('docs') > -1;
 
 site.clean();
-site.scss();
 site.ts();
 site.images();
 site.html();
+site.scss(function () {
+  // wait till CSS is rendered so it can be read by the docs;
+  if (startDocs) {
+    docs.scss();
+    docs.ts();
+    docs.html();
+
+    if (startServer) {
+      docs.watch();
+    }
+  }
+});
 
 if (startServer) {
   site.server();
   site.watch();
-}
-
-if (startDocs) {
-  docs.scss();
-  docs.ts();
-  docs.html();
-
-  if (startServer) {
-    docs.watch();
-  }
 }
