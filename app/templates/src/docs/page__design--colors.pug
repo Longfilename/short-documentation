@@ -15,7 +15,6 @@ html(lang="en")
         div.card__content.card__content--colors
           - Object.keys(scssVariables).forEach((key, index) => {
             - if (key.indexOf('$color__') === -1) {
-              - var count = JSON.stringify(scssVariables).split(scssVariables[key]).length - 2
               - var label = count === 0 ? "times" : "time"
               - label = count > 1 ? "times" : label
               div.color-swatch
@@ -23,7 +22,6 @@ html(lang="en")
                   div.color-swatch__chip(style=`background: ${ scssVariables[key] };`)
                     div.color-swatch__hex=scssVariables[key]
                 div.color-swatch__label
-                  div.color-swatch__count used #{ count } #{ label }
                   div.color-swatch__name #{ key }
             - }
           - })
