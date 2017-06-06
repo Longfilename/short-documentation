@@ -2,7 +2,7 @@
 - var sentancesArray = sentances.split('. ')
 
 mixin shiftSentances
-  - for (var i = 0; i < 5; i++) {
+  - for (var i = 0; i < 7; i++) {
     - sentancesArray.push(sentancesArray.shift())
     p=sentancesArray.join('. ')
   - }
@@ -12,24 +12,36 @@ html(lang="en")
   head
     include ./_head
 
-    // include the following CSS to properly display the site fonts;
-    //- link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800")
+    // import any external fonts needed;
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto:300,400,500,700")
     
     style.
+      // define the fonts;
+      .card--body .card__content--font-body {
+        font-family: 'Roboto', serif;
+      }
+      .card--header .card__content--font-body {
+        font-family: 'Roboto Condensed', serif;
+      }
+      
+      // define the font weights used;
+      .card__content--font-100 {
+        font-weight: 100;
+      }
       .card__content--font-300 {
         font-weight: 300;
       }
       .card__content--font-400 {
         font-weight: 400;
       }
-      .card__content--font-600 {
-        font-weight: 600;
+      .card__content--font-500 {
+        font-weight: 500;
       }
       .card__content--font-700 {
         font-weight: 700;
       }
-      .card__content--font-800 {
-        font-weight: 800;
+      .card__content--font-900 {
+        font-weight: 900;
       }
 
   body
@@ -37,42 +49,71 @@ html(lang="en")
       div.card
         div.card__content.card__content--rich-text
           h1 Fonts
-          p Open Sans is the font used across INSERT_PROJECT_NAME. Below are the five (5) font weights imported into the CSS.
-          p Here are some example alphabet sentances (all 26 letters used in a single sentance). Each weight is displayed in six (6) font-sizes (16px, 20px, 24px, 28px, 32px, 36px).
+          p INSERT_FONT_FACE is the font used across INSERT_PROJECT_NAME. Below are the XXX font weights imported into the CSS.
+          p Here are some example alphabet sentances (all 26 letters used in a single sentance). Each weight is displayed in seven (7) font-sizes (12px, 16px, 20px, 24px, 28px, 32px, 36px).
+          table(cellspacing="0")
+            - Object.keys(scssVariables).forEach((key, index) => {
+              - if (key.indexOf('$font-family__') === 0) {
+                - var font = scssVariables[key].replace(/'/g, '"');
+                - var regex = new RegExp(font, 'g')
+                - var count = (css.match(regex) || []).length
+                - var label = count === 0 ? "times" : "time"
+                - label = count > 1 ? "times" : label
+                tr
+                  td=key
+                  td=font.replace(/,/g, ', ')
+                  td used #{ count } #{ label }
+              - }
+            - })
       
-      div.card
+      // create a container for each font (family + weight) to display;
+      div.card.card--body
         div.card__content.card__content--font-head
-          h1.card__content-title Open Sans Light (300)
+          h1.card__content-title Roboto Light (300)
         
         div.card__content.card__content--font-body.card__content--font-300
           +shiftSentances
       
-      div.card
+      div.card.card--body
         div.card__content.card__content--font-head
-          h1.card__content-title Open Sans Regular (400)
+          h1.card__content-title Roboto Regular (400)
         
         div.card__content.card__content--font-body.card__content--font-400
           +shiftSentances
       
-      div.card
+      div.card.card--body
         div.card__content.card__content--font-head
-          h1.card__content-title Open Sans Semi-Bold (600)
+          h1.card__content-title Roboto Medium (500)
         
-        div.card__content.card__content--font-body.card__content--font-600
+        div.card__content.card__content--font-body.card__content--font-500
           +shiftSentances
       
-      div.card
+      div.card.card--body
         div.card__content.card__content--font-head
-          h1.card__content-title Open Sans Bold (700)
+          h1.card__content-title Roboto Bold (700)
         
         div.card__content.card__content--font-body.card__content--font-700
           +shiftSentances
-      
-      div.card
+    
+      div.card.card--header
         div.card__content.card__content--font-head
-          h1.card__content-title Open Sans Extra-Bold (800)
+          h1.card__content-title Roboto Condensed Light (300)
         
-        div.card__content.card__content--font-body.card__content--font-800
+        div.card__content.card__content--font-body.card__content--font-300
+          +shiftSentances
+      
+      div.card.card--header
+        div.card__content.card__content--font-head
+          h1.card__content-title Roboto Condensed Regular (400)
+        
+        div.card__content.card__content--font-body.card__content--font-400
+          +shiftSentances
+      
+      div.card.card--header
+        div.card__content.card__content--font-head
+          h1.card__content-title Roboto Condensed Bold (700)
+        
+        div.card__content.card__content--font-body.card__content--font-700
           +shiftSentances
     
     include ./_foot

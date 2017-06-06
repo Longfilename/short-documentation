@@ -39,5 +39,17 @@
         margin-top: 0;
       }
     }
+
+    table {
+      border: 1px solid $color-text__card-rich-text--code;
+      background: $color-bg__card-rich-text--code;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    td {
+      border: 1px solid $color-text__card-rich-text--code;
+      padding: 3px 6px;
+    }
   }
 }
