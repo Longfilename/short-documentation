@@ -46,7 +46,7 @@ npm install               # install local dependencies (and types)
 
 ```bash
 npm start                 # build the project
-npm start server          # build the project with a web server and watcher
+npm start server          # build the project with a web server, and a watcher
 npm start docs            # build the project with documentation
 npm start server docs     # build the project with documentation, a web server, and a watcher
 ```
@@ -93,7 +93,7 @@ Credibly reintermediate backend ideas for cross-platform models. Continually rei
 ```yaml
 nav: Component Title                    # used in the documentation navigation;
 icons: bars bolt                        # optional. space-delimited list of FontAwesome icons to add in the documentation navigation;
-size: 350px                             # optional, default is 100%; CSS width value to apply to the container around the component;
+size: 350px                             # optional. default is 100%; CSS width value to apply to the container around the component;
 pug: component.pug                      # filename of the component Pug file;
 ts: component.ts                        # optional. filename of the component TypeScript file;
 views:                                  # list of component views to display (multiple are allowed);
@@ -164,7 +164,7 @@ The `files` referenced in the `tsconfig.json` are not used in compilation. Brows
 
 > TSLint checks your TypeScript code for readability, maintainability, and functionality errors.
 
-Configuration file for TSLint. Linting is not part of the NPM build. Configure your editor to run TSLint.
+Configuration file for TSLint. Linting is not part of the NPM build. [https://atom.io/packages/linter-tslint](Configure your editor to run TSLint.)
 
 &nbsp;
 
@@ -174,7 +174,7 @@ Configuration file for TSLint. Linting is not part of the NPM build. Configure y
 
 > A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets.
 
-Configuration file for Stylelint. Linting is not part of the NPM build. Configure your editor to run Stylelint.
+Configuration file for Stylelint. Linting is not part of the NPM build. [https://stylelint.io/user-guide/complementary-tools/](Configure your editor to run Stylelint.)
 
 &nbsp;
 
@@ -184,7 +184,7 @@ Configuration file for Stylelint. Linting is not part of the NPM build. Configur
 
 > EditorConfig helps developers define and maintain consistent coding styles between different editors and IDEs. The EditorConfig project consists of a file format for defining coding styles and a collection of text editor plugins that enable editors to read the file format and adhere to defined styles. EditorConfig files are easily readable and they work nicely with version control systems.
 
-Configuration file for EditorConfig.
+Configuration file for EditorConfig. [http://editorconfig.org/#download](Configure your editor to run EditorConfig.)
 
 &nbsp;
 &nbsp;
@@ -195,7 +195,7 @@ Configuration file for EditorConfig.
 
 > BEM (Block Element Modifier) is a highly useful, powerful and simple naming convention to make your front-end code easier to read and understand, easier to work with, easier to scale, more robust and explicit and a lot more strict.
 
-The HTML and SCSS are built with the BEM methodology. This allows for very flexible components that can be nested and won’t conflict with other components (or 3rd party modules). Pug mixins have been added to the project that allow the dev to apply a CSS reset to each BEM component, as opposed to applying a CSS reset to the site. **BEM modules should not rely upon global styles.**
+The HTML and SCSS are built with the BEM methodology. This allows for very flexible components that can be nested and won’t conflict with other components (or 3rd party modules). **BEM modules should not rely upon global styles.**
 
 &nbsp;
 &nbsp;
