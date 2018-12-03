@@ -24,7 +24,7 @@ module.exports = () => {
 
 
 // create the documentation design pages;
-function createDesignPage (page) {
+function createDesignPage(page) {
   const pugFilepath = page.pug;
   const htmlFilename = page.url;
   const htmlFilepath = docsDestination + '/' + htmlFilename;
@@ -37,7 +37,7 @@ function createDesignPage (page) {
   });
 
   // build the design page;
-  fs.writeFile(htmlFilepath, renderedHTML);
+  fs.writeFileSync(htmlFilepath, renderedHTML);
 
   // tell the world what we did;
   console.log(htmlFilepath.green, 'page was created from', pugFilepath.green);

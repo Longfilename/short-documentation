@@ -22,7 +22,7 @@ module.exports = function () {
 
 
 
-function createIndex (src, dest) {
+function createIndex(src, dest) {
   // compile Pug into HTML;
   const html = pug.renderFile(src, {
     pretty: true,

@@ -36,7 +36,7 @@ module.exports = () => {
 
 
 // parse folders looking for readme.md files (to indicate the folder should be read by the documentation app);
-function getReadmeData (folderToParse) {
+function getReadmeData(folderToParse) {
   // data object to return;
   // this will be the collection of components/templates with documentation readme files;
   const folderData = [];
@@ -48,7 +48,7 @@ function getReadmeData (folderToParse) {
 
   //
 
-  function parseFolder (currentFolder, dirs, files) {
+  function parseFolder(currentFolder, dirs, files) {
     // only process this folder if it has files;
     (files.length) && files.forEach((currentFile) => {
       // only process this file if it is a readme.md file;
@@ -68,7 +68,7 @@ function getReadmeData (folderToParse) {
   }
 }
 
-function createComponentPage (component) {
+function createComponentPage(component) {
   const pugFilepath = 'src/docs/page__component.pug';
   const htmlFilename = filenames.componentPageName(component.folder);
   const htmlFilepath = docsDestination + '/' + htmlFilename;
@@ -145,14 +145,14 @@ function createComponentPage (component) {
   const renderedHTML = pug.renderFile(pugFilepath, pugConfig);
 
   // create the component page;
-  fs.writeFile(htmlFilepath, renderedHTML);
+  fs.writeFileSync(htmlFilepath, renderedHTML);
 
   // tell the world what you just did;
   console.log(`${ htmlFilepath.green } was created from ${ pugFilepath.green }`);
 }
 
 // build the HTML to insert into the IFRAME (for a view of a component);
-function getViewHTML (pugSource, folder, view) {
+function getViewHTML(pugSource, folder, view) {
   const pugFilepath = `src/components/${ folder }/${ pugSource }`;
   const htmlToInsert = pug.renderFile(pugFilepath, {
     pretty: true,
@@ -164,7 +164,7 @@ function getViewHTML (pugSource, folder, view) {
 }
 
 // build the IFRAME page (for a view of a component);
-function createComponentIframe (htmlToInsert, folder, view, index) {
+function createComponentIframe(htmlToInsert, folder, view, index) {
   const htmlFilepath = `${ docsDestination }/iframe__${ folder }--${ index }.html`;
   const pugFilepath = 'src/docs/iframe__component.pug';
   const renderedHTML = pug.renderFile(pugFilepath, {
@@ -177,7 +177,7 @@ function createComponentIframe (htmlToInsert, folder, view, index) {
   });
 
   // create the IFRAME page;
-  fs.writeFile(htmlFilepath, renderedHTML);
+  fs.writeFileSync(htmlFilepath, renderedHTML);
 
   // tell the world what you just did;
   console.log(`${ htmlFilepath.green } was created from ${ pugFilepath.green }`);

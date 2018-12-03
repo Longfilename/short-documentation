@@ -30,7 +30,7 @@ module.exports = () => {
 
 
 // parse folders looking for readme files (to indicate the folder should be read by the documentation app);
-function getReadmeData (folderToParse) {
+function getReadmeData(folderToParse) {
   // data object to return;
   // this will be the collection of templates with documentation readme files;
   const folderData = [];
@@ -42,7 +42,7 @@ function getReadmeData (folderToParse) {
 
   //
 
-  function parseFolder (currentFolder, dirs, files) {
+  function parseFolder(currentFolder, dirs, files) {
     // only process this folder if it has files;
     (files.length) && files.forEach((currentFile) => {
       // only process this file if it is a readme.md file;
@@ -63,7 +63,7 @@ function getReadmeData (folderToParse) {
 }
 
 // create the documentation template pages;
-function createTemplatePage (template) {
+function createTemplatePage(template) {
   const pugFilepath = 'src/docs/page__template.pug';
   const htmlFilename = filenames.templatePageName(template.folder);
   const htmlFilepath = docsDestination + '/' + htmlFilename;
@@ -91,7 +91,7 @@ function createTemplatePage (template) {
   });
 
   // build the template page;
-  fs.writeFile(htmlFilepath, pug.renderFile(pugFilepath, pugConfig));
+  fs.writeFileSync(htmlFilepath, pug.renderFile(pugFilepath, pugConfig));
 
   // tell the world what we did;
   console.log(htmlFilepath.green, 'page was created from', pugFilepath.green);
