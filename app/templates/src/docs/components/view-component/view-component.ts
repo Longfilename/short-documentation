@@ -6,7 +6,7 @@ jQuery(($: JQueryStatic) => {
     initIframe(0);
   }
 
-  function initIframe (index: number): void {
+  function initIframe(index: number): void {
     const $view: JQuery = $views.eq(index);
     const $iframe: JQuery = $view.find('.view-component__iframe');
 
@@ -15,16 +15,11 @@ jQuery(($: JQueryStatic) => {
       .on('load.view-component', startDelay)
       .prop('src', $iframe.data().src);
 
-
-
-    //
-
-
-    function startDelay (): void {
+    function startDelay(): void {
       window.setTimeout(showIframe, delay);
     }
 
-    function showIframe (): void {
+    function showIframe(): void {
       window.setTimeout(() => {
         $view.addClass('view-component--loaded');
 
@@ -36,9 +31,12 @@ jQuery(($: JQueryStatic) => {
       }, 350);
     }
 
-    function setHeight (): void {
+    function setHeight(): void {
       const css: { height: number } = {
-        height: $iframe.contents().find('html').outerHeight()
+        height: $iframe
+          .contents()
+          .find('html')
+          .outerHeight()
       };
 
       $iframe.css(css);

@@ -1,8 +1,8 @@
 import debounce = require('lodash/debounce');
 
 jQuery(($: JQueryStatic) => {
-  $('.resizer').each((index: number, resizer: Element) => {
-    const $window: JQuery = $(window);
+  $('.resizer').each((index: number, resizer: HTMLElement) => {
+    const $window: JQuery<Window> = $(window);
     const $resizer: JQuery = $(resizer);
     const $links: JQuery = $resizer.find('.resizer-link');
     const hiddenClass: string = 'resizer-link--hidden';
@@ -24,7 +24,7 @@ jQuery(($: JQueryStatic) => {
       resizedClass = 'view-component__loaded--resized';
     }
 
-    $links.each((i: number, link: Element) => {
+    $links.each((i: number, link: HTMLElement) => {
       const $link: JQuery = $(link);
       const dataResizer: string = $link.data().resizer;
 
@@ -53,7 +53,7 @@ jQuery(($: JQueryStatic) => {
 
       //
 
-      function checkViability (): void {
+      function checkViability(): void {
         if ($window.width() < parseInt(dataResizer, 10)) {
           $link.addClass(hiddenClass);
 

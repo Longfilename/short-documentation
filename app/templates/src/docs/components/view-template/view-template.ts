@@ -16,7 +16,7 @@ jQuery(($: JQueryStatic) => {
   const visibleClass: string = 'resizer--visible';
   const click: string = 'click.view-template';
 
-  $buttons.open.each((index: number, button: Element) => {
+  $buttons.open.each((index: number, button: HTMLElement) => {
     const $button: JQuery = $(button);
 
     $button.on(click, (e: Event) => {

@@ -11,18 +11,6 @@ html.view-template--open {
 .view-template {
   margin: 0;
 
-  &--open {
-    .view-template__close,
-    .view-template__resizer {
-      display: block;
-    }
-
-    .view-template__overlay {
-      transform: translate(0, 0) scale(1);
-      opacity: 1;
-    }
-  }
-
   &__close {
     display: none;
     position: absolute;
@@ -62,7 +50,7 @@ html.view-template--open {
     left: 0;
     transition: all 0.3s ease-in-out;
     width: 100%;
-    height: calc(100vh - 74px); // make it as tall as the window so the scrollbar functions as expected;
+    height: calc(100vh - 74px); // tall as the window so the scrollbar functions as expected;
 
     &--resized {
       left: 50%;
@@ -77,5 +65,17 @@ html.view-template--open {
     border: 0;
     width: 100%;
     height: 100%;
+  }
+
+  &--open {
+    .view-template__close,
+    .view-template__resizer {
+      display: block;
+    }
+
+    .view-template__overlay {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
   }
 }

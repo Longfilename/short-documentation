@@ -4,38 +4,6 @@
   width: 100%;
   height: 100%;
 
-  // added via JS (onclick of the hamburger nav);
-  // nav is enabled;
-  // the content is converted into an absolute layer (so it can be moved with --animate);
-  &--modalview {
-    position: fixed;
-    perspective: 1500px;
-
-    .page__frame {
-      position: absolute;
-      cursor: pointer;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      backface-visibility: hidden;
-    }
-  }
-
-  // added after --modalview is added;
-  // animates the content offscreen (mimics a minimized window);
-  &--animate {
-    .page__frame {
-      transform: translateY(100%) translateZ(-1500px);
-
-      // show the overlay that prevents the user from interacting with the content;
-      &::after {
-        transition: opacity 0.3s;
-        opacity: 1;
-        height: 101%;
-      }
-    }
-  }
-
   // wrapper around the content;
   // acts as a minimized window when --modalview is applied;
   &__frame {
@@ -69,6 +37,38 @@
 
     > * + * {
       margin-top: $size__gutter * 5;
+    }
+  }
+
+  // added via JS (onclick of the hamburger nav);
+  // nav is enabled;
+  // the content is converted into an absolute layer (so it can be moved with --animate);
+  &--modalview {
+    position: fixed;
+    perspective: 1500px;
+
+    .page__frame {
+      position: absolute;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      backface-visibility: hidden;
+    }
+  }
+
+  // added after --modalview is added;
+  // animates the content offscreen (mimics a minimized window);
+  &--animate {
+    .page__frame {
+      transform: translateY(100%) translateZ(-1500px);
+
+      // show the overlay that prevents the user from interacting with the content;
+      &::after {
+        transition: opacity 0.3s;
+        opacity: 1;
+        height: 101%;
+      }
     }
   }
 }
