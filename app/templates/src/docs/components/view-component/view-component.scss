@@ -22,14 +22,6 @@
     }
   }
 
-  &--loaded {
-    background: $color-bg__component-view--loaded;
-
-    .view-component__loading {
-      opacity: 0;
-    }
-  }
-
   &__loading {
     position: absolute;
     top: 0;
@@ -70,5 +62,13 @@
     border: 0;
     width: 100%;
     height: $size__component-view;
+  }
+
+  &--loaded {
+    background: $color-bg__component-view--loaded;
+
+    .view-component__loading {
+      opacity: 0;
+    }
   }
 }

@@ -1,5 +1,5 @@
 jQuery(($: JQueryStatic) => {
-  $('.tabs').each((index: number, tabs: Element) => {
+  $('.tabs').each((index: number, tabs: HTMLElement) => {
     const $tabs: JQuery = $(tabs);
     const $nav: JQuery = $tabs.find('.tabs__nav-link');
     const $content: JQuery = $tabs.find('.tabs__content-tab');
@@ -9,7 +9,7 @@ jQuery(($: JQueryStatic) => {
 
     showTab();
 
-    $nav.each((i: number, link: Element) => {
+    $nav.each((i: number, link: HTMLElement) => {
       const $link: JQuery = $(link);
 
       $link.on('click', () => {
@@ -18,7 +18,7 @@ jQuery(($: JQueryStatic) => {
       });
     });
 
-    function showTab (): void {
+    function showTab(): void {
       $content.hide();
       $nav.removeClass(activeClass);
       $content.eq(indexVisible).show();

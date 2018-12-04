@@ -4,9 +4,16 @@
 // z-index stacks;
 // $z-index__hamburger: 120;
 
+// grid widths;
+// used in the breakpoint vars below, and in the grid component styles;
+$grid__width--xs: 480px;
+$grid__width--sm: 768px;
+$grid__width--md: 992px;
+$grid__width--lg: 1200px;
+
 // breakpoint variables;
 // screen sizes are defined in the bootstrap variables;
-$breakpoint--xs: min-width 480px; // phone;
-$breakpoint--sm: min-width 768px; // tablet portrait;
-$breakpoint--md: min-width 992px; // tablet landscape;
-$breakpoint--lg: min-width 1200px; // desktop;
+$breakpoint--xs: min-width $grid__width--xs; // phone;
+$breakpoint--sm: min-width $grid__width--sm; // tablet portrait;
+$breakpoint--md: min-width $grid__width--md; // tablet landscape;
+$breakpoint--lg: min-width $grid__width--lg; // desktop;

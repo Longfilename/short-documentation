@@ -1,11 +1,17 @@
 // color swatch, one per color defined in the site SCSS;
 .color-swatch {
   margin: $size__gutter;
-  width: calc(20% - #{ $size__gutter } * 2);
+  width: calc(20% - #{$size__gutter} * 2);
 
   // if a color swatch is transparent, a gradient background is added;
   &__gradient {
-    background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, $color-bg__color-swatch--grad-dark 35px, $color-bg__color-swatch--grad-light 70px);
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 35px,
+      $color-bg__color-swatch--grad-dark 35px,
+      $color-bg__color-swatch--grad-light 70px
+    );
   }
 
   // block with inline background color defined;

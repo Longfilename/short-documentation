@@ -1,18 +1,18 @@
-// colors (if you need to come up with a name for a color);
-// http://chir.ag/projects/name-that-color/
-$white: #fff;
-$black: #000;
-$daintree: #002b36;
-$cutty-sark: #586e75;
-$pewter: #93a1a1;
-$old-lace: #fdf6e3;
-$pirate-gold: #b58900;
+// colors used throughout the project;
+// use Name That Color (http://chir.ag/projects/name-that-color/) if you need to name the different shades;
+// dont use these vars in your SCSS, use these in the $color__ vars below;
 
-// above are the colors in use;
-// below are the variables that should be used;
-// don’t litter the CSS with red, green, blue color variables;
-// red might not be red by the end of the project;
-// but a $color__brand color will always be in use;
+// examples:
+// $white: #fff;
+// $cutty-sark: #586e75;
+// $shade--white65: rgba($white, 0.65);
+// $shade--white90: rgba($white, 0.9);
 
 // color palet for the project;
+// don’t litter the SCSS with $red, $green, $blue color variables;
+// $red might not be red by the end of the project;
+// but a $color__brand color will always be in use;
+
+// examples:
 // $color__brand--primary: $white;
+// $color__link--visited: $cutty-sark;
