@@ -90,6 +90,7 @@ Credibly reintermediate backend ideas for cross-platform models. Continually rei
 &nbsp;
 
 #### Component YAML Options
+
 ```yaml
 nav: Component Title                    # used in the documentation navigation;
 icons: bars bolt                        # optional. space-delimited list of FontAwesome icons to add in the documentation navigation;
@@ -130,6 +131,7 @@ Credibly reintermediate backend ideas for cross-platform models. Continually rei
 &nbsp;
 
 #### Template YAML Options
+
 ```yaml
 nav: Template Title                     # used in the documentation navigation;
 icons: file-text-o                      # optional. space-delimited list of FontAwesome icons to add in the documentation navigation;

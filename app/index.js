@@ -112,7 +112,7 @@ module.exports = yeoman.Base.extend({
     // editor and gulp plugin configurations, nothing to serve to the client browser;
     this.copy('_editorconfig', '.editorconfig');
     this.copy('_gitignore', '.gitignore');
-    this.copy('_stylelintrc', '.stylelintrc');
+    this.copy('_stylelintrc.json', '.stylelintrc.json');
     this.copy('package.json', 'package.json');
     this.copy('tsconfig.json', 'tsconfig.json');
     this.copy('tslint.json', 'tslint.json');
