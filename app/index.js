@@ -54,7 +54,7 @@ module.exports = yeoman.Base.extend({
 
       // create these files for each component in our new site;
       // assume every component needs a Pug and SCSS file;
-      this.template('src/components/component/_component.json', `${ path }/_${ content.name }.json`, content);
+      this.template('src/components/component/component.json', `${ path }/${ content.name }.json`, content);
       this.template('src/components/component/component.pug', `${ path }/${ content.name }.pug`, content);
       this.template('src/components/component/component.scss', `${ path }/${ content.name }.scss`, content);
       this.template('src/components/component/README.md', `${ path }/README.md`, content);
