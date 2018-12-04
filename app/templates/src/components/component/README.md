@@ -6,7 +6,7 @@ scss: <%= name %>.scss
 <% if (size) { %>size: <%= size %><% } %>
 views:
   - title: <%= name %>
-    json: _<%= name %>.json
+    json: <%= name %>.json
 ---
 
 # <%= name %>
