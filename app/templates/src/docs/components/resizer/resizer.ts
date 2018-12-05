@@ -51,8 +51,6 @@ jQuery(($: JQueryStatic) => {
 
       $window.on(resize, debounce(checkViability, 150)).trigger(resize);
 
-      //
-
       function checkViability(): void {
         if ($window.width() < parseInt(dataResizer, 10)) {
           $link.addClass(hiddenClass);

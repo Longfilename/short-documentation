@@ -11,8 +11,6 @@ const modalClass: string = 'page--modalview';
 // close events will be set AFTER open events have fired;
 $('.js__page').on(click, showMenu);
 
-//
-
 function showMenu(event: Event): void {
   // prevent a click from firing on the $wrapper (and closing the modal);
   event.stopPropagation();
