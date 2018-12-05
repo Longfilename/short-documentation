@@ -2,7 +2,7 @@
 
 const $page: JQuery = $('.page');
 const $frame: JQuery = $('.page__frame');
-const click: any = 'touchstart.page click.page';
+const click: string = 'touchstart.page click.page';
 const transitionEnd: string = 'transitionend.page';
 const animateClass: string = 'page--animate';
 const modalClass: string = 'page--modalview';
@@ -29,7 +29,7 @@ function showMenu(event: Event): void {
   $frame.one(click, hideMenu);
 }
 
-function hideMenu(event: Event): void {
+function hideMenu(event: JQuery.Event): void {
   // after the transition has finished running;
   $page.one(transitionEnd, () => {
     // remove the modal class (so the content isn't fixed anymore);
