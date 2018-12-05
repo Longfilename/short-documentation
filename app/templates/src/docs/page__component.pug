@@ -79,31 +79,25 @@ html(lang="en")
       
       - views.map((view, index) => {
         - if (size && size.indexOf('px')) {
-          div.grid
-            div.grid__content 
-              div.card
-                div.card__content
-                  h1.card__content-title=view.title
-                  +renderCode(view)
-            
-            div.grid__view(style=`width: ${size};`)
-              +renderView(view.html)
+          div(style=`width: ${size};`)
+            +renderView(view.html)
+
+          div.card
+            div.card__content
+              +renderCode(view)
         
         - } else {
+          div
+            +renderView(view.html)
+            
+            div.resizer.resizer--view-component
+              a.resizer-link.resizer-link--375(data-resizer="375px")
+              a.resizer-link.resizer-link--768(data-resizer="768px")
+              a.resizer-link.resizer-link--1024(data-resizer="1024px")
+              a.resizer-link.resizer-link--100.resizer-link--active(data-resizer="100%")
+
           div.card
-            div.card__content.card__content--component-head
-              h1.card__content-title=view.title
-          
-            div.card__content.card__content--component-view
-              +renderView(view.html)
-              
-              div.resizer.resizer--view-component
-                a.resizer-link.resizer-link--375(data-resizer="375px")
-                a.resizer-link.resizer-link--768(data-resizer="768px")
-                a.resizer-link.resizer-link--1024(data-resizer="1024px")
-                a.resizer-link.resizer-link--100.resizer-link--active(data-resizer="100%")
-          
-            div.card__content.card__content--component-foot
+            div.card__content
               +renderCode(view)
         - }
       - })

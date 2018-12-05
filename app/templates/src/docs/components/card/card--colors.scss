@@ -3,7 +3,6 @@
     display: flex;
     position: relative;
     flex-wrap: wrap;
-    box-shadow: 0 0 $size__shadow 1px $color-bg__card--shadow;
     max-width: $size__content--wide;
 
     &::before {

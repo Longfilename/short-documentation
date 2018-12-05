@@ -36,7 +36,7 @@
     padding: $size__gutter;
 
     > * + * {
-      margin-top: $size__gutter * 5;
+      margin-top: $size__gutter;
     }
   }
 

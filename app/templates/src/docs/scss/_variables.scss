@@ -1,4 +1,5 @@
 $white: #fff;
+$black: #000;
 $concrete: #f2f2f2;
 $mercury: #e6e6e6;
 $alto: #d8d8d8;
@@ -8,10 +9,10 @@ $shady-lady: #b6b4b6;
 $dusty-gray: #999;
 $dove-gray: #666;
 $mine-shaft: #222;
-$shade--black25: rgba(0, 0, 0, 0.25);
-$shade--black50: rgba(0, 0, 0, 0.5);
 $old-lace: #fdf6e3;
 $pale-sky: #657b83;
+$shade--black25: rgba($black, 0.25);
+$shade--black50: rgba($black, 0.5);
 
 $color-text__button: $mine-shaft;
 $color-text__card-rich-text--code: $pale-sky;
@@ -46,6 +47,7 @@ $color-bg__page-header-menu--active: $silver--light;
 $color-bg__resizer: $dusty-gray;
 $color-bg__resizer-link--hover: $shade--black50;
 $color-bg__resizer-link--active: $shade--black25;
+$color-bg__tabs-link--hover: rgba($old-lace, 0.35);
 $color-bg__tabs-link--active: $old-lace;
 $color-bg__template-overlay: $concrete;
 

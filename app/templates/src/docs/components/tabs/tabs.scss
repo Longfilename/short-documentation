@@ -12,11 +12,16 @@
       cursor: pointer;
       padding: $size__gutter / 2 $size__gutter;
 
+      &:hover {
+        background: $color-bg__tabs-link--hover;
+      }
+
       i.fa {
         margin-right: 5px;
       }
 
-      &--active {
+      &--active,
+      &--active:hover {
         background: $color-bg__tabs-link--active;
       }
     }

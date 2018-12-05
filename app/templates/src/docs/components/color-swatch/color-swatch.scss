@@ -17,8 +17,8 @@
   // block with inline background color defined;
   &__chip {
     position: relative;
+    border: 1px solid $color-bg__color-swatch--hex;
     border-radius: 2px;
-    box-shadow: 0 0 2px $color-bg__card--shadow;
     padding-bottom: 66%;
     height: 0;
   }

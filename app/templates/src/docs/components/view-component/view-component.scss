@@ -6,7 +6,6 @@
   .grid & {
     border: $size__gutter solid $color-bg__card--border;
     border-left: 0;
-    box-shadow: 0 0 $size__shadow 1px $color-bg__card--shadow;
     box-sizing: content-box;
 
     &::before {

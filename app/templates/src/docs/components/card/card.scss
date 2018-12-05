@@ -3,7 +3,6 @@
   height: 100%;
 
   &__content {
-    box-shadow: 0 0 $size__shadow 1px $color-bg__card--shadow;
     background: $color-bg__card--content;
     padding: $size__gutter;
     max-width: $size__content--narrow;
