@@ -6,19 +6,19 @@ html(lang="en")
 
   body
     include ./components/page/page
-      div.grid
-        div.grid__content 
-          div.card
-            div.card__content.card__content--rich-text
-              !=markdown
-        
-        div.grid__templates
-          - pages.map((page, index) => {
-            div.grid__template-button
-              a.button.js__view-template--open(href=page.url)
-                i.fa.fa-desktop
-                |  Open #{ page.title } Template
-          - })
+      div.card
+        div.card__content.card__content--rich-text
+          !=markdown
+      
+      div
+        - pages.map((page, index) => {
+          a.button.js__view-template--open(href=page.url)
+            i.fa.fa-desktop
+            |  Open #{ page.title } Template
+          - if (index < pages.length - 1) {
+            |  &nbsp;  
+          - }
+        - })
       
       div.card
         div.card__content
@@ -27,7 +27,10 @@ html(lang="en")
               - pages.map((page, index) => {
                 a.tabs__nav-link
                   i.fa.fa-html5
-                  |  #{ page.title }
+                  |  HTML
+                  - if (pages.length > 1) {
+                  |  (#{ page.title } Template)
+                  - }
               - })
             
             div.tabs__content

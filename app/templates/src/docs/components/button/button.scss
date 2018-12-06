@@ -20,4 +20,8 @@
   .fa {
     margin-right: 0.5em;
   }
+
+  &--selected {
+    background: $color-bg__button--active;
+  }
 }

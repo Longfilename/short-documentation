@@ -1,25 +1,7 @@
-.view-component {
+.component-view {
   position: relative;
   transition: all 0.6s;
   height: $size__component-view;
-
-  .grid & {
-    border: $size__gutter solid $color-bg__card--border;
-    border-left: 0;
-    box-sizing: content-box;
-
-    &::before {
-      position: absolute;
-      top: 0 - $size__gutter - $size__shadow;
-      bottom: 0 - $size__gutter - $size__shadow;
-      left: 0 - $size__shadow;
-      z-index: $z-index__card--shadow-cover;
-      background: $color-bg__card--border;
-      width: 100%;
-      width: $size__shadow;
-      content: '';
-    }
-  }
 
   &__loading {
     position: absolute;
@@ -66,7 +48,7 @@
   &--loaded {
     background: $color-bg__component-view--loaded;
 
-    .view-component__loading {
+    .component-view__loading {
       opacity: 0;
     }
   }

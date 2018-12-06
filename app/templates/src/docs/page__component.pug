@@ -1,9 +1,9 @@
 mixin renderView (path)
-  div.view-component
-    div.view-component__loading
-      p.view-component__loading-text loading
-    div.view-component__loaded
-      iframe.view-component__iframe(data-src=path, scrolling="no")
+  div.component-view
+    div.component-view__loading
+      p.component-view__loading-text loading component
+    div.component-view__loaded
+      iframe.component-view__iframe(data-src=path, scrolling="no")
 
 mixin renderCode (view)
   div.tabs
@@ -76,30 +76,41 @@ html(lang="en")
       article.card
         div.card__content.card__content--rich-text
           !=markdown
+
+      - if (views.length > 1) {
+        div.component-nav
+          - views.map((view, index) => {
+            a.button(class=index === 0 ? 'button--selected' : '') Show #{ view.title } Component
+            - if (index < views.length - 1) {
+              |  &nbsp;  
+            - }
+          - })
+      - }
       
       - views.map((view, index) => {
-        - if (size && size.indexOf('px')) {
-          div(style=`width: ${size};`)
-            +renderView(view.html)
+        div.component(class=index === 0 ? 'component--selected' : '')
+          - if (size && size.indexOf('px')) {
+            div(style=`width: ${size};`)
+              +renderView(view.html)
 
-          div.card
-            div.card__content
-              +renderCode(view)
-        
-        - } else {
-          div
-            +renderView(view.html)
-            
-            div.resizer.resizer--view-component
-              a.resizer-link.resizer-link--375(data-resizer="375px")
-              a.resizer-link.resizer-link--768(data-resizer="768px")
-              a.resizer-link.resizer-link--1024(data-resizer="1024px")
-              a.resizer-link.resizer-link--100.resizer-link--active(data-resizer="100%")
+            div.card
+              div.card__content
+                +renderCode(view)
+          
+          - } else {
+            div
+              +renderView(view.html)
+              
+              div.resizer.resizer--view-component
+                a.resizer-link.resizer-link--375(data-resizer="375px")
+                a.resizer-link.resizer-link--768(data-resizer="768px")
+                a.resizer-link.resizer-link--1024(data-resizer="1024px")
+                a.resizer-link.resizer-link--100.resizer-link--active(data-resizer="100%")
 
-          div.card
-            div.card__content
-              +renderCode(view)
-        - }
+            div.card
+              div.card__content
+                +renderCode(view)
+          - }
       - })
     
     include ./_foot
