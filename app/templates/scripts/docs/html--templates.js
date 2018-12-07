@@ -18,16 +18,12 @@ module.exports = () => {
   const templates = getReadmeData('src/templates');
 
   // build all docs template pages;
-  templates.map((template) => {
+  templates.map(template => {
     createTemplatePage(template);
   });
 };
 
-
-
 //
-
-
 
 // parse folders looking for readme files (to indicate the folder should be read by the documentation app);
 function getReadmeData(folderToParse) {
@@ -44,21 +40,22 @@ function getReadmeData(folderToParse) {
 
   function parseFolder(currentFolder, dirs, files) {
     // only process this folder if it has files;
-    (files.length) && files.forEach((currentFile) => {
-      // only process this file if it is a readme.md file;
-      // not all folders will have readme.md;
-      if (currentFile.toLowerCase() === 'readme.md') {
-        const contents = fs.readFileSync(currentFolder + '/' + currentFile, 'utf-8');
-        const fmContents = fm(contents); // separate the YAML from the Markdown;
+    files.length &&
+      files.forEach(currentFile => {
+        // only process this file if it is a readme.md file;
+        // not all folders will have readme.md;
+        if (currentFile.toLowerCase() === 'readme.md') {
+          const contents = fs.readFileSync(currentFolder + '/' + currentFile, 'utf-8');
+          const fmContents = fm(contents); // separate the YAML from the Markdown;
 
-        // return a folder object;
-        folderData.push({
-          folder: currentFolder.split('/').pop(),
-          markdown: fmContents.body,
-          yaml: fmContents.attributes
-        });
-      }
-    });
+          // return a folder object;
+          folderData.push({
+            folder: currentFolder.split('/').pop(),
+            markdown: fmContents.body,
+            yaml: fmContents.attributes
+          });
+        }
+      });
   }
 }
 
@@ -74,20 +71,26 @@ function createTemplatePage(template) {
     folder: template.folder,
     pages: template.yaml.pages,
     markdown: renderedMarkdown,
-    renderedHTML: [],
-    nav: nav
+    nav: nav,
+    tabs: {
+      templates: [],
+      templateHeadings: []
+    }
   };
 
   // there can be multiple pages for a template;
   // get the source HTML for each to display in the tabs;
-  template.yaml.pages.map((page) => {
+  template.yaml.pages.map(page => {
     // in case the preview URL has a querystring, strip it out during generation (it'll still be present in the link);
     const url = page.url.split('?')[0];
-    const renderedHTML = fs.readFileSync(`dist/${ url }`, 'utf-8');
+    const renderedHTML = fs.readFileSync(`dist/${url}`, 'utf-8');
     const prettyHTML = Prism.highlight(renderedHTML, Prism.languages.html);
+    const headingSuffix = template.yaml.pages.length > 1 ? ` (${page.title} Template)` : '';
+    const templateHeading = `HTML${headingSuffix}`;
 
     // record the pretty HTML;
-    pugConfig.renderedHTML.push(prettyHTML);
+    pugConfig.tabs.templates.push(prettyHTML);
+    pugConfig.tabs.templateHeadings.push(templateHeading);
   });
 
   // build the template page;

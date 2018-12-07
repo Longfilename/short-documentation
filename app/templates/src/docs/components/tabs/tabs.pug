@@ -1,0 +1,70 @@
+div.tabs
+  div.tabs__nav
+    - if (tabs.htmlContent) {
+      a.tabs__nav-link
+        i.fa.fa-html5
+        |  HTML
+    - }
+
+    - if (tabs.json) {
+      a.tabs__nav-link
+        i.fa.fa-code
+        |  JSON
+    - }
+
+    - tabs.ts && tabs.ts.map(ts => {
+      a.tabs__nav-link
+        i.fa.fa-bolt
+        - if (tabs.ts.length > 1) {
+          |  #{ ts }
+        - } else {
+          |  TypeScript
+        - }
+    - })
+
+    - tabs.scss && tabs.scss.map(scss => {
+      a.tabs__nav-link
+        i.fa.fa-css3
+        - if (tabs.scss.length > 1) {
+          |  #{ scss }
+        - } else {
+          |  SCSS
+        - }
+    - })
+
+    - tabs.templateHeadings && tabs.templateHeadings.map(heading => {
+      a.tabs__nav-link
+        i.fa.fa-html5
+        |  #{ heading }
+    - })
+
+  div.tabs__content
+    - if (tabs.htmlContent) {
+      div.tabs__content-tab
+        pre.language-html
+          code.language-html!=tabs.htmlContent
+    - }
+
+    - if (tabs.json) {
+      div.tabs__content-tab
+        pre.language-json
+          code.language-json!=tabs.jsonContent
+    - }
+
+    - tabs.ts && tabs.ts.map(ts => {
+      div.tabs__content-tab
+        pre.language-typescript
+          code.language-typescript!=ts
+    - })
+
+    - tabs.scss && tabs.scss.map(scss => {
+      div.tabs__content-tab
+        pre.language-scss
+          code.language-scss!=scss
+    - })
+
+    - tabs.templates && tabs.templates.map(template => {
+      div.tabs__content-tab
+        pre.language-html
+          code.language-template!=template
+    - })

@@ -1,63 +1,3 @@
-mixin renderCode (view)
-  div.tabs
-    div.tabs__nav
-      - if (view.htmlContent) {
-        a.tabs__nav-link
-          i.fa.fa-html5
-          |  HTML
-      - }
-      
-      - if (view.json) {
-        a.tabs__nav-link
-          i.fa.fa-code
-          |  JSON
-      - }
-    
-      - view.ts && view.ts.map((ts) => {
-        a.tabs__nav-link
-          i.fa.fa-bolt
-          - if (view.ts.length > 1) {
-            |  #{ ts }
-          - } else {
-            |  TypeScript
-          - }
-      - })
-    
-      - view.scss && view.scss.map((scss) => {
-        a.tabs__nav-link
-          i.fa.fa-css3
-          - if (view.scss.length > 1) {
-            |  #{ scss }
-          - } else {
-            |  SCSS
-          - }
-      - })
-    
-    div.tabs__content
-      - if (view.htmlContent) {
-        div.tabs__content-tab
-          pre.language-html
-            code.language-html!=view.htmlContent
-      - }
-      
-      - if (view.json) {
-        div.tabs__content-tab
-          pre.language-json
-            code.language-json!=view.jsonContent
-      - }
-    
-      - view.ts && view.ts.map((ts, index) => {
-        div.tabs__content-tab
-          pre.language-typescript
-            code.language-typescript!=view.tsContent[index]
-      - })
-    
-      - view.scss && view.scss.map((scss, index) => {
-        div.tabs__content-tab
-          pre.language-scss
-            code.language-scss!=view.scssContent[index]
-      - })
-
 doctype html
 html(lang="en")
   head
@@ -89,23 +29,21 @@ html(lang="en")
 
             div.card
               div.card__content
-                +renderCode(view)
-          
+                - var tabs = view;
+                include ./components/tabs/tabs
+
           - } else {
             div
               - var path = view.html;
               include ./components/component-view/component-view
-              
-              div.resizer.resizer--view-component
-                a.resizer-link.resizer-link--375(data-resizer="375px")
-                a.resizer-link.resizer-link--768(data-resizer="768px")
-                a.resizer-link.resizer-link--1024(data-resizer="1024px")
-                a.resizer-link.resizer-link--100.resizer-link--active(data-resizer="100%")
+
+              include ./components/resizer/resizer
 
             div.card
               div.card__content
-                +renderCode(view)
+                - var tabs = view;
+                include ./components/tabs/tabs
           - }
       - })
-    
+
     include ./_foot

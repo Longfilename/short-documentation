@@ -9,7 +9,7 @@ html(lang="en")
       div.card
         div.card__content.card__content--rich-text
           !=markdown
-      
+
       div
         - pages.map((page, index) => {
           a.button.js__view-template--open(href=page.url)
@@ -19,40 +19,14 @@ html(lang="en")
             |  &nbsp;  
           - }
         - })
-      
+
       div.card
         div.card__content
-          div.tabs
-            div.tabs__nav
-              - pages.map((page, index) => {
-                a.tabs__nav-link
-                  i.fa.fa-html5
-                  |  HTML
-                  - if (pages.length > 1) {
-                  |  (#{ page.title } Template)
-                  - }
-              - })
-            
-            div.tabs__content
-              - renderedHTML.map((html) => {
-                div.tabs__content-tab
-                  pre.language-html
-                    code.language-html!=html
-              - })
-      
-      div.resizer.resizer--view-template
-        a.resizer-link.resizer-link--375(data-resizer="375px")
-        a.resizer-link.resizer-link--768(data-resizer="768px")
-        a.resizer-link.resizer-link--1024(data-resizer="1024px")
-        a.resizer-link.resizer-link--100.resizer-link--active(data-resizer="100%")
-      
-      div.view-template
-        a.button.view-template__close.js__view-template--close
-          span.view-template__close-text Close Template
-          i.fa.fa-times(aria-hidden="true")
-        
-        div.view-template__overlay
-          div.view-template__iframe-wrapper
-            iframe.view-template__iframe
-    
+          include ./components/tabs/tabs
+
+      - var resizerClass = 'resizer--view-template'
+      include ./components/resizer/resizer
+
+      include ./components/view-template/view-template
+
     include ./_foot

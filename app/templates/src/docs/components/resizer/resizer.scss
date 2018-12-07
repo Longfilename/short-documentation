@@ -3,10 +3,7 @@
   background: $color-bg__resizer;
   height: 22px;
   overflow: hidden;
-
-  &--view-component {
-    position: relative;
-  }
+  position: relative;
 
   &--view-template {
     display: none;
