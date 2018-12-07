@@ -1,0 +1,8 @@
+div.component-view
+  //- shown before iframe has loaded;
+  div.component-view__loading
+    p.component-view__loading-text loading component
+  
+  //- shown after iframe has loaded;
+  div.component-view__loaded
+    iframe.component-view__iframe(data-src=path, scrolling="no")

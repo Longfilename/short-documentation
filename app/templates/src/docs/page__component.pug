@@ -1,10 +1,3 @@
-mixin renderView (path)
-  div.component-view
-    div.component-view__loading
-      p.component-view__loading-text loading component
-    div.component-view__loaded
-      iframe.component-view__iframe(data-src=path, scrolling="no")
-
 mixin renderCode (view)
   div.tabs
     div.tabs__nav
@@ -91,7 +84,8 @@ html(lang="en")
         div.component(class=index === 0 ? 'component--selected' : '')
           - if (size && size.indexOf('px')) {
             div(style=`width: ${size};`)
-              +renderView(view.html)
+              - var path = view.html;
+              include ./components/component-view/component-view
 
             div.card
               div.card__content
@@ -99,7 +93,8 @@ html(lang="en")
           
           - } else {
             div
-              +renderView(view.html)
+              - var path = view.html;
+              include ./components/component-view/component-view
               
               div.resizer.resizer--view-component
                 a.resizer-link.resizer-link--375(data-resizer="375px")
