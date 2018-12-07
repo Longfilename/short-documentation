@@ -19,9 +19,9 @@ jQuery(($: JQueryStatic) => {
       $iframe = $('.view-template__iframe');
       resizedClass = 'view-template__iframe-wrapper--resized';
     } else {
-      $target = $resizer.prev().find('.view-component__loaded');
-      $iframe = $target.find('.view-component__iframe');
-      resizedClass = 'view-component__loaded--resized';
+      $target = $resizer.prev().find('.component-view__loaded');
+      $iframe = $target.find('.component-view__iframe');
+      resizedClass = 'component-view__loaded--resized';
     }
 
     $links.each((i: number, link: HTMLElement) => {
@@ -37,7 +37,7 @@ jQuery(($: JQueryStatic) => {
 
         $target.one('transitionend.resizer', () => {
           setTimeout(() => {
-            $iframe.trigger('resize.view-component');
+            $iframe.trigger('resize.component-view');
           }, 750);
         });
 
