@@ -1,4 +1,7 @@
+// container for .buttons to navigate between different component views;
+// only displayed when there is more than one view per component;
 .component-nav {
+  // increase the padding for the button to align the button content with the compoennt readme text;
   .button {
     padding: 10px 20px;
   }

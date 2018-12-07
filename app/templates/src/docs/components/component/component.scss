@@ -1,13 +1,18 @@
+// container for a component navigation, view (iframe), and tabs;
+// by default all component are positioned off screen;
+// only the selected one is visible to the user (one at a time);
 .component {
   position: absolute;
   width: 100%;
   top: 0;
-  left: -9999em;
+  left: -200vw;
 
+  // continue spacing out any children (nav, iframe, tabs);
   > * + * {
     margin-top: $size__gutter;
   }
 
+  // the selected component is visible to the user;
   &--selected {
     position: static;
   }

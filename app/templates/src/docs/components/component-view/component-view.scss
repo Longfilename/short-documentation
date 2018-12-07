@@ -1,8 +1,12 @@
+// container for the iframe view of a component;
+// before the iframe has loaded, show the loading  indicator;
+// after the iframe has loaded, animate the height of the iframe container so the full iframe is visible;
 .component-view {
   position: relative;
   transition: all 0.6s;
   height: $size__component-view;
 
+  // shown before iframe has loaded;
   &__loading {
     position: absolute;
     top: 0;
@@ -21,6 +25,7 @@
     }
   }
 
+  // shown after iframe has loaded (contains iframe);
   &__loaded {
     position: absolute;
     top: 0;
@@ -32,12 +37,15 @@
     height: 100%;
     overflow: hidden;
 
+    // applied to full width components that have been resized (by the resizer component);
+    // this centers the component with a defined width;
     &--resized {
       left: 50%;
       transform: translateX(-50%);
     }
   }
 
+  // iframe that contains the component;
   &__iframe {
     transition: all 0.3s;
     border: 0;
@@ -45,9 +53,11 @@
     height: $size__component-view;
   }
 
+  // indicates the iframe has loaded, so hide the loading indicator;
   &--loaded {
     background: $color-bg__component-view--loaded;
 
+    // fade out the loading indicator before it is hidden via JS;
     .component-view__loading {
       opacity: 0;
     }
