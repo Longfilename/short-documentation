@@ -29,6 +29,7 @@
     h5,
     h6 {
       font-size: $size__font;
+      margin-top: 20px;
     }
 
     > * {
@@ -37,11 +38,6 @@
       // add a top margin to everything but the first element;
       &:first-child {
         margin-top: 0;
-      }
-
-      // add additional margin for H1s that are not the first element;
-      + h1 {
-        margin-top: 20px;
       }
     }
 

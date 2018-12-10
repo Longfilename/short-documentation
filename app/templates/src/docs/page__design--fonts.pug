@@ -58,7 +58,7 @@ html(lang="en")
 
     //- import any external fonts needed;
     link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto:300,400,700")
-    
+
     //- define the styles needed to display the fonts;
     - fontFamilies.forEach((font, index) => {
       style.
@@ -85,7 +85,9 @@ html(lang="en")
     include ./components/page/page
       div.card
         div.card__content.card__content--rich-text
-          h1 Font families
+          h1 Fonts
+
+          h2 Font families
           table(cellspacing="0")
             - fontFamilies.forEach(font => {
               tr
@@ -94,8 +96,8 @@ html(lang="en")
                 td
                   +countLabel(font.count)
             - })
-          
-          h1 Font weights
+
+          h2 Font weights
           table(cellspacing="0")
             - fontWeights.forEach(font => {
               tr
@@ -104,8 +106,8 @@ html(lang="en")
                 td
                   +countLabel(font.count)
             - })
-          
-          h1 Font sizes
+
+          h2 Font sizes
           table(cellspacing="0")
             - fontSizes.forEach(font => {
               tr
@@ -114,11 +116,11 @@ html(lang="en")
                 td
                   +countLabel(font.count)
             - })
-      
+
       //- create a container for each font (family + weight) to display;
       - fontFamilies.forEach(fontFamily => {
         - fontWeights.forEach(fontWeight => {
-          div.card.card--body
+          div.card
             div.card__content.card__content--font-head
               h1.card__content-title !{ fontFamily.val } (#{ fontWeight.val })
             
@@ -126,5 +128,5 @@ html(lang="en")
               +shiftSentances
         - })
       - })
-    
+
     include ./_foot
