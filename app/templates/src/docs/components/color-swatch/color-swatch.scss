@@ -3,7 +3,7 @@
   margin: $size__gutter;
   width: calc(20% - #{$size__gutter} * 2);
 
-  // if a color swatch is transparent, a gradient background is added;
+  // a gradient background is added to highlight transparent colors;
   &__gradient {
     background-image: repeating-linear-gradient(
       45deg,
@@ -14,7 +14,7 @@
     );
   }
 
-  // block with inline background color defined;
+  // container for displaying the color, an inline background color is defined;
   &__chip {
     position: relative;
     border: 1px solid $color-bg__color-swatch--hex;
@@ -25,6 +25,7 @@
 
   // hex value displayed on top of the chip;
   &__hex {
+    display: none;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -33,9 +34,13 @@
     background: $color-bg__color-swatch--hex;
     padding: 5px;
     color: $color-text__color-swatch--hex;
+
+    @include breakpoint($breakpoint--md) {
+      display: block;
+    }
   }
 
-  // text under the chip, contains the name and count;
+  // text under the chip, contains the name and count and hex;
   &__label {
     padding-top: 5px;
   }
@@ -43,15 +48,21 @@
   &__name {
     line-height: 1;
     font-size: $size__font;
+
+    &--hex {
+      color: $color-text__color-swatch--count;
+      font-size: 10px;
+      padding-top: 3px;
+
+      @include breakpoint($breakpoint--md) {
+        display: none;
+      }
+    }
   }
 
   &__count {
-    line-height: 16px;
     color: $color-text__color-swatch--count;
     font-size: 10px;
-
-    @include breakpoint($breakpoint--md) {
-      float: right;
-    }
+    padding-top: 3px;
   }
 }

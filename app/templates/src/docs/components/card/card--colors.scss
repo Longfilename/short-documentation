@@ -1,20 +1,13 @@
 .card__content {
-  &--colors {
+  &--colors-head {
+    padding-bottom: 0;
+  }
+
+  &--colors-body {
     display: flex;
     position: relative;
     flex-wrap: wrap;
     max-width: $size__content--wide;
-
-    &::before {
-      position: absolute;
-      z-index: $z-index__card--shadow-cover;
-      top: 0 - $size__shadow;
-      left: 0;
-      background: $color-bg__card--border;
-      width: 100%;
-      max-width: $size__content--narrow;
-      height: $size__shadow;
-      content: '';
-    }
+    padding: 0;
   }
 }

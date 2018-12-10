@@ -6,13 +6,11 @@ html(lang="en")
   body
     include ./components/page/page
       div.card
-        div.card__content.card__content--rich-text
+        div.card__content.card__content--colors-head.card__content--rich-text
           h1 Colors
-          p Here is the color palatee for INSERT_PROJECT_NAME. All colors on the site (that aren’t defined in 3rd party plugins) are defined below. Even if the color is only used once.
-          p The <strong>$shade--</strong> colors have an alpha transparency, so they are shown on top of a gray/white stripped background to show the translucency of the color.
-          p Use <a href="http://chir.ag/projects/name-that-color/">http://chir.ag/projects/name-that-color/</a> to generate color names. It’s much easier than dreaming up a name for the fourth blue.
-      
-        div.card__content.card__content--colors
+          p All colors defined in the SCSS variables (that aren’t defined in 3rd party plugins) are listed below. Colors with an alpha transparency, <code>rgba()</code>, are shown on top of a gray/white stripped background to show the translucency of the color.
+
+        div.card__content.card__content--colors-body
           - Object.keys(scssVariables).forEach((key, index) => {
             - if (key.indexOf('$color__') === -1) {
               - var regex = new RegExp(scssVariables[key], 'g')
@@ -24,8 +22,9 @@ html(lang="en")
                   div.color-swatch__chip(style=`background: ${ scssVariables[key] };`)
                     div.color-swatch__hex=scssVariables[key]
                 div.color-swatch__label
-                  div.color-swatch__count used #{ count } #{ label }
                   div.color-swatch__name #{ key }
+                  div.color-swatch__name--hex=scssVariables[key]
+                  div.color-swatch__count used #{ count } #{ label }
             - }
           - })
     
