@@ -1,119 +1,130 @@
+//- extract the font variables to use in building this page;
+- var fontFamilies = [];
+- var fontWeights = [];
+- var fontSizes = [];
+
+- Object.keys(scssVariables).forEach((key, index) => {
+  - if (key.indexOf('$font-family__') === 0) {
+    - var font = scssVariables[key].replace(/'/g, '"');
+    - var regex = new RegExp(font, 'g')
+    - var count = (css.match(regex) || []).length
+    - fontFamilies.push({ var: key.replace('$', ''), val: font.replace(/,/g, ', '), count: count })
+  - }
+- })
+
+- Object.keys(scssVariables).forEach((key, index) => {
+  - if (key.indexOf('$font-weight__') === 0) {
+    - var weight = scssVariables[key];
+    - var regex = new RegExp(weight, 'g')
+    - var count = (css.match(regex) || []).length
+    - fontWeights.push({ var: key.replace('$', ''), val: weight, count: count })
+  - }
+- })
+
+- Object.keys(scssVariables).forEach((key, index) => {
+  - if (key.indexOf('$font-size__') === 0) {
+    - var size = scssVariables[key];
+    - var regex = new RegExp(size, 'g')
+    - var count = (css.match(regex) || []).length
+    - fontSizes.push({ var: key.replace('$', ''), val: size, count: count })
+  - }
+- })
+
+//- sort the weights and sizes to make them easier to read;
+- fontWeights.sort((a, b) => parseFloat(a.val) - parseFloat(b.val));
+- fontSizes.sort((a, b) => parseFloat(a.val) - parseFloat(b.val));
+
+//- pool of alphabet sentances to be used when displaying font variations;
 - var sentances = "The quick brown fox jumps over the lazy dog. Six of the women quietly gave back prizes to the judge. Jay began removing six dozen black quilts with petty flaws. The judge quickly gave back six prizes to the women. Four women quietly gave the sixth prize back to the judge. Picking just six quinces, the new farm hand proved strong but lazy. We could jeopardize six of the gunboats by two quick moves. Six women quietly got the prizes back from the five judges. Six of the gunboats could be jeopardized by two quick moves. Judge Power quickly gave six embezzlers stiff sentences. Jack quietly gave dog owners most of his prize boxers. The laze judge was very quick to pay tax money for the barn. My folks proved his expert eloquence was just a big hazard. Jack’s eloquence may prove hazardous for the six big shows. Jack’s man found exactly a quarter in the woven zipper bag. James Boxwell, the banquet speaker, analyzed a few carvings. Quickly pack the box with five dozen modern jugs. Jack quietly moved up front and seized the big ball of wax. Dave quickly spotted the four women dozing in the jury box. Jacqueline was vexed by the folks who got the money prizes. Brown jars prevented the mixture from freezing too quickly. Jeff had his size to help him win quickly over Gene Baxter. Jack Farmer realized that big yellow quilts were expensive. The six men have power to seize the ship quickly. Maize quickly paid Jones for the five new taxis she bought. Jack typed requisitions for white moving boxes (long size). Weekly magazines request help for and by junior executives. Why did Max become eloquent over a zany gift like judhpurs? I quickly explained that many big jobs involve few hazards."
 - var sentancesArray = sentances.split('. ')
 
+//- build the array of sentances to be used;
 mixin shiftSentances
-  - for (var i = 0; i < 7; i++) {
+  - for (var i = 0; i < fontSizes.length; i++) {
     - sentancesArray.push(sentancesArray.shift())
     p=sentancesArray.join('. ')
   - }
+
+//- transform "1" into "used 1 time" for easier readability;
+mixin countLabel(count)
+  - label = count === 0 ? "times" : "time"
+  - label = count > 1 ? "times" : label
+  | used #{ count } #{ label }
 
 doctype html
 html(lang="en")
   head
     include ./_head
 
-    // import any external fonts needed;
-    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto:300,400,500,700")
+    //- import any external fonts needed;
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto:300,400,700")
     
-    style.
-      // define the fonts;
-      .card--body .card__content--font-body {
-        font-family: 'Roboto', serif;
-      }
-      .card--header .card__content--font-body {
-        font-family: 'Roboto Condensed', serif;
-      }
-      
-      // define the font weights used;
-      .card__content--font-100 {
-        font-weight: 100;
-      }
-      .card__content--font-300 {
-        font-weight: 300;
-      }
-      .card__content--font-400 {
-        font-weight: 400;
-      }
-      .card__content--font-500 {
-        font-weight: 500;
-      }
-      .card__content--font-700 {
-        font-weight: 700;
-      }
-      .card__content--font-900 {
-        font-weight: 900;
-      }
+    //- define the styles needed to display the fonts;
+    - fontFamilies.forEach((font, index) => {
+      style.
+        .card__content--#{ font.var } {
+          font-family: !{ font.val };
+        }
+    - })
+
+    - fontWeights.forEach((font, index) => {
+      style.
+        .card__content--#{ font.var } {
+          font-weight: #{ font.val };
+        }
+    - })
+
+    - fontSizes.forEach((font, index) => {
+      style.
+        .card__content--font-body p:nth-child(#{ index + 1 }) {
+          font-size: #{ font.val };
+        }
+    - })
 
   body
     include ./components/page/page
       div.card
         div.card__content.card__content--rich-text
-          h1 Fonts
-          p INSERT_FONT_FACE is the font used across INSERT_PROJECT_NAME. Below are the INSERT_NUMBER_OF_FONT_WEIGHTS font weights imported into the CSS.
-          p Here are some example alphabet sentances (all 26 letters used in a single sentance). Each weight is displayed in seven (7) font-sizes (12px, 16px, 20px, 24px, 28px, 32px, 36px).
+          h1 Font families
           table(cellspacing="0")
-            - Object.keys(scssVariables).forEach((key, index) => {
-              - if (key.indexOf('$font-family__') === 0) {
-                - var font = scssVariables[key].replace(/'/g, '"');
-                - var regex = new RegExp(font, 'g')
-                - var count = (css.match(regex) || []).length
-                - var label = count === 0 ? "times" : "time"
-                - label = count > 1 ? "times" : label
-                tr
-                  td=key
-                  td=font.replace(/,/g, ', ')
-                  td used #{ count } #{ label }
-              - }
+            - fontFamilies.forEach(font => {
+              tr
+                td $#{ font.var }
+                td=font.val
+                td
+                  +countLabel(font.count)
+            - })
+          
+          h1 Font weights
+          table(cellspacing="0")
+            - fontWeights.forEach(font => {
+              tr
+                td $#{ font.var }
+                td=font.val
+                td
+                  +countLabel(font.count)
+            - })
+          
+          h1 Font sizes
+          table(cellspacing="0")
+            - fontSizes.forEach(font => {
+              tr
+                td $#{ font.var }
+                td=font.val
+                td
+                  +countLabel(font.count)
             - })
       
-      // create a container for each font (family + weight) to display;
-      div.card.card--body
-        div.card__content.card__content--font-head
-          h1.card__content-title Roboto Light (300)
-        
-        div.card__content.card__content--font-body.card__content--font-300
-          +shiftSentances
-      
-      div.card.card--body
-        div.card__content.card__content--font-head
-          h1.card__content-title Roboto Regular (400)
-        
-        div.card__content.card__content--font-body.card__content--font-400
-          +shiftSentances
-      
-      div.card.card--body
-        div.card__content.card__content--font-head
-          h1.card__content-title Roboto Medium (500)
-        
-        div.card__content.card__content--font-body.card__content--font-500
-          +shiftSentances
-      
-      div.card.card--body
-        div.card__content.card__content--font-head
-          h1.card__content-title Roboto Bold (700)
-        
-        div.card__content.card__content--font-body.card__content--font-700
-          +shiftSentances
-    
-      div.card.card--header
-        div.card__content.card__content--font-head
-          h1.card__content-title Roboto Condensed Light (300)
-        
-        div.card__content.card__content--font-body.card__content--font-300
-          +shiftSentances
-      
-      div.card.card--header
-        div.card__content.card__content--font-head
-          h1.card__content-title Roboto Condensed Regular (400)
-        
-        div.card__content.card__content--font-body.card__content--font-400
-          +shiftSentances
-      
-      div.card.card--header
-        div.card__content.card__content--font-head
-          h1.card__content-title Roboto Condensed Bold (700)
-        
-        div.card__content.card__content--font-body.card__content--font-700
-          +shiftSentances
+      //- create a container for each font (family + weight) to display;
+      - fontFamilies.forEach(fontFamily => {
+        - fontWeights.forEach(fontWeight => {
+          div.card.card--body
+            div.card__content.card__content--font-head
+              h1.card__content-title !{ fontFamily.val } (#{ fontWeight.val })
+            
+            div.card__content.card__content--font-body(class=`card__content--${ fontFamily.var } card__content--${ fontWeight.var }`)
+              +shiftSentances
+        - })
+      - })
     
     include ./_foot
