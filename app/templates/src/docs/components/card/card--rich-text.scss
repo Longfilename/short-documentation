@@ -32,10 +32,10 @@
       margin-top: 20px;
     }
 
+    // add a top margin to everything but the first element;
     > * {
       margin-top: 10px;
 
-      // add a top margin to everything but the first element;
       &:first-child {
         margin-top: 0;
       }
