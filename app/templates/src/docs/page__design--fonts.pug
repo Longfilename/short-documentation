@@ -58,7 +58,7 @@ html(lang="en")
 
     //- import any external fonts needed;
     link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto:300,400,700")
-
+    
     //- define the styles needed to display the fonts;
     - fontFamilies.forEach((font, index) => {
       style.
@@ -79,6 +79,9 @@ html(lang="en")
         .card__content--font-body p:nth-child(#{ index + 1 }) {
           font-size: #{ font.val };
         }
+        .card__content--font-body p:nth-child(#{ index + 1 }):before {
+          content: '#{ font.val }';
+        }
     - })
 
   body
@@ -96,7 +99,7 @@ html(lang="en")
                 td
                   +countLabel(font.count)
             - })
-
+          
           h2 Font weights
           table(cellspacing="0")
             - fontWeights.forEach(font => {
@@ -106,7 +109,7 @@ html(lang="en")
                 td
                   +countLabel(font.count)
             - })
-
+          
           h2 Font sizes
           table(cellspacing="0")
             - fontSizes.forEach(font => {
@@ -116,17 +119,17 @@ html(lang="en")
                 td
                   +countLabel(font.count)
             - })
-
+      
       //- create a container for each font (family + weight) to display;
       - fontFamilies.forEach(fontFamily => {
         - fontWeights.forEach(fontWeight => {
           div.card
             div.card__content.card__content--font-head
-              h1.card__content-title !{ fontFamily.val } (#{ fontWeight.val })
+              h1.card__content-title !{ fontFamily.val.replace(/"/g, '') } (#{ fontWeight.val })
             
             div.card__content.card__content--font-body(class=`card__content--${ fontFamily.var } card__content--${ fontWeight.var }`)
               +shiftSentances
         - })
       - })
-
+    
     include ./_foot

@@ -1,20 +1,35 @@
 .card__content {
+  // heading containing the font-family stack and font-weight;
+  // no bottom padding because the content below has its own padding;
   &--font-head {
     padding-bottom: 0;
   }
 
+  // full width display of alphabet sentances for each font-family stack and font-weight;
   &--font-body {
     position: relative;
     max-width: $size__content--wide;
 
+    // there is a sentance for each font-size, divided by a border;
+    // there should be more than enough content to overflow the screen width, so hide that content with an ellipsis;
+    // the content isn't important, just the visual representation of the font;
     p {
       margin: 0;
       border-bottom: 1px dotted $color-bg__card-font--divider;
       overflow: hidden;
       text-overflow: ellipsis;
-      line-height: 1.5;
+      line-height: 1.6;
       white-space: nowrap;
 
+      // each sentance has a before pseudo element to label what font-size is in use;
+      &:before {
+        display: inline-block;
+        border-right: 1px dotted $color-bg__card-font--divider;
+        margin-right: 0.5em;
+        padding-right: 0.5em;
+      }
+
+      // each P has a bottom border, add a top border to just the first P to frame all the sentances;
       &:nth-child(1) {
         border-top: 1px dotted $color-bg__card-font--divider;
       }
