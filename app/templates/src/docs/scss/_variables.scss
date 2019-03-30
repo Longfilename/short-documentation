@@ -63,9 +63,11 @@ $z-index__component-view--loaded: 10;
 $z-index__component-view--loading: 11;
 $z-index__page-frame: 10;
 $z-index__page-frame--overlay: 100;
-$z-index__resizer--mobile: 13;
-$z-index__resizer--tablet-sm: 12;
-$z-index__resizer--tablet-lg: 11;
+$z-index__resizer--xs: 16;
+$z-index__resizer--sm: 15;
+$z-index__resizer--md: 14;
+$z-index__resizer--lg: 13;
+$z-index__resizer--xl: 11;
 $z-index__resizer--desktop: 10;
 
 $breakpoint--xs: min-width 480px; // phone;

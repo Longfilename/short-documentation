@@ -98,9 +98,11 @@ html(lang="en")
               +renderView(view.html)
               
               div.resizer.resizer--view-component
-                a.resizer-link.resizer-link--375(data-resizer="375px")
-                a.resizer-link.resizer-link--768(data-resizer="768px")
-                a.resizer-link.resizer-link--1024(data-resizer="1024px")
+                a.resizer-link.resizer-link--xs(style="width: 480px;", data-resizer="480px")
+                a.resizer-link.resizer-link--sm(style="width: 600px;", data-resizer="600px")
+                a.resizer-link.resizer-link--md(style="width: 768px;", data-resizer="768px")
+                a.resizer-link.resizer-link--lg(style="width: 1024px;", data-resizer="1024px")
+                a.resizer-link.resizer-link--xl(style="width: 1200px;", data-resizer="1200px")
                 a.resizer-link.resizer-link--100.resizer-link--active(data-resizer="100%")
           
             div.card__content.card__content--component-foot
