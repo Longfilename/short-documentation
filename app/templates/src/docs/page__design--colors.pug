@@ -15,7 +15,8 @@ html(lang="en")
         div.card__content.card__content--colors
           - Object.keys(scssVariables).forEach((key, index) => {
             - if (key.indexOf('$color__') === -1) {
-              - var regex = new RegExp(scssVariables[key], 'g')
+              - var escapedKey = scssVariables[key].replace('(', '\\(').replace(')', '\\)')
+              - var regex = new RegExp(escapedKey, 'g')
               - var count = (css.match(regex) || []).length
               - var label = count === 0 ? "times" : "time"
               - label = count > 1 ? "times" : label
