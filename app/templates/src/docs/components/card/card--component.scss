@@ -18,23 +18,20 @@
     &::after,
     &::before {
       position: absolute;
+      left: $size__gutter;
       background: #fff;
       width: 100%;
       max-width: $size__content--narrow;
-      height: $size__shadow;
+      height: $size__shadow + $size__gutter * 2;
       content: '';
     }
 
     &::before {
-      top: 0 - $size__shadow - $size__gutter;
-      left: $size__gutter;
-      height: $size__shadow;
+      top: 0 - $size__shadow - $size__gutter * 2;
     }
 
     &::after {
-      bottom: 0 - $size__shadow - $size__gutter;
-      left: $size__gutter;
-      height: $size__shadow;
+      bottom: 0 - $size__shadow - $size__gutter * 2;
     }
   }
 }
