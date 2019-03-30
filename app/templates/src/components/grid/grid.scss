@@ -41,21 +41,3 @@ $grid-gutter-width: 30px !default;
 
 @import 'bootstrap/scss/bootstrap-grid';
 @import 'bootstrap/scss/utilities/_display';
-
-.debug-grid {
-  // add a horizontal & vertical grid to align all the content;
-  &::before {
-    content: '';
-    display: block;
-    background-size: $line-height__medium $line-height__medium;
-    background-image: linear-gradient(to bottom, lightblue 1px, transparent 1px),
-      linear-gradient(to right, lightblue 1px, transparent 1px);
-    background-position: 50% 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-  }
-}
