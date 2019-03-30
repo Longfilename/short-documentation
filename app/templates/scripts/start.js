@@ -8,9 +8,9 @@ const startDocs = options.indexOf('docs') > -1;
 
 site.clean();
 site.ts();
-site.images();
+site.binaries();
 site.html();
-site.scss(function () {
+site.scss(function() {
   // wait till CSS is rendered so it can be read by the docs;
   if (startDocs) {
     docs.scss();

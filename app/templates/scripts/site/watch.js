@@ -3,14 +3,14 @@ const util = require('../_util'); // Short Documentation shared functions;
 // import all site build scripts;
 const scss = require('./scss');
 const ts = require('./ts');
-const images = require('./images');
+const binaries = require('./binaries');
 const html = require('./html');
 
 module.exports = () => {
   util.watch({
-    images: {
-      path: 'src/components/**/images/*',
-      command: images
+    binaries: {
+      path: 'src/components/**/*',
+      command: binaries
     },
     scss: {
       path: ['src/components/**/*.scss', 'src/scss/**/*.scss'],
