@@ -15,8 +15,8 @@ npm install -g generator-short-documentation  # install the short-documentation 
 
 ## Configuration
 
-* create your project folder
-* create a `config-yeoman.json` file ([sample JSON](./sample-config-yeoman.json))
+- create your project folder
+- create a `config-yeoman.json` file ([sample JSON](./config-yeoman.json))
 
 #### config-yeoman.json
 
