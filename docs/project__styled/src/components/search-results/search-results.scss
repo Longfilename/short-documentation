@@ -1,0 +1,45 @@
+.search-results {
+  &__title {
+    padding: size(2) 0 0;
+
+    h1 {
+      font-size: $font-size__large;
+    }
+  }
+
+  &__stories {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: size(0.5);
+    margin: 0 size(0.5) * -1;
+  }
+
+  .card,
+  &__card-loading {
+    width: calc(50% - #{size(1)});
+    margin: size(0.5);
+
+    @include breakpoint($breakpoint--md) {
+      width: calc(25% - #{size(1)});
+    }
+  }
+
+  &__card-loading {
+    display: none;
+
+    .icon-container {
+      background: $color__backgroundDark;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+
+      // whatever icon is shown;
+      [class^='icon-'] {
+        width: size(2);
+        height: size(2);
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "project": {
+    "name": "ACME"
+  },
+  "components": {
+    "card": {},
+    "featured-stories": {},
+    "headline-grid": {},
+    "headline-slideshow": {
+      "js": true
+    },
+    "page-footer": {},
+    "page-header": {},
+    "photo-slideshow": {
+      "js": true
+    },
+    "rich-text": {},
+    "search-results": {
+      "js": true
+    },
+    "site-nav": {
+      "js": true
+    },
+    "skip-nav": {},
+    "slat": {},
+    "slat-list": {},
+    "story": {},
+    "story-image": {}
+  },
+  "templates": {
+    "home": [
+      "skip-nav",
+      "page-header",
+      "site-nav",
+      "featured-stories",
+      "headline-slideshow",
+      "page-footer"
+    ],
+    "search-results": ["skip-nav", "page-header", "site-nav", "search-results"],
+    "section": [
+      "skip-nav",
+      "page-header",
+      "site-nav",
+      "featured-stories",
+      "headline-grid",
+      "slat-list",
+      "photo-slideshow",
+      "page-footer"
+    ],
+    "story": [
+      "skip-nav",
+      "page-header",
+      "site-nav",
+      "story",
+      "slat-list",
+      "photo-slideshow",
+      "page-footer"
+    ]
+  }
+}

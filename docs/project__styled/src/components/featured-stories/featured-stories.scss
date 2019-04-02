@@ -1,0 +1,74 @@
+.featured-stories {
+  margin-top: size(1);
+
+  // left rail, primary story card;
+  .card--featured-large {
+    .img-cover {
+      height: size(17);
+      padding: 0;
+    }
+
+    h1 {
+      font-size: 32px;
+      line-height: 36px;
+      bottom: 16px;
+      left: size(1);
+      right: size(1);
+    }
+  }
+
+  // center rail, secondary story cards;
+  // visible only at certain breakpoints;
+  .card--featured-small {
+    margin-top: size(1);
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    .img-cover {
+      height: size(5);
+      padding: 0;
+    }
+
+    h3 {
+      font-size: 14px;
+      line-height: 20px;
+      bottom: 8px;
+      left: size(0.5);
+      right: size(0.5);
+    }
+  }
+
+  // right rail, tertiary story list;
+  // Top Stories;
+  &__top {
+    h2 {
+      font-size: $font-size__medium;
+      line-height: $line-height__large;
+    }
+
+    a {
+      color: $color__textDark;
+      text-decoration: none;
+      display: block;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      font-size: $font-size__medium;
+      line-height: $line-height__large;
+      transition: color $duration__color;
+
+      @include breakpoint($breakpoint--md) {
+        font-size: $font-size__small;
+        line-height: $line-height__medium;
+      }
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+        color: $color__highlightLight;
+      }
+    }
+  }
+}

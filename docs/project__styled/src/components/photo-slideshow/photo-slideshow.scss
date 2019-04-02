@@ -1,0 +1,55 @@
+.photo-slideshow {
+  margin-top: size(1);
+  background: $color__backgroundDarkShade;
+
+  h3 {
+    margin: size(1) 0;
+  }
+
+  &__for {
+    .img-cover {
+      height: size(18);
+      margin: size(1) 0 size(1) size(1);
+
+      @include breakpoint($breakpoint--lg) {
+        height: size(22);
+      }
+    }
+  }
+
+  &__nav {
+    padding: 0 0 size(1) size(1);
+
+    .img-cover {
+      height: size(3);
+    }
+
+    &-slide {
+      cursor: pointer;
+      margin: 0 size(0.5);
+
+      &.slick-current {
+        .img-cover {
+          background: $color__backgroundDark;
+        }
+
+        img {
+          opacity: $opacity__hover;
+        }
+      }
+
+      &:focus,
+      &.slick-current:focus {
+        outline: none;
+
+        .img-cover {
+          background: $color__highlightLight;
+        }
+
+        img {
+          opacity: $opacity__hover;
+        }
+      }
+    }
+  }
+}

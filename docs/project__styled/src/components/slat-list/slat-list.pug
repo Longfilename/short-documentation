@@ -1,0 +1,13 @@
+// start `slat-list` component; 
+section.slat-list
+  if component.title
+    h2.slat-list__title=component.title
+
+  - var slatListStories = component.stories
+  each slatListStory in slatListStories
+    if slatListStory !== slatListStories[0]
+      hr
+    
+    - var component = slatListStory
+    include ../slat/slat
+// end `slat-list` component; 

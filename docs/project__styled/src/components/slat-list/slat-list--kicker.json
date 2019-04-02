@@ -1,0 +1,81 @@
+{
+  "title": "Right Now",
+  "stories": [
+    {
+      "kicker": {
+        "section": "NFL",
+        "time": "8min ago"
+      },
+      "img": "http://via.placeholder.com/72x72",
+      "alt": "empty placeholder image",
+      "title": "Donec vehicula massa nec nisi vestibulum vulputate",
+      "url": "#"
+    },
+    {
+      "kicker": {
+        "section": "NFL",
+        "time": "8min ago"
+      },
+      "img": "http://via.placeholder.com/72x72",
+      "alt": "empty placeholder image",
+      "title": "Praesent hendrerit massa sit amet nulla bibendum",
+      "url": "#"
+    },
+    {
+      "kicker": {
+        "section": "NCAA",
+        "time": "8min ago"
+      },
+      "title": "Vivamus vel turpis quis nunc aliquet interdum",
+      "url": "#"
+    },
+    {
+      "kicker": {
+        "section": "Soccer",
+        "time": "8min ago"
+      },
+      "img": "http://via.placeholder.com/72x72",
+      "alt": "empty placeholder image",
+      "title": "Integer vel sem vitae ligula semper auctoracsit",
+      "url": "#"
+    },
+    {
+      "kicker": {
+        "section": "Golf",
+        "time": "8min ago"
+      },
+      "img": "http://via.placeholder.com/72x72",
+      "alt": "empty placeholder image",
+      "title": "Nam placerat risus faucibus dui vehicula malesuada",
+      "url": "#"
+    },
+    {
+      "kicker": {
+        "section": "NFL",
+        "time": "8min ago"
+      },
+      "title": "Vivamus nec lacus quis nulla venenatis viverra",
+      "url": "#"
+    },
+    {
+      "kicker": {
+        "section": "NBA",
+        "time": "8min ago"
+      },
+      "img": "http://via.placeholder.com/72x72",
+      "alt": "empty placeholder image",
+      "title": "Mauris placerat sem elementum leo molestie turpis",
+      "url": "#"
+    },
+    {
+      "kicker": {
+        "section": "NCAA",
+        "time": "8min ago"
+      },
+      "img": "http://via.placeholder.com/72x72",
+      "alt": "empty placeholder image",
+      "title": "Fusce lacinia nunc ac lectus sodales, sed pulvinar",
+      "url": "#"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+.story {
+  margin-top: size(1);
+
+  &__title {
+    font-size: $font-size__x-large;
+    line-height: $line-height__large;
+  }
+
+  &__author {
+    border: 1px solid $color__highlightLight;
+    border-width: 1px 0;
+    margin: size(0.5) 0;
+    padding: size(0.5) - 1px size(0.5);
+    display: flex;
+    align-items: center;
+    align-content: center;
+
+    // author headshot;
+    .img-cover {
+      height: size(3);
+      width: size(3);
+      border-radius: 100%;
+      border: size(1/6) solid $color__highlightLight;
+    }
+
+    // container for the text content of the slat;
+    &-text {
+      padding: 0 0 0 size(0.5);
+      flex-grow: 1;
+
+      a {
+        color: $color__textDark;
+        transition: color $duration__color;
+
+        &:hover,
+        &:focus {
+          color: $color__highlightLight;
+
+          svg {
+            fill: $color__highlightLight;
+          }
+        }
+      }
+    }
+
+    // social media links
+    // displayed next to the author's name;
+    &-social {
+      display: inline-block;
+      margin-left: size(0.5);
+
+      a {
+        display: inline-block;
+        text-decoration: none;
+
+        + a {
+          margin-left: size(0.5);
+        }
+      }
+
+      svg {
+        height: size(0.75);
+        width: size(0.75);
+        margin: size(0.125);
+        fill: $color__textDark;
+        vertical-align: bottom;
+        transition: fill $duration__fill;
+      }
+    }
+
+    // article publish date/time;
+    // displayed under the author's name;
+    &-time {
+      display: block;
+      font-size: $font-size__small;
+    }
+  }
+}

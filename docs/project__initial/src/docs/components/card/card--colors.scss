@@ -1,0 +1,21 @@
+.card__content {
+  &--colors {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    box-shadow: 0 0 $size__shadow 1px $color-bg__card--shadow;
+    max-width: $size__content--wide;
+
+    &::before {
+      position: absolute;
+      z-index: $z-index__card--shadow-cover;
+      top: 0 - $size__shadow - $size__gutter * 2;
+      left: 0;
+      background: $color-bg__card--border;
+      width: 100%;
+      max-width: $size__content--narrow;
+      height: $size__shadow + $size__gutter * 2;
+      content: '';
+    }
+  }
+}

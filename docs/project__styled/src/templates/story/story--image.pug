@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+  head
+    - var title = "story"
+    include ../_head
+
+  body
+    include ../../components/skip-nav/skip-nav
+    - var component = json["page-header/page-header.json"]
+    include ../../components/page-header/page-header
+    include ../../components/site-nav/site-nav
+    include ../../components/story-image/story-image
+
+    main.container#main
+      div.row
+        div.col-12.col-md-8
+          include ../../components/story/story
+        
+        div.col-12.col-md-4
+          - var component = json["slat-list/slat-list--trailer.json"]
+          include ../../components/slat-list/slat-list
+          
+    include ../../components/page-footer/page-footer
+
+    include ../_foot

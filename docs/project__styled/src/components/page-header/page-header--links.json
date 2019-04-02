@@ -1,0 +1,28 @@
+{
+  "logo": {
+    "img": "../images/page-header/acme__logo.png",
+    "alt": "ACME Logo"
+  },
+  "links": [
+    {
+      "title": "Home",
+      "url": "#"
+    },
+    {
+      "title": "News",
+      "url": "#"
+    },
+    {
+      "title": "Sports",
+      "url": "#"
+    },
+    {
+      "title": "Business",
+      "url": "#"
+    },
+    {
+      "title": "Real Estate",
+      "url": "#"
+    }
+  ]
+}

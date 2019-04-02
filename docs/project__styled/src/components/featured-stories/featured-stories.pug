@@ -1,0 +1,30 @@
+//- reset the component var due to nested components;
+- var component = json["featured-stories/featured-stories.json"]
+- var featuredStories = component
+
+// start `featured-stories` component; 
+div.featured-stories
+  div.row
+    div.col-lg-6.col-md-8
+      - var component = featuredStories.lead
+      - component.addClass = "card--overlay card--featured-large"
+      - component.h1 = true
+      include ../card/card
+    
+    div.col-lg-2.d-none.d-lg-block
+      for story, index in featuredStories.top.stories
+        if index < 3
+          - var component = story
+          - component.addClass = "card--overlay card--featured-small d-none d-md-block"
+          - component.h2 = true
+          include ../card/card
+    
+    div.col-md-4
+      section.featured-stories__top
+        br.d-md-none
+        h2=featuredStories.top.title
+
+        for story, index in featuredStories.top.stories
+          - var visibleClass = index < 3 ? 'd-lg-none' : index > featuredStories.top.stories.length - 4 ? 'd-md-none d-lg-block' : ''
+          a(href=story.url, class=visibleClass)=story.title
+// end `featured-stories` component; 

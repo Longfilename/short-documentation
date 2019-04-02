@@ -1,0 +1,37 @@
+.card__content {
+  &--component-head {
+    padding-bottom: 0;
+  }
+
+  &--component-foot {
+    padding-top: 0;
+  }
+
+  &--component-view {
+    position: relative;
+    margin: 0 0 - $size__gutter;
+    border: $size__gutter solid $color-bg__card--border;
+    border-width: $size__gutter 0;
+    padding: 0;
+    max-width: none;
+
+    &::after,
+    &::before {
+      position: absolute;
+      left: $size__gutter;
+      background: #fff;
+      width: 100%;
+      max-width: $size__content--narrow;
+      height: $size__shadow + $size__gutter * 2;
+      content: '';
+    }
+
+    &::before {
+      top: 0 - $size__shadow - $size__gutter * 2;
+    }
+
+    &::after {
+      bottom: 0 - $size__shadow - $size__gutter * 2;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+- var component = json["story/story.json"]
+// start `story` component; 
+article.story
+  h1.story__title=component.title
+  
+  div.story__author
+    div.img-cover
+      img(src=component.author.img, alt=component.author.alt)
+    
+    div.story__author-text
+      a(href=component.author.url)=component.author.name
+      nav.story__author-social
+        a(href="#")
+          svg.icon-facebook
+            title Facebook
+            use(xlink:href="../images/icons/icons.svg#icon-facebook")
+        a(href="#")
+          svg.icon-twitter
+            title Twitter
+            use(xlink:href="../images/icons/icons.svg#icon-twitter")
+        a(href="#")
+          svg.icon-instagram
+            title Instagram
+            use(xlink:href="../images/icons/icons.svg#icon-instagram")
+      span.story__author-time=component.published
+  
+  div.rich-text!=component.body
+// end `story` component; 

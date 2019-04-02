@@ -1,0 +1,22 @@
+// container for all images so it is easy to align the images to the grid;
+// this emmulates background-size: cover, but for actual IMG tags;
+.img-cover {
+  background: $color__backgroundDark;
+  overflow: hidden;
+  position: relative;
+
+  // width is set by the size of the container;
+  // use padding to make it always a square container for the image;
+  &--square {
+    padding-bottom: 100%;
+  }
+
+  img {
+    position: absolute;
+    min-width: 1000%;
+    min-height: 1000%;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%) scale(0.1);
+  }
+}

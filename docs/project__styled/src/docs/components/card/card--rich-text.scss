@@ -1,0 +1,60 @@
+.card__content {
+  &--rich-text {
+    line-height: $size__line-height;
+    font-size: $size__font;
+
+    code {
+      border-radius: 3px;
+      background: $color-bg__card-rich-text--code;
+      padding: 3px 6px;
+      color: $color-text__card-rich-text--code;
+      font-family: monospace;
+    }
+
+    a,
+    a:visited,
+    a:hover,
+    a:focus {
+      color: $color-text__card-rich-text--link;
+
+      code {
+        color: $color-text__card-rich-text--link;
+      }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: $size__font;
+    }
+
+    ol,
+    ul {
+      margin-left: 2em;
+    }
+
+    // add a top margin to everything but the first element;
+    > * {
+      margin-top: 10px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    table {
+      border: 1px solid $color-text__card-rich-text--code;
+      background: $color-bg__card-rich-text--code;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    td {
+      border: 1px solid $color-text__card-rich-text--code;
+      padding: 3px 6px;
+    }
+  }
+}

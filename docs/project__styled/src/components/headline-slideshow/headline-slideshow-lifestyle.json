@@ -1,0 +1,103 @@
+{
+  "title": "Lifestyle",
+  "links": [
+    {
+      "title": "Royals",
+      "url": "#"
+    },
+    {
+      "title": "Advice",
+      "url": "#"
+    },
+    {
+      "title": "Style",
+      "url": "#"
+    },
+    {
+      "title": "Horoscopes",
+      "url": "#"
+    },
+    {
+      "title": "Home & Garden",
+      "url": "#"
+    }
+  ],
+  "slides": [
+    {
+      "stories": [
+        {
+          "img": "http://via.placeholder.com/336x192",
+          "alt": "empty placeholder image",
+          "title": "Phasellus accumsan lectus quis pretium rutrum",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "stories": [
+        {
+          "img": "http://via.placeholder.com/72x72",
+          "alt": "empty placeholder image",
+          "title": "Morbi id metus ac nibh dapibus lacinia",
+          "url": "#"
+        },
+        {
+          "img": "http://via.placeholder.com/72x72",
+          "alt": "empty placeholder image",
+          "title": "Nullam in erat sed urna maximus conse",
+          "url": "#"
+        },
+        {
+          "img": "http://via.placeholder.com/72x72",
+          "alt": "empty placeholder image",
+          "title": "Vivamus in sem tincidunt volutpat nisl",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "stories": [
+        {
+          "img": "http://via.placeholder.com/72x72",
+          "alt": "empty placeholder image",
+          "title": "Duis eu ipsum ac neque porta dictum",
+          "url": "#"
+        },
+        {
+          "img": "http://via.placeholder.com/72x72",
+          "alt": "empty placeholder image",
+          "title": "Etiam interdum massa vel eros faucibus",
+          "url": "#"
+        },
+        {
+          "img": "http://via.placeholder.com/72x72",
+          "alt": "empty placeholder image",
+          "title": "Cras et felis convallis placerat augue at",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "stories": [
+        {
+          "img": "http://via.placeholder.com/72x72",
+          "alt": "empty placeholder image",
+          "title": "Vestibulum vitae ligula id dolor rhon",
+          "url": "#"
+        },
+        {
+          "img": "http://via.placeholder.com/72x72",
+          "alt": "empty placeholder image",
+          "title": "Nam bibendum leo tincidunt imperdiet vulputate",
+          "url": "#"
+        },
+        {
+          "img": "http://via.placeholder.com/72x72",
+          "alt": "empty placeholder image",
+          "title": "Duis dapibus mauris sit amet justo sodales",
+          "url": "#"
+        }
+      ]
+    }
+  ]
+}

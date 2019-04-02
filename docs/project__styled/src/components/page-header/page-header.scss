@@ -1,0 +1,36 @@
+.page-header {
+  background: $color__backgroundDark;
+  padding: size(1) 0 0;
+
+  &__logo {
+    padding: 0 0 size(1);
+
+    img {
+      display: block;
+      margin: 0 auto;
+      width: auto;
+      min-height: size(2);
+    }
+  }
+
+  &__tabs {
+    text-align: center;
+
+    a {
+      color: $color__textLight;
+      padding: size(0.5);
+      text-decoration: none;
+      transition: color $duration__color;
+
+      &:first-child {
+        text-decoration: underline;
+      }
+
+      &:hover,
+      &:focus {
+        color: $color__highlightDark;
+        text-decoration: underline;
+      }
+    }
+  }
+}

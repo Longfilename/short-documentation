@@ -1,0 +1,22 @@
+{
+  "stories": [
+    {
+      "img": "http://via.placeholder.com/72x72",
+      "alt": "empty placeholder image",
+      "title": "Vivamus molestie nulla a posuere dictum",
+      "url": "#"
+    },
+    {
+      "img": "http://via.placeholder.com/72x72",
+      "alt": "empty placeholder image",
+      "title": "Suspendisse at lacus non lacus dapibus",
+      "url": "#"
+    },
+    {
+      "img": "http://via.placeholder.com/72x72",
+      "alt": "empty placeholder image",
+      "title": "Nulla a sapien ut urna hendrerit sceler",
+      "url": "#"
+    }
+  ]
+}

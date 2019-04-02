@@ -1,0 +1,22 @@
+@import './variables--colors';
+@import './variables--fonts';
+
+// .container (grid) widths;
+// used in grid component styles;
+$container__width--sm: 480px;
+$container__width--md: 768px;
+$container__width--lg: 992px;
+$container__width--xl: 1200px;
+
+// page widths / breakpoints;
+// used in the breakpoint vars below, and in the grid component styles;
+$page__width--sm: $container__width--sm + 30px;
+$page__width--md: $container__width--md + 30px;
+$page__width--lg: $container__width--lg + 30px;
+$page__width--xl: $container__width--xl + 30px;
+
+// breakpoint variables;
+$breakpoint--sm: min-width $page__width--sm; // phone;
+$breakpoint--md: min-width $page__width--md; // tablet portrait;
+$breakpoint--lg: min-width $page__width--lg; // tablet landscape;
+$breakpoint--xl: min-width $page__width--xl; // desktop;

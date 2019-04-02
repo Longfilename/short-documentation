@@ -1,0 +1,17 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "noImplicitAny": false,
+    "sourceMap": false,
+    "types": ["jquery", "lodash"]
+  },
+  "include": [
+    "./src/docs/ts/docs.ts",
+    "./src/ts/site.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

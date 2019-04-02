@@ -1,0 +1,27 @@
+.card {
+  display: block;
+  height: 100%;
+
+  &__content {
+    box-shadow: 0 0 $size__shadow 1px $color-bg__card--shadow;
+    background: $color-bg__card--content;
+    padding: $size__gutter;
+    max-width: $size__content--narrow;
+    height: 100%;
+
+    &-title {
+      display: block;
+      position: relative;
+      z-index: $z-index__card--title;
+      line-height: $size__line-height;
+      font-size: $size__font;
+      font-weight: bold;
+    }
+  }
+}
+
+// after the inital .card declarations because they're the same specificity;
+@import './card--colors';
+@import './card--component';
+@import './card--font';
+@import './card--rich-text';

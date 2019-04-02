@@ -1,0 +1,74 @@
+// cf. http://tympanus.net/codrops/2013/12/18/perspective-page-view-navigation/
+.page {
+  background: $color-bg__page;
+  width: 100%;
+  height: 100%;
+
+  // wrapper around the content;
+  // acts as a minimized window when --modalview is applied;
+  &__frame {
+    transform: rotateY(0) translateZ(0);
+    transform-origin: 50% 50%;
+    transition: transform 0.4s;
+    z-index: $z-index__page-frame;
+    background: $color-bg__page-frame;
+    min-height: 100%;
+
+    // overlay that is hidden (opacity: 0) by default;
+    // when --modalview is applied, this is shown to prevent the user from interacting with the content;
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: opacity 0.4s, height 0s 0.4s; // the transition delay of the height needs to be synced with the container transition time;
+      opacity: 0;
+      z-index: $z-index__page-frame--overlay;
+      background: $color-bg__page-frame--overlay;
+      width: 100%;
+      height: 0;
+      content: '';
+    }
+  }
+
+  // primary page content;
+  // nested within __frame;
+  &__content {
+    padding: $size__gutter;
+
+    > * + * {
+      margin-top: $size__gutter * 5;
+    }
+  }
+
+  // added via JS (onclick of the hamburger nav);
+  // nav is enabled;
+  // the content is converted into an absolute layer (so it can be moved with --animate);
+  &--modalview {
+    position: fixed;
+    perspective: 1500px;
+
+    .page__frame {
+      position: absolute;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      backface-visibility: hidden;
+    }
+  }
+
+  // added after --modalview is added;
+  // animates the content offscreen (mimics a minimized window);
+  &--animate {
+    .page__frame {
+      transform: translateY(100%) translateZ(-1500px);
+
+      // show the overlay that prevents the user from interacting with the content;
+      &::after {
+        transition: opacity 0.3s;
+        opacity: 1;
+        height: 101%;
+      }
+    }
+  }
+}

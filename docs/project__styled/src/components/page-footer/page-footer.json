@@ -1,0 +1,139 @@
+{
+  "logo": {
+    "img": "../images/page-footer/acme__logo.png",
+    "alt": "empty placeholder image"
+  },
+  "social": {
+    "facebook": "#",
+    "twitter": "#",
+    "instagram": "#"
+  },
+  "legal": "&copy; 2019 USA TODAY, a division of Gannett Satellite Information Network, LLC.",
+  "column1": {
+    "title": "Information",
+    "links": [
+      {
+        "url": "#",
+        "title": "About Us"
+      },
+      {
+        "url": "#",
+        "title": "Our Ethical Principles"
+      },
+      {
+        "url": "#",
+        "title": "Accessibility Support"
+      },
+      {
+        "url": "#",
+        "title": "Corrections & Clarifications"
+      },
+      {
+        "url": "#",
+        "title": "Press Room"
+      },
+      {
+        "url": "#",
+        "title": "Advertise"
+      },
+      {
+        "url": "#",
+        "title": "Jobs"
+      },
+      {
+        "url": "#",
+        "title": "Internships"
+      },
+      {
+        "url": "#",
+        "title": "Developer's Network"
+      },
+      {
+        "url": "#",
+        "title": "Terms of Service"
+      },
+      {
+        "url": "#",
+        "title": "Privacy Notice"
+      },
+      {
+        "url": "#",
+        "title": "Ad Choices"
+      },
+      {
+        "url": "#",
+        "title": "Support"
+      }
+    ]
+  },
+  "column2": {
+    "title": "Media Partners",
+    "links": [
+      {
+        "url": "#",
+        "title": "Sports Weekly"
+      },
+      {
+        "url": "#",
+        "title": "Education"
+      },
+      {
+        "url": "#",
+        "title": "Grateful"
+      },
+      {
+        "url": "#",
+        "title": "10Best"
+      },
+      {
+        "url": "#",
+        "title": "Studio Gannett"
+      },
+      {
+        "url": "#",
+        "title": "Reviewed"
+      }
+    ]
+  },
+  "column3": {
+    "title": "Stay Connected",
+    "links": [
+      {
+        "url": "#",
+        "title": "Leave website feedback"
+      },
+      {
+        "url": "#",
+        "title": "Contact Us"
+      },
+      {
+        "url": "#",
+        "title": "Staff Index"
+      },
+      {
+        "url": "#",
+        "title": "Get Home Delivery"
+      },
+      {
+        "url": "#",
+        "title": "Manage My Subscriptions"
+      },
+      {
+        "url": "#",
+        "title": "Get the e-Newspaper"
+      },
+      {
+        "url": "#",
+        "title": "Reprints & Permissions"
+      },
+      {
+        "url": "#",
+        "title": "Newsletters & Alerts"
+      },
+      {
+        "url": "#",
+        "title": "Podcasts"
+      }
+    ]
+  }
+}

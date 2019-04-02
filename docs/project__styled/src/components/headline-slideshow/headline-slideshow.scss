@@ -1,0 +1,100 @@
+@import '../card/vars';
+
+.headline-slideshow {
+  margin-top: size(2);
+
+  @include breakpoint($breakpoint--sm) {
+    margin-top: size(1);
+  }
+
+  // add margin/padding to fake the grid between slides;
+  // act like a .row;
+  &__slides {
+    margin: 0 size(0.5) * -1;
+  }
+
+  // act like a .col;
+  &__slide {
+    padding: 0 size(0.5);
+  }
+
+  &__arrow {
+    background: transparent;
+    position: absolute;
+    top: 50%;
+    margin-top: size(1) * -1;
+    height: size(2);
+    width: size(2);
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+
+    &--next {
+      right: size(1.5) * -1;
+    }
+    &--previous {
+      left: size(1.5) * -1;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &.slick-disabled {
+      opacity: $opacity__disabled;
+      cursor: default;
+    }
+  }
+
+  .slat-list {
+    margin: 0;
+    padding: $font-size__small;
+    background: $color__backgroundDarkShade;
+    height: 100%; // force it to be the height of the slide, so everything is equal height;
+  }
+
+  .card {
+    height: 100%; // force it to be the height of the slide, so everything is equal height;
+
+    .img-cover {
+      height: size(8) - $card__img-margin * 2;
+    }
+
+    h3 {
+      font-weight: 400;
+    }
+  }
+
+  header {
+    @include breakpoint($breakpoint--sm) {
+      padding-bottom: size(1);
+    }
+  }
+
+  h2 {
+    display: inline;
+    font-size: $font-size__medium;
+  }
+
+  nav {
+    @include breakpoint($breakpoint--sm) {
+      margin-left: size(0.5);
+    }
+
+    a {
+      color: $color__textDark;
+      text-decoration: none;
+      transition: color $duration__color;
+
+      &:hover,
+      &:focus {
+        color: $color__highlightLight;
+        text-decoration: underline;
+      }
+
+      & + a {
+        margin-left: size(0.5);
+      }
+    }
+  }
+}

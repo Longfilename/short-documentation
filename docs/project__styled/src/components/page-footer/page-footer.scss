@@ -1,0 +1,93 @@
+.page-footer {
+  border-top: size(0.5) solid $color__highlightLight;
+  background: $color__backgroundDark;
+  color: $color__textLight;
+  padding: size(1.5) 0 size(3);
+  margin-top: size(3);
+
+  .img-cover {
+    width: size(12);
+    height: size(9);
+
+    @include breakpoint($breakpoint--sm) {
+      width: size(9);
+      height: size(6);
+    }
+
+    @include breakpoint($breakpoint--lg) {
+      width: size(12);
+      height: size(9);
+    }
+  }
+
+  &__social {
+    padding: size(1) 0;
+
+    svg {
+      height: size(1);
+      width: size(1);
+      fill: $color__textLight;
+      vertical-align: bottom;
+      transition: fill $duration__fill;
+    }
+
+    a {
+      display: inline-block;
+      text-decoration: none;
+      transition: color $duration__color;
+
+      + a {
+        margin-left: size(0.5);
+      }
+
+      &:hover,
+      &:focus {
+        svg {
+          fill: $color__highlightDark;
+        }
+      }
+    }
+  }
+
+  // at the md breakpoint, provide extra space between links;
+  // because the colomns are narrow, and the links wrap;
+  // without a space between, it's difficult to tell where one link ends and the next starts;
+  // this half sized space breaks the vertical grid, but it's the last element on the page and wont be very noticable;
+  &__links {
+    h3 {
+      @include breakpoint($breakpoint--md) {
+        margin-bottom: size(0.5);
+      }
+
+      @include breakpoint($breakpoint--lg) {
+        margin-bottom: 0;
+      }
+    }
+
+    // create a BR like effect;
+    a {
+      color: $color__textLight;
+      text-decoration: none;
+      transition: color $duration__color;
+
+      &:hover,
+      &:focus {
+        color: $color__highlightDark;
+        text-decoration: underline;
+      }
+
+      &:after {
+        content: '';
+        display: block;
+
+        @include breakpoint($breakpoint--md) {
+          margin-top: size(0.5);
+        }
+
+        @include breakpoint($breakpoint--lg) {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}

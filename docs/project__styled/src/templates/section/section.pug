@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+  head
+    - var title = "section"
+    include ../_head
+
+  body
+    include ../../components/skip-nav/skip-nav
+    - var component = json["page-header/page-header.json"]
+    include ../../components/page-header/page-header
+    include ../../components/site-nav/site-nav
+    
+    main.container#main
+      include ../../components/featured-stories/featured-stories
+
+      div.row
+        div.col-12.col-md-8
+          include ../../components/headline-grid/headline-grid
+        
+        div.col-12.col-md-4
+          - var component = json["slat-list/slat-list--kicker.json"]
+          include ../../components/slat-list/slat-list
+      
+      include ../../components/photo-slideshow/photo-slideshow
+      
+    include ../../components/page-footer/page-footer
+
+    include ../_foot

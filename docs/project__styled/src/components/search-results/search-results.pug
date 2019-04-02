@@ -1,0 +1,22 @@
+- var component = json["search-results/search-results.json"]
+// start `search-results` component;
+div.search-results(data-next=component.next)
+  div.search-results__title
+    h1 120 Results were found for &ldquo;foo-bar-baz&rdquo;
+  
+  div.search-results__stories
+    - var stories = component.stories
+    for story in stories
+      - var component = story
+      include ../card/card
+  
+    div.search-results__card-loading
+      div.icon-container
+        svg.icon-spin-alt
+          use(xlink:href="../images/icons/icons.svg#icon-spin-alt")
+  
+  script(id="search-results__card-template", type="text/x-custom-template")
+    - var component = json["card/card--template.json"]
+    - component.addClass = 'card--overlay'
+    include ../card/card
+// end `search-results` component; 

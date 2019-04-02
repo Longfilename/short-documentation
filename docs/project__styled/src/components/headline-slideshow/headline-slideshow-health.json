@@ -1,0 +1,91 @@
+{
+  "title": "Health & Fitness",
+  "links": [
+    {
+      "title": "Health News",
+      "url": "#"
+    },
+    {
+      "title": "Weight Loss",
+      "url": "#"
+    },
+    {
+      "title": "Fitness",
+      "url": "#"
+    },
+    {
+      "title": "Nutrition",
+      "url": "#"
+    },
+    {
+      "title": "Medical",
+      "url": "#"
+    }
+  ],
+  "slides": [
+    {
+      "stories": [
+        {
+          "img": "http://via.placeholder.com/72x72",
+          "alt": "empty placeholder image",
+          "title": "Nam pharetra diam ac orci laoreet feugiat",
+          "url": "#"
+        },
+        {
+          "img": "http://via.placeholder.com/72x72",
+          "alt": "empty placeholder image",
+          "title": "Maecenas sed lectus id ante finibus",
+          "url": "#"
+        },
+        {
+          "img": "http://via.placeholder.com/72x72",
+          "alt": "empty placeholder image",
+          "title": "Donec aliquam lorem et nibh ultrices fermentum",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "stories": [
+        {
+          "img": "http://via.placeholder.com/336x192",
+          "alt": "empty placeholder image",
+          "title": "Mauris fringilla neque ac massa consectetur aliquam",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "stories": [
+        {
+          "img": "http://via.placeholder.com/72x72",
+          "alt": "empty placeholder image",
+          "title": "Phasellus eget odio dignissim justo varius",
+          "url": "#"
+        },
+        {
+          "img": "http://via.placeholder.com/72x72",
+          "alt": "empty placeholder image",
+          "title": "Vestibulum ut orci sit amet nunc accumsan",
+          "url": "#"
+        },
+        {
+          "img": "http://via.placeholder.com/72x72",
+          "alt": "empty placeholder image",
+          "title": "Quisque facilisis tellus vitae mauris venen",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "stories": [
+        {
+          "img": "http://via.placeholder.com/336x192",
+          "alt": "empty placeholder image",
+          "title": "Nulla sed orci condimentum, condimentum est imperdiet, interdum ligula",
+          "url": "#"
+        }
+      ]
+    }
+  ]
+}

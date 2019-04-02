@@ -1,0 +1,81 @@
+{
+  "title": "Popular Stories",
+  "stories": [
+    {
+      "trailer": {
+        "section": "NFL",
+        "time": "8min ago"
+      },
+      "img": "http://via.placeholder.com/72x72",
+      "alt": "empty placeholder image",
+      "title": "Donec vehicula massa nec nisi vestibulum vulputate",
+      "url": "#"
+    },
+    {
+      "trailer": {
+        "section": "NFL",
+        "time": "8min ago"
+      },
+      "img": "http://via.placeholder.com/72x72",
+      "alt": "empty placeholder image",
+      "title": "Praesent hendrerit massa sit amet nulla bibendum, non mollis dolor scelerisque",
+      "url": "#"
+    },
+    {
+      "trailer": {
+        "section": "NCAA",
+        "time": "8min ago"
+      },
+      "title": "Vivamus vel turpis quis nunc aliquet interdum",
+      "url": "#"
+    },
+    {
+      "trailer": {
+        "section": "Soccer",
+        "time": "8min ago"
+      },
+      "img": "http://via.placeholder.com/72x72",
+      "alt": "empty placeholder image",
+      "title": "Integer vel sem vitae ligula semper auctor ac sit amet lectus",
+      "url": "#"
+    },
+    {
+      "trailer": {
+        "section": "Golf",
+        "time": "8min ago"
+      },
+      "img": "http://via.placeholder.com/72x72",
+      "alt": "empty placeholder image",
+      "title": "Nam placerat risus faucibus dui vehicula malesuada",
+      "url": "#"
+    },
+    {
+      "trailer": {
+        "section": "NFL",
+        "time": "8min ago"
+      },
+      "title": "Vivamus nec lacus quis nulla venenatis viverra et a lectus hendrerit massa sit amet nulla",
+      "url": "#"
+    },
+    {
+      "trailer": {
+        "section": "NBA",
+        "time": "8min ago"
+      },
+      "img": "http://via.placeholder.com/72x72",
+      "alt": "empty placeholder image",
+      "title": "Mauris placerat sem elementum leo molestie turpis sollicitudin",
+      "url": "#"
+    },
+    {
+      "trailer": {
+        "section": "NCAA",
+        "time": "8min ago"
+      },
+      "img": "http://via.placeholder.com/72x72",
+      "alt": "empty placeholder image",
+      "title": "Fusce lacinia nunc ac lectus sodales, sed pulvinar ipsum tristique",
+      "url": "#"
+    }
+  ]
+}

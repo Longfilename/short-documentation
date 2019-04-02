@@ -1,0 +1,22 @@
+// start `slat` component; 
+article.slat
+  a(href=component.url)
+    if component.img
+      div.img-cover
+        img(src=component.img, alt=component.alt)
+    
+    div.slat__text
+      if component.kicker
+        div.slat__kicker
+          =component.kicker.section
+          !='&nbsp;&nbsp;'
+          =component.kicker.time
+      
+      h3=component.title
+
+      if component.trailer
+        div.slat__trailer
+          =component.trailer.section
+          !='&nbsp;&nbsp;'
+          =component.trailer.time
+// end `slat` component; 

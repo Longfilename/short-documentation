@@ -1,0 +1,42 @@
+// sitewide styles independent of a component;
+// this should be a VERY limited list;
+
+body {
+  margin: 0;
+  background: lightpink;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+// fpo;
+// used in initial build out of the site to easily identify components;
+.component {
+  position: relative;
+  margin: 30px;
+  border: 2px solid #333;
+  padding: 15px;
+  font-size: 16px;
+  font-family: 'fira code', sans-serif;
+  box-sizing: border-box;
+
+  &::after {
+    box-sizing: border-box;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin: -18px -2px 0 0;
+    background: #333;
+    padding: 0 10px;
+    height: 20px;
+    line-height: 19px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    content: attr(class);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+}
