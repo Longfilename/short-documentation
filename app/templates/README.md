@@ -54,7 +54,7 @@ npm start server docs     # build the project with documentation, a web server, 
 
 Short Documentation parses the components and templates folders looking for `readme.md` files. When a `readme.md` file is found, that component or template are included in the documentation app.
 
-See the [https://longfilename.github.io/short-documentation/](documentation) for customizing the Short Documentation build.
+See the [documentation](https://longfilename.github.io/short-documentation/) for customizing the Short Documentation build.
 
 &nbsp;
 &nbsp;
