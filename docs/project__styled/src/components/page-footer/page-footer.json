@@ -8,7 +8,7 @@
     "twitter": "#",
     "instagram": "#"
   },
-  "legal": "&copy; 2019 USA TODAY, a division of Gannett Satellite Information Network, LLC.",
+  "legal": "&copy; 2019 ACME, a division of a Much Bigger Company Newtwork, LLC.",
   "column1": {
     "title": "Information",
     "links": [
@@ -18,15 +18,11 @@
       },
       {
         "url": "#",
-        "title": "Our Ethical Principles"
+        "title": "Accessibility"
       },
       {
         "url": "#",
-        "title": "Accessibility Support"
-      },
-      {
-        "url": "#",
-        "title": "Corrections & Clarifications"
+        "title": "Corrections"
       },
       {
         "url": "#",
@@ -39,10 +35,6 @@
       {
         "url": "#",
         "title": "Jobs"
-      },
-      {
-        "url": "#",
-        "title": "Internships"
       },
       {
         "url": "#",
@@ -83,11 +75,7 @@
       },
       {
         "url": "#",
-        "title": "10Best"
-      },
-      {
-        "url": "#",
-        "title": "Studio Gannett"
+        "title": "Studio"
       },
       {
         "url": "#",
@@ -100,7 +88,7 @@
     "links": [
       {
         "url": "#",
-        "title": "Leave website feedback"
+        "title": "Leave feedback"
       },
       {
         "url": "#",
@@ -108,7 +96,7 @@
       },
       {
         "url": "#",
-        "title": "Staff Index"
+        "title": "Staff"
       },
       {
         "url": "#",
@@ -120,15 +108,7 @@
       },
       {
         "url": "#",
-        "title": "Get the e-Newspaper"
-      },
-      {
-        "url": "#",
-        "title": "Reprints & Permissions"
-      },
-      {
-        "url": "#",
-        "title": "Newsletters & Alerts"
+        "title": "Newsletters"
       },
       {
         "url": "#",
