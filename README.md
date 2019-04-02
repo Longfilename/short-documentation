@@ -1,6 +1,6 @@
 # Short Documentation (Yeoman Generator)
 
-[Yeoman](http://yeoman.io) generator for the [Short Documentation](https://longfilename.github.io/generator-short-documentation/) project.
+[Yeoman](http://yeoman.io) generator for the [Short Documentation](https://longfilename.github.io/short-documentation/) project.
 
 Short Documentation is an HTML template &amp; documentation project.
 
