@@ -1,6 +1,6 @@
 {
   "name": "generator-short-documentation",
-  "version": "3.1.1",
+  "version": "3.2.1",
   "description": "yeoman-generator for HTML template projects that provides easy documentation. This project makes use of Pug, SCSS, and TypeScript.",
   "license": "MIT",
   "main": "app/index.js",
